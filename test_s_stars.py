@@ -89,7 +89,7 @@ optimizer = init_optimizer(
         "BT", num_bodies + num_bodies * 3 * 2, lr=0.1)
 
 # convert all_states into data usable by the optimizer. use the class andreas made
-unknown_dimension = 4 # either 0, 1, 2
+unknown_dimension = 3 # either 0, 1, 2
 
 celestial_bodies = convert_states_to_initValues(
     all_states=all_states,
@@ -114,6 +114,6 @@ with tf.device('/CPU:0'):
         unknown_dimension = unknown_dimension,
         plotGraph = True,
         plot_in_2D = True,
-        zoombox = 'small',
+        zoombox = 'smallest',
         negative_mass_penalty=100
     )

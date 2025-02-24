@@ -53,7 +53,7 @@ def solve_ecc_anomaly(M, e, tol=1e-10):
             break
     return E
 
-def create_s_star_system(file_path, s_star_mass = 20, ref_time = 0 | units.day):
+def create_s_star_system(file_path, s_star_mass = 20, ref_time = 0 | units.yr):
     datasets = load_s_stars(file_path)
     # extract the orbital parameters
     semimajor_axis = datasets['semimajor_axis']

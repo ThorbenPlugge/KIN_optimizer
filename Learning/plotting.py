@@ -21,14 +21,24 @@ def plot_thread(plot_queue, stop_event, plot_in_2D, zoombox, unknown_dimension, 
         if unknown_dimension == 3:
             unknown_dimension = 2
         fig, ax = create_2D_plot()
+        if zoombox == 'trappist':
+            ax.set_xlim(-0.06, 0.06)
+            ax.set_ylim(-0.06, 0.06)
         if zoombox == 'small':
             ax.set_xlim(-2500, 2500)
             ax.set_ylim(-2000, 2000)
         elif zoombox == 'smaller':
             ax.set_xlim(-500, 500)
             ax.set_ylim(-500, 500)
+        elif zoombox == 'smallest':
+            ax.set_xlim(-200, 200)
+            ax.set_ylim(-200, 200)
     else:
         fig, ax = create_3D_plot()
+        if zoombox == 'trappist':
+            ax.set_xlim(-0.06, 0.06)
+            ax.set_ylim(-0.06, 0.06)
+            ax.set_zlim(-0.06, 0.06)
         if zoombox == 'small':
             ax.set_xlim(-2500, 2500)
             ax.set_ylim(-2000, 2000)
@@ -37,6 +47,10 @@ def plot_thread(plot_queue, stop_event, plot_in_2D, zoombox, unknown_dimension, 
             ax.set_xlim(-500, 500)
             ax.set_ylim(-500, 500)
             ax.set_zlim(-500, 500)
+        elif zoombox == 'smallest':
+            ax.set_xlim(-200, 200)
+            ax.set_ylim(-200, 200)
+            ax.set_zlim(-200, 200)
 
     
     # Create line objects for each body
