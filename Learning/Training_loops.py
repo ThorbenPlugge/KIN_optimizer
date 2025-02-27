@@ -182,6 +182,8 @@ def learn_masses_4real(tau, optimizer, availabe_info_of_bodies, plot_queue, plot
             gradient = tf.reshape(
                 tf.concat([dL_dm, dL_dz], axis=0), shape=[-1])
 
+            # set the gradient to zero for the first body (the sun)
+            # or: specify directly in the optimizer what the initial learning rate is
             optimizer.apply_gradients([(gradient, param)])
 
             # param is updated. now m, r, v have to be extracted
@@ -196,4 +198,4 @@ def learn_masses_4real(tau, optimizer, availabe_info_of_bodies, plot_queue, plot
             print(
                 f"Epoch {j+1}/{epochs}, Masses: {m.numpy()}, \nPositions: \n{r.numpy()}")
 
-    # return mass_values
+    return mass_values

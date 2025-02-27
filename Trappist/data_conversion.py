@@ -98,8 +98,8 @@ def test_conversion():
 
     test_sys = create_trappist_system()
 
-    evolve_time = 0.1 | units.yr
-    tau_ev = 0.1 | units.day
+    evolve_time = 0.5 | units.yr
+    tau_ev = 3 | units.day
 
     # plot_system(test_sys, [0], [0])
     evolved_sys, pos_states, vel_states, total_energy = evolve_sys_sakura(sys = test_sys,
@@ -119,20 +119,19 @@ def test_conversion():
                                                           bodies_and_initial_guesses = bodies_and_initial_guesses,
                                                           unknown_dimension = 3)
     
+    plt.semilogy(total_energy/total_energy[0])
+    plt.show()
     print(celestial_bodies)
-    if not math.isclose(celestial_bodies[0].states[0].position[0], pos_states[0][0][0], rel_tol = 1e-10, abs_tol=1e-10):
+    if not math.isclose(celestial_bodies[3].states[0].position[0], pos_states[0][3][0], rel_tol = 1e-15, abs_tol=1e-15):
         print('The first state in celestial_bodies does not match the first state in pos_states.')
 
-    if not math.isclose(celestial_bodies[0].states[-1].position[0], pos_states[-1][0][0], rel_tol = 1e-10, abs_tol=1e-10):
+    if not math.isclose(celestial_bodies[3].states[-1].position[0], pos_states[-1][3][0], rel_tol = 1e-15, abs_tol=1e-15):
         print('The last state in celestial_bodies does not match the first state in pos_states.')
 
     # plot_system(evolved_sys, pos_states, vel_states)
 
     # TODO: overplot the states in celestial_bodies to check that they match.
 
-
-
-    
 
 # test_conversion()
     

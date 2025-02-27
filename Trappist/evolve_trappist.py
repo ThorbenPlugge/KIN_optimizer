@@ -79,7 +79,6 @@ def evolve_sys_sakura(sys, evolve_time, tau_ev, print_progress = False):
             pos_states[time_idx, :] = sys.position.value_in(units.AU)
             vel_states[time_idx, :] = sys.velocity.value_in(units.AU / units.day)
             total_energy[time_idx] = sys.kinetic_energy().value_in(units.J) + sys.potential_energy(G = constants.G).value_in(units.J)
-
             if print_progress:
                 print(f'Time: {(time | units.day).value_in(units.yr)} years. Energy: {total_energy[time_idx]}')
 

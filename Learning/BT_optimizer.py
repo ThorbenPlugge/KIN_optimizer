@@ -1,16 +1,16 @@
 import tensorflow as tf
+import numpy as np
 
-
-class BachelorThesisOptimizer(tf.Module):
-    def __init__(self, learning_rate=1e-3, shape=59, convergence_rate=1.0001):
+class BachelorThesisOptimizer(tf.Module): # CHECK THIS PLEASE
+    def __init__(self, learning_rate=np.ones(59)*1e-3, shape=59, convergence_rate=1.0001):
         self.learning_rate = tf.constant(
-            learning_rate, dtype=tf.float64, shape=(shape))
+            learning_rate, dtype=tf.float64)
         self.lr_multiplier = tf.ones(
-            dtype=tf.float64, shape=(shape)) * 8
+            dtype=tf.float64, shape=tf.shape(self.learning_rate)) * 8
         self.sign_last_grad = tf.zeros(
-            dtype=tf.float64, shape=(shape))
+            dtype=tf.float64, shape=tf.shape(self.learning_rate))
         self.how_many_times_was_the_multiplier_1 = tf.zeros(
-            dtype=tf.float64, shape=(shape))
+            dtype=tf.float64, shape=tf.shape(self.learning_rate))
         self.convergence_rate = convergence_rate
 
     def apply_gradients(self, elem):

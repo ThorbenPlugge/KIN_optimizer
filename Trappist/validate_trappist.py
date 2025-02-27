@@ -63,29 +63,37 @@ def test(evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function = 
     num_bodies = len(test_sys)
     # Initialize the optimizer with n + n*3*2 variables, for masses, 
     # velocities and positions for each body
+    learning_rate_arr = np.ones(shape= num_bodies+num_bodies*3*2) * learning_rate
+    learning_rate_arr[0] = 0
+
     optimizer = init_optimizer(
-        'BT', num_bodies + num_bodies * 3 * 2, lr = learning_rate)
+        'BT', num_bodies + num_bodies * 3 * 2, lr = learning_rate_arr)
     
-    node.learn_masses(
+    masses = node.learn_masses(
         tau=tau_opt.value_in(units.day), optimizer=optimizer,
         availabe_info_of_bodies=trappist_bodies,
         epochs=100,
         unknown_dimension=unknown_dimension,
-        plotGraph = True,
+        plotGraph = False,
         plot_in_2D = False,
         zoombox = 'trappist',
         negative_mass_penalty=1
     )
 
     print('true masses:', evolved_sys.mass)
-    
+    print('diff:', masses - evolved_sys.mass.value_in(units.Msun))
+    # print out the cost per epoch (in the combine derivatives file)
+    # save it to an array. 
+
 test(evolve_time= 1 | units.day,
      tau_ev = 0.01 | units.day,
      tau_opt = 0.01 | units.day,
-     num_points_considered_in_cost_function = 1,
+     num_points_considered_in_cost_function = 2,
      unknown_dimension = 3,
-     learning_rate = 0.0001,
+     learning_rate = 0.0000001,
      generate_movie = False,
      phaseseed = 0)
 
+# simulate the same starting system used previously, but with masses found by the
+# optimizer. 
     
