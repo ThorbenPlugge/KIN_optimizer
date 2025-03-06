@@ -30,18 +30,38 @@ def calculate_qd_cost(true_sys, test_sys):
     return position_cost, velocity_cost
 
 
-def simulate_new_mass2(sys, evolve_time, tau_opt, new_masses):
-    from Trappist.evolve_trappist import evolve_sys_sakura
+def simulate_new_mass2(sys, evolve_time, tau_opt, new_masses, integration = 'amuse'):
+    '''Simulates some system by some evolve time with a time step tau, but gives
+    the bodies in the system new masses. Either by the amuse implementation of
+    Sakura or the do_step function.'''
     # set the new system mass:
     for body_idx in range(len(sys)):
         sys[body_idx].mass = new_masses[body_idx] | units.Msun
-    print(sys.mass)
-    evolved_sys, pos_states, vel_states, total_energy = evolve_sys_sakura(sys = sys,
-                                                                          evolve_time = evolve_time,
-                                                                          tau_ev = tau_opt,
-                                                                          cache = False,
-                                                                          print_progress = False)
-    return evolved_sys, pos_states, vel_states, total_energy 
+    # print(sys.mass)
+    if integration == 'amuse':
+        from Trappist.evolve_trappist import evolve_sys_sakura
+        
+        evolved_sys, pos_states, vel_states, total_energy = evolve_sys_sakura(sys = sys,
+                                                                            evolve_time = evolve_time,
+                                                                            tau_ev = tau_opt,
+                                                                            cache = False,
+                                                                            print_progress = False)
+        return evolved_sys, pos_states, vel_states, total_energy 
+    
+    elif integration == 'do_step':
+        import NormalCode.fastMainCode as mcfast
+        evolve_time = evolve_time.value_in(units.day)
+        tau_opt = tau_opt.value_in(units.day)
+        r, v = sys.position.value_in(units.AU), sys.velocity.value_in(units.AU / units.day)
+        num_total_steps = int(np.ceil(evolve_time / tau_opt))
+        print('num_total_steps:', num_total_steps)
+        print(r, v)
+        for i in range(1, num_total_steps + 1):
+            r, v, _ = mcfast.do_step(tau_opt, len(sys), sys.mass.value_in(units.Msun), r, v)
+        print(r, v)
+        sys.position, sys.velocity = r | units.AU, v | (units.AU / units.day)
+        return sys
+        
 
 
 
@@ -68,6 +88,7 @@ def test(evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function = 
     # Generate and evolve a system
     test_sys = create_trappist_system(phaseseed)
     test_sys1 = copy.deepcopy(test_sys)
+    
     evolved_sys, pos_states, vel_states, total_energy = evolve_sys_sakura(sys = test_sys,
                                                                           evolve_time = evolve_time,
                                                                           tau_ev = tau_ev,
@@ -103,7 +124,7 @@ def test(evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function = 
         availabe_info_of_bodies=trappist_bodies,
         epochs=epochs,
         unknown_dimension=unknown_dimension,
-        plotGraph = False,
+        plotGraph = True,
         plot_in_2D = False,
         zoombox = 'trappist',
         negative_mass_penalty=1
@@ -114,35 +135,57 @@ def test(evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function = 
     print('diff:', masses - evolved_sys.mass.value_in(units.Msun))
 
     if test_new_masses == True:
-        # evolve the initial state of the system with the calculated masses 
+        ## TESTING WITH SAKURA REINTEGRATION
+        # make some copies so we don't overwrite or use a system that has already
+        # been evolved
         test_sys2 = copy.deepcopy(test_sys1)
+        test_sys3 = copy.deepcopy(test_sys1)
+        test_sys4 = copy.deepcopy(test_sys1)
+
+        # evolve the initial state of the system with the calculated masses 
         evolved_nm_sys, _, _, _ = simulate_new_mass2(test_sys1, evolve_time, tau_opt, masses)
-        
-        # TODO: Check if they end up in the right position
 
         # calculate the cost for the final states of the original system 
         # and the new masses system
-        pos_cost_nm, vel_cost_nm = calculate_qd_cost(true_sys = evolved_sys,
+        pos_cost_nm, vel_cost_nm = calculate_qd_cost(true_sys = evolved_sys1,
                                                      test_sys = evolved_nm_sys)
         
         # redo the evolution as a sanity check for the correct masses
         evolved_tm_sys, _, _, _ = simulate_new_mass2(test_sys2, evolve_time, tau_opt, test_sys2.mass.value_in(units.Msun))
-        pos_cost_sanity, vel_cost_sanity = calculate_qd_cost(true_sys = evolved_sys,
-                                                             test_sys = evolved_sys)
-
+        pos_cost_sanity, vel_cost_sanity = calculate_qd_cost(true_sys = evolved_sys1,
+                                                             test_sys = evolved_tm_sys)
+        print('With sakura reintegration:')
         print('pos and vel cost for new masses:')
         print(pos_cost_nm, vel_cost_nm)
         print('pos and vel cost sanity check:')
         print(pos_cost_sanity, vel_cost_sanity)
+
+        ## TESTING WITH DO_STEP REINTEGRATION
+        # evolve the initial state of the sysem with the calculated masses
+        evolved_nm_sys2 = simulate_new_mass2(test_sys3, evolve_time, tau_opt, masses, integration = 'do_step')
+        pos_cost_nm2, vel_cost_nm2 = calculate_qd_cost(true_sys = evolved_sys1,
+                                                       test_sys = evolved_nm_sys2)
+        
+        # redo the evolution as a sanity check for the correct masses
+        evolved_tm_sys2 = simulate_new_mass2(test_sys4, evolve_time, tau_opt, test_sys4.mass.value_in(units.Msun), integration = 'do_step')
+        pos_cost_sanity2, vel_cost_sanity2 = calculate_qd_cost(true_sys = evolved_sys1,
+                                                       test_sys = evolved_tm_sys2)
+        
+        print('With do_step reintegration')
+        print('pos and vel cost for new masses:')
+        print(pos_cost_nm2, vel_cost_nm2)
+        print('pos and vel cost sanity check:')
+        print(pos_cost_sanity2, vel_cost_sanity2)
+
     # print out the cost per epoch (in the combine derivatives file)
     # save it to an array. 
 
-test(evolve_time= 1 | units.day,
+test(evolve_time = 3 | units.day,
      tau_ev = 0.01 | units.day,
      tau_opt = 0.01 | units.day,
-     num_points_considered_in_cost_function = 1,
+     num_points_considered_in_cost_function = 2,
      unknown_dimension = 3,
-     learning_rate = 0.0000000001,
+     learning_rate = 0.0000001,
      epochs = 230,
      generate_movie = False,
      test_new_masses = True,

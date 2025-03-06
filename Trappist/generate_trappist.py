@@ -81,7 +81,7 @@ def test_generation():
     from t_plotting import plot_system
     test_sys = create_trappist_system()
     plot_system(test_sys, [0], [0], dimension = 3)
-    print(test_sys)
+    print(test_sys.position.shape)
 
 # test_generation()
 
