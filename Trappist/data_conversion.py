@@ -52,7 +52,7 @@ def convert_states_to_celestial_bodies(pos_states, vel_states, num_points_consid
     # Build CelestialBody objects with states over time
     celestial_bodies = []
     for body_index in range(len(bodies_and_initial_guesses[0])):
-        body_mass = bodies_and_initial_guesses[0][body_index]
+        body_mass = bodies_and_initial_guesses[1][body_index]
 
         states = []
         for i in range(num_points):
@@ -73,12 +73,19 @@ def convert_states_to_celestial_bodies(pos_states, vel_states, num_points_consid
                 position = pos,
                 velocity = vel
             ))
-
-        celestial_bodies.append(clas.CelestialBody(
+        # take the first body's mass to be known
+        if body_index == 0:
+            celestial_bodies.append(clas.CelestialBody(
+            name=f"body_{body_index}",
+            mass = bodies_and_initial_guesses[0][body_index],
+            states = states
+            ))
+        else:
+            celestial_bodies.append(clas.CelestialBody(
             name=f"body_{body_index}",
             mass = body_mass,
             states = states
-        ))
+            ))
     
     return celestial_bodies
 

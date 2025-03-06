@@ -45,11 +45,12 @@ def learn_masses(tau, optimizer, availabe_info_of_bodies,
                        unknown_dimension, availabe_info_of_bodies)
 
     else:
-        learn_masses_4real(tau, optimizer, availabe_info_of_bodies, None, plotGraph,
+        mass_values = learn_masses_4real(tau, optimizer, availabe_info_of_bodies, None, plotGraph,
                            epochs,
                            unknown_dimension,
                            negative_mass_penalty,
                            accuracy)
+        return mass_values
 
 
 def learn_masses_4real(tau, optimizer, availabe_info_of_bodies, plot_queue, plotGraph,
