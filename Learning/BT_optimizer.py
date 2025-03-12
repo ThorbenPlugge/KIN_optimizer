@@ -1,7 +1,7 @@
 import tensorflow as tf
 import numpy as np
 
-class BachelorThesisOptimizer(tf.Module): # CHECK THIS PLEASE
+class BachelorThesisOptimizer(tf.Module): 
     def __init__(self, learning_rate=np.ones(59)*1e-3, shape=59, convergence_rate=1.0001):
         self.learning_rate = tf.constant(
             learning_rate, dtype=tf.float64)

@@ -124,7 +124,7 @@ def test(evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function = 
         availabe_info_of_bodies=trappist_bodies,
         epochs=epochs,
         unknown_dimension=unknown_dimension,
-        plotGraph = True,
+        plotGraph = False,
         plot_in_2D = False,
         zoombox = 'trappist',
         negative_mass_penalty=1
@@ -180,10 +180,10 @@ def test(evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function = 
     # print out the cost per epoch (in the combine derivatives file)
     # save it to an array. 
 
-test(evolve_time = 3 | units.day,
-     tau_ev = 0.01 | units.day,
-     tau_opt = 0.01 | units.day,
-     num_points_considered_in_cost_function = 2,
+test(evolve_time = 300 | units.day,
+     tau_ev = 0.05 | units.day,
+     tau_opt = 0.05 | units.day,
+     num_points_considered_in_cost_function = 8,
      unknown_dimension = 3,
      learning_rate = 0.0000001,
      epochs = 230,
