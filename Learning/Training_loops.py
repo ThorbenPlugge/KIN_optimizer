@@ -127,6 +127,7 @@ def learn_masses_4real(tau, optimizer, availabe_info_of_bodies, plot_queue, plot
         # Maybe this should be a return value?
         # But maybe also the position and velocity values should.
         mass_values = [0 for _ in range(epochs)]
+        loss_values = [0 for _ in range(epochs)]
 
         # This is created to store the last value for m.
         m_i_minus_1 = tf.zeros_like(m)
@@ -173,7 +174,7 @@ def learn_masses_4real(tau, optimizer, availabe_info_of_bodies, plot_queue, plot
             # The chainrule again is:
             # (f(g(x)))'= f'(g(x)) * g'(x)
             print('Combining derivatives...')
-            dL_dm, dL_dz = cd.build_compute_graph_and_combine_derivatives(t,
+            dL_dm, dL_dz, losses = cd.build_compute_graph_and_combine_derivatives(t,
                                                                           availabe_info_of_bodies,
                                                                           state_derivatives,
                                                                           mass_derivatives,
@@ -195,8 +196,9 @@ def learn_masses_4real(tau, optimizer, availabe_info_of_bodies, plot_queue, plot
                 param[3*n + n:], shape=(n, 3)), dtype=tf.float64)
 
             mass_values[j] = [m.numpy()[i] for i in range(len(m.numpy()))]
+            loss_values[j] = [losses.numpy()[i] for i in range(len(losses.numpy()))]
 
             print(
                 f"Epoch {j+1}/{epochs}, Masses: {m.numpy()}, \nPositions: \n{r.numpy()}")
 
-    return mass_values
+    return mass_values, loss_values

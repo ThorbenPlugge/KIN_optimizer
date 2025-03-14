@@ -121,3 +121,13 @@ def create_sys_movie(sys, pos_states, vel_states, filename, three_d = False, mov
     
     ani.save(movie_path / filename, writer='ffmpeg', fps = 24)
 
+def plot_loss_func(loss_per_epoch, title = 'Loss per epoch'):
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    ax.set_xlabel('Epoch')
+    ax.set_ylabel('Average loss')
+    ax.set_title(title)
+    ax.plot(loss_per_epoch)
+    ax.set_yscale('log')
+    ax.grid()
+    plt.savefig('loss_per_epoch.pdf', dpi = 600)

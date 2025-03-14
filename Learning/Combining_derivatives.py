@@ -12,6 +12,8 @@ def calculate_loss_derivatives(availabe_info_of_bodies, t, unknown_dimension, n)
     # That means, that if dL_dz is zero, nothing happens.
     loss_derivatives = tf.Variable(tf.zeros(
         (tf.shape(t)[0] - 1, 1, n * 3 * 2), dtype=tf.float64))
+    losses = tf.Variable(tf.zeros(
+        (tf.shape(t)[0] - 1, 1, n * 3 * 2), dtype=tf.float64))
 
     for i in range(len(availabe_info_of_bodies)):  # for every body
 
@@ -23,7 +25,7 @@ def calculate_loss_derivatives(availabe_info_of_bodies, t, unknown_dimension, n)
             # It has a weird shape. this is because of the scatter_add function from TensorFlow
             # Just imagine it has shape (1, n * 3 * 2)
             dL_dz = tf.Variable(tf.zeros((1, 1, n * 3 * 2), dtype=tf.float64))
-
+            L = tf.Variable(tf.zeros((1, 1, n * 3 * 2), dtype=tf.float64))
             # In this loop, all availabe information that is known to be true is considered
             for j in range(3):
                 # If unknown_dimension=3, then all dimensions are known
@@ -34,7 +36,17 @@ def calculate_loss_derivatives(availabe_info_of_bodies, t, unknown_dimension, n)
                                                   tf.constant(state.position[j], dtype=tf.float64))
                     dL_dz[0, 0, 3 * n + i * 3 + j].assign(t[state.time, 3 * n + i * 3 + j] - tf.constant(
                         state.velocity[j], dtype=tf.float64))
-
+                    
+                    # Also assign loss values
+                    L[0, 0, i * 3 + j].assign(0.5*(t[state.time, i * 3 + j] - 
+                                                  tf.constant(state.position[j], dtype=tf.float64))**2)
+                    L[0, 0, 3 * n + i * 3 + j].assign(0.5*(t[state.time, 3 * n + i * 3 + j] - tf.constant(
+                        state.velocity[j], dtype=tf.float64))**2)
+            losses = tf.compat.v1.scatter_add(
+                losses,
+                indices = [state.time - 1],
+                updates = L
+            )
             loss_derivatives = tf.compat.v1.scatter_add(
                 loss_derivatives,
                 # The minus one is because the first state is not considered
@@ -42,7 +54,7 @@ def calculate_loss_derivatives(availabe_info_of_bodies, t, unknown_dimension, n)
                 updates=dL_dz
             )
 
-    return loss_derivatives
+    return loss_derivatives, losses
 
 
 @tf.function
@@ -93,7 +105,7 @@ def build_compute_graph_and_combine_derivatives(t, availabe_info_of_bodies,
                                                 state_derivatives, mass_derivatives,
                                                 negative_mass_penalty, m, unknown_dimension, n):
 
-    loss_derivatives = calculate_loss_derivatives(
+    loss_derivatives, losses = calculate_loss_derivatives(
         availabe_info_of_bodies, t, unknown_dimension, n)
 
     dL_dm, dL_dz = combine_derivatives(
@@ -102,4 +114,4 @@ def build_compute_graph_and_combine_derivatives(t, availabe_info_of_bodies,
     dL_dz = set_derivatives_of_known_starting_position_to_zero(
         availabe_info_of_bodies, unknown_dimension, dL_dz, n)
 
-    return dL_dm, dL_dz
+    return dL_dm, dL_dz, losses

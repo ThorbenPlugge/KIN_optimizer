@@ -54,11 +54,8 @@ def simulate_new_mass2(sys, evolve_time, tau_opt, new_masses, integration = 'amu
         tau_opt = tau_opt.value_in(units.day)
         r, v = sys.position.value_in(units.AU), sys.velocity.value_in(units.AU / units.day)
         num_total_steps = int(np.ceil(evolve_time / tau_opt))
-        print('num_total_steps:', num_total_steps)
-        print(r, v)
         for i in range(1, num_total_steps + 1):
             r, v, _ = mcfast.do_step(tau_opt, len(sys), sys.mass.value_in(units.Msun), r, v)
-        print(r, v)
         sys.position, sys.velocity = r | units.AU, v | (units.AU / units.day)
         return sys
         
@@ -79,7 +76,7 @@ def test(evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function = 
 
     from Trappist.generate_trappist import create_trappist_system
     from Trappist.evolve_trappist import evolve_sys_sakura
-    from Trappist.t_plotting import create_sys_movie, plot_system
+    from Trappist.t_plotting import create_sys_movie, plot_system, plot_loss_func
     from Trappist.data_conversion import convert_states_to_celestial_bodies, convert_sys_to_initial_guess_list
     from test_Main_Code import init_optimizer
     import Learning.Training_loops as node
@@ -97,7 +94,7 @@ def test(evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function = 
     if generate_movie:
         create_sys_movie(evolved_sys, pos_states, vel_states, 'test_movie.mp4', three_d = True)
 
-    initial_guess = evolved_sys.mass # + (np.random.uniform(-0.00001, 0.00001) | units.Msun)
+    initial_guess = evolved_sys.mass + (np.random.uniform(-0.0001, 0.0001) | units.Msun)
 
     bodies_and_initial_guesses = convert_sys_to_initial_guess_list(evolved_sys, initial_guess.value_in(units.Msun))
 
@@ -119,7 +116,7 @@ def test(evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function = 
     optimizer = init_optimizer(
         'BT', num_bodies + num_bodies * 3 * 2, lr = learning_rate_arr)
     
-    masses = node.learn_masses(
+    masses, losses = node.learn_masses(
         tau=tau_opt.value_in(units.day), optimizer=optimizer,
         availabe_info_of_bodies=trappist_bodies,
         epochs=epochs,
@@ -133,6 +130,13 @@ def test(evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function = 
     print('true masses:', evolved_sys.mass)
 
     print('diff:', masses - evolved_sys.mass.value_in(units.Msun))
+
+    losses = np.array(losses)
+    average_losses = np.mean(losses, axis = 3)
+    avg_loss_per_epoch = average_losses[:, -1, 0]
+
+    print(np.array(avg_loss_per_epoch).shape)
+    plot_loss_func(avg_loss_per_epoch)
 
     if test_new_masses == True:
         ## TESTING WITH SAKURA REINTEGRATION
@@ -180,13 +184,13 @@ def test(evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function = 
     # print out the cost per epoch (in the combine derivatives file)
     # save it to an array. 
 
-test(evolve_time = 300 | units.day,
+test(evolve_time = 1 | units.day,
      tau_ev = 0.05 | units.day,
      tau_opt = 0.05 | units.day,
-     num_points_considered_in_cost_function = 8,
+     num_points_considered_in_cost_function = 1,
      unknown_dimension = 3,
      learning_rate = 0.0000001,
-     epochs = 230,
+     epochs = 50,
      generate_movie = False,
      test_new_masses = True,
      phaseseed = 0)
