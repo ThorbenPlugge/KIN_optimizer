@@ -45,12 +45,12 @@ def learn_masses(tau, optimizer, availabe_info_of_bodies,
                        unknown_dimension, availabe_info_of_bodies)
 
     else:
-        mass_values = learn_masses_4real(tau, optimizer, availabe_info_of_bodies, None, plotGraph,
+        mass_values, loss_values = learn_masses_4real(tau, optimizer, availabe_info_of_bodies, None, plotGraph,
                            epochs,
                            unknown_dimension,
                            negative_mass_penalty,
                            accuracy)
-        return mass_values
+        return mass_values, loss_values
 
 
 def learn_masses_4real(tau, optimizer, availabe_info_of_bodies, plot_queue, plotGraph,
@@ -197,8 +197,8 @@ def learn_masses_4real(tau, optimizer, availabe_info_of_bodies, plot_queue, plot
 
             mass_values[j] = [m.numpy()[i] for i in range(len(m.numpy()))]
             loss_values[j] = [losses.numpy()[i] for i in range(len(losses.numpy()))]
-
+            
             print(
                 f"Epoch {j+1}/{epochs}, Masses: {m.numpy()}, \nPositions: \n{r.numpy()}")
-
+    
     return mass_values, loss_values

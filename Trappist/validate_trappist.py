@@ -94,8 +94,10 @@ def test(evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function = 
     if generate_movie:
         create_sys_movie(evolved_sys, pos_states, vel_states, 'test_movie.mp4', three_d = True)
 
-    initial_guess = evolved_sys.mass + (np.random.uniform(-0.0001, 0.0001) | units.Msun)
-
+    init_guess_variance = np.random.uniform(0, 0.000001, len(test_sys))
+    init_guess_variance[0] = 0
+    initial_guess = evolved_sys.mass #+ (init_guess_variance | units.Msun)
+    
     bodies_and_initial_guesses = convert_sys_to_initial_guess_list(evolved_sys, initial_guess.value_in(units.Msun))
 
     # Convert the states into something that can be used by the optimizer
@@ -124,19 +126,25 @@ def test(evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function = 
         plotGraph = False,
         plot_in_2D = False,
         zoombox = 'trappist',
-        negative_mass_penalty=1
+        negative_mass_penalty=1,
+        accuracy = 1e-10
     )
-    masses = masses[-1]
-    print('true masses:', evolved_sys.mass)
 
-    print('diff:', masses - evolved_sys.mass.value_in(units.Msun))
-
+    # select the masses from the epoch with the lowest loss value
+    print(len(losses))
     losses = np.array(losses)
-    average_losses = np.mean(losses, axis = 3)
+    average_losses = np.sum(losses, axis = 3)
     avg_loss_per_epoch = average_losses[:, -1, 0]
+
+    lowest_loss_idx = np.argmin(losses)
+    masses = masses[lowest_loss_idx]
 
     print(np.array(avg_loss_per_epoch).shape)
     plot_loss_func(avg_loss_per_epoch)
+
+    print('true masses:', evolved_sys.mass)
+    print('found masses:', masses)
+    print('relative diff:', (masses - evolved_sys.mass.value_in(units.Msun))/evolved_sys.mass.value_in(units.Msun))
 
     if test_new_masses == True:
         ## TESTING WITH SAKURA REINTEGRATION
@@ -175,26 +183,22 @@ def test(evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function = 
         pos_cost_sanity2, vel_cost_sanity2 = calculate_qd_cost(true_sys = evolved_sys1,
                                                        test_sys = evolved_tm_sys2)
         
-        print('With do_step reintegration')
+        print('\nWith do_step reintegration')
         print('pos and vel cost for new masses:')
         print(pos_cost_nm2, vel_cost_nm2)
         print('pos and vel cost sanity check:')
         print(pos_cost_sanity2, vel_cost_sanity2)
-
-    # print out the cost per epoch (in the combine derivatives file)
-    # save it to an array. 
+        print('initial guesses were:', initial_guess)
 
 test(evolve_time = 1 | units.day,
      tau_ev = 0.05 | units.day,
      tau_opt = 0.05 | units.day,
      num_points_considered_in_cost_function = 1,
      unknown_dimension = 3,
-     learning_rate = 0.0000001,
-     epochs = 50,
+     learning_rate = 0.000001,
+     epochs = 100,
      generate_movie = False,
      test_new_masses = True,
      phaseseed = 0)
 
-# simulate the same starting system used previously, but with masses found by the
-# optimizer. 
     
