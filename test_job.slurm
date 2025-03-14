@@ -13,11 +13,8 @@
 echo "#### Starting test"
 
 module load Miniconda3/24.7.1-0
-module load AMUSE/2025.2.0
-source /home/s2818760/.bashrc
 conda activate nbody
 
 python Trappist/validate_trappist.py
-
 
 echo "#### Finished Test. Have a nice day"
