@@ -1,0 +1,24 @@
+#### Starting test
+no change     /easybuild/software/Miniconda3/24.7.1-0/condabin/conda
+no change     /easybuild/software/Miniconda3/24.7.1-0/bin/conda
+no change     /easybuild/software/Miniconda3/24.7.1-0/bin/conda-env
+no change     /easybuild/software/Miniconda3/24.7.1-0/bin/activate
+no change     /easybuild/software/Miniconda3/24.7.1-0/bin/deactivate
+no change     /easybuild/software/Miniconda3/24.7.1-0/etc/profile.d/conda.sh
+no change     /easybuild/software/Miniconda3/24.7.1-0/etc/fish/conf.d/conda.fish
+no change     /easybuild/software/Miniconda3/24.7.1-0/shell/condabin/Conda.psm1
+no change     /easybuild/software/Miniconda3/24.7.1-0/shell/condabin/conda-hook.ps1
+no change     /easybuild/software/Miniconda3/24.7.1-0/lib/python3.12/site-packages/xontrib/conda.xsh
+no change     /easybuild/software/Miniconda3/24.7.1-0/etc/profile.d/conda.csh
+no change     /home/s2818760/.bashrc
+No action taken.
+
+EnvironmentNameNotFound: Could not find conda environment: nbody
+You can list all discoverable environments with `conda info --envs`.
+
+
+Traceback (most recent call last):
+  File "/home/s2818760/MasterProj/KIN_optimizer/Trappist/validate_trappist.py", line 1, in <module>
+    import numpy as np
+ModuleNotFoundError: No module named 'numpy'
+#### Finished Test. Have a nice day
