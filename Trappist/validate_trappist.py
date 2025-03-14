@@ -136,7 +136,6 @@ def test(evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function = 
     average_losses = np.sum(losses, axis = 3)
     avg_loss_per_epoch = average_losses[:, -1, 0]
 
-    # TODO: find the epoch where the loss is the lowest and the masses aren't negative 
     good_mass_indices = np.array([np.all(np.array(mass_list) > 0) for mass_list in masses])
     valid_indices = np.where(good_mass_indices)[0]
 
@@ -201,7 +200,7 @@ test(evolve_time = 1 | units.day,
      num_points_considered_in_cost_function = 1,
      unknown_dimension = 3,
      learning_rate = 0.000001,
-     epochs = 100,
+     epochs = 20,
      generate_movie = False,
      test_new_masses = True,
      phaseseed = 0)

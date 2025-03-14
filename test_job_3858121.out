@@ -1,0 +1,7 @@
+#### Starting test
+/easybuild/software/Miniconda3/24.7.1-0/bin/python
+Traceback (most recent call last):
+  File "/home/s2818760/MasterProj/KIN_optimizer/Trappist/validate_trappist.py", line 1, in <module>
+    import numpy as np
+ModuleNotFoundError: No module named 'numpy'
+#### Finished Test. Have a nice day

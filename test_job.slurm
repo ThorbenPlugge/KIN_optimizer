@@ -12,8 +12,8 @@
 
 echo "#### Starting test"
 
-module load Miniconda3/24.7.1-0
 conda activate nbody
+which python
 
 python Trappist/validate_trappist.py
 
