@@ -131,12 +131,10 @@ def test(evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function = 
     )
 
     # select the masses from the epoch with the lowest loss value
-    print(len(losses))
     losses = np.array(losses)
     average_losses = np.sum(losses, axis = 3)
     avg_loss_per_epoch = average_losses[:, -1, 0]
 
-    # TODO: find the epoch where the loss is the lowest and the masses aren't negative 
     good_mass_indices = np.array([np.all(np.array(mass_list) > 0) for mass_list in masses])
     valid_indices = np.where(good_mass_indices)[0]
 
@@ -195,10 +193,10 @@ def test(evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function = 
         print(pos_cost_sanity2, vel_cost_sanity2)
         print('initial guesses were:', initial_guess)
 
-test(evolve_time = 1 | units.day,
-     tau_ev = 0.05 | units.day,
-     tau_opt = 0.05 | units.day,
-     num_points_considered_in_cost_function = 1,
+test(evolve_time = 15 | units.day,
+     tau_ev = 0.01 | units.day,
+     tau_opt = 0.01 | units.day,
+     num_points_considered_in_cost_function = 3,
      unknown_dimension = 3,
      learning_rate = 0.000001,
      epochs = 100,
