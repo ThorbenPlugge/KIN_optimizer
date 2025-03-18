@@ -82,6 +82,52 @@ def calculate_mass_error(new_masses, sys):
     return np.sum(abs(new_masses - sys.mass.value_in(units.Msun))/sys.mass_value_in(units.Msun))
 
 # TODO: write a function that lets you run a single test for a single set of parameters. 
+def test_optimizer_on_system(M_min, a_min, evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function, phaseseed = 0, lowest_loss = True, unknown_dimension = 3, learning_rate = 1e-5, init_guess_offset = 1e-7, epochs = 100):
+    from Validation.system_generation import create_test_system
+    from Trappist.t_plotting import plot_loss_func
+    # First, generate a system according to the parameters
+    test_sys = create_test_system(M_maj = 1e-3, M_min = M_min, a_maj = 10, a_min = a_min, phaseseed = 0)
+    test_sys1 = copy.deepcopy(test_sys)
+
+    # Find the masses of the system
+    masses, losses = find_masses(test_sys=test_sys,
+                                 evolve_time=evolve_time,
+                                 tau_ev=tau_ev,
+                                 tau_opt=tau_opt,
+                                 num_points_considered_in_cost_function=num_points_considered_in_cost_function,
+                                 unknown_dimension=unknown_dimension,
+                                 learning_rate=learning_rate,
+                                 init_guess_offset=init_guess_offset,
+                                 epochs=epochs)
+
+    masses, best_idx, avg_loss_per_epoch = select_masses(masses, losses, lowest_loss = lowest_loss)
+
+    # save the loss function plot to a file
+    plot_loss_func(avg_loss_per_epoch, name='Loss_{0}_{1}'.format(M_min, a_min))
+    # Calculate the mass error
+    mass_error = calculate_mass_error(masses, test_sys)
+
+    return masses, mass_error, avg_loss_per_epoch
+
+masses, mass_error, avg_loss_per_epoch = test_optimizer_on_system(M_min = 1e-5,
+                                                                  a_min = 1,
+                                                                  evolve_time = 10 | units.day,
+                                                                  tau_ev = 1 | units.day,
+                                                                  tau_opt = 1 | units.day,
+                                                                  num_points_considered_in_cost_function = 1,
+                                                                  phaseseed = 0,
+                                                                  lowest_loss = False,
+                                                                  unknown_dimension=3,
+                                                                  learning_rate = 0.0001,
+                                                                  init_guess_offset = 1e-8,
+                                                                  epochs = 20)
+
+
+
+                                                            
+
+
+
 # TODO: write a function that lets you call the function above multiple times for a whole set.
 
 

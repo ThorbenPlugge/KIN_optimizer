@@ -26,7 +26,6 @@ def relative_orbital_velocity(mass, distance):
 def create_test_planet(sys, M, a, name = 'planet', phase = 0):
     '''creates a test planet with mass M in solar masses, at semi-major axis a in AU 
     from the center of the system.'''
-    print(phase)
     planet = Particle()
     planet.name = name
     planet.mass = M | units.Msun
