@@ -147,7 +147,7 @@ def test(evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function = 
 
     print('true masses:', evolved_sys.mass)
     print('found masses:', masses)
-    print('relative diff:', (masses - evolved_sys.mass.value_in(units.Msun))/evolved_sys.mass.value_in(units.Msun))
+    print('relative diff:', abs(masses - evolved_sys.mass.value_in(units.Msun))/evolved_sys.mass.value_in(units.Msun))
 
     if test_new_masses == True:
         ## TESTING WITH SAKURA REINTEGRATION

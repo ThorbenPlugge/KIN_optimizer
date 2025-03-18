@@ -6,7 +6,7 @@
 #SBATCH --mail-type="ALL"
 
 #SBATCH --partition="cpu-short"
-#SBATCH --time=00:10:00
+#SBATCH --time=01:00:00
 #SBATCH --ntasks=4
 #SBATCH --mem=4G
 
