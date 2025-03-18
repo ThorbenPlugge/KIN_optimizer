@@ -8,12 +8,12 @@ from functools import partial
 
 from pathlib import Path
 root_dir = Path(__file__).resolve().parent.parent
-
+plots_path = root_dir / 'Plots'
 # this file should have functions that:
 # - generate a movie based on all the states
 # - plot the energy difference throughout time
 
-def plot_system(sys, pos_states = [0], vel_states = [0], title = 'TRAPPIST-1 System', dimension = 2):
+def plot_system(sys, pos_states = [0], vel_states = [0], title = 'TRAPPIST-1 System', dimension = 2, save = False, filename = 'system.pdf'):
     '''Plots a system of particles. You can enter the position states
     of the system to plot the past positions of the planets.'''
     fig = plt.figure()
@@ -46,7 +46,10 @@ def plot_system(sys, pos_states = [0], vel_states = [0], title = 'TRAPPIST-1 Sys
 
     ax.set_title(title)
     plt.grid()
-    plt.show()
+    if save:
+        plt.savefig(filename, dpi=800)
+    else:
+        plt.show()
 
 def update_frame(frame, sys, pos_states, vel_states, ax, three_d=False):
     '''Updates the frame in a movie.'''
@@ -130,4 +133,4 @@ def plot_loss_func(loss_per_epoch, title = 'Loss per epoch'):
     ax.plot(loss_per_epoch)
     ax.set_yscale('log')
     ax.grid()
-    plt.savefig('loss_per_epoch.pdf', dpi = 600)
+    plt.savefig('loss_per_epoch.pdf', dpi = 800)

@@ -1,0 +1,341 @@
+#### Starting test
+2025-03-17 16:02:22.448081: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-03-17 16:02:22.574126: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-03-17 16:02:22.702334: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1742223742.809755 3220040 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1742223742.841514 3220040 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1742223743.088545 3220040 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1742223743.088570 3220040 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1742223743.088581 3220040 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1742223743.088586 3220040 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+2025-03-17 16:02:23.116566: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+/home/s2818760/amuse-src/src/amuse/rfi/core.py:1082: UserWarning: MPI (unexpectedly?) not available, falling back to sockets channel
+  warnings.warn(
+2025-03-17 16:02:37.626525: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+/home/s2818760/amuse-src/src/amuse/rfi/core.py:1082: UserWarning: MPI (unexpectedly?) not available, falling back to sockets channel
+  warnings.warn(
+Evolve time is not a multiple of tau_ev. Rounding up to 1.0 days.
+Running simulation...
+Saved result to cache: /home/s2818760/MasterProj/KIN_optimizer/zCache/b83b361b27e9988d657492fc6805feb0c36c2449edc6c82139ad3ad9157aac1a.pkl
+Forward pass...
+Backwards pass...
+Combining derivatives...
+Epoch 1/20, Masses: [  8.90000000e-02   5.05484383e-06   5.47202095e-06  -1.10798560e-06
+   3.18817398e-07   4.80472850e-06   1.44815498e-06   2.99419893e-06], 
+Positions: 
+[[ 0.          0.          0.        ]
+ [ 0.00034614 -0.0034736   0.01097118]
+ [-0.00023194 -0.00438518  0.01513433]
+ [ 0.00074416  0.00848468  0.02051708]
+ [ 0.00048351  0.01950266  0.02169199]
+ [ 0.0006799  -0.01591347  0.03492908]
+ [-0.0007654   0.02430616 -0.0398764 ]
+ [ 0.00077869 -0.06074572 -0.01085761]]
+Forward pass...
+Backwards pass...
+Combining derivatives...
+Epoch 2/20, Masses: [  8.90000000e-02   9.05484383e-06   4.47202095e-06  -1.07985600e-07
+   1.31881740e-06   8.80472850e-06  -2.55184502e-06   1.99419893e-06], 
+Positions: 
+[[ 0.          0.          0.        ]
+ [ 0.00034614 -0.0034736   0.01097118]
+ [-0.00023194 -0.00438518  0.01513433]
+ [ 0.00074416  0.00848468  0.02051708]
+ [ 0.00048351  0.01950266  0.02169199]
+ [ 0.0006799  -0.01591347  0.03492908]
+ [-0.0007654   0.02430616 -0.0398764 ]
+ [ 0.00077869 -0.06074572 -0.01085761]]
+Forward pass...
+Backwards pass...
+Combining derivatives...
+Epoch 3/20, Masses: [  8.90000000e-02   1.70548438e-05   3.47202095e-06   8.92014400e-07
+   2.31881740e-06   1.68047285e-05  -5.51845021e-07   9.94198926e-07], 
+Positions: 
+[[ 0.          0.          0.        ]
+ [ 0.00034614 -0.0034736   0.01097118]
+ [-0.00023194 -0.00438518  0.01513433]
+ [ 0.00074416  0.00848468  0.02051708]
+ [ 0.00048351  0.01950266  0.02169199]
+ [ 0.0006799  -0.01591347  0.03492908]
+ [-0.0007654   0.02430616 -0.0398764 ]
+ [ 0.00077869 -0.06074572 -0.01085761]]
+Forward pass...
+Backwards pass...
+Combining derivatives...
+Epoch 4/20, Masses: [  8.90000000e-02   1.30548438e-05   1.47222093e-06   2.89181442e-06
+   4.31861742e-06   1.28047285e-05   1.44815498e-06  -1.00560109e-06], 
+Positions: 
+[[ 0.          0.          0.        ]
+ [ 0.00034614 -0.0034736   0.01097118]
+ [-0.00023194 -0.00438518  0.01513433]
+ [ 0.00074416  0.00848468  0.02051708]
+ [ 0.00048351  0.01950266  0.02169199]
+ [ 0.0006799  -0.01591347  0.03492908]
+ [-0.0007654   0.02430616 -0.0398764 ]
+ [ 0.00077869 -0.06074572 -0.01085761]]
+Forward pass...
+Backwards pass...
+Combining derivatives...
+Epoch 5/20, Masses: [  8.90000000e-02   1.50548438e-05   2.47212094e-06   1.89191441e-06
+   3.31871741e-06   1.48047285e-05   4.48154979e-07  -5.70108395e-09], 
+Positions: 
+[[ 0.          0.          0.        ]
+ [ 0.00034614 -0.0034736   0.01097118]
+ [-0.00023194 -0.00438518  0.01513433]
+ [ 0.00074416  0.00848468  0.02051708]
+ [ 0.00048351  0.01950266  0.02169199]
+ [ 0.0006799  -0.01591347  0.03492908]
+ [-0.0007654   0.02430616 -0.0398764 ]
+ [ 0.00077869 -0.06074572 -0.01085761]]
+Forward pass...
+Backwards pass...
+Combining derivatives...
+Epoch 6/20, Masses: [  8.90000000e-02   1.70548438e-05   1.97217093e-06   8.92014400e-07
+   3.81866741e-06   1.68047285e-05  -5.51845021e-07   9.94198926e-07], 
+Positions: 
+[[ 0.          0.          0.        ]
+ [ 0.00034614 -0.0034736   0.01097118]
+ [-0.00023194 -0.00438518  0.01513433]
+ [ 0.00074416  0.00848468  0.02051708]
+ [ 0.00048351  0.01950266  0.02169199]
+ [ 0.0006799  -0.01591347  0.03492908]
+ [-0.0007654   0.02430616 -0.0398764 ]
+ [ 0.00077869 -0.06074572 -0.01085761]]
+Forward pass...
+Backwards pass...
+Combining derivatives...
+Epoch 7/20, Masses: [  8.90000000e-02   1.60548438e-05   1.47222093e-06   1.39196440e-06
+   4.31861742e-06   2.08043285e-05  -5.18450214e-08   4.94248921e-07], 
+Positions: 
+[[ 0.          0.          0.        ]
+ [ 0.00034614 -0.0034736   0.01097118]
+ [-0.00023194 -0.00438518  0.01513433]
+ [ 0.00074416  0.00848468  0.02051708]
+ [ 0.00048351  0.01950266  0.02169199]
+ [ 0.0006799  -0.01591347  0.03492908]
+ [-0.0007654   0.02430616 -0.0398764 ]
+ [ 0.00077869 -0.06074572 -0.01085761]]
+Forward pass...
+Backwards pass...
+Combining derivatives...
+Epoch 8/20, Masses: [  8.90000000e-02   1.65548438e-05   1.72219593e-06   1.14198940e-06
+   4.06864242e-06   2.88027288e-05   4.48154979e-07  -5.70108395e-09], 
+Positions: 
+[[ 0.          0.          0.        ]
+ [ 0.00034614 -0.0034736   0.01097118]
+ [-0.00023194 -0.00438518  0.01513433]
+ [ 0.00074416  0.00848468  0.02051708]
+ [ 0.00048351  0.01950266  0.02169199]
+ [ 0.0006799  -0.01591347  0.03492908]
+ [-0.0007654   0.02430616 -0.0398764 ]
+ [ 0.00077869 -0.06074572 -0.01085761]]
+Forward pass...
+Backwards pass...
+Combining derivatives...
+Epoch 9/20, Masses: [  8.90000000e-02   1.70548438e-05   1.59720843e-06   1.26697690e-06
+   4.19362992e-06   4.47979297e-05   1.98154979e-07   2.44273919e-07], 
+Positions: 
+[[ 0.          0.          0.        ]
+ [ 0.00034614 -0.0034736   0.01097118]
+ [-0.00023194 -0.00438518  0.01513433]
+ [ 0.00074416  0.00848468  0.02051708]
+ [ 0.00048351  0.01950266  0.02169199]
+ [ 0.0006799  -0.01591347  0.03492908]
+ [-0.0007654   0.02430616 -0.0398764 ]
+ [ 0.00077869 -0.06074572 -0.01085761]]
+Forward pass...
+Backwards pass...
+Combining derivatives...
+Epoch 10/20, Masses: [  8.90000000e-02   1.68048438e-05   1.47222093e-06   1.39196440e-06
+   4.31861742e-06   3.68003293e-05  -5.18450214e-08   1.19286417e-07], 
+Positions: 
+[[ 0.          0.          0.        ]
+ [ 0.00034614 -0.0034736   0.01097118]
+ [-0.00023194 -0.00438518  0.01513433]
+ [ 0.00074416  0.00848468  0.02051708]
+ [ 0.00048351  0.01950266  0.02169199]
+ [ 0.0006799  -0.01591347  0.03492908]
+ [-0.0007654   0.02430616 -0.0398764 ]
+ [ 0.00077869 -0.06074572 -0.01085761]]
+Forward pass...
+Backwards pass...
+Combining derivatives...
+Epoch 11/20, Masses: [  8.90000000e-02   1.69298438e-05   1.22232090e-06   1.32947065e-06
+   4.56851744e-06   2.88027288e-05   7.31549786e-08  -5.70108395e-09], 
+Positions: 
+[[ 0.          0.          0.        ]
+ [ 0.00034614 -0.0034736   0.01097118]
+ [-0.00023194 -0.00438518  0.01513433]
+ [ 0.00074416  0.00848468  0.02051708]
+ [ 0.00048351  0.01950266  0.02169199]
+ [ 0.0006799  -0.01591347  0.03492908]
+ [-0.0007654   0.02430616 -0.0398764 ]
+ [ 0.00077869 -0.06074572 -0.01085761]]
+Forward pass...
+Backwards pass...
+Combining derivatives...
+Epoch 12/20, Masses: [  8.90000000e-02   1.70548438e-05   1.34727091e-06   1.26697690e-06
+   5.06816758e-06   3.28015290e-05   1.06549786e-08   5.67926667e-08], 
+Positions: 
+[[ 0.          0.          0.        ]
+ [ 0.00034614 -0.0034736   0.01097118]
+ [-0.00023194 -0.00438518  0.01513433]
+ [ 0.00074416  0.00848468  0.02051708]
+ [ 0.00048351  0.01950266  0.02169199]
+ [ 0.0006799  -0.01591347  0.03492908]
+ [-0.0007654   0.02430616 -0.0398764 ]
+ [ 0.00077869 -0.06074572 -0.01085761]]
+Forward pass...
+Backwards pass...
+Combining derivatives...
+Epoch 13/20, Masses: [  8.90000000e-02   1.73047688e-05   1.47222093e-06   1.14203938e-06
+   4.81834251e-06   3.68003293e-05  -5.18450214e-08   2.55457914e-08], 
+Positions: 
+[[ 0.          0.          0.        ]
+ [ 0.00034614 -0.0034736   0.01097118]
+ [-0.00023194 -0.00438518  0.01513433]
+ [ 0.00074416  0.00848468  0.02051708]
+ [ 0.00048351  0.01950266  0.02169199]
+ [ 0.0006799  -0.01591347  0.03492908]
+ [-0.0007654   0.02430616 -0.0398764 ]
+ [ 0.00077869 -0.06074572 -0.01085761]]
+Forward pass...
+Backwards pass...
+Combining derivatives...
+Epoch 14/20, Masses: [  8.90000000e-02   1.78044690e-05   1.40974592e-06   1.20450814e-06
+   4.94325505e-06   3.48009291e-05  -2.05950214e-08  -5.70108395e-09], 
+Positions: 
+[[ 0.          0.          0.        ]
+ [ 0.00034614 -0.0034736   0.01097118]
+ [-0.00023194 -0.00438518  0.01513433]
+ [ 0.00074416  0.00848468  0.02051708]
+ [ 0.00048351  0.01950266  0.02169199]
+ [ 0.0006799  -0.01591347  0.03492908]
+ [-0.0007654   0.02430616 -0.0398764 ]
+ [ 0.00077869 -0.06074572 -0.01085761]]
+Forward pass...
+Backwards pass...
+Combining derivatives...
+Epoch 15/20, Masses: [  8.90000000e-02   1.75546189e-05   1.34727091e-06   1.26697690e-06
+   5.06816758e-06   3.28015290e-05   1.06549786e-08   9.92235371e-09], 
+Positions: 
+[[ 0.          0.          0.        ]
+ [ 0.00034614 -0.0034736   0.01097118]
+ [-0.00023194 -0.00438518  0.01513433]
+ [ 0.00074416  0.00848468  0.02051708]
+ [ 0.00048351  0.01950266  0.02169199]
+ [ 0.0006799  -0.01591347  0.03492908]
+ [-0.0007654   0.02430616 -0.0398764 ]
+ [ 0.00077869 -0.06074572 -0.01085761]]
+Forward pass...
+Backwards pass...
+Combining derivatives...
+Epoch 16/20, Masses: [  8.90000000e-02   1.76795439e-05   1.37850842e-06   1.23574252e-06
+   5.31789275e-06   2.88043279e-05  -4.97002142e-09   2.11063488e-09], 
+Positions: 
+[[ 0.          0.          0.        ]
+ [ 0.00034614 -0.0034736   0.01097118]
+ [-0.00023194 -0.00438518  0.01513433]
+ [ 0.00074416  0.00848468  0.02051708]
+ [ 0.00048351  0.01950266  0.02169199]
+ [ 0.0006799  -0.01591347  0.03492908]
+ [-0.0007654   0.02430616 -0.0398764 ]
+ [ 0.00077869 -0.06074572 -0.01085761]]
+Forward pass...
+Backwards pass...
+Combining derivatives...
+Epoch 17/20, Masses: [  8.90000000e-02   1.78044690e-05   1.40974592e-06   1.20450814e-06
+   5.19303017e-06   3.08029285e-05   2.84247858e-09  -5.70108395e-09], 
+Positions: 
+[[ 0.          0.          0.        ]
+ [ 0.00034614 -0.0034736   0.01097118]
+ [-0.00023194 -0.00438518  0.01513433]
+ [ 0.00074416  0.00848468  0.02051708]
+ [ 0.00048351  0.01950266  0.02169199]
+ [ 0.0006799  -0.01591347  0.03492908]
+ [-0.0007654   0.02430616 -0.0398764 ]
+ [ 0.00077869 -0.06074572 -0.01085761]]
+Forward pass...
+Backwards pass...
+Combining derivatives...
+Epoch 18/20, Masses: [  8.90000000e-02   1.80542191e-05   1.47218345e-06   1.22012533e-06
+   5.25546146e-06   2.98036282e-05  -1.06377142e-09  -1.79522453e-09], 
+Positions: 
+[[ 0.          0.          0.        ]
+ [ 0.00034614 -0.0034736   0.01097118]
+ [-0.00023194 -0.00438518  0.01513433]
+ [ 0.00074416  0.00848468  0.02051708]
+ [ 0.00048351  0.01950266  0.02169199]
+ [ 0.0006799  -0.01591347  0.03492908]
+ [-0.0007654   0.02430616 -0.0398764 ]
+ [ 0.00077869 -0.06074572 -0.01085761]]
+Forward pass...
+Backwards pass...
+Combining derivatives...
+Epoch 19/20, Masses: [  8.90000000e-02   1.85535196e-05   1.44096469e-06   1.21231674e-06
+   5.31789275e-06   2.88043279e-05   8.89353581e-10   2.11063488e-09], 
+Positions: 
+[[ 0.          0.          0.        ]
+ [ 0.00034614 -0.0034736   0.01097118]
+ [-0.00023194 -0.00438518  0.01513433]
+ [ 0.00074416  0.00848468  0.02051708]
+ [ 0.00048351  0.01950266  0.02169199]
+ [ 0.0006799  -0.01591347  0.03492908]
+ [-0.0007654   0.02430616 -0.0398764 ]
+ [ 0.00077869 -0.06074572 -0.01085761]]
+Forward pass...
+Backwards pass...
+Combining derivatives...
+Epoch 20/20, Masses: [  8.90000000e-02   1.83038694e-05   1.40974592e-06   1.21622104e-06
+   5.44269292e-06   2.68067263e-05  -8.72089187e-11   1.57705172e-10], 
+Positions: 
+[[ 0.          0.          0.        ]
+ [ 0.00034614 -0.0034736   0.01097118]
+ [-0.00023194 -0.00438518  0.01513433]
+ [ 0.00074416  0.00848468  0.02051708]
+ [ 0.00048351  0.01950266  0.02169199]
+ [ 0.0006799  -0.01591347  0.03492908]
+ [-0.0007654   0.02430616 -0.0398764 ]
+ [ 0.00077869 -0.06074572 -0.01085761]]
+20
+(20,)
+true masses: [0.089, 3.05484383485e-06, 3.47202094604e-06, 8.92014399775e-07, 2.31881739839e-06, 2.80472849587e-06, 3.44815497858e-06, 9.9419892605e-07] MSun
+found masses: [0.08900000000000001, 1.7054843834845037e-05, 1.5972084272929431e-06, 1.2669769035243772e-06, 4.1936299171351898e-06, 4.4797929735671126e-05, 1.9815497858134154e-07, 2.4427391855106886e-07]
+relative diff: [  0.           4.58288566  -0.53997731   0.42035477   0.80852098
+  14.97228744  -0.94253304  -0.75430076]
+Evolve time is not a multiple of tau_ev. Rounding up to 1.0 days.
+Running simulation...
+Evolve time is not a multiple of tau_ev. Rounding up to 1.0 days.
+Running simulation...
+With sakura reintegration:
+pos and vel cost for new masses:
+1.47379363148e-09 7.6490972043e-09
+pos and vel cost sanity check:
+0.0 0.0
+
+With do_step reintegration
+pos and vel cost for new masses:
+6.39788345824e-10 3.34062628138e-09
+pos and vel cost sanity check:
+7.16777872331e-10 8.75217041707e-09
+initial guesses were: [0.089, 3.05484383485e-06, 3.47202094604e-06, 8.92014399775e-07, 2.31881739839e-06, 2.80472849587e-06, 3.44815497858e-06, 9.9419892605e-07] MSun
+
+
+In this session you have used the AMUSE modules below. 
+Please cite any relevant articles:
+
+
+	"AMUSE-Sakura (framework 2025.2.1.dev4+gaea5b5591)"
+		ADS:2014MNRAS.440..719G (Goncalves Ferrari, Boekholt, Portegies Zwart; 2014 MNRAS, 440, 719
+
+
+	"AMUSE (unknown version)"
+		DOI:10.5281/zenodo.1435860
+		ADS:2018araa.book.....P (Portegies Zwart, S. & McMillan, S.L.W., 2018)
+		ADS:2013CoPhC.183..456P ** (Portegies Zwart, S. et al., 2013)
+		ADS:2013A&A...557A..84P ** (Pelupessy, F. I. et al., 2013)
+		ADS:2009NewA...14..369P (Portegies Zwart, S. et al., 2009)
+
+#### Finished Test. Have a nice day

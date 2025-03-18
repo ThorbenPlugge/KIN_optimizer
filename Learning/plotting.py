@@ -5,7 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 import matplotlib
-matplotlib.use('TkAgg')  # Or 'TkAgg'
+# matplotlib.use('TkAgg')  # Or 'TkAgg'
 
 
 def plot_thread(plot_queue, stop_event, plot_in_2D, zoombox, unknown_dimension, available_info_of_bodies):
