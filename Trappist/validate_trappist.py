@@ -193,13 +193,13 @@ def test(evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function = 
         print(pos_cost_sanity2, vel_cost_sanity2)
         print('initial guesses were:', initial_guess)
 
-test(evolve_time = 15 | units.day,
+test(evolve_time = 100 | units.day,
      tau_ev = 0.01 | units.day,
      tau_opt = 0.01 | units.day,
-     num_points_considered_in_cost_function = 3,
+     num_points_considered_in_cost_function = 4,
      unknown_dimension = 3,
      learning_rate = 0.000001,
-     epochs = 20,
+     epochs = 230,
      generate_movie = False,
      test_new_masses = True,
      phaseseed = 0)

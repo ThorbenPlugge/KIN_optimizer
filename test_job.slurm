@@ -1,14 +1,15 @@
 #!/bin/bash -l
 
 #SBATCH --job-name=optimizer_job
-#SBATCH --output=%x_%j.out
+#SBATCH --output=./zSlurm_output/%x_%j.out
+#SBATCH --error=./zSlurm_output/%x_%j_errors.out
 #SBATCH --mail-user="nieuwhof@strw.leidenuniv.nl"
 #SBATCH --mail-type="ALL"
 
 #SBATCH --partition="cpu-short"
 #SBATCH --time=01:00:00
 #SBATCH --ntasks=4
-#SBATCH --mem=4G
+#SBATCH --mem-per-cpu=64G
 
 echo "#### Starting test"
 
