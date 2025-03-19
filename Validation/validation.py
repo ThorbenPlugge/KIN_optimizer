@@ -21,7 +21,8 @@ def find_masses(test_sys, evolve_time, tau_ev, tau_opt, num_points_considered_in
     evolved_sys, pos_states, vel_states, total_energy = evolve_sys_sakura(sys = test_sys,
                                                                           evolve_time = evolve_time,
                                                                           tau_ev = tau_ev,
-                                                                          print_progress = False)
+                                                                          print_progress = False,
+                                                                          cache=False)
     
     num_bodies = len(test_sys)
     init_guess_variance = np.random.uniform(0, init_guess_offset, num_bodies)
@@ -36,7 +37,8 @@ def find_masses(test_sys, evolve_time, tau_ev, tau_opt, num_points_considered_in
                                                      evolve_time = evolve_time,
                                                      tau_opt = tau_opt.value_in(units.day),
                                                      bodies_and_initial_guesses = bodies_and_initial_guesses,
-                                                     unknown_dimension = unknown_dimension)
+                                                     unknown_dimension = unknown_dimension,
+                                                     sort_by_mass=False)
     
     # Initialize the optimizer with n + n*3*2 variables, for masses, 
     # velocities and positions for each body
@@ -63,8 +65,8 @@ def find_masses(test_sys, evolve_time, tau_ev, tau_opt, num_points_considered_in
 def select_masses(masses, losses, lowest_loss = True):
     # select the masses from the epoch with the lowest loss value
     losses = np.array(losses)
-    average_losses = np.sum(losses, axis = 3)
-    avg_loss_per_epoch = average_losses[:, -1, 0]
+    average_losses = np.sum(losses, axis = 2)
+    avg_loss_per_epoch = average_losses[:, -1]
 
     good_mass_indices = np.array([np.all(np.array(mass_list) > 0) for mass_list in masses])
     valid_indices = np.where(good_mass_indices)[0]
@@ -79,7 +81,9 @@ def select_masses(masses, losses, lowest_loss = True):
         return masses, best_idx, avg_loss_per_epoch
     
 def calculate_mass_error(new_masses, sys):
-    return np.sum(abs(new_masses - sys.mass.value_in(units.Msun))/sys.mass_value_in(units.Msun))
+    print(new_masses)
+    print(sys.mass.value_in(units.Msun))
+    return np.sum(abs(new_masses - sys.mass.value_in(units.Msun))/sys.mass.value_in(units.Msun))
 
 # TODO: write a function that lets you run a single test for a single set of parameters. 
 def test_optimizer_on_system(M_min, a_min, evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function, phaseseed = 0, lowest_loss = True, unknown_dimension = 3, learning_rate = 1e-5, init_guess_offset = 1e-7, epochs = 100):
@@ -103,29 +107,24 @@ def test_optimizer_on_system(M_min, a_min, evolve_time, tau_ev, tau_opt, num_poi
     masses, best_idx, avg_loss_per_epoch = select_masses(masses, losses, lowest_loss = lowest_loss)
 
     # save the loss function plot to a file
-    plot_loss_func(avg_loss_per_epoch, name='Loss_{0}_{1}'.format(M_min, a_min))
+    plot_loss_func(avg_loss_per_epoch, name='Loss_{0}_{1}.pdf'.format(M_min, a_min))
     # Calculate the mass error
     mass_error = calculate_mass_error(masses, test_sys)
-
+    print('mass_error:', mass_error)
     return masses, mass_error, avg_loss_per_epoch
 
-masses, mass_error, avg_loss_per_epoch = test_optimizer_on_system(M_min = 1e-5,
-                                                                  a_min = 1,
-                                                                  evolve_time = 10 | units.day,
-                                                                  tau_ev = 1 | units.day,
-                                                                  tau_opt = 1 | units.day,
-                                                                  num_points_considered_in_cost_function = 1,
+masses, mass_error, avg_loss_per_epoch = test_optimizer_on_system(M_min = 1e-6,
+                                                                  a_min = 9,
+                                                                  evolve_time = 50 | units.day,
+                                                                  tau_ev = 0.1 | units.day,
+                                                                  tau_opt = 0.1 | units.day,
+                                                                  num_points_considered_in_cost_function = 8,
                                                                   phaseseed = 0,
                                                                   lowest_loss = False,
                                                                   unknown_dimension=3,
-                                                                  learning_rate = 0.0001,
+                                                                  learning_rate = 1e-8,
                                                                   init_guess_offset = 1e-8,
-                                                                  epochs = 20)
-
-
-
-                                                            
-
+                                                                  epochs = 100)
 
 
 # TODO: write a function that lets you call the function above multiple times for a whole set.

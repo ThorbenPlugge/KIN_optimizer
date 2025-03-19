@@ -128,6 +128,7 @@ def learn_masses_4real(tau, optimizer, availabe_info_of_bodies, plot_queue, plot
         # But maybe also the position and velocity values should.
         mass_values = [0 for _ in range(epochs)]
         loss_values = [0 for _ in range(epochs)]
+        stop_epoch = 0
 
         # This is created to store the last value for m.
         m_i_minus_1 = tf.zeros_like(m)
@@ -137,6 +138,7 @@ def learn_masses_4real(tau, optimizer, availabe_info_of_bodies, plot_queue, plot
             # If the difference between the last value for m and the current one
             # Falls below the threshold of accuracy, the loop is broken.
             if (tf.less_equal(tf.reduce_sum(tf.abs(m_i_minus_1 - m)), accuracy)):
+                stop_epoch = j
                 break
 
             # updating the storage for the last value of m
@@ -196,9 +198,11 @@ def learn_masses_4real(tau, optimizer, availabe_info_of_bodies, plot_queue, plot
                 param[3*n + n:], shape=(n, 3)), dtype=tf.float64)
 
             mass_values[j] = [m.numpy()[i] for i in range(len(m.numpy()))]
-            loss_values[j] = [losses.numpy()[i] for i in range(len(losses.numpy()))]
+            loss_values[j] = [losses.numpy()[i,0,:] for i in range(len(losses.numpy()[:,0,:]))]
             
             print(
                 f"Epoch {j+1}/{epochs}, Masses: {m.numpy()}, \nPositions: \n{r.numpy()}")
+    
+    loss_values = loss_values[:stop_epoch]
     
     return mass_values, loss_values

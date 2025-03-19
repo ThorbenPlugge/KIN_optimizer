@@ -18,11 +18,19 @@ def select_points(pos, vel, num_points):
     new_vel = vel[indexes]    
     return new_pos, new_vel
 
-def convert_states_to_celestial_bodies(pos_states, vel_states, num_points_considered_in_cost_function, evolve_time, tau_opt, bodies_and_initial_guesses, unknown_dimension):
+def convert_states_to_celestial_bodies(pos_states, vel_states, num_points_considered_in_cost_function, evolve_time, tau_opt, bodies_and_initial_guesses, unknown_dimension, sort_by_mass = False):
     '''Converts arrays of position and velocity states, as well as other things,
     into a CelestialBody objects.'''
     import sys
     import os
+
+    # TODO: sort the celestial body array by the masses and apply that 
+    # sorting index to pos_states and vel_states.
+    if sort_by_mass:
+        sorting_idx = np.argsort(bodies_and_initial_guesses, axis = 1, kind='mergesort')[0, ::-1]
+        bodies_and_initial_guesses = np.sort(bodies_and_initial_guesses, axis = 1, kind='mergesort')[:, ::-1]
+        pos_states = pos_states[:, sorting_idx, :]
+        vel_states = vel_states[:, sorting_idx, :]
 
     # Add the parent directory to sys.path
     sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -106,7 +114,7 @@ def test_conversion():
     test_sys = create_trappist_system()
 
     evolve_time = 0.5 | units.yr
-    tau_ev = 3 | units.day
+    tau_ev = 0.1 | units.day
 
     # plot_system(test_sys, [0], [0])
     evolved_sys, pos_states, vel_states, total_energy = evolve_sys_sakura(sys = test_sys,
@@ -124,7 +132,8 @@ def test_conversion():
                                                           evolve_time = evolve_time,
                                                           tau_opt = 0.1,
                                                           bodies_and_initial_guesses = bodies_and_initial_guesses,
-                                                          unknown_dimension = 3)
+                                                          unknown_dimension = 3,
+                                                          sort_by_mass = True)
     
     plt.semilogy(total_energy/total_energy[0])
     plt.show()

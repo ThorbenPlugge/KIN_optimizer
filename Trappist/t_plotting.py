@@ -133,5 +133,5 @@ def plot_loss_func(loss_per_epoch, path = plots_path, name = 'loss_per_epoch.pdf
     ax.plot(loss_per_epoch)
     ax.set_yscale('log')
     ax.grid()
-    file_path = path / name
+    file_path = path / name 
     plt.savefig(file_path, dpi = 600)

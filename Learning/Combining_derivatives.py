@@ -113,5 +113,4 @@ def build_compute_graph_and_combine_derivatives(t, availabe_info_of_bodies,
 
     dL_dz = set_derivatives_of_known_starting_position_to_zero(
         availabe_info_of_bodies, unknown_dimension, dL_dz, n)
-
     return dL_dm, dL_dz, losses
