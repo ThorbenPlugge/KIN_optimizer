@@ -85,7 +85,6 @@ def calculate_mass_error(new_masses, sys):
     print(sys.mass.value_in(units.Msun))
     return np.sum(abs(new_masses - sys.mass.value_in(units.Msun))/sys.mass.value_in(units.Msun))
 
-# TODO: write a function that lets you run a single test for a single set of parameters. 
 def test_optimizer_on_system(M_min, a_min, evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function, phaseseed = 0, lowest_loss = True, unknown_dimension = 3, learning_rate = 1e-5, init_guess_offset = 1e-7, epochs = 100):
     from Validation.system_generation import create_test_system
     from Trappist.t_plotting import plot_loss_func
@@ -114,11 +113,11 @@ def test_optimizer_on_system(M_min, a_min, evolve_time, tau_ev, tau_opt, num_poi
     return masses, mass_error, avg_loss_per_epoch
 
 masses, mass_error, avg_loss_per_epoch = test_optimizer_on_system(M_min = 1e-6,
-                                                                  a_min = 9,
-                                                                  evolve_time = 50 | units.day,
-                                                                  tau_ev = 0.1 | units.day,
-                                                                  tau_opt = 0.1 | units.day,
-                                                                  num_points_considered_in_cost_function = 8,
+                                                                  a_min = 5,
+                                                                  evolve_time = 400 | units.day,
+                                                                  tau_ev = 1 | units.day,
+                                                                  tau_opt = 1 | units.day,
+                                                                  num_points_considered_in_cost_function = 4,
                                                                   phaseseed = 0,
                                                                   lowest_loss = False,
                                                                   unknown_dimension=3,
