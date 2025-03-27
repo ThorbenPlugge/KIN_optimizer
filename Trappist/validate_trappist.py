@@ -81,10 +81,11 @@ def test(evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function = 
     from test_Main_Code import init_optimizer
     import Learning.Training_loops as node
     import math
-
+    print('let us generate a system')
     # Generate and evolve a system
     test_sys = create_trappist_system(phaseseed)
     test_sys1 = copy.deepcopy(test_sys)
+    print('now let us evolve the system')
     
     evolved_sys, pos_states, vel_states, total_energy = evolve_sys_sakura(sys = test_sys,
                                                                           evolve_time = evolve_time,
@@ -199,7 +200,7 @@ test(evolve_time = 100 | units.day,
      num_points_considered_in_cost_function = 4,
      unknown_dimension = 3,
      learning_rate = 0.000001,
-     epochs = 230,
+     epochs = 150,
      generate_movie = False,
      test_new_masses = True,
      phaseseed = 0)
