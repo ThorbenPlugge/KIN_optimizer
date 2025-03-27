@@ -43,7 +43,7 @@ def find_masses(test_sys, evolve_time, tau_ev, tau_opt, num_points_considered_in
     # Initialize the optimizer with n + n*3*2 variables, for masses, 
     # velocities and positions for each body
     learning_rate_arr = np.ones(shape= num_bodies+num_bodies*3*2) * learning_rate
-    learning_rate_arr[0] = 0
+    # learning_rate_arr[0] = 0
 
     optimizer = init_optimizer(
         'BT', num_bodies + num_bodies * 3 * 2, lr = learning_rate_arr)
@@ -102,7 +102,8 @@ def test_optimizer_on_system(M_min, a_min, evolve_time, tau_ev, tau_opt, num_poi
                                  learning_rate=learning_rate,
                                  init_guess_offset=init_guess_offset,
                                  epochs=epochs)
-
+    print(np.array(masses).shape)
+    print(np.array(losses).shape)
     masses, best_idx, avg_loss_per_epoch = select_masses(masses, losses, lowest_loss = lowest_loss)
 
     # save the loss function plot to a file

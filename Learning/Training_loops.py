@@ -137,8 +137,8 @@ def learn_masses_4real(tau, optimizer, availabe_info_of_bodies, plot_queue, plot
 
             # If the difference between the last value for m and the current one
             # Falls below the threshold of accuracy, the loop is broken.
+            stop_epoch += 1
             if (tf.less_equal(tf.reduce_sum(tf.abs(m_i_minus_1 - m)), accuracy)):
-                stop_epoch = j
                 break
 
             # updating the storage for the last value of m
@@ -202,7 +202,7 @@ def learn_masses_4real(tau, optimizer, availabe_info_of_bodies, plot_queue, plot
             
             print(
                 f"Epoch {j+1}/{epochs}, Masses: {m.numpy()}, \nPositions: \n{r.numpy()}")
-    
+
     loss_values = loss_values[:stop_epoch]
     
     return mass_values, loss_values

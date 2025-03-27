@@ -96,7 +96,7 @@ def test(evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function = 
 
     init_guess_variance = np.random.uniform(0, 0.000001, len(test_sys))
     init_guess_variance[0] = 0
-    initial_guess = evolved_sys.mass #+ (init_guess_variance | units.Msun)
+    initial_guess = evolved_sys.mass + (init_guess_variance | units.Msun)
     
     bodies_and_initial_guesses = convert_sys_to_initial_guess_list(evolved_sys, initial_guess.value_in(units.Msun))
 
@@ -113,7 +113,7 @@ def test(evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function = 
     # Initialize the optimizer with n + n*3*2 variables, for masses, 
     # velocities and positions for each body
     learning_rate_arr = np.ones(shape= num_bodies+num_bodies*3*2) * learning_rate
-    learning_rate_arr[0] = 0
+    # learning_rate_arr[0] = 0
 
     optimizer = init_optimizer(
         'BT', num_bodies + num_bodies * 3 * 2, lr = learning_rate_arr)
