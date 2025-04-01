@@ -59,7 +59,24 @@ def simulate_new_mass2(sys, evolve_time, tau_opt, new_masses, integration = 'amu
         sys.position, sys.velocity = r | units.AU, v | (units.AU / units.day)
         return sys
         
+def save_results(path, filename, masses, mass_error, avg_loss_per_epoch):
+    import h5py
+    metadata = { 
+        'description': 'Experiment to find the trappist system masses.'
+    }
+    filepath = path / filename
+    with h5py.File(filepath, 'a') as f:
+        exp_index = len(f.keys())
+        exp_group = f.create_group(f'exp_{exp_index}')
 
+        # store data in the new group
+        exp_group.create_dataset('masses', data = masses)
+        exp_group.create_dataset('mass_error', data = mass_error)
+        exp_group.create_dataset('avg_loss_per_epoch', data = avg_loss_per_epoch)
+
+        # store metadata
+        for key, value in metadata.items():
+            exp_group.attrs[key] = value
 
 
 def test(evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function = 1, unknown_dimension = 3, learning_rate = 0.1, epochs = 100, generate_movie = False, test_new_masses = False, phaseseed = 0):
@@ -81,6 +98,8 @@ def test(evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function = 
     from test_Main_Code import init_optimizer
     import Learning.Training_loops as node
     import math
+    from Validation.validation import calculate_mass_error, select_masses
+
     print('let us generate a system')
     # Generate and evolve a system
     test_sys = create_trappist_system(phaseseed)
@@ -110,9 +129,11 @@ def test(evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function = 
                                                          bodies_and_initial_guesses = bodies_and_initial_guesses,
                                                          unknown_dimension = unknown_dimension)
     
-    num_bodies = len(test_sys)
+
+
     # Initialize the optimizer with n + n*3*2 variables, for masses, 
     # velocities and positions for each body
+    num_bodies = len(test_sys)
     learning_rate_arr = np.ones(shape= num_bodies+num_bodies*3*2) * learning_rate
     # learning_rate_arr[0] = 0
 
@@ -131,20 +152,16 @@ def test(evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function = 
         accuracy = 1e-10
     )
 
-    # select the masses from the epoch with the lowest loss value
-    losses = np.array(losses)
-    average_losses = np.sum(losses, axis = 3)
-    avg_loss_per_epoch = average_losses[:, -1, 0]
+    # select the best epoch for the masses, calculate the errors, plot them and save them.
+    masses, best_idx, avg_loss_per_epoch = select_masses(masses, losses, lowest_loss = False)
 
-    good_mass_indices = np.array([np.all(np.array(mass_list) > 0) for mass_list in masses])
-    valid_indices = np.where(good_mass_indices)[0]
+    mass_error = calculate_mass_error(masses, evolved_sys)
 
-    best_idx = valid_indices[np.argmin(avg_loss_per_epoch[valid_indices])]
+    plot_loss_func(avg_loss_per_epoch, name = 'trappist_lpe.pdf')
 
-    masses = masses[best_idx]
+    result_path = arbeit_path / 'Trappist/trappist_results'
 
-    print(np.array(avg_loss_per_epoch).shape)
-    plot_loss_func(avg_loss_per_epoch)
+    save_results(result_path, 'trappist_result.h5', masses, mass_error, avg_loss_per_epoch)
 
     print('true masses:', evolved_sys.mass)
     print('found masses:', masses)
@@ -194,13 +211,13 @@ def test(evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function = 
         print(pos_cost_sanity2, vel_cost_sanity2)
         print('initial guesses were:', initial_guess)
 
-test(evolve_time = 100 | units.day,
+test(evolve_time = 10 | units.day,
      tau_ev = 0.01 | units.day,
      tau_opt = 0.01 | units.day,
      num_points_considered_in_cost_function = 4,
      unknown_dimension = 3,
      learning_rate = 0.000001,
-     epochs = 150,
+     epochs = 3,
      generate_movie = False,
      test_new_masses = True,
      phaseseed = 0)

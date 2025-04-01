@@ -81,16 +81,38 @@ def select_masses(masses, losses, lowest_loss = True):
         return masses, best_idx, avg_loss_per_epoch
     
 def calculate_mass_error(new_masses, sys):
-    print(new_masses)
-    print(sys.mass.value_in(units.Msun))
     return np.sum(abs(new_masses - sys.mass.value_in(units.Msun))/sys.mass.value_in(units.Msun))
+
+def save_results(path, filename, M_min, a_min, masses, mass_error, avg_loss_per_epoch):
+    import h5py
+    metadata = { 
+        'experiment_name': f'Run with M_min={M_min}, a_min={a_min}',
+        'M_min': M_min,
+        'a_min': a_min, 
+    }
+    filepath = path / filename
+    with h5py.File(filepath, 'a') as f:
+        exp_index = len(f.keys())
+        exp_group = f.create_group(f'exp_{exp_index}')
+
+        # store data in the new group
+        exp_group.create_dataset('masses', data = masses)
+        exp_group.create_dataset('mass_error', data = mass_error)
+        exp_group.create_dataset('avg_loss_per_epoch', data = avg_loss_per_epoch)
+
+        # store metadata
+        for key, value in metadata.items():
+            exp_group.attrs[key] = value
+
 
 def test_optimizer_on_system(M_min, a_min, evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function, phaseseed = 0, lowest_loss = True, unknown_dimension = 3, learning_rate = 1e-5, init_guess_offset = 1e-7, epochs = 100):
     from Validation.system_generation import create_test_system
     from Trappist.t_plotting import plot_loss_func
     # First, generate a system according to the parameters
-    test_sys = create_test_system(M_maj = 1e-3, M_min = M_min, a_maj = 10, a_min = a_min, phaseseed = 0)
-    test_sys1 = copy.deepcopy(test_sys)
+    M_maj = 1e-3
+    a_maj = 10
+    test_sys = create_test_system(M_maj = M_maj, M_min = M_min, a_maj = a_maj, a_min = a_min, phaseseed = 0)
+    # test_sys1 = copy.deepcopy(test_sys)
 
     # Find the masses of the system
     masses, losses = find_masses(test_sys=test_sys,
@@ -102,8 +124,7 @@ def test_optimizer_on_system(M_min, a_min, evolve_time, tau_ev, tau_opt, num_poi
                                  learning_rate=learning_rate,
                                  init_guess_offset=init_guess_offset,
                                  epochs=epochs)
-    print(np.array(masses).shape)
-    print(np.array(losses).shape)
+    
     masses, best_idx, avg_loss_per_epoch = select_masses(masses, losses, lowest_loss = lowest_loss)
 
     # save the loss function plot to a file
@@ -111,11 +132,16 @@ def test_optimizer_on_system(M_min, a_min, evolve_time, tau_ev, tau_opt, num_poi
     # Calculate the mass error
     mass_error = calculate_mass_error(masses, test_sys)
     print('mass_error:', mass_error)
+
+    results_path = arbeit_path / 'Validation/val_results'
+
+    save_results(results_path, f'{M_maj}_{a_maj}.h5', M_min, a_min, masses, mass_error, avg_loss_per_epoch)
+
     return masses, mass_error, avg_loss_per_epoch
 
 masses, mass_error, avg_loss_per_epoch = test_optimizer_on_system(M_min = 1e-6,
                                                                   a_min = 5,
-                                                                  evolve_time = 600 | units.day,
+                                                                  evolve_time = 50 | units.day,
                                                                   tau_ev = 1 | units.day,
                                                                   tau_opt = 1 | units.day,
                                                                   num_points_considered_in_cost_function = 8,
@@ -124,7 +150,8 @@ masses, mass_error, avg_loss_per_epoch = test_optimizer_on_system(M_min = 1e-6,
                                                                   unknown_dimension=3,
                                                                   learning_rate = 1e-8,
                                                                   init_guess_offset = 1e-8,
-                                                                  epochs = 100)
+                                                                  epochs = 3)
+
 
 
 # TODO: write a function that lets you call the function above multiple times for a whole set.

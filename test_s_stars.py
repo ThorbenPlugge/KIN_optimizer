@@ -24,7 +24,7 @@ from pathlib import Path
 import copy
 import NormalCode.MainCode as fmc
 
-from s_stars import *
+from MasterProj.KIN_optimizer.S_Stars.s_stars import *
 
 from test_Main_Code import init_optimizer
 import tensorflow as tf
