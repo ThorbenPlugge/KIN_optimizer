@@ -114,7 +114,7 @@ def test(evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function = 
     if generate_movie:
         create_sys_movie(evolved_sys, pos_states, vel_states, 'test_movie.mp4', three_d = True)
 
-    init_guess_variance = np.random.uniform(0, 0.000001, len(test_sys))
+    init_guess_variance = np.random.uniform(0, 0.00001, len(test_sys))
     init_guess_variance[0] = 0
     initial_guess = evolved_sys.mass + (init_guess_variance | units.Msun)
     
@@ -211,7 +211,7 @@ def test(evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function = 
         print(pos_cost_sanity2, vel_cost_sanity2)
         print('initial guesses were:', initial_guess)
 
-test(evolve_time = 10 | units.day,
+test(evolve_time = 50 | units.day,
      tau_ev = 0.01 | units.day,
      tau_opt = 0.01 | units.day,
      num_points_considered_in_cost_function = 4,

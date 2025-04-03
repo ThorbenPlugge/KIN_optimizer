@@ -1,15 +1,15 @@
 #!/bin/bash -l
 
-#SBATCH --job-name=optimizer_job
+#SBATCH --job-name=trappist_job
 #SBATCH --output=./zSlurm_output/%x_%j.out
 #SBATCH --error=./zSlurm_output/%x_%j_errors.out
 #SBATCH --mail-user="nieuwhof@strw.leidenuniv.nl"
 #SBATCH --mail-type="ALL"
 
 #SBATCH --partition="cpu-short"
-#SBATCH --time=3:00:00
-#SBATCH --ntasks=16
-#SBATCH --mem-per-cpu=32G
+#SBATCH --time=4:00:00
+#SBATCH --ntasks=32
+#SBATCH --mem-per-cpu=16G
 
 echo "#### Starting test"
 
