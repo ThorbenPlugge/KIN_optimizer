@@ -7,9 +7,9 @@
 #SBATCH --mail-type="ALL"
 
 #SBATCH --partition="cpu-medium"
-#SBATCH --time=01:00:00
+#SBATCH --time=02:00:00
 #SBATCH --ntasks=16
-#SBATCH --mem-per-cpu=64G
+#SBATCH --mem-per-cpu=32G
 
 echo "#### Starting test"
 

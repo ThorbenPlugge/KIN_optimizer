@@ -1,0 +1,8 @@
+#### Starting test
+let us generate a system
+Downloading exoplanet data from explanets.org exoplanet archive
+Saved data to file:  pyasl/resBased/eporg.csv.gz  in data directory,
+  which has been configured as:  /home/s2818760/PyAData
+By default, the data will be downloaded anew every 7 days.
+You can use the `changeDownloadCycle` to change this behavior.
+#### Finished Test. Have a nice day

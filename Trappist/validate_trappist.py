@@ -98,7 +98,7 @@ def test(evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function = 
     from test_Main_Code import init_optimizer
     import Learning.Training_loops as node
     import math
-    from Validation.validation import calculate_mass_error, select_masses
+    from Validation.validation_funcs import select_masses, calculate_mass_error
 
     print('let us generate a system')
     # Generate and evolve a system
@@ -217,7 +217,7 @@ test(evolve_time = 10 | units.day,
      num_points_considered_in_cost_function = 4,
      unknown_dimension = 3,
      learning_rate = 0.000001,
-     epochs = 3,
+     epochs = 100,
      generate_movie = False,
      test_new_masses = True,
      phaseseed = 0)
