@@ -8,7 +8,7 @@
 
 #SBATCH --partition="cpu-medium"
 #SBATCH --time=04:00:00
-#SBATCH --ntasks=32
+#SBATCH --ntasks=1
 #SBATCH --mem-per-cpu=32G
 
 echo "#### Starting test"

@@ -100,16 +100,16 @@ def test_optimizer_on_system(M_min, a_min, evolve_time, tau_ev, tau_opt, num_poi
 
 masses, mass_error, avg_loss_per_epoch = test_optimizer_on_system(M_min = 1e-6,
                                                                   a_min = 5,
-                                                                  evolve_time = 50 | units.day,
+                                                                  evolve_time = 400 | units.day,
                                                                   tau_ev = 1 | units.day,
                                                                   tau_opt = 1 | units.day,
-                                                                  num_points_considered_in_cost_function = 4,
+                                                                  num_points_considered_in_cost_function = 8,
                                                                   phaseseed = 0,
                                                                   lowest_loss = False,
                                                                   unknown_dimension=3,
                                                                   learning_rate = 1e-8,
                                                                   init_guess_offset = 1e-8,
-                                                                  epochs = 6)
+                                                                  epochs = 150)
 
 
 

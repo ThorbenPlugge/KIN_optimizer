@@ -8,8 +8,8 @@
 
 #SBATCH --partition="cpu-short"
 #SBATCH --time=4:00:00
-#SBATCH --ntasks=32
-#SBATCH --mem-per-cpu=16G
+#SBATCH --ntasks=1
+#SBATCH --mem-per-cpu=32G
 
 echo "#### Starting test"
 

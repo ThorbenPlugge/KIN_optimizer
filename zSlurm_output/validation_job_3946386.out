@@ -1,0 +1,64 @@
+#### Starting test
+let us create a test system
+evolve the system
+Running simulation...
+start the learn masses function
+Forward pass...
+Backwards pass...
+Combining derivatives...
+Epoch 1/5, Masses: [  1.00000002e+00   1.00002892e-03   9.89636628e-07], 
+Positions: 
+[[  9.52860217e-03   3.01755457e-03  -4.29795817e-07]
+ [ -9.52380920e+00  -3.01616615e+00   4.29948937e-04]
+ [ -4.79296241e+00  -1.38841340e+00  -1.53120197e-04]]
+Forward pass...
+Backwards pass...
+Combining derivatives...
+Epoch 2/5, Masses: [  1.00000006e+00   1.00006892e-03   9.49636628e-07], 
+Positions: 
+[[  9.52860217e-03   3.01755457e-03  -4.29795817e-07]
+ [ -9.52380920e+00  -3.01616615e+00   4.29948937e-04]
+ [ -4.79296241e+00  -1.38841340e+00  -1.53120197e-04]]
+Forward pass...
+Backwards pass...
+Combining derivatives...
+Epoch 3/5, Masses: [  1.00000014e+00   1.00014892e-03   8.69636628e-07], 
+Positions: 
+[[  9.52860217e-03   3.01755457e-03  -4.29795817e-07]
+ [ -9.52380920e+00  -3.01616615e+00   4.29948937e-04]
+ [ -4.79296241e+00  -1.38841340e+00  -1.53120197e-04]]
+Forward pass...
+Backwards pass...
+Combining derivatives...
+Epoch 4/5, Masses: [  1.00000030e+00   1.00030892e-03   7.09636628e-07], 
+Positions: 
+[[  9.52860217e-03   3.01755457e-03  -4.29795817e-07]
+ [ -9.52380920e+00  -3.01616615e+00   4.29948937e-04]
+ [ -4.79296241e+00  -1.38841340e+00  -1.53120197e-04]]
+Forward pass...
+Backwards pass...
+Combining derivatives...
+Epoch 5/5, Masses: [  1.00000062e+00   1.00062892e-03   3.89636628e-07], 
+Positions: 
+[[  9.52860217e-03   3.01755457e-03  -4.29795817e-07]
+ [ -9.52380920e+00  -3.01616615e+00   4.29948937e-04]
+ [ -4.79296241e+00  -1.38841340e+00  -1.53120197e-04]]
+mass_error: 0.610992910125
+
+
+In this session you have used the AMUSE modules below. 
+Please cite any relevant articles:
+
+
+	"AMUSE-Sakura (framework 2025.2.1.dev4+gaea5b5591)"
+		ADS:2014MNRAS.440..719G (Goncalves Ferrari, Boekholt, Portegies Zwart; 2014 MNRAS, 440, 719
+
+
+	"AMUSE (unknown version)"
+		DOI:10.5281/zenodo.1435860
+		ADS:2018araa.book.....P (Portegies Zwart, S. & McMillan, S.L.W., 2018)
+		ADS:2013CoPhC.183..456P ** (Portegies Zwart, S. et al., 2013)
+		ADS:2013A&A...557A..84P ** (Pelupessy, F. I. et al., 2013)
+		ADS:2009NewA...14..369P (Portegies Zwart, S. et al., 2009)
+
+#### Finished Test. Have a nice day
