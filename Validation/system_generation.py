@@ -3,8 +3,8 @@ import matplotlib.pyplot as plt
 import sys
 from pathlib import Path
 
-from amuse.units import units, constants, nbody_system
-from amuse.lab import Particles, Particle
+from amuse.units import units, constants, nbody_system # type: ignore
+from amuse.lab import Particles, Particle # type: ignore
 
 arbeit_path = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(arbeit_path))

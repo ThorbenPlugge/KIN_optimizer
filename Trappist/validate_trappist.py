@@ -5,8 +5,8 @@ import copy
 from pathlib import Path
 import os
 
-from amuse.units import units, constants, nbody_system
-from amuse.lab import Particles, Particle
+from amuse.units import units, constants, nbody_system # type: ignore
+from amuse.lab import Particles, Particle # type: ignore
 
 os.environ["OMPI_MCA_rmaps_base_oversubscribe"] = "true"
 

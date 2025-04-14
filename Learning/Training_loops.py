@@ -14,7 +14,8 @@ def learn_masses(tau, optimizer, availabe_info_of_bodies,
                  unknown_dimension=0,
                  negative_mass_penalty=0,
                  accuracy=1e-15, plotGraph=True, zoombox=False, 
-                 plot_in_2D=False):
+                 plot_in_2D=False,
+                 printing = False):
     '''
     This function is just a sort of wrapper.
     If no graph is being plotted, then the main thread just runs the TensorFlow code
@@ -49,7 +50,8 @@ def learn_masses(tau, optimizer, availabe_info_of_bodies,
                            epochs,
                            unknown_dimension,
                            negative_mass_penalty,
-                           accuracy)
+                           accuracy,
+                           printing = printing)
         return mass_values, loss_values
 
 

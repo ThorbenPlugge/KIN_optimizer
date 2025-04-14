@@ -1,0 +1,63 @@
+#### Starting test
+2025-04-14 11:59:39.725953: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-14 11:59:39.833297: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-14 11:59:39.934618: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1744624780.016480 3443985 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1744624780.040123 3443985 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1744624780.227152 3443985 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1744624780.227173 3443985 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1744624780.227176 3443985 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1744624780.227179 3443985 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+2025-04-14 11:59:40.247858: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-04-14 11:59:48.823840: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2025-04-14 11:59:48.824025: I external/local_xla/xla/stream_executor/cuda/cuda_diagnostics.cc:178] verbose logging is disabled. Rerun with verbose logging (usually --v=1 or --vmodule=cuda_diagnostics=1) to get more diagnostic output from this module
+2025-04-14 11:59:48.824032: I external/local_xla/xla/stream_executor/cuda/cuda_diagnostics.cc:183] retrieving CUDA diagnostic information for host: node870
+2025-04-14 11:59:48.824036: I external/local_xla/xla/stream_executor/cuda/cuda_diagnostics.cc:190] hostname: node870
+2025-04-14 11:59:48.824134: I external/local_xla/xla/stream_executor/cuda/cuda_diagnostics.cc:197] libcuda reported version is: 560.35.3
+2025-04-14 11:59:48.824155: I external/local_xla/xla/stream_executor/cuda/cuda_diagnostics.cc:201] kernel reported version is: 560.35.3
+2025-04-14 11:59:48.824158: I external/local_xla/xla/stream_executor/cuda/cuda_diagnostics.cc:291] kernel version seems to match DSO: 560.35.3
+evolve time 400 days, 10 epochs, 10 samples. Just to test if the serial function works.
+creating test system 1
+evolve the system
+Running simulation...
+start the learn masses function
+Forward pass...
+Backwards pass...
+Combining derivatives...
+Epoch 1/10, Masses: [ 1.00000002  0.00100003  0.00905705], 
+Positions: 
+[[  5.85083423e-01   1.69771378e-01   9.43063462e-07]
+ [ -8.94825438e+00  -2.84941233e+00   4.31321796e-04]
+ [ -6.36116966e+01  -1.84300317e+01  -1.51747338e-04]]
+Traceback (most recent call last):
+  File "/home/s2818760/.conda/envs/nbody/lib/python3.12/site-packages/h5py/_hl/files.py", line 247, in make_fid
+    fid = h5f.open(name, h5f.ACC_RDWR, fapl=fapl)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h5py/_objects.pyx", line 54, in h5py._objects.with_phil.wrapper
+  File "h5py/_objects.pyx", line 55, in h5py._objects.with_phil.wrapper
+  File "h5py/h5f.pyx", line 102, in h5py.h5f.open
+FileNotFoundError: [Errno 2] Unable to synchronously open file (unable to open file: name = '/home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/10_systems_0.001_10.h5', errno = 2, error message = 'No such file or directory', flags = 1, o_flags = 2)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/s2818760/MasterProj/KIN_optimizer/Validation/validation.py", line 166, in <module>
+    test_many_systems_serial(M_min_bounds=[1e-8, 1e-3],
+  File "/home/s2818760/MasterProj/KIN_optimizer/Validation/validation.py", line 162, in test_many_systems_serial
+    save_results(results_path, f'{len(M_a_sample)}_systems_{M_maj}_{a_maj}.h5', M_min, a_min, masses, mass_error, avg_loss_per_epoch)
+  File "/home/s2818760/MasterProj/KIN_optimizer/Validation/validation_funcs.py", line 42, in save_results
+    with h5py.File(filepath, 'a') as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/s2818760/.conda/envs/nbody/lib/python3.12/site-packages/h5py/_hl/files.py", line 561, in __init__
+    fid = make_fid(name, mode, userblock_size, fapl, fcpl, swmr=swmr)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/s2818760/.conda/envs/nbody/lib/python3.12/site-packages/h5py/_hl/files.py", line 261, in make_fid
+    fid = h5f.create(name, h5f.ACC_EXCL, fapl=fapl, fcpl=fcpl)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h5py/_objects.pyx", line 54, in h5py._objects.with_phil.wrapper
+  File "h5py/_objects.pyx", line 55, in h5py._objects.with_phil.wrapper
+  File "h5py/h5f.pyx", line 122, in h5py.h5f.create
+FileNotFoundError: [Errno 2] Unable to synchronously create file (unable to open file: name = '/home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/10_systems_0.001_10.h5', errno = 2, error message = 'No such file or directory', flags = 15, o_flags = c2)
+#### Finished Test. Have a nice day

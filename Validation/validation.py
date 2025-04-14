@@ -5,22 +5,23 @@ import copy
 from pathlib import Path
 import os
 
-from amuse.units import units, constants, nbody_system
-from amuse.lab import Particles, Particle
+from amuse.units import units, constants, nbody_system # type: ignore
+from amuse.lab import Particles, Particle # type: ignore
 
 os.environ["OMPI_MCA_rmaps_base_oversubscribe"] = "true"
 
 arbeit_path = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(arbeit_path))
 
-def find_masses(test_sys, evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function, unknown_dimension = 3, learning_rate = 1e-5, init_guess_offset = 1e-7, epochs = 100, accuracy = 1e-8):
+def find_masses(test_sys, evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function, unknown_dimension = 3, learning_rate = 1e-5, init_guess_offset = 1e-7, epochs = 100, accuracy = 1e-8, printing = True):
     from Trappist.evolve_trappist import evolve_sys_sakura
     from Trappist.data_conversion import convert_states_to_celestial_bodies, convert_sys_to_initial_guess_list
     from test_Main_Code import init_optimizer
     import Learning.Training_loops as node
 
     original_sys = copy.deepcopy(test_sys)
-    print('evolve the system')
+    if printing:
+        print('evolve the system')
     evolved_sys, pos_states, vel_states, total_energy = evolve_sys_sakura(sys = test_sys,
                                                                           evolve_time = evolve_time,
                                                                           tau_ev = tau_ev,
@@ -60,7 +61,8 @@ def find_masses(test_sys, evolve_time, tau_ev, tau_opt, num_points_considered_in
         plot_in_2D = False,
         zoombox = 'not yet',
         negative_mass_penalty=1,
-        accuracy = accuracy
+        accuracy = accuracy,
+        printing = printing
     )
 
     return masses, losses
@@ -116,24 +118,20 @@ def test_optimizer_on_system(M_min, a_min, evolve_time, tau_ev, tau_opt, num_poi
 #                                                                   epochs = 150)
 
 
-
-# TODO: write a function that lets you call the function above multiple times for a whole set.
-
 def test_many_systems_serial(M_min_bounds, a_min_bounds, evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function, hypercube_state = 0, 
-                      phaseseed = 0, lowest_loss = False, unknown_dimension=3, learning_rate = 1e-8, init_guess_offset = 1e-8, epochs = 150):
+                      phaseseed = 0, lowest_loss = False, unknown_dimension=3, learning_rate = 1e-8, init_guess_offset = 1e-8, epochs = 150, accuracy = 1e-8, n_samples = 50):
     '''This function can be called to test many different variations of the simple three-body system with a major planet.
-    Input M_min and a_min as ranges, and the latin hypercube sampler will find the most optimal places to sample. '''
-    from scipy.stats import qmc
+    Input M_min and a_min as ranges, and the latin hypercube sampler will find the most optimal places to sample.
+    This function performs all optimization in series.'''
+
     from Validation.system_generation import create_test_system
-    from Trappist.t_plotting import plot_loss_func
-    from Validation.validation_funcs import select_masses, calculate_mass_error, save_results
+    from Validation.validation_funcs import select_masses, calculate_mass_error, save_results, get_latin_sample
 
-    sampler = qmc.LatinHypercube(d=2, strength=2, rng=hypercube_state)
-    sample_unscaled = sampler.random(n=50)
-    # scale the random samples by the bounds
-    M_a_sample = qmc.scale(sample_unscaled, M_min_bounds, a_min_bounds)
+    # We do Latin Hypercube sampling of our 2d parameter space, such that we can most efficiently 
+    # sample the parameter space without having to run too many tests.
+    M_a_sample = get_latin_sample(n_samples, M_min_bounds, a_min_bounds, hypercube_state)
 
-    for i, M_a in M_a_sample:
+    for i, M_a in enumerate(M_a_sample):
         # First, generate a system according to the parameters
         M_min = M_a[0]
         a_min = M_a[1]
@@ -163,21 +161,98 @@ def test_many_systems_serial(M_min_bounds, a_min_bounds, evolve_time, tau_ev, ta
 
         save_results(results_path, f'{len(M_a_sample)}_systems_{M_maj}_{a_maj}.h5', M_min, a_min, masses, mass_error, avg_loss_per_epoch)
 
-test_many_systems_serial(M_min_bounds=[1e-8, 1e-3],
+test_description = "evolve time 400 days, 100 epochs, 50 samples. Big test for multiprocessing!"
+print(test_description)
+# test_many_systems_serial(M_min_bounds=[1e-8, 1e-3],
+#                         a_min_bounds = [0.01, 100],
+#                         evolve_time = 400 | units.day,
+#                         tau_ev = 1 | units.day,
+#                         tau_opt = 1 | units.day,
+#                         num_points_considered_in_cost_function = 4,
+#                         hypercube_state=0,
+#                         phaseseed = 0,
+#                         lowest_loss = False,
+#                         unknown_dimension=3,
+#                         learning_rate = 1e-8,
+#                         init_guess_offset = 1e-8,
+#                         epochs = 100,
+#                         accuracy = 1e-10,
+#                         n_samples = 50)
+
+# now let's write multiprocessing!
+def process_single_system_mp(i, len_mp_sample, M_min, a_min, evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function, phaseseed = 0, lowest_loss = True, unknown_dimension = 3, learning_rate = 1e-5, init_guess_offset = 1e-7, epochs = 100, accuracy = 1e-8):
+    from Validation.system_generation import create_test_system
+    from Trappist.t_plotting import plot_loss_func
+    from Validation.validation_funcs import select_masses, calculate_mass_error, save_results
+    # First, generate a system according to the parameters
+    M_maj = 1e-3
+    a_maj = 10
+
+    test_sys = create_test_system(M_maj = M_maj, M_min = M_min, a_maj = a_maj, a_min = a_min, phaseseed = phaseseed)
+
+    # Find the masses of the system
+    masses, losses = find_masses(test_sys=test_sys,
+                                 evolve_time=evolve_time,
+                                 tau_ev=tau_ev,
+                                 tau_opt=tau_opt,
+                                 num_points_considered_in_cost_function=num_points_considered_in_cost_function,
+                                 unknown_dimension=unknown_dimension,
+                                 learning_rate=learning_rate,
+                                 init_guess_offset=init_guess_offset,
+                                 epochs=epochs,
+                                 accuracy=accuracy,
+                                 printing=False)
+    
+    masses, best_idx, avg_loss_per_epoch = select_masses(masses, losses, lowest_loss = lowest_loss)
+
+    # Calculate the mass error
+    mass_error = calculate_mass_error(masses, test_sys)
+
+    results_path = arbeit_path / 'Validation/val_results'
+
+    save_results(results_path, f'{i}_of_{len_mp_sample}_systems_{M_maj}_{a_maj}.h5', M_min, a_min, masses, mass_error, avg_loss_per_epoch)
+    print(f'saved results for system {i}')
+
+def test_many_systems_mp(M_min_bounds, a_min_bounds, evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function, hypercube_state = 0, 
+                      phaseseed = 0, lowest_loss = False, unknown_dimension=3, learning_rate = 1e-8, init_guess_offset = 1e-8, epochs = 150, accuracy = 1e-8, n_samples = 50):
+    '''This function can be called to test many different variations of the simple three-body system with a major planet.
+    Input M_min and a_min as ranges, and the latin hypercube sampler will find the most optimal places to sample.
+    This function parallelizes the optimization to do multiple systems at once.'''
+    from Validation.validation_funcs import get_latin_sample
+    from multiprocessing import Pool
+
+    # We do Latin Hypercube sampling of our 2d parameter space, such that we can most efficiently 
+    # sample the parameter space without having to run too many tests.
+    M_a_sample = get_latin_sample(n_samples, M_min_bounds, a_min_bounds, hypercube_state)
+
+    args = [
+    (i, len(M_a_sample), M_a[0], M_a[1], evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function, 
+        phaseseed, lowest_loss, unknown_dimension, learning_rate, init_guess_offset, epochs, accuracy)
+    for i, M_a in enumerate(M_a_sample)
+    ]
+    
+    n_cores = os.environ['SLURM_CPUS_PER_TASK']
+    print('n_cores available for slurm is', n_cores)
+    with Pool(processes=int(n_cores)) as pool:
+        pool.starmap(process_single_system_mp, args)
+    
+    # TODO: merge all h5py files
+
+test_many_systems_mp(M_min_bounds=[1e-8, 1e-3],
                         a_min_bounds = [0.01, 100],
                         evolve_time = 400 | units.day,
                         tau_ev = 1 | units.day,
                         tau_opt = 1 | units.day,
                         num_points_considered_in_cost_function = 4,
+                        hypercube_state=0,
                         phaseseed = 0,
                         lowest_loss = False,
                         unknown_dimension=3,
                         learning_rate = 1e-8,
                         init_guess_offset = 1e-8,
-                        epochs = 150,
-                        accuracy = 1e-7)
-    
-        
+                        epochs = 100,
+                        accuracy = 1e-10,
+                        n_samples = 50)
 
 
 
