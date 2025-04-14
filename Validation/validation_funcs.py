@@ -62,6 +62,10 @@ def get_latin_sample(n_samples, bounds1, bounds2, hypercube_state):
     sample = qmc.scale(sample_unscaled, bounds1, bounds2)
     return sample
 
+def merge_h5_files(path):
+    # TODO: merge h5_files that all have the same sorta name.
+    return None
+
 def load_result(path, filename):
     '''Loads the results of a particular file. Puts it into a dictionary.'''
     import h5py

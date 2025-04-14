@@ -105,3 +105,4 @@ To enable the following instructions: AVX2 AVX512F FMA, in other operations, reb
 2025-04-14 15:04:39.866737: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
 2025-04-14 15:04:40.211047: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
 2025-04-14 15:04:40.346160: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+slurmstepd: error: *** JOB 3977560 ON node007 CANCELLED AT 2025-04-14T19:04:40 DUE TO TIME LIMIT ***
