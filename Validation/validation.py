@@ -115,6 +115,32 @@ masses, mass_error, avg_loss_per_epoch = test_optimizer_on_system(M_min = 1e-6,
 
 # TODO: write a function that lets you call the function above multiple times for a whole set.
 
+def test_many_systems(M_min_bounds, a_min_bounds, evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function, hypercube_state = 0, 
+                      phaseseed = 0, lowest_loss = False, unknown_dimension=3, learning_rate = 1e-8, init_guess_offset = 1e-8, epochs = 150):
+    '''This function can be called to test many different variations of the simple three-body system with a major planet.
+    Input M_min and a_min as ranges, and the latin hypercube sampler will find the most optimal places to sample. '''
+    from scipy.stats import qmc
+    from Validation.system_generation import create_test_system
+    from Trappist.t_plotting import plot_loss_func
+    from Validation.validation_funcs import select_masses, calculate_mass_error, save_results
+
+    sampler = qmc.LatinHypercube(d=2, strength=2, rng=hypercube_state)
+    sample_unscaled = sampler.random(n=50)
+    # scale the random samples by the bounds
+    M_a_sample = qmc.scale(sample_unscaled, M_min_bounds, a_min_bounds)
+
+    for i, M_a in M_a_sample:
+        # First, generate a system according to the parameters
+        M_min = M_a[0]
+        a_min = M_a[1]
+        M_maj = 1e-3
+        a_maj = 10
+        print('let us create a test system')
+        test_sys = create_test_system(M_maj = M_maj, M_min = M_min, a_maj = a_maj, a_min = a_min, phaseseed = 0)
+        
+        
+
+
 
 
 

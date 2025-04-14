@@ -2,14 +2,13 @@
 
 #SBATCH --job-name=trappist_job
 #SBATCH --output=./zSlurm_output/%x_%j.out
-#SBATCH --error=./zSlurm_output/%x_%j_errors.out
 #SBATCH --mail-user="nieuwhof@strw.leidenuniv.nl"
 #SBATCH --mail-type="ALL"
 
 #SBATCH --partition="cpu-short"
 #SBATCH --time=4:00:00
 #SBATCH --ntasks=1
-#SBATCH --mem-per-cpu=32G
+#SBATCH --mem-per-cpu=128G
 
 echo "#### Starting test"
 

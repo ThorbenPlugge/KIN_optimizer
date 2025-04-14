@@ -2,7 +2,6 @@
 
 #SBATCH --job-name=validation_job
 #SBATCH --output=./zSlurm_output/%x_%j.out
-#SBATCH --error=./zSlurm_output/%x_%j_errors.out
 #SBATCH --mail-user="nieuwhof@strw.leidenuniv.nl"
 #SBATCH --mail-type="ALL"
 
