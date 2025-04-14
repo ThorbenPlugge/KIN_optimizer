@@ -3,14 +3,17 @@ import matplotlib.pyplot as plt
 import sys
 import copy
 from pathlib import Path
+import os
 
 from amuse.units import units, constants, nbody_system
 from amuse.lab import Particles, Particle
 
+os.environ["OMPI_MCA_rmaps_base_oversubscribe"] = "true"
+
 arbeit_path = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(arbeit_path))
 
-def find_masses(test_sys, evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function, unknown_dimension = 3, learning_rate = 1e-5, init_guess_offset = 1e-7, epochs = 100):
+def find_masses(test_sys, evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function, unknown_dimension = 3, learning_rate = 1e-5, init_guess_offset = 1e-7, epochs = 100, accuracy = 1e-8):
     from Trappist.evolve_trappist import evolve_sys_sakura
     from Trappist.data_conversion import convert_states_to_celestial_bodies, convert_sys_to_initial_guess_list
     from test_Main_Code import init_optimizer
@@ -57,12 +60,12 @@ def find_masses(test_sys, evolve_time, tau_ev, tau_opt, num_points_considered_in
         plot_in_2D = False,
         zoombox = 'not yet',
         negative_mass_penalty=1,
-        accuracy = 1e-2
+        accuracy = accuracy
     )
 
     return masses, losses
 
-def test_optimizer_on_system(M_min, a_min, evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function, phaseseed = 0, lowest_loss = True, unknown_dimension = 3, learning_rate = 1e-5, init_guess_offset = 1e-7, epochs = 100):
+def test_optimizer_on_system(M_min, a_min, evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function, phaseseed = 0, lowest_loss = True, unknown_dimension = 3, learning_rate = 1e-5, init_guess_offset = 1e-7, epochs = 100, accuracy = 1e-8):
     from Validation.system_generation import create_test_system
     from Trappist.t_plotting import plot_loss_func
     from Validation.validation_funcs import select_masses, calculate_mass_error, save_results
@@ -82,7 +85,8 @@ def test_optimizer_on_system(M_min, a_min, evolve_time, tau_ev, tau_opt, num_poi
                                  unknown_dimension=unknown_dimension,
                                  learning_rate=learning_rate,
                                  init_guess_offset=init_guess_offset,
-                                 epochs=epochs)
+                                 epochs=epochs,
+                                 accuracy=accuracy)
     
     masses, best_idx, avg_loss_per_epoch = select_masses(masses, losses, lowest_loss = lowest_loss)
 
@@ -98,24 +102,24 @@ def test_optimizer_on_system(M_min, a_min, evolve_time, tau_ev, tau_opt, num_poi
 
     return masses, mass_error, avg_loss_per_epoch
 
-masses, mass_error, avg_loss_per_epoch = test_optimizer_on_system(M_min = 1e-6,
-                                                                  a_min = 5,
-                                                                  evolve_time = 400 | units.day,
-                                                                  tau_ev = 1 | units.day,
-                                                                  tau_opt = 1 | units.day,
-                                                                  num_points_considered_in_cost_function = 8,
-                                                                  phaseseed = 0,
-                                                                  lowest_loss = False,
-                                                                  unknown_dimension=3,
-                                                                  learning_rate = 1e-8,
-                                                                  init_guess_offset = 1e-8,
-                                                                  epochs = 150)
+# masses, mass_error, avg_loss_per_epoch = test_optimizer_on_system(M_min = 1e-6,
+#                                                                   a_min = 5,
+#                                                                   evolve_time = 400 | units.day,
+#                                                                   tau_ev = 1 | units.day,
+#                                                                   tau_opt = 1 | units.day,
+#                                                                   num_points_considered_in_cost_function = 8,
+#                                                                   phaseseed = 0,
+#                                                                   lowest_loss = False,
+#                                                                   unknown_dimension=3,
+#                                                                   learning_rate = 1e-8,
+#                                                                   init_guess_offset = 1e-8,
+#                                                                   epochs = 150)
 
 
 
 # TODO: write a function that lets you call the function above multiple times for a whole set.
 
-def test_many_systems(M_min_bounds, a_min_bounds, evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function, hypercube_state = 0, 
+def test_many_systems_serial(M_min_bounds, a_min_bounds, evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function, hypercube_state = 0, 
                       phaseseed = 0, lowest_loss = False, unknown_dimension=3, learning_rate = 1e-8, init_guess_offset = 1e-8, epochs = 150):
     '''This function can be called to test many different variations of the simple three-body system with a major planet.
     Input M_min and a_min as ranges, and the latin hypercube sampler will find the most optimal places to sample. '''
@@ -135,9 +139,44 @@ def test_many_systems(M_min_bounds, a_min_bounds, evolve_time, tau_ev, tau_opt, 
         a_min = M_a[1]
         M_maj = 1e-3
         a_maj = 10
-        print('let us create a test system')
-        test_sys = create_test_system(M_maj = M_maj, M_min = M_min, a_maj = a_maj, a_min = a_min, phaseseed = 0)
+        print(f'creating test system {i+1}')
+        test_sys = create_test_system(M_maj = M_maj, M_min = M_min, a_maj = a_maj, a_min = a_min, phaseseed = phaseseed)
         
+        # Find the masses of the system
+        masses, losses = find_masses(test_sys=test_sys,
+                                    evolve_time=evolve_time,
+                                    tau_ev=tau_ev,
+                                    tau_opt=tau_opt,
+                                    num_points_considered_in_cost_function=num_points_considered_in_cost_function,
+                                    unknown_dimension=unknown_dimension,
+                                    learning_rate=learning_rate,
+                                    init_guess_offset=init_guess_offset,
+                                    epochs=epochs,
+                                    accuracy=accuracy)
+        
+        masses, best_idx, avg_loss_per_epoch = select_masses(masses, losses, lowest_loss = lowest_loss)
+
+        # Calculate the mass error
+        mass_error = calculate_mass_error(masses, test_sys)
+
+        results_path = arbeit_path / 'Validation/val_results'
+
+        save_results(results_path, f'{len(M_a_sample)}_systems_{M_maj}_{a_maj}.h5', M_min, a_min, masses, mass_error, avg_loss_per_epoch)
+
+test_many_systems_serial(M_min_bounds=[1e-8, 1e-3],
+                        a_min_bounds = [0.01, 100],
+                        evolve_time = 400 | units.day,
+                        tau_ev = 1 | units.day,
+                        tau_opt = 1 | units.day,
+                        num_points_considered_in_cost_function = 4,
+                        phaseseed = 0,
+                        lowest_loss = False,
+                        unknown_dimension=3,
+                        learning_rate = 1e-8,
+                        init_guess_offset = 1e-8,
+                        epochs = 150,
+                        accuracy = 1e-7)
+    
         
 
 

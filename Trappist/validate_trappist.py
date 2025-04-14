@@ -3,9 +3,12 @@ import tensorflow as tf
 import sys
 import copy
 from pathlib import Path
+import os
 
 from amuse.units import units, constants, nbody_system
 from amuse.lab import Particles, Particle
+
+os.environ["OMPI_MCA_rmaps_base_oversubscribe"] = "true"
 
 arbeit_path = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(arbeit_path))

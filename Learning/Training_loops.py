@@ -57,7 +57,8 @@ def learn_masses_4real(tau, optimizer, availabe_info_of_bodies, plot_queue, plot
                        epochs,
                        unknown_dimension,
                        negative_mass_penalty,
-                       accuracy):
+                       accuracy,
+                       printing=True):
     '''
     availabe_info_of_bodies may need some explaination.
     It is a list of CelestialBody objects. The code is in the Body_info_class file
@@ -147,7 +148,8 @@ def learn_masses_4real(tau, optimizer, availabe_info_of_bodies, plot_queue, plot
             # In here, the whole trajectory is computed and each state for each tau
             # timestep is stored in t.
             # Also the roots for the kepler solver are stored in newton_solutions
-            print('Forward pass...')
+            if printing:
+                print('Forward pass...')
             t, newton_solutions = forward.forward_numpy(
                 np.float64(tau.numpy()),
                 np.array(r.numpy(), dtype=np.float64),
@@ -165,7 +167,8 @@ def learn_masses_4real(tau, optimizer, availabe_info_of_bodies, plot_queue, plot
             # recompute the following state and then backpropagate.
             # The resulting derivatives for d(following state)/d(state) and d(following state)/d(mass)
             # are then stored in state_derivatives, mass_derivatives
-            print('Backwards pass...')
+            if printing:
+                print('Backwards pass...')
             state_derivatives, mass_derivatives = b.backwards_map_fn(
                 t, tau, m, newton_solutions)
 
@@ -174,7 +177,8 @@ def learn_masses_4real(tau, optimizer, availabe_info_of_bodies, plot_queue, plot
             # After that, the jacobians for state, loss and mass are combined with the chain rule
             # The chainrule again is:
             # (f(g(x)))'= f'(g(x)) * g'(x)
-            print('Combining derivatives...')
+            if printing:
+                print('Combining derivatives...')
             dL_dm, dL_dz, losses = cd.build_compute_graph_and_combine_derivatives(t,
                                                                           availabe_info_of_bodies,
                                                                           state_derivatives,
@@ -200,12 +204,12 @@ def learn_masses_4real(tau, optimizer, availabe_info_of_bodies, plot_queue, plot
             loss_values[j] = [losses.numpy()[i,0,:] for i in range(len(losses.numpy()[:,0,:]))]
             
             stop_epoch += 1
-            
-            print(
+            if printing:
+                print(
                 f"Epoch {j+1}/{epochs}, Masses: {m.numpy()}, \nPositions: \n{r.numpy()}")
-    print(len(loss_values))
+    
     loss_values = loss_values[:stop_epoch]
-    print(len(loss_values))
+    
     
     
     return mass_values, loss_values
