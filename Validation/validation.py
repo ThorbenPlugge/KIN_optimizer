@@ -57,7 +57,7 @@ def find_masses(test_sys, evolve_time, tau_ev, tau_opt, num_points_considered_in
         plot_in_2D = False,
         zoombox = 'not yet',
         negative_mass_penalty=1,
-        accuracy = 1e-10
+        accuracy = 1e-2
     )
 
     return masses, losses
@@ -109,7 +109,7 @@ masses, mass_error, avg_loss_per_epoch = test_optimizer_on_system(M_min = 1e-6,
                                                                   unknown_dimension=3,
                                                                   learning_rate = 1e-8,
                                                                   init_guess_offset = 1e-8,
-                                                                  epochs = 3)
+                                                                  epochs = 6)
 
 
 
