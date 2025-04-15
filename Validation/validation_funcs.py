@@ -2,13 +2,17 @@ import numpy as np
 import matplotlib.pyplot as plt
 import sys
 import copy
+import os
 from pathlib import Path
 
 from amuse.units import units, constants, nbody_system # type: ignore
 from amuse.lab import Particles, Particle # type: ignore
 
+os.environ["OMPI_MCA_rmaps_base_oversubscribe"] = "true"
+
 arbeit_path = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(arbeit_path))
+plot_path = arbeit_path / 'Plots'
 
 def select_masses(masses, losses, lowest_loss = True):
     # select the masses from the epoch with the lowest loss value
@@ -48,7 +52,7 @@ def save_results(path, filename, M_min, a_min, masses, mass_error, avg_loss_per_
         exp_group.create_dataset('mass_error', data = mass_error)
         exp_group.create_dataset('avg_loss_per_epoch', data = avg_loss_per_epoch)
         parameters = np.array([M_min, a_min])
-        exp_group.create_dataset('parameters (M_min, a_min):', data=parameters)
+        exp_group.create_dataset('parameters (M_min, a_min)', data=parameters)
 
         # store metadata
         for key, value in metadata.items():
@@ -62,9 +66,32 @@ def get_latin_sample(n_samples, bounds1, bounds2, hypercube_state):
     sample = qmc.scale(sample_unscaled, bounds1, bounds2)
     return sample
 
-def merge_h5_files(path):
-    # TODO: merge h5_files that all have the same sorta name.
-    return None
+def merge_h5_files(input_folder, output_file, delete=False):
+    from pathlib import Path
+    import h5py
+    input_folder = Path(input_folder)
+    output_file = Path(output_file)
+
+    h5_files = sorted(input_folder.glob('*.h5'))
+
+    with h5py.File(output_file, 'w') as output_h5:
+        for file_index, h5_file in enumerate(h5_files):
+            with h5py.File(h5_file, 'r') as input_h5:
+                # copy each group from the input file to the output
+                for group_name in input_h5.keys():
+                    group_path = f'exp_{file_index}'
+                    input_h5.copy(group_name, output_h5, name = group_path)
+    
+    print(f'All files merged into {output_file}')
+
+    if delete:
+        for h5_file in h5_files:
+            try:
+                os.remove(h5_file)
+                print(f"Deleted file: {h5_file}")
+            except Exception as e:
+                print(f"Error deleting file {h5_file}: {e}")
+
 
 def load_result(path, filename):
     '''Loads the results of a particular file. Puts it into a dictionary.'''
@@ -96,9 +123,10 @@ def load_result(path, filename):
         'parameters': parameters
     }
 
-def sensitivity_plot(results):
+def sensitivity_plot(results, filename, plot_path = plot_path):
     '''Creates a sensitivity plot for a given set of results.'''
-    # TODO: 2d interpolate between all sets of values to give a smooth color gradient of mass error.
+    from scipy.interpolate import LinearNDInterpolator
+
     mass_errors = results['mass_errors']
     parameters = results['parameters']
     
@@ -106,18 +134,35 @@ def sensitivity_plot(results):
     a_min = parameters[:, 1]
 
     # interpolate between the parameters
-    M_min_space = np.linspace(np.min(M_min), np.max(M_min), 100)
-    a_min_space = np.linspace(np.min(a_min), np.max(a_min), 100)
+    M_min_space = np.linspace(np.min(M_min), np.max(M_min), 200)
+    a_min_space = np.linspace(np.min(a_min), np.max(a_min), 200)
+    M_min_grid, a_min_grid = np.meshgrid(M_min_space, a_min_space)
 
-    # TODO: use some 2d interpolation scheme to find the mass_error at 
-    # all the points for (M_min_space, a_min_space)
+    interp = LinearNDInterpolator((M_min, a_min), mass_errors)
+    Mass_errors_i = interp(M_min_grid, a_min_grid)
 
-    # TODO: plot the interpolated points with a color map corresponding to the mass errors,
-    # with a nice little plot. It's gotta look real good.
+    plt.figure(figsize=[12, 8])
+    plt.set_cmap('viridis')
+    plt.pcolormesh(M_min_grid, a_min_grid, np.log(Mass_errors_i), shading='auto')
+    plt.scatter(M_min, a_min, color='k', label='Input points')  # Plot input points
+    plt.xlabel('Minor planet mass (M_sun)')
+    plt.ylabel('Minor planet semimajor axis (AU)')
+    plt.title('Sensitivity plot for a three-body system with a major planet and a minor planet.')
+    plt.legend()
+    plt.colorbar(label='log Fractional mass error')
+
+    saved_file = plot_path / filename
+
+    plt.savefig(f'{saved_file}.pdf', dpi=800)
+
 def process_result(path, filename):
     '''Loads results from an h5 file, and then creates an image.'''
     import h5py
     results = load_result(path, filename)
+    sensitivity_plot(results, f'{filename}.txt')
+    print(f'file {filename} processed')
+
+
 
 
 
