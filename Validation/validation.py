@@ -216,6 +216,7 @@ def test_many_systems_mp(M_min_bounds, a_min_bounds, evolve_time, tau_ev, tau_op
     This function parallelizes the optimization to do multiple systems at once.'''
     from Validation.validation_funcs import get_latin_sample, merge_h5_files, process_result
     from multiprocessing import Pool
+    import h5py
 
     job_id = os.environ['SLURM_JOB_ID']
     
@@ -243,14 +244,25 @@ def test_many_systems_mp(M_min_bounds, a_min_bounds, evolve_time, tau_ev, tau_op
     print('output_file', output_file)
 
     merge_h5_files(results_path, output_file, delete=True)
-    process_result(output_path, output_filename, [M_maj, a_maj], log_error = False)
+    # now add the attributes of this run to the merged h5 file!!
+
+    attribute_names = np.array(['Evolve time (days)', 'Tau_ev (days)', 'Tau_opt (days)', 'num_points_considered_in_cost_function',
+                                'M_maj', 'a_maj', 'phaseseed', 'lowest_loss',
+                                'unknown_dimension', 'learning_rate', 'init_guess_offset', 'epochs', 'accuracy'])
+    attributes_to_save = np.array([evolve_time.value_in(units.day), tau_ev.value_in(units.day), tau_opt.value_in(units.day),
+                                    num_points_considered_in_cost_function, 
+                                    M_maj, a_maj, phaseseed, lowest_loss, 
+                                    unknown_dimension, learning_rate, init_guess_offset, epochs, accuracy])
     
-test_description = "evolve time 400 days, 100 epochs, 50 samples. backup cuz people are hogging alice."
-print(test_description)
-print('4 points considered in cost function. Now with different hypercube samples.')
+    with h5py.File(output_file, 'a') as f:
+        for i, attribute in enumerate(attributes_to_save):
+            f.attrs[f'{attribute_names[i]}'] = attribute
+
+    process_result(output_path, output_filename, [M_maj, a_maj], log_error = False, filter_outliers=False)
+
 test_many_systems_mp(M_min_bounds=[1e-10, 1e-3],
-                        a_min_bounds = [0.01, 100],
-                        evolve_time = 400 | units.day,
+                        a_min_bounds = [0.01, 50],
+                        evolve_time = 1200 | units.day,
                         tau_ev = 1 | units.day,
                         tau_opt = 1 | units.day,
                         num_points_considered_in_cost_function = 4,
@@ -261,10 +273,10 @@ test_many_systems_mp(M_min_bounds=[1e-10, 1e-3],
                         lowest_loss = False,
                         unknown_dimension=3,
                         learning_rate = 1e-8,
-                        init_guess_offset = 1e-7,
+                        init_guess_offset = 1e-8,
                         epochs = 100,
                         accuracy = 1e-10,
-                        n_samples = 50)
+                        n_samples = 150)
 
 
 

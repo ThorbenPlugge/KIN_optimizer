@@ -94,7 +94,7 @@ def merge_h5_files(input_folder, output_file, delete=False):
         os.rmdir(input_folder)
 
 
-def load_result(path, filename):
+def load_result(path, filename, filter_outliers=False):
     '''Loads the results of a particular file. Puts it into a dictionary.'''
     import h5py
     filepath = path / filename
@@ -110,16 +110,26 @@ def load_result(path, filename):
             
             # filter out invalid mass data (length 1 and equal to 0)
             if mass_data.ndim == 0:
-                print(f'skipped run {exp_name}')
+                print(f'skipped run {exp_name} due to invalid mass data')
                 continue
             
             masses_list.append(mass_data)
-            mass_error_list.append(np.array(exp_group['mass_error']))
+            mass_error_data = np.array(exp_group['mass_error'])
+
+            if filter_outliers == True and mass_error_data > 1:
+                print(f'skipped system {exp_name} due to high mass error')
+                continue
+
+            mass_error_list.append(mass_error_data)
             avg_loss_per_epoch_list.append(np.array(exp_group['avg_loss_per_epoch']))
             parameters_list.append(np.array(exp_group['parameters (M_min, a_min)']))
+        # also extract the attributes.
+        print('\nRun parameters:')
+        for key, value in f.attrs.items():
+            print('   {}: {}'.format(key, value))
+        print('\n')
+        run_params = f.attrs 
 
-    # remove experiments where the mass list is 0.
-    
     masses = np.array(masses_list)
     mass_errors = np.array(mass_error_list)
     avg_loss_per_epoch = np.array(avg_loss_per_epoch_list)
@@ -130,7 +140,7 @@ def load_result(path, filename):
         'mass_errors': mass_errors,
         'avg_loss_per_epoch': avg_loss_per_epoch,
         'parameters': parameters
-    }
+    }, run_params
 
 def sensitivity_plot(results, filename, maj_param, log_error = False, plot_path = plot_path):
     '''Creates a sensitivity plot for a given set of results.'''
@@ -138,21 +148,19 @@ def sensitivity_plot(results, filename, maj_param, log_error = False, plot_path 
 
     mass_errors = results['mass_errors']
     parameters = results['parameters']
-    
+
     M_min = parameters[:, 0]
     a_min = parameters[:, 1]
 
     # interpolate between the parameters
-    M_min_space = np.linspace(np.min(M_min), np.max(M_min), 200)
-    a_min_space = np.linspace(np.min(a_min), np.max(a_min), 200)
+    M_min_space = np.linspace(np.min(M_min), np.max(M_min), 400)
+    a_min_space = np.linspace(np.min(a_min), np.max(a_min), 400)
     M_min_grid, a_min_grid = np.meshgrid(M_min_space, a_min_space)
 
     interp = LinearNDInterpolator((M_min, a_min), mass_errors)
     Mass_errors_i = interp(M_min_grid, a_min_grid)
 
     cbarlabel = 'Fractional mass error'
-
-    
 
     if log_error: # if we want this, change the error to the log of the error.
         Mass_errors_i = np.log(Mass_errors_i)
@@ -182,10 +190,10 @@ def sensitivity_plot(results, filename, maj_param, log_error = False, plot_path 
 
     plt.savefig(f'{saved_file}.pdf', dpi=800)
 
-def process_result(path, filename, maj_param, log_error = False):
+def process_result(path, filename, maj_param, log_error = False, filter_outliers=False):
     '''Loads results from an h5 file, and then creates an image.'''
     import h5py
-    results = load_result(path, filename)
+    results, run_params = load_result(path, filename, filter_outliers=filter_outliers)
     sensitivity_plot(results, f'{filename}', maj_param, log_error)
     print(f'file {filename} processed')
 

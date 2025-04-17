@@ -210,3 +210,202 @@ To enable the following instructions: AVX2 AVX512F FMA, in other operations, reb
 2025-04-17 11:39:29.019137: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
 2025-04-17 11:39:29.541120: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
 2025-04-17 11:39:30.645418: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+Running simulation...
+start the learn masses function
+saved results for system 6
+Running simulation...
+start the learn masses function
+saved results for system 19
+Running simulation...
+start the learn masses function
+saved results for system 35
+Running simulation...
+start the learn masses function
+saved results for system 7
+Running simulation...
+start the learn masses function
+saved results for system 23
+Running simulation...
+start the learn masses function
+saved results for system 39
+Running simulation...
+start the learn masses function
+saved results for system 0
+Running simulation...
+start the learn masses function
+saved results for system 20
+Running simulation...
+start the learn masses function
+saved results for system 34
+Running simulation...
+start the learn masses function
+saved results for system 11
+Running simulation...
+start the learn masses function
+saved results for system 21
+Running simulation...
+start the learn masses function
+saved results for system 36
+Running simulation...
+start the learn masses function
+saved results for system 2
+Running simulation...
+start the learn masses function
+saved results for system 26
+Running simulation...
+start the learn masses function
+saved results for system 37
+Running simulation...
+start the learn masses function
+saved results for system 12
+Running simulation...
+start the learn masses function
+saved results for system 25
+Running simulation...
+start the learn masses function
+saved results for system 38
+Running simulation...
+start the learn masses function
+saved results for system 9
+Running simulation...
+start the learn masses function
+saved results for system 22
+Running simulation...
+start the learn masses function
+saved results for system 40
+Running simulation...
+start the learn masses function
+saved results for system 13
+Running simulation...
+start the learn masses function
+saved results for system 24
+Running simulation...
+start the learn masses function
+saved results for system 41
+Running simulation...
+start the learn masses function
+saved results for system 1
+Running simulation...
+start the learn masses function
+saved results for system 27
+Running simulation...
+start the learn masses function
+saved results for system 42
+Running simulation...
+start the learn masses function
+saved results for system 8
+Running simulation...
+start the learn masses function
+saved results for system 16
+Running simulation...
+start the learn masses function
+saved results for system 43
+Running simulation...
+start the learn masses function
+saved results for system 15
+Running simulation...
+start the learn masses function
+saved results for system 17
+Running simulation...
+start the learn masses function
+saved results for system 32
+Running simulation...
+start the learn masses function
+saved results for system 45
+Running simulation...
+start the learn masses function
+saved results for system 4
+Running simulation...
+start the learn masses function
+saved results for system 18
+Running simulation...
+start the learn masses function
+saved results for system 33
+Running simulation...
+start the learn masses function
+saved results for system 49
+Running simulation...
+start the learn masses function
+saved results for system 14
+Running simulation...
+start the learn masses function
+saved results for system 30
+Running simulation...
+start the learn masses function
+saved results for system 47
+Running simulation...
+start the learn masses function
+saved results for system 10
+Running simulation...
+start the learn masses function
+saved results for system 29
+Running simulation...
+start the learn masses function
+saved results for system 46
+output_file /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/50_systems_0.001_10_3983790.h5
+All files merged into /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/50_systems_0.001_10_3983790.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/0_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/10_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/11_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/12_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/13_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/14_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/15_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/16_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/17_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/18_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/19_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/1_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/20_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/21_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/22_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/23_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/24_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/25_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/26_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/27_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/28_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/29_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/2_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/30_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/31_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/32_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/33_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/34_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/35_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/36_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/37_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/38_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/39_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/3_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/40_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/41_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/42_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/43_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/44_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/45_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/46_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/47_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/48_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/49_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/4_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/5_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/6_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/7_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/8_of_50_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3983790/mp_results/9_of_50_systems_0.001_10.h5
+Traceback (most recent call last):
+  File "/home/s2818760/MasterProj/KIN_optimizer/Validation/validation.py", line 251, in <module>
+    f.attrs[f'{attribute}'] = attribute
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/s2818760/MasterProj/KIN_optimizer/Validation/validation.py", line 246, in test_many_systems_mp
+    merge_h5_files(results_path, output_file, delete=True)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/s2818760/MasterProj/KIN_optimizer/Validation/validation_funcs.py", line 176, in process_result
+    plt.axvline(maj_param[0], linestyle='--', color='white', label = 'Parameters of major planet')
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/s2818760/MasterProj/KIN_optimizer/Validation/validation_funcs.py", line 114, in load_result
+    continue
+ ^^^^^^^^^^^^
+ValueError: setting an array element with a sequence. The requested array has an inhomogeneous shape after 1 dimensions. The detected shape was (50,) + inhomogeneous part.
+#### Finished Test. Have a nice day
