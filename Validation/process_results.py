@@ -18,11 +18,14 @@ from Validation.validation_funcs import process_result, merge_h5_files, load_res
 
 results_path = arbeit_path / 'Validation/val_results/mp_results'
 
-output_path = arbeit_path / 'Validation/val_results'
-output_filename = '50_systems_0.001_10.h5'
+job_id = '3983423'
+maj_param = [1e-3, 10]
+output_path = arbeit_path / f'Validation/val_results/{job_id}'
+output_filename = f'50_systems_0.001_10_{job_id}.h5'
 
 output_file = output_path / output_filename
 
+
 # merge_h5_files(results_path, output_file)
 
-process_result(output_path, output_filename)
+process_result(output_path, output_filename, maj_param, log_error=True)

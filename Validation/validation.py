@@ -163,8 +163,6 @@ def test_many_systems_serial(M_min_bounds, a_min_bounds, evolve_time, tau_ev, ta
 
         save_results(results_path, f'{len(M_a_sample)}_systems_{M_maj}_{a_maj}.h5', M_min, a_min, masses, mass_error, avg_loss_per_epoch)
 
-test_description = "evolve time 400 days, 100 epochs, 50 samples. Big test for multiprocessing!"
-print(test_description)
 # test_many_systems_serial(M_min_bounds=[1e-8, 1e-3],
 #                         a_min_bounds = [0.01, 100],
 #                         evolve_time = 400 | units.day,
@@ -182,7 +180,7 @@ print(test_description)
 #                         n_samples = 50)
 
 # now let's write multiprocessing!
-def process_single_system_mp(i, len_mp_sample, M_min, a_min, evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function, M_maj = 1e-3, a_maj = 10, phaseseed = 0, lowest_loss = True, unknown_dimension = 3, learning_rate = 1e-5, init_guess_offset = 1e-7, epochs = 100, accuracy = 1e-8):
+def process_single_system_mp(results_path, i, len_mp_sample, M_min, a_min, evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function, M_maj = 1e-3, a_maj = 10, phaseseed = 0, lowest_loss = True, unknown_dimension = 3, learning_rate = 1e-5, init_guess_offset = 1e-7, epochs = 100, accuracy = 1e-8):
     from Validation.system_generation import create_test_system
     from Trappist.t_plotting import plot_loss_func
     from Validation.validation_funcs import select_masses, calculate_mass_error, save_results
@@ -208,8 +206,6 @@ def process_single_system_mp(i, len_mp_sample, M_min, a_min, evolve_time, tau_ev
     # Calculate the mass error
     mass_error = calculate_mass_error(masses, test_sys)
 
-    results_path = arbeit_path / 'Validation/val_results/mp_results'
-
     save_results(results_path, f'{i}_of_{len_mp_sample}_systems_{M_maj}_{a_maj}.h5', M_min, a_min, masses, mass_error, avg_loss_per_epoch)
     print(f'saved results for system {i}')
 
@@ -221,16 +217,18 @@ def test_many_systems_mp(M_min_bounds, a_min_bounds, evolve_time, tau_ev, tau_op
     from Validation.validation_funcs import get_latin_sample, merge_h5_files, process_result
     from multiprocessing import Pool
 
-    results_path = arbeit_path / 'Validation/val_results/mp_results'
-    output_path = arbeit_path / 'Validation/val_results'
-    output_filename = f'{n_samples}_systems_{M_maj}_{a_maj}.h5'
+    job_id = os.environ['SLURM_JOB_ID']
+    
+    results_path = arbeit_path / f'Validation/val_results/{job_id}/mp_results'
+    output_path = arbeit_path / f'Validation/val_results/{job_id}'
+    output_filename = f'{n_samples}_systems_{M_maj}_{a_maj}_{job_id}.h5'
 
     # We do Latin Hypercube sampling of our 2d parameter space, such that we can most efficiently 
     # sample the parameter space without having to run too many tests.
     M_a_sample = get_latin_sample(n_samples, M_min_bounds, a_min_bounds, hypercube_state)
 
     args = [
-    (i, len(M_a_sample), M_a[0], M_a[1], evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function, 
+    (results_path, i, len(M_a_sample), M_a[0], M_a[1], evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function, 
         M_maj, a_maj,
         phaseseed, lowest_loss, unknown_dimension, learning_rate, init_guess_offset, epochs, accuracy)
     for i, M_a in enumerate(M_a_sample)
@@ -242,28 +240,31 @@ def test_many_systems_mp(M_min_bounds, a_min_bounds, evolve_time, tau_ev, tau_op
         pool.starmap(process_single_system_mp, args)
     
     output_file = output_path / output_filename
+    print('output_file', output_file)
 
-    merge_h5_files(results_path, output_file)
-    process_result(output_path, output_filename)
+    merge_h5_files(results_path, output_file, delete=True)
+    process_result(output_path, output_filename, [M_maj, a_maj], log_error = False)
     
-
-test_many_systems_mp(M_min_bounds=[1e-8, 1e-3],
+test_description = "evolve time 400 days, 100 epochs, 50 samples. backup cuz people are hogging alice."
+print(test_description)
+print('4 points considered in cost function. Now with different hypercube samples.')
+test_many_systems_mp(M_min_bounds=[1e-10, 1e-3],
                         a_min_bounds = [0.01, 100],
                         evolve_time = 400 | units.day,
                         tau_ev = 1 | units.day,
                         tau_opt = 1 | units.day,
                         num_points_considered_in_cost_function = 4,
-                        hypercube_state=0,
+                        hypercube_state=42,
                         M_maj = 1e-3, 
                         a_maj = 10, 
                         phaseseed = 0,
                         lowest_loss = False,
                         unknown_dimension=3,
                         learning_rate = 1e-8,
-                        init_guess_offset = 1e-8,
+                        init_guess_offset = 1e-7,
                         epochs = 100,
                         accuracy = 1e-10,
-                        n_samples = 100)
+                        n_samples = 50)
 
 
 

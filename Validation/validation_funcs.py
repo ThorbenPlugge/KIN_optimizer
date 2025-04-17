@@ -33,7 +33,7 @@ def select_masses(masses, losses, lowest_loss = True):
         return masses, best_idx, avg_loss_per_epoch
     
 def calculate_mass_error(new_masses, sys):
-    return np.sum(abs(new_masses - sys.mass.value_in(units.Msun))/sys.mass.value_in(units.Msun))
+    return np.sum(abs(new_masses - sys.mass.value_in(units.Msun))/sys.mass.value_in(units.Msun))/len(sys)
 
 def save_results(path, filename, M_min, a_min, masses, mass_error, avg_loss_per_epoch):
     import h5py
@@ -59,7 +59,7 @@ def save_results(path, filename, M_min, a_min, masses, mass_error, avg_loss_per_
             exp_group.attrs[key] = value
         f.close()
 
-def get_latin_sample(n_samples, bounds1, bounds2, hypercube_state):
+def get_latin_sample(n_samples, bounds1, bounds2, hypercube_state, a_log=True):
     from scipy.stats import qmc
     sampler = qmc.LatinHypercube(d=2, strength=1, rng=hypercube_state)
     sample_unscaled = sampler.random(n=n_samples)
@@ -91,13 +91,13 @@ def merge_h5_files(input_folder, output_file, delete=False):
                 print(f"Deleted file: {h5_file}")
             except Exception as e:
                 print(f"Error deleting file {h5_file}: {e}")
+        os.rmdir(input_folder)
 
 
 def load_result(path, filename):
     '''Loads the results of a particular file. Puts it into a dictionary.'''
     import h5py
     filepath = path / filename
-    results = {}
 
     masses_list = []
     mass_error_list = []
@@ -123,7 +123,7 @@ def load_result(path, filename):
         'parameters': parameters
     }
 
-def sensitivity_plot(results, filename, plot_path = plot_path):
+def sensitivity_plot(results, filename, maj_param, log_error = False, plot_path = plot_path):
     '''Creates a sensitivity plot for a given set of results.'''
     from scipy.interpolate import LinearNDInterpolator
 
@@ -141,25 +141,40 @@ def sensitivity_plot(results, filename, plot_path = plot_path):
     interp = LinearNDInterpolator((M_min, a_min), mass_errors)
     Mass_errors_i = interp(M_min_grid, a_min_grid)
 
+    cbarlabel = 'Fractional mass error'
+
+    if log_error: # if we want this, change the error to the log of the error.
+        Mass_errors_i = np.log(Mass_errors_i)
+        mass_errors = np.log(mass_errors)
+        cbarlabel = 'Log fractional mass error'
+
     plt.figure(figsize=[12, 8])
     plt.set_cmap('viridis')
-    plt.pcolormesh(M_min_grid, a_min_grid, np.log(Mass_errors_i), shading='auto')
-    plt.scatter(M_min, a_min, color='k', label='Input points')  # Plot input points
+    plt.pcolormesh(M_min_grid, a_min_grid, Mass_errors_i, shading='auto')
+    plt.scatter(M_min, a_min, s=150, color='white')
+    plt.scatter(M_min, a_min, s=60, c=mass_errors, label='True simulations')  # Plot input points
+    # plot the position of the major planet
+    plt.axhline(maj_param[1], linestyle='--', color='white')
+    plt.axvline(maj_param[0], linestyle='--', color='white', label = 'Parameters of major planet')
+    
+    ax = plt.gca()
+    ax.set_facecolor('xkcd:light grey')
+
     plt.xlabel('Minor planet mass (M_sun)')
     plt.ylabel('Minor planet semimajor axis (AU)')
     plt.title('Sensitivity plot for a three-body system with a major planet and a minor planet.')
     plt.legend()
-    plt.colorbar(label='log Fractional mass error')
+    plt.colorbar(label=cbarlabel)
 
     saved_file = plot_path / filename
 
     plt.savefig(f'{saved_file}.pdf', dpi=800)
 
-def process_result(path, filename):
+def process_result(path, filename, maj_param, log_error = False):
     '''Loads results from an h5 file, and then creates an image.'''
     import h5py
     results = load_result(path, filename)
-    sensitivity_plot(results, f'{filename}.txt')
+    sensitivity_plot(results, f'{filename}', maj_param, log_error)
     print(f'file {filename} processed')
 
 
