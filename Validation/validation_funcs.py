@@ -106,11 +106,20 @@ def load_result(path, filename):
     with h5py.File(filepath, 'r') as f:
         for exp_name in f.keys():
             exp_group = f[exp_name]
-            masses_list.append(np.array(exp_group['masses']))
+            mass_data = np.array(exp_group['masses'])
+            
+            # filter out invalid mass data (length 1 and equal to 0)
+            if mass_data.ndim == 0:
+                print(f'skipped run {exp_name}')
+                continue
+            
+            masses_list.append(mass_data)
             mass_error_list.append(np.array(exp_group['mass_error']))
             avg_loss_per_epoch_list.append(np.array(exp_group['avg_loss_per_epoch']))
             parameters_list.append(np.array(exp_group['parameters (M_min, a_min)']))
 
+    # remove experiments where the mass list is 0.
+    
     masses = np.array(masses_list)
     mass_errors = np.array(mass_error_list)
     avg_loss_per_epoch = np.array(avg_loss_per_epoch_list)
@@ -143,12 +152,15 @@ def sensitivity_plot(results, filename, maj_param, log_error = False, plot_path 
 
     cbarlabel = 'Fractional mass error'
 
+    
+
     if log_error: # if we want this, change the error to the log of the error.
         Mass_errors_i = np.log(Mass_errors_i)
         mass_errors = np.log(mass_errors)
         cbarlabel = 'Log fractional mass error'
+        filename = f'log_{filename}'
 
-    plt.figure(figsize=[12, 8])
+    plt.figure(figsize=[15, 9])
     plt.set_cmap('viridis')
     plt.pcolormesh(M_min_grid, a_min_grid, Mass_errors_i, shading='auto')
     plt.scatter(M_min, a_min, s=150, color='white')
@@ -163,7 +175,7 @@ def sensitivity_plot(results, filename, maj_param, log_error = False, plot_path 
     plt.xlabel('Minor planet mass (M_sun)')
     plt.ylabel('Minor planet semimajor axis (AU)')
     plt.title('Sensitivity plot for a three-body system with a major planet and a minor planet.')
-    plt.legend()
+    plt.legend(loc='upper right')
     plt.colorbar(label=cbarlabel)
 
     saved_file = plot_path / filename
