@@ -205,6 +205,7 @@ def sensitivity_plot(results, filename, maj_param, log_error = False, plot_path 
     plt.colorbar(label=cbarlabel)
     if loglog:
         plt.loglog()
+
     saved_file = plot_path / filename
 
     plt.savefig(f'{saved_file}.pdf', dpi=800)
@@ -213,7 +214,7 @@ def process_result(path, filename, maj_param, log_error = False, filter_outliers
     '''Loads results from an h5 file, and then creates an image.'''
     import h5py
     results, run_params = load_result(path, filename, filter_outliers=filter_outliers)
-    sensitivity_plot(results, f'{filename}', maj_param, log_error, loglog)
+    sensitivity_plot(results, f'{filename}', maj_param, log_error, plot_path = plot_path, loglog=loglog)
     print(f'file {filename} processed')
 
 

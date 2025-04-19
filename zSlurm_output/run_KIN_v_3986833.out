@@ -1,0 +1,149 @@
+#### Starting test
+output_file /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3986833/5_systems_0.001_10_3986833.h5
+n_cores available for slurm is 16
+2025-04-19 13:25:33.877238: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-19 13:25:33.877426: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-19 13:25:33.877474: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-19 13:25:33.877473: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-19 13:25:33.881060: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-19 13:25:33.881066: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-19 13:25:33.881151: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-19 13:25:33.881155: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-19 13:25:33.881472: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-19 13:25:33.885192: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-19 13:25:33.890473: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-04-19 13:25:33.890473: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-04-19 13:25:33.890514: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-04-19 13:25:33.890514: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-04-19 13:25:33.894927: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1745061933.905427 3729951 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1745061933.905427 3729950 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1745061933.905798 3729949 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1745061933.905956 3729953 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1745061933.909816 3729950 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+E0000 00:00:1745061933.909816 3729951 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1745061933.909901 3729952 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1745061933.910395 3729953 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+E0000 00:00:1745061933.910395 3729949 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+E0000 00:00:1745061933.914690 3729952 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1745061933.925162 3729950 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745061933.925162 3729951 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745061933.925195 3729950 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745061933.925199 3729951 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745061933.925201 3729950 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745061933.925203 3729951 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745061933.925204 3729950 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745061933.925206 3729951 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745061933.925802 3729953 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745061933.925801 3729949 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745061933.925823 3729953 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745061933.925827 3729949 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745061933.925828 3729953 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745061933.925830 3729949 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745061933.925832 3729953 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745061933.925833 3729949 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+2025-04-19 13:25:33.929452: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-04-19 13:25:33.929452: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-04-19 13:25:33.930025: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-04-19 13:25:33.930025: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+W0000 00:00:1745061933.930090 3729952 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745061933.930123 3729952 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745061933.930126 3729952 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745061933.930129 3729952 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+2025-04-19 13:25:33.933895: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-04-19 13:25:42.399065: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2025-04-19 13:25:42.399116: I external/local_xla/xla/stream_executor/cuda/cuda_diagnostics.cc:178] verbose logging is disabled. Rerun with verbose logging (usually --v=1 or --vmodule=cuda_diagnostics=1) to get more diagnostic output from this module
+2025-04-19 13:25:42.399123: I external/local_xla/xla/stream_executor/cuda/cuda_diagnostics.cc:183] retrieving CUDA diagnostic information for host: node872
+2025-04-19 13:25:42.399127: I external/local_xla/xla/stream_executor/cuda/cuda_diagnostics.cc:190] hostname: node872
+2025-04-19 13:25:42.399231: I external/local_xla/xla/stream_executor/cuda/cuda_diagnostics.cc:197] libcuda reported version is: 560.35.3
+2025-04-19 13:25:42.399254: I external/local_xla/xla/stream_executor/cuda/cuda_diagnostics.cc:201] kernel reported version is: 560.35.3
+2025-04-19 13:25:42.399257: I external/local_xla/xla/stream_executor/cuda/cuda_diagnostics.cc:291] kernel version seems to match DSO: 560.35.3
+2025-04-19 13:25:42.478839: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2025-04-19 13:25:42.478897: I external/local_xla/xla/stream_executor/cuda/cuda_diagnostics.cc:178] verbose logging is disabled. Rerun with verbose logging (usually --v=1 or --vmodule=cuda_diagnostics=1) to get more diagnostic output from this module
+2025-04-19 13:25:42.478905: I external/local_xla/xla/stream_executor/cuda/cuda_diagnostics.cc:183] retrieving CUDA diagnostic information for host: node872
+2025-04-19 13:25:42.478909: I external/local_xla/xla/stream_executor/cuda/cuda_diagnostics.cc:190] hostname: node872
+2025-04-19 13:25:42.479010: I external/local_xla/xla/stream_executor/cuda/cuda_diagnostics.cc:197] libcuda reported version is: 560.35.3
+2025-04-19 13:25:42.479033: I external/local_xla/xla/stream_executor/cuda/cuda_diagnostics.cc:201] kernel reported version is: 560.35.3
+2025-04-19 13:25:42.479037: I external/local_xla/xla/stream_executor/cuda/cuda_diagnostics.cc:291] kernel version seems to match DSO: 560.35.3
+2025-04-19 13:25:46.325658: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2025-04-19 13:25:46.325728: I external/local_xla/xla/stream_executor/cuda/cuda_diagnostics.cc:178] verbose logging is disabled. Rerun with verbose logging (usually --v=1 or --vmodule=cuda_diagnostics=1) to get more diagnostic output from this module
+2025-04-19 13:25:46.325736: I external/local_xla/xla/stream_executor/cuda/cuda_diagnostics.cc:183] retrieving CUDA diagnostic information for host: node872
+2025-04-19 13:25:46.325740: I external/local_xla/xla/stream_executor/cuda/cuda_diagnostics.cc:190] hostname: node872
+2025-04-19 13:25:46.325882: I external/local_xla/xla/stream_executor/cuda/cuda_diagnostics.cc:197] libcuda reported version is: 560.35.3
+2025-04-19 13:25:46.325912: I external/local_xla/xla/stream_executor/cuda/cuda_diagnostics.cc:201] kernel reported version is: 560.35.3
+2025-04-19 13:25:46.325916: I external/local_xla/xla/stream_executor/cuda/cuda_diagnostics.cc:291] kernel version seems to match DSO: 560.35.3
+2025-04-19 13:25:46.366976: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2025-04-19 13:25:46.367031: I external/local_xla/xla/stream_executor/cuda/cuda_diagnostics.cc:178] verbose logging is disabled. Rerun with verbose logging (usually --v=1 or --vmodule=cuda_diagnostics=1) to get more diagnostic output from this module
+2025-04-19 13:25:46.367038: I external/local_xla/xla/stream_executor/cuda/cuda_diagnostics.cc:183] retrieving CUDA diagnostic information for host: node872
+2025-04-19 13:25:46.367042: I external/local_xla/xla/stream_executor/cuda/cuda_diagnostics.cc:190] hostname: node872
+2025-04-19 13:25:46.367207: I external/local_xla/xla/stream_executor/cuda/cuda_diagnostics.cc:197] libcuda reported version is: 560.35.3
+2025-04-19 13:25:46.367233: I external/local_xla/xla/stream_executor/cuda/cuda_diagnostics.cc:201] kernel reported version is: 560.35.3
+2025-04-19 13:25:46.367236: I external/local_xla/xla/stream_executor/cuda/cuda_diagnostics.cc:291] kernel version seems to match DSO: 560.35.3
+2025-04-19 13:25:46.711944: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2025-04-19 13:25:46.711985: I external/local_xla/xla/stream_executor/cuda/cuda_diagnostics.cc:178] verbose logging is disabled. Rerun with verbose logging (usually --v=1 or --vmodule=cuda_diagnostics=1) to get more diagnostic output from this module
+2025-04-19 13:25:46.711993: I external/local_xla/xla/stream_executor/cuda/cuda_diagnostics.cc:183] retrieving CUDA diagnostic information for host: node872
+2025-04-19 13:25:46.711997: I external/local_xla/xla/stream_executor/cuda/cuda_diagnostics.cc:190] hostname: node872
+2025-04-19 13:25:46.712116: I external/local_xla/xla/stream_executor/cuda/cuda_diagnostics.cc:197] libcuda reported version is: 560.35.3
+2025-04-19 13:25:46.712143: I external/local_xla/xla/stream_executor/cuda/cuda_diagnostics.cc:201] kernel reported version is: 560.35.3
+2025-04-19 13:25:46.712147: I external/local_xla/xla/stream_executor/cuda/cuda_diagnostics.cc:291] kernel version seems to match DSO: 560.35.3
+Running simulation...
+start the learn masses function
+saved results for system 3
+Running simulation...
+start the learn masses function
+saved results for system 1
+Running simulation...
+start the learn masses function
+saved results for system 2
+Running simulation...
+start the learn masses function
+saved results for system 4
+Running simulation...
+start the learn masses function
+saved results for system 0
+All files merged into /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3986833/5_systems_0.001_10_3986833.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3986833/mp_results/0_of_5_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3986833/mp_results/1_of_5_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3986833/mp_results/2_of_5_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3986833/mp_results/3_of_5_systems_0.001_10.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3986833/mp_results/4_of_5_systems_0.001_10.h5
+
+Run parameters:
+   Evolve time (days): 1200.0
+   M_maj: 0.001
+   Tau_ev (days): 3.0
+   Tau_opt (days): 3.0
+   a_maj: 10.0
+   accuracy: 1e-09
+   epochs: 150.0
+   init_guess_offset: 1e-06
+   learning_rate: 1e-08
+   loglog: 1.0
+   lowest_loss: 0.0
+   num_points_considered_in_cost_function: 4.0
+   phaseseed: 0.0
+   unknown_dimension: 3.0
+
+
+Traceback (most recent call last):
+  File "/home/s2818760/MasterProj/KIN_optimizer/Validation/validation.py", line 264, in <module>
+    test_many_systems_mp(M_min_bounds=[1e-10, 1e-3],
+  File "/home/s2818760/MasterProj/KIN_optimizer/Validation/validation.py", line 262, in test_many_systems_mp
+    process_result(output_path, output_filename, [M_maj, a_maj], log_error = False, filter_outliers=False, loglog=loglog)
+  File "/home/s2818760/MasterProj/KIN_optimizer/Validation/validation_funcs.py", line 216, in process_result
+    sensitivity_plot(results, f'{filename}', maj_param, log_error, loglog)
+  File "/home/s2818760/MasterProj/KIN_optimizer/Validation/validation_funcs.py", line 208, in sensitivity_plot
+    saved_file = plot_path / filename
+                 ~~~~~~~~~~^~~~~~~~~~
+TypeError: unsupported operand type(s) for /: 'bool' and 'str'
+#### Finished Test. Have a nice day

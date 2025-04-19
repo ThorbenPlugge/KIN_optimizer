@@ -223,7 +223,8 @@ def test_many_systems_mp(M_min_bounds, a_min_bounds, evolve_time, tau_ev, tau_op
     results_path = arbeit_path / f'Validation/val_results/{job_id}/mp_results'
     output_path = arbeit_path / f'Validation/val_results/{job_id}'
     output_filename = f'{n_samples}_systems_{M_maj}_{a_maj}_{job_id}.h5'
-
+    plot_path = arbeit_path / 'Plots'
+    
     # We do Latin Hypercube sampling of our 2d parameter space, such that we can most efficiently 
     # sample the parameter space without having to run too many tests.
     M_a_sample = get_latin_sample(n_samples, M_min_bounds, a_min_bounds, hypercube_state, loglog)
