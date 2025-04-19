@@ -59,11 +59,17 @@ def save_results(path, filename, M_min, a_min, masses, mass_error, avg_loss_per_
             exp_group.attrs[key] = value
         f.close()
 
-def get_latin_sample(n_samples, bounds1, bounds2, hypercube_state, a_log=True):
-    from scipy.stats import qmc
+def get_latin_sample(n_samples, bounds1, bounds2, hypercube_state, log_space=True):
+    from scipy.stats import qmc   
     sampler = qmc.LatinHypercube(d=2, strength=1, rng=hypercube_state)
     sample_unscaled = sampler.random(n=n_samples)
-    sample = qmc.scale(sample_unscaled, bounds1, bounds2)
+    if log_space:
+        log_bounds1 = np.log(np.array(bounds1))
+        log_bounds2 = np.log(np.array(bounds2))
+        sample = qmc.scale(sample_unscaled, log_bounds1, log_bounds2)
+        sample = np.exp(sample)
+    else:
+        sample = qmc.scale(sample_unscaled, bounds1, bounds2)
     return sample
 
 def merge_h5_files(input_folder, output_file, delete=False):
@@ -74,7 +80,7 @@ def merge_h5_files(input_folder, output_file, delete=False):
 
     h5_files = sorted(input_folder.glob('*.h5'))
 
-    with h5py.File(output_file, 'w') as output_h5:
+    with h5py.File(output_file, 'a') as output_h5:
         for file_index, h5_file in enumerate(h5_files):
             with h5py.File(h5_file, 'r') as input_h5:
                 # copy each group from the input file to the output
@@ -108,8 +114,8 @@ def load_result(path, filename, filter_outliers=False):
             exp_group = f[exp_name]
             mass_data = np.array(exp_group['masses'])
             
-            # filter out invalid mass data (length 1 and equal to 0)
-            if mass_data.ndim == 0:
+            # filter out invalid mass data 
+            if mass_data.ndim < 1:
                 print(f'skipped run {exp_name} due to invalid mass data')
                 continue
             
@@ -123,12 +129,24 @@ def load_result(path, filename, filter_outliers=False):
             mass_error_list.append(mass_error_data)
             avg_loss_per_epoch_list.append(np.array(exp_group['avg_loss_per_epoch']))
             parameters_list.append(np.array(exp_group['parameters (M_min, a_min)']))
+
         # also extract the attributes.
         print('\nRun parameters:')
         for key, value in f.attrs.items():
             print('   {}: {}'.format(key, value))
         print('\n')
         run_params = f.attrs 
+
+    # make sure all loss arrays are of equal length, by repeating the last loss value for the epochs 
+    # where the accuracy limit was already reached. 
+    maxlength = np.max(np.array([len(i) for i in avg_loss_per_epoch_list]))
+    for i, alpe in enumerate(avg_loss_per_epoch_list):
+        if len(alpe) < maxlength:
+            avg_loss_per_epoch_list[i] = np.pad(
+                alpe, 
+                (0, maxlength - len(alpe)), 
+                mode='edge'
+            )
 
     masses = np.array(masses_list)
     mass_errors = np.array(mass_error_list)
@@ -142,7 +160,7 @@ def load_result(path, filename, filter_outliers=False):
         'parameters': parameters
     }, run_params
 
-def sensitivity_plot(results, filename, maj_param, log_error = False, plot_path = plot_path):
+def sensitivity_plot(results, filename, maj_param, log_error = False, plot_path = plot_path, loglog = False):
     '''Creates a sensitivity plot for a given set of results.'''
     from scipy.interpolate import LinearNDInterpolator
 
@@ -185,16 +203,17 @@ def sensitivity_plot(results, filename, maj_param, log_error = False, plot_path 
     plt.title('Sensitivity plot for a three-body system with a major planet and a minor planet.')
     plt.legend(loc='upper right')
     plt.colorbar(label=cbarlabel)
-
+    if loglog:
+        plt.loglog()
     saved_file = plot_path / filename
 
     plt.savefig(f'{saved_file}.pdf', dpi=800)
 
-def process_result(path, filename, maj_param, log_error = False, filter_outliers=False):
+def process_result(path, filename, maj_param, log_error = False, filter_outliers=False, loglog = False):
     '''Loads results from an h5 file, and then creates an image.'''
     import h5py
     results, run_params = load_result(path, filename, filter_outliers=filter_outliers)
-    sensitivity_plot(results, f'{filename}', maj_param, log_error)
+    sensitivity_plot(results, f'{filename}', maj_param, log_error, loglog)
     print(f'file {filename} processed')
 
 

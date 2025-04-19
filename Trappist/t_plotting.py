@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-from amuse.units import units, constants, nbody_system
+from amuse.units import units, constants, nbody_system # type: ignore
 
 import matplotlib.animation as animation
 from functools import partial

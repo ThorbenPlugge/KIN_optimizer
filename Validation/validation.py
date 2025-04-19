@@ -61,7 +61,7 @@ def find_masses(test_sys, evolve_time, tau_ev, tau_opt, num_points_considered_in
         unknown_dimension=unknown_dimension,
         plotGraph = False,
         plot_in_2D = False,
-        zoombox = 'not yet',
+        zoombox = 'not yet', # can be 'trappist' 
         negative_mass_penalty=1,
         accuracy = accuracy,
         printing = printing
@@ -210,7 +210,7 @@ def process_single_system_mp(results_path, i, len_mp_sample, M_min, a_min, evolv
     print(f'saved results for system {i}')
 
 def test_many_systems_mp(M_min_bounds, a_min_bounds, evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function, hypercube_state = 0, 
-                      M_maj = 1e-3, a_maj = 10, phaseseed = 0, lowest_loss = False, unknown_dimension=3, learning_rate = 1e-8, init_guess_offset = 1e-8, epochs = 150, accuracy = 1e-8, n_samples = 50):
+                      M_maj = 1e-3, a_maj = 10, phaseseed = 0, lowest_loss = False, unknown_dimension=3, learning_rate = 1e-8, init_guess_offset = 1e-8, epochs = 150, accuracy = 1e-8, n_samples = 50, loglog=False):
     '''This function can be called to test many different variations of the simple three-body system with a major planet.
     Input M_min and a_min as ranges, and the latin hypercube sampler will find the most optimal places to sample.
     This function parallelizes the optimization to do multiple systems at once.'''
@@ -226,7 +226,7 @@ def test_many_systems_mp(M_min_bounds, a_min_bounds, evolve_time, tau_ev, tau_op
 
     # We do Latin Hypercube sampling of our 2d parameter space, such that we can most efficiently 
     # sample the parameter space without having to run too many tests.
-    M_a_sample = get_latin_sample(n_samples, M_min_bounds, a_min_bounds, hypercube_state)
+    M_a_sample = get_latin_sample(n_samples, M_min_bounds, a_min_bounds, hypercube_state, loglog)
 
     args = [
     (results_path, i, len(M_a_sample), M_a[0], M_a[1], evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function, 
@@ -235,48 +235,50 @@ def test_many_systems_mp(M_min_bounds, a_min_bounds, evolve_time, tau_ev, tau_op
     for i, M_a in enumerate(M_a_sample)
     ]
     
+    output_file = output_path / output_filename
+    print('output_file', output_file)
+
+    attribute_names = np.array(['Evolve time (days)', 'Tau_ev (days)', 'Tau_opt (days)', 'num_points_considered_in_cost_function',
+                                'M_maj', 'a_maj', 'phaseseed', 'lowest_loss',
+                                'unknown_dimension', 'learning_rate', 'init_guess_offset', 'epochs', 'accuracy', 'loglog'])
+    attributes_to_save = np.array([evolve_time.value_in(units.day), tau_ev.value_in(units.day), tau_opt.value_in(units.day),
+                                    num_points_considered_in_cost_function, 
+                                    M_maj, a_maj, phaseseed, lowest_loss, 
+                                    unknown_dimension, learning_rate, init_guess_offset, epochs, accuracy, loglog])
+    
+    with h5py.File(output_file, 'w') as f:
+        for i, attribute in enumerate(attributes_to_save):
+            f.attrs[f'{attribute_names[i]}'] = attribute
+    
     n_cores = os.environ['SLURM_CPUS_PER_TASK']
     print('n_cores available for slurm is', n_cores)
     with Pool(processes=int(n_cores)) as pool:
         pool.starmap(process_single_system_mp, args)
-    
-    output_file = output_path / output_filename
-    print('output_file', output_file)
+
 
     merge_h5_files(results_path, output_file, delete=True)
     # now add the attributes of this run to the merged h5 file!!
 
-    attribute_names = np.array(['Evolve time (days)', 'Tau_ev (days)', 'Tau_opt (days)', 'num_points_considered_in_cost_function',
-                                'M_maj', 'a_maj', 'phaseseed', 'lowest_loss',
-                                'unknown_dimension', 'learning_rate', 'init_guess_offset', 'epochs', 'accuracy'])
-    attributes_to_save = np.array([evolve_time.value_in(units.day), tau_ev.value_in(units.day), tau_opt.value_in(units.day),
-                                    num_points_considered_in_cost_function, 
-                                    M_maj, a_maj, phaseseed, lowest_loss, 
-                                    unknown_dimension, learning_rate, init_guess_offset, epochs, accuracy])
-    
-    with h5py.File(output_file, 'a') as f:
-        for i, attribute in enumerate(attributes_to_save):
-            f.attrs[f'{attribute_names[i]}'] = attribute
-
-    process_result(output_path, output_filename, [M_maj, a_maj], log_error = False, filter_outliers=False)
+    process_result(output_path, output_filename, [M_maj, a_maj], log_error = False, filter_outliers=False, loglog=loglog)
 
 test_many_systems_mp(M_min_bounds=[1e-10, 1e-3],
-                        a_min_bounds = [0.01, 50],
+                        a_min_bounds = [0.01, 20],
                         evolve_time = 1200 | units.day,
-                        tau_ev = 1 | units.day,
-                        tau_opt = 1 | units.day,
+                        tau_ev = 3 | units.day,
+                        tau_opt = 3 | units.day,
                         num_points_considered_in_cost_function = 4,
-                        hypercube_state=42,
+                        hypercube_state=41,
                         M_maj = 1e-3, 
                         a_maj = 10, 
                         phaseseed = 0,
                         lowest_loss = False,
                         unknown_dimension=3,
                         learning_rate = 1e-8,
-                        init_guess_offset = 1e-8,
-                        epochs = 100,
-                        accuracy = 1e-10,
-                        n_samples = 150)
+                        init_guess_offset = 1e-6,
+                        epochs = 150,
+                        accuracy = 1e-9,
+                        n_samples = 5,
+                        loglog = True)
 
 
 
