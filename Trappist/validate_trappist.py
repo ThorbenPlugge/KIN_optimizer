@@ -82,25 +82,14 @@ def save_results(path, filename, masses, mass_error, avg_loss_per_epoch):
             exp_group.attrs[key] = value
 
 
-def test(evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function = 1, unknown_dimension = 3, learning_rate = 0.1, epochs = 100, generate_movie = False, test_new_masses = False, phaseseed = 0):
-    '''Generates a trappist-like system, evolves it with Sakura, and runs the optimizer.
-    :param evolve_time: Time to evolve the system. Must be an Amuse time quantity.
-    :param tau_ev: Timestep for Sakura to use when evolving the system. Also an Amuse time quantity.
-    :param tau_opt: Timestep for the optimizer to use when evolving the system. Amuse time quantity.
-    :param int num_points_considered_in_cost_function: Number of points considered in the optimizer cost function. Setting this to 1 makes the optimizer use the first and last point of evolution, which is the default.
-    :param int unknown_dimension: can be in [0, 1, 2] to hide the specified dimension from the optimizer, which then tries to learn it. Defaults to 3, which hides no dimension.
-    :param float learning_rate: the learning rate of the optimizer. Defaults to 0.1.
-    :param bool generate_movie: If true, generates a test_movie.mp4 of the evolution of the system. Defaults to False.
-    :param phaseseed: Sets the seed for the generation random phases of the trappist-like system. 
-    '''
-
+def test(evolve_time, tau_ev, tau_opt,num_points_considered_in_cost_function = 1, unknown_dimension = 3, learning_rate = 0.1, init_guess_offset = 1e-8, epochs = 100, accuracy = 1e-10, generate_movie = False, test_new_masses = False, phaseseed = 0):
     from Trappist.generate_trappist import create_trappist_system
     from Trappist.evolve_trappist import evolve_sys_sakura
-    from Trappist.t_plotting import create_sys_movie, plot_system, plot_loss_func
+    from Trappist.t_plotting import create_sys_movie, plot_loss_func
     from Trappist.data_conversion import convert_states_to_celestial_bodies, convert_sys_to_initial_guess_list
     from test_Main_Code import init_optimizer
     import Learning.Training_loops as node
-    import math
+    import h5py
     from Validation.validation_funcs import select_masses, calculate_mass_error
 
     print('let us generate a system')
@@ -117,7 +106,7 @@ def test(evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function = 
     if generate_movie:
         create_sys_movie(evolved_sys, pos_states, vel_states, 'test_movie.mp4', three_d = True)
 
-    init_guess_variance = np.random.uniform(0, 0.00001, len(test_sys))
+    init_guess_variance = np.random.uniform(0, init_guess_offset, len(test_sys))
     init_guess_variance[0] = 0
     initial_guess = evolved_sys.mass + (init_guess_variance | units.Msun)
     
@@ -132,8 +121,6 @@ def test(evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function = 
                                                          bodies_and_initial_guesses = bodies_and_initial_guesses,
                                                          unknown_dimension = unknown_dimension)
     
-
-
     # Initialize the optimizer with n + n*3*2 variables, for masses, 
     # velocities and positions for each body
     num_bodies = len(test_sys)
@@ -152,7 +139,7 @@ def test(evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function = 
         plot_in_2D = False,
         zoombox = 'trappist',
         negative_mass_penalty=1,
-        accuracy = 1e-10
+        accuracy = accuracy
     )
 
     # select the best epoch for the masses, calculate the errors, plot them and save them.
@@ -162,14 +149,24 @@ def test(evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function = 
 
     plot_loss_func(avg_loss_per_epoch, name = 'trappist_lpe.pdf')
 
-    result_path = arbeit_path / 'Trappist/trappist_results'
+    output_path = arbeit_path / 'Trappist/trappist_results'
+    job_id = os.environ['SLURM_JOB_ID']
 
-    save_results(result_path, 'trappist_result.h5', masses, mass_error, avg_loss_per_epoch)
+    output_name = f'trappist_result_{job_id}.h5'
+    output_file = output_path / output_name
 
-    print('true masses:', evolved_sys.mass)
-    print('found masses:', masses)
-    print('relative diff:', abs(masses - evolved_sys.mass.value_in(units.Msun))/evolved_sys.mass.value_in(units.Msun))
+    save_results(output_path, output_file, masses, mass_error, avg_loss_per_epoch)
 
+    # record all parameters
+    attributes_to_save = [evolve_time.value_in(units.day), tau_ev.value_in(units.day), tau_opt.value_in(units.day), num_points_considered_in_cost_function, unknown_dimension, learning_rate, 
+            init_guess_offset, epochs, accuracy, generate_movie, test_new_masses, phaseseed]
+    attribute_names = ['evolve_time (days)', 'tau_ev (days)', 'tau_opt (days)', 'num_points_considered_in_cost_function', 'unknown_dimension', 'learning_rate', 
+            'init_guess_offset', 'epochs', 'accuracy', 'generate_movie', 'test_new_masses', 'phaseseed']
+    
+    with h5py.File(output_file, 'a') as f:
+        for i, attribute in enumerate(attributes_to_save):
+            f.attrs[f'{attribute_names[i]}'] = attribute
+    
     if test_new_masses == True:
         ## TESTING WITH SAKURA REINTEGRATION
         # make some copies so we don't overwrite or use a system that has already
@@ -217,12 +214,14 @@ def test(evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function = 
 test(evolve_time = 50 | units.day,
      tau_ev = 0.01 | units.day,
      tau_opt = 0.01 | units.day,
-     num_points_considered_in_cost_function = 8,
+     num_points_considered_in_cost_function = 4,
      unknown_dimension = 3,
-     learning_rate = 0.000001,
-     epochs = 100,
+     learning_rate = 1e-8,
+     init_guess_offset = 1e-8,
+     epochs = 3,
+     accuracy = 1e-10,
      generate_movie = False,
-     test_new_masses = True,
+     test_new_masses = False,
      phaseseed = 0)
 
     
