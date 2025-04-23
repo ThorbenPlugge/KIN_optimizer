@@ -180,7 +180,7 @@ def test_many_systems_serial(M_min_bounds, a_min_bounds, evolve_time, tau_ev, ta
 #                         n_samples = 50)
 
 # now let's write multiprocessing!
-def process_single_system_mp(results_path, i, len_mp_sample, M_min, a_min, evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function, M_maj = 1e-3, a_maj = 10, phaseseed = 0, lowest_loss = True, unknown_dimension = 3, learning_rate = 1e-5, init_guess_offset = 1e-7, epochs = 100, accuracy = 1e-8):
+def process_single_system_mp_old(results_path, i, len_mp_sample, M_min, a_min, evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function, M_maj = 1e-3, a_maj = 10, phaseseed = 0, lowest_loss = False, unknown_dimension = 3, learning_rate = 1e-8, init_guess_offset = 1e-7, epochs = 100, accuracy = 1e-10):
     from Validation.system_generation import create_test_system
     from Trappist.t_plotting import plot_loss_func
     from Validation.validation_funcs import select_masses, calculate_mass_error, save_results
@@ -220,8 +220,8 @@ def test_many_systems_mp(M_min_bounds, a_min_bounds, evolve_time, tau_ev, tau_op
 
     job_id = os.environ['SLURM_JOB_ID']
     
-    results_path = arbeit_path / f'Validation/val_sys_results/{job_id}/mp_results'
-    output_path = arbeit_path / f'Validation/val_sys_results/{job_id}'
+    results_path = arbeit_path / f'Validation/val_results/{job_id}/mp_results'
+    output_path = arbeit_path / f'Validation/val_results/{job_id}'
     output_filename = f'{n_samples}_systems_{M_maj}_{a_maj}_{job_id}.h5'
     plot_path = arbeit_path / 'Plots'
     
@@ -254,7 +254,7 @@ def test_many_systems_mp(M_min_bounds, a_min_bounds, evolve_time, tau_ev, tau_op
     n_cores = os.environ['SLURM_CPUS_PER_TASK']
     print('n_cores available for slurm is', n_cores)
     with Pool(processes=int(n_cores)) as pool:
-        pool.starmap(process_single_system_mp, args)
+        pool.starmap(process_single_system_mp_old, args)
 
 
     merge_h5_files(results_path, output_file, delete=True)
@@ -262,24 +262,58 @@ def test_many_systems_mp(M_min_bounds, a_min_bounds, evolve_time, tau_ev, tau_op
 
     process_result(output_path, output_filename, [M_maj, a_maj], log_error = False, filter_outliers=False, loglog=loglog)
 
-test_many_systems_mp(M_min_bounds=[1e-10, 1e-3],
-                        a_min_bounds = [0.01, 100],
-                        evolve_time = 1200 | units.day,
-                        tau_ev = 3 | units.day,
-                        tau_opt = 3 | units.day,
-                        num_points_considered_in_cost_function = 80,
-                        hypercube_state=41,
-                        M_maj = 1e-3, 
-                        a_maj = 10, 
-                        phaseseed = 0,
-                        lowest_loss = False,
-                        unknown_dimension=3,
-                        learning_rate = 1e-8,
-                        init_guess_offset = 1e-7,
-                        epochs = 150,
-                        accuracy = 1e-10,
-                        n_samples = 150,
-                        loglog = True)
+# test_many_systems_mp(M_min_bounds=[1e-10, 1e-3],
+#                         a_min_bounds = [0.01, 100],
+#                         evolve_time = 1200 | units.day,
+#                         tau_ev = 3 | units.day,
+#                         tau_opt = 3 | units.day,
+#                         num_points_considered_in_cost_function = 80,
+#                         hypercube_state=41,
+#                         M_maj = 1e-3, 
+#                         a_maj = 10, 
+#                         phaseseed = 0,
+#                         lowest_loss = False,
+#                         unknown_dimension=3,
+#                         learning_rate = 1e-8,
+#                         init_guess_offset = 1e-7,
+#                         epochs = 150,
+#                         accuracy = 1e-10,
+#                         n_samples = 150,
+#                         loglog = True)
+
+def process_single_system_mp(M_min, a_min, evolve_time, tau, num_points_considered_in_cost_function,
+                                      M_maj, a_maj, epochs, accuracy, n_samples, init_guess_offset,
+                                      learning_rate, unknown_dimension, phaseseed, results_path, i,
+                                      varied_param_names, varied_params):
+    from Validation.system_generation import create_test_system
+    from Trappist.t_plotting import plot_loss_func
+    from Validation.validation_funcs import select_masses, calculate_mass_error, save_results
+    # First, generate a system according to the parameters
+
+    test_sys = create_test_system(M_maj = M_maj, M_min = M_min, a_maj = a_maj, a_min = a_min, phaseseed = phaseseed)
+
+    # Find the masses of the system
+    masses, losses = find_masses(test_sys=test_sys,
+                                 evolve_time=evolve_time,
+                                 tau_ev=tau,
+                                 tau_opt=tau,
+                                 num_points_considered_in_cost_function=num_points_considered_in_cost_function,
+                                 unknown_dimension=unknown_dimension,
+                                 learning_rate=learning_rate,
+                                 init_guess_offset=init_guess_offset,
+                                 epochs=epochs,
+                                 accuracy=accuracy,
+                                 printing=False)
+    
+    masses, best_idx, avg_loss_per_epoch = select_masses(masses, losses, lowest_loss = False)
+    true_masses = test_sys.mass.value_in(units.Msun)
+
+    # Calculate the mass error
+    mass_error = calculate_mass_error(masses, test_sys)
+
+    save_results(results_path, f'{i}_of_{n_samples}_systems.h5', masses, true_masses, mass_error, avg_loss_per_epoch, 
+                 varied_param_names, varied_params)
+    print(f'saved results for system {i}')
 
 def test_2_parameters_on_many_systems(M_min, a_min, evolve_time, tau, num_points_considered_in_cost_function,
                                       M_maj, a_maj, epochs, accuracy, n_samples, init_guess_offset,
@@ -289,11 +323,90 @@ def test_2_parameters_on_many_systems(M_min, a_min, evolve_time, tau, num_points
     from multiprocessing import Pool
     import h5py
 
+    # TODO: make it so you can have a slurm mode and a normal laptop mode.
+
+    # replace by own job id if not using slurm
     job_id = os.environ['SLURM_JOB_ID']
 
-    # TODO: detect automatically which two parameters are given as an input. also make an option for 1 parameter?
+    results_path = arbeit_path / f'Validation/val_results/{job_id}/mp_results' # save the temporary h5 files per system here
+    output_path = arbeit_path / f'Validation/val_results/{job_id}' # and combine them here.
 
-    # TODO: decide how to order the output files and make clear what parameters were used. 
+    # TODO: detect automatically which two parameters are given as an input. also make an option for 1 parameter?
+    param_name_list =['M_min', 'a_min', 'evolve_time', 'tau', 'num_points_considered_in_cost_function',
+                  'M_maj', 'a_maj', 'epochs', 'accuracy', 'n_samples', 'init_guess_offset',
+                  'learning_rate', 'unknown_dimension', 'phaseseed', 'hypercube_state',
+                  'loglog']
+    param_list = [M_min, a_min, evolve_time.value_in(units.day), tau.value_in(units.day), num_points_considered_in_cost_function,
+                  M_maj, a_maj, epochs, accuracy, n_samples, init_guess_offset,
+                  learning_rate, unknown_dimension, phaseseed, hypercube_state,
+                  loglog]
+    
+    unvariable = ['epochs', 'accuracy', 'n_samples', 'learning_rate', 'unknown_dimension', 'phaseseed', 'hypercube_state', 'loglog']
+
+    # initialize arrays to store which parameters to vary
+    param_dict = {}
+    p_var_bounds = []
+    p_var_names = []
+
+    # Store the parameters in a dictionary and select the ones to vary
+    for i in range(len(param_list)):
+        param_dict[f'{param_name_list[i]}'] = param_list[i]
+        if len(param_dict[f'{param_name_list[i]}']) > 1:
+            if param_name_list[i] in unvariable:
+                raise Exception('Not allowed to vary this parameter. Variable parameters are:\n M_min, a_min, evolve_time, tau, num_points_considered_in_cost_function, M_maj, a_maj, init_guess_offset')
+            p_var_bounds.append(param_dict[f'{param_name_list[i]}'])
+            p_var_names.append(param_name_list[i])
+    
+    if len(p_var_bounds) > 2:
+        raise Exception(f'Trying to vary {len(p_var_bounds)} parameters. Maximum is 2.')
+
+    if len(p_var_bounds) == 1:
+        # vary 1 parameter. write the code
+        print('not finished')
+
+    if len(p_var_bounds) == 2:
+        # vary 2 parameters.
+
+        output_filename = f'{n_samples}_systems_{p_var_names[0]}_{p_var_names[0]}_{job_id}.h5'
+        output_file = output_path / output_filename
+
+        with h5py.File(output_file, 'w') as f:
+            for i, attribute in enumerate(param_list):
+                f.attrs[f'{param_name_list[i]}'] = attribute
+        
+        # sample the two parameters efficiently using latin hypercube sampling
+        param_sample = get_latin_sample(n_samples, p_var_bounds[0], p_var_bounds[1], hypercube_state, loglog)
+
+        # prepare the arguments for the process_single_system_mp function
+        args = []
+        for i, param_values in enumerate(param_sample):
+            # use the existing param_dict to dynamically set the two parameters being varied
+            param_dict_copy = param_dict.copy()
+            param_dict_copy[p_var_names[0]] = param_values[0]
+            param_dict_copy[p_var_names[1]] = param_values[1]
+            param_dict_copy['results_path'] = results_path
+            param_dict_copy['i'] = i
+            param_dict_copy['varied_param_names'] = p_var_names
+            param_dict_copy['varied_params'] = param_values
+
+            # append the arguments as a tuple for starmap
+            args.append(tuple(param_dict_copy[param] for param in [
+                'M_min', 'a_min', 'evolve_time', 'tau', 'num_points_considered_in_cost_function',
+                'M_maj', 'a_maj', 'epochs', 'accuracy', 'n_samples', 'init_guess_offset',
+                'learning_rate', 'unknown_dimension', 'phaseseed', 'results_path', 'i',
+                'varied_param_names', 'varied_params'
+            ]))
+
+        # now run the tests!
+        n_cores = os.environ['SLURM_CPUS_PER_TASK']
+        print('n_cores available for slurm is', n_cores)
+        with Pool(processes=int(n_cores)) as pool:
+            pool.starmap(process_single_system_mp_old, args)
+
+        
+
+    
+    # TODO: Create a specific output text file where you write the precise inputs of the run
 
     # TODO: edit your saving and printing functions to have different modes depending on what parameters are passed as a list
 

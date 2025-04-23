@@ -17,6 +17,6 @@ mkdir -p ~/MasterProj/KIN_optimizer/Validation/val_sys_results/$SLURM_JOB_ID
 mkdir -p ~/MasterProj/KIN_optimizer/Validation/val_sys_results/$SLURM_JOB_ID/mp_results
 conda activate nbody
 
-python Validation/validation_sys.py
+python Validation/validation.py
 
 echo "#### Finished Test. Have a nice day"
