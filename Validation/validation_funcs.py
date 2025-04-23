@@ -171,8 +171,18 @@ def sensitivity_plot(results, filename, maj_param, log_error = False, plot_path 
     a_min = parameters[:, 1]
 
     # interpolate between the parameters
-    M_min_space = np.linspace(np.min(M_min), np.max(M_min), 400)
-    a_min_space = np.linspace(np.min(a_min), np.max(a_min), 400)
+    if loglog:
+        plt.loglog()
+        M_min = np.log10(M_min)
+        a_min = np.log10(a_min)
+        M_min_space = np.linspace(np.min(M_min), np.max(M_min), 400)
+        a_min_space = np.linspace(np.min(a_min), np.max(a_min), 400)
+        maj_param = np.log10(maj_param)
+    else: 
+        M_min_space = np.linspace(np.min(M_min), np.max(M_min), 400)
+        a_min_space = np.linspace(np.min(a_min), np.max(a_min), 400)
+        
+
     M_min_grid, a_min_grid = np.meshgrid(M_min_space, a_min_space)
 
     interp = LinearNDInterpolator((M_min, a_min), mass_errors)
@@ -181,9 +191,9 @@ def sensitivity_plot(results, filename, maj_param, log_error = False, plot_path 
     cbarlabel = 'Fractional mass error'
 
     if log_error: # if we want this, change the error to the log of the error.
-        Mass_errors_i = np.log(Mass_errors_i)
-        mass_errors = np.log(mass_errors)
-        cbarlabel = 'Log fractional mass error'
+        Mass_errors_i = np.log10(Mass_errors_i)
+        mass_errors = np.log10(mass_errors)
+        cbarlabel = 'Log (10) fractional mass error'
         filename = f'log_{filename}'
 
     plt.figure(figsize=[15, 9])
@@ -201,10 +211,8 @@ def sensitivity_plot(results, filename, maj_param, log_error = False, plot_path 
     plt.xlabel('Minor planet mass (M_sun)')
     plt.ylabel('Minor planet semimajor axis (AU)')
     plt.title('Sensitivity plot for a three-body system with a major planet and a minor planet.')
-    plt.legend(loc='upper right')
+    plt.legend(loc='lower right')
     plt.colorbar(label=cbarlabel)
-    if loglog:
-        plt.loglog()
 
     saved_file = plot_path / filename
 
