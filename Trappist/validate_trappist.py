@@ -139,18 +139,20 @@ def test(evolve_time, tau_ev, tau_opt,num_points_considered_in_cost_function = 1
         plot_in_2D = False,
         zoombox = 'trappist',
         negative_mass_penalty=1,
-        accuracy = accuracy
+        accuracy = accuracy,
+        printing=True
     )
 
     # select the best epoch for the masses, calculate the errors, plot them and save them.
     masses, best_idx, avg_loss_per_epoch = select_masses(masses, losses, lowest_loss = False)
 
     mass_error = calculate_mass_error(masses, evolved_sys)
-
-    plot_loss_func(avg_loss_per_epoch, name = 'trappist_lpe.pdf')
+    print(evolved_sys.mass)
+    # plot_loss_func(avg_loss_per_epoch, name = 'trappist_lpe.pdf')
 
     output_path = arbeit_path / 'Trappist/trappist_results'
-    job_id = os.environ['SLURM_JOB_ID']
+    # job_id = os.environ['SLURM_JOB_ID']
+    job_id = 'berend_pc_test'
 
     output_name = f'trappist_result_{job_id}.h5'
     output_file = output_path / output_name
@@ -211,17 +213,17 @@ def test(evolve_time, tau_ev, tau_opt,num_points_considered_in_cost_function = 1
         print(pos_cost_sanity2, vel_cost_sanity2)
         print('initial guesses were:', initial_guess)
 
-test(evolve_time = 50 | units.day,
+test(evolve_time = 1.5 | units.day,
      tau_ev = 0.01 | units.day,
      tau_opt = 0.01 | units.day,
      num_points_considered_in_cost_function = 4,
      unknown_dimension = 3,
      learning_rate = 1e-8,
-     init_guess_offset = 1e-8,
-     epochs = 3,
-     accuracy = 1e-10,
+     init_guess_offset = 1e-6,
+     epochs = 100,
+     accuracy = 1e-9,
      generate_movie = False,
-     test_new_masses = False,
+     test_new_masses = True,
      phaseseed = 0)
 
     
