@@ -373,7 +373,7 @@ def test_2_parameters_on_many_systems(
 
     # replace by own job id if not using slurm
     job_id = os.environ['SLURM_JOB_ID']
-
+    
     # set the right paths
     results_path = arbeit_path / f'Validation/val_results/{job_id}/mp_results' # save the temporary h5 files per system here
     output_path = arbeit_path / f'Validation/val_results/{job_id}' # and combine them here.
@@ -404,7 +404,7 @@ def test_2_parameters_on_many_systems(
     # store the parameters in a dictionary and select the ones to vary
     for i in range(len(param_list)):
         param_dict[f'{param_name_list[i]}'] = param_list[i]
-        if len([param_dict[f'{param_name_list[i]}']]) > 1:
+        if type(param_dict[f'{param_name_list[i]}']) is list:
             if param_name_list[i] in unvariable:
                 raise Exception('Not allowed to vary this parameter. Variable parameters are:\n M_min, a_min, evolve_time, tau, num_points_considered_in_cost_function, M_maj, a_maj, init_guess_offset')
             p_var_bounds.append(param_dict[f'{param_name_list[i]}'])
