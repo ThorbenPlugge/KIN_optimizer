@@ -119,7 +119,7 @@ def load_result_old(path, filename, filter_outliers=False):
         'parameters': parameters
     }, run_params
 
-def sensitivity_plot_old(results, filename, maj_param, log_error = False, plot_path = plot_path, loglog = False):
+def sensitivity_plot_old(results, filename, maj_param, log_error=False, plot_path=plot_path, loglog=False):
     '''Creates a sensitivity plot for a given set of results.'''
     from scipy.interpolate import LinearNDInterpolator
 
@@ -177,15 +177,17 @@ def sensitivity_plot_old(results, filename, maj_param, log_error = False, plot_p
 
     plt.savefig(f'{saved_file}.pdf', dpi=800)
 
-def process_result_old(path, filename, maj_param, log_error = False, filter_outliers=False, loglog = False):
+def process_result_old(path, filename, maj_param, log_error = False, filter_outliers=False, loglog=False):
     '''Loads results from an h5 file, and then creates an image.'''
     import h5py
     results, run_params = load_result_old(path, filename, filter_outliers=filter_outliers)
     sensitivity_plot_old(results, f'{filename}', maj_param, log_error, plot_path = plot_path, loglog=loglog)
     print(f'file {filename} processed')
 
-def save_results(path, filename, masses, true_masses, mass_error, avg_loss_per_epoch, 
-                 varied_param_names, varied_params):
+def save_results(
+            path, filename, masses, true_masses, mass_error, avg_loss_per_epoch, 
+            varied_param_names, varied_params
+            ):
     import h5py
     filepath = path / filename
     with h5py.File(filepath, 'a') as f:
@@ -198,7 +200,11 @@ def save_results(path, filename, masses, true_masses, mass_error, avg_loss_per_e
         exp_group.create_dataset('mass_error', data = mass_error)
         exp_group.create_dataset('avg_loss_per_epoch', data = avg_loss_per_epoch)
         parameters = np.array(varied_params)
-        exp_group.create_dataset(f'{varied_param_names[0]}, {varied_param_names[1]}', 
+        if len(varied_param_names) == 2:
+            exp_group.create_dataset(f'{varied_param_names[0]}, {varied_param_names[1]}', 
+                                 data=parameters)
+        else: 
+            exp_group.create_dataset(f'{varied_param_names},',
                                  data=parameters)
 
         f.close()
@@ -244,7 +250,7 @@ def merge_h5_files(input_folder, output_file, delete=False):
                 print(f"Error deleting file {h5_file}: {e}")
         os.rmdir(input_folder)
 
-def load_result(path, filename, filter_outliers = False):
+def load_result(path, filename, filter_outliers=False):
     '''Loads the results of a particular file. Puts it into a dictionary.'''
     import h5py
     filepath = path / filename
@@ -288,8 +294,7 @@ def load_result(path, filename, filter_outliers = False):
             print('   {}: {}'.format(key, value))
         print('\n')
         run_params = f.attrs 
-        # TODO: output these to a txt file or csv file or something.
-
+        
     # make sure all loss arrays are of equal length, by repeating the last loss value for the epochs 
     # where the accuracy limit was already reached. 
     maxlength = np.max(np.array([len(i) for i in avg_loss_per_epoch_list]))
@@ -315,34 +320,102 @@ def load_result(path, filename, filter_outliers = False):
         f'{param_names}': parameters
     }, run_params
 
-def sensitivity_plot(results, filename, run_params, log_error = True, plot_path = plot_path, loglog=False):
+# list of axis labels to use in the plot
+param_labels = [
+    'Minor planet Mass (Msun)', 'Minor planet semimajor axis (AU)', 
+    'Evolve time (days)', 'Tau (days)', 'Cost function points',
+    'Major planet mass (Msun)', 'Major planet semimajor axis (AU)', 
+    'Initial guess offset (Msun)'
+    ]
+# list of log axis labels
+log_param_labels = [
+    'Log minor planet Mass (log10(Msun))', 'Log minor planet semimajor axis (log10(AU))', 
+    'Log volve time (log10(days))', 'Log tau (log10(days))', 'log cost function points',
+    'Log major planet mass (log10(Msun))', 'Major planet semimajor axis (log10(AU))', 
+    'Initial guess offset (log10(Msun))'
+    ]
+# list of all the options varied_param_names can be.
+# A bit cumbersome, but a way to match the names we get out of the file
+# to a parameter index.
+nameslist = [
+    'M_min', 'a_min', 'evolve_time', 'tau', 
+    'num_points_considered_in_cost_function',
+    'M_maj', 'a_maj', 'init_guess_offset'
+    ]
+
+def sensitivity_plot_1param(results, filename, run_params, log_error=True, plot_path=plot_path, loglog=False):
+    '''Creates a 1D sensitivity plot for a given set of results.'''
+    varied_param_name = run_params['varied_param_names']
+
+    p_index = np.where(nameslist == varied_param_name)
+
+    mass_errors = results['mass_errors']
+    p = results[f'{varied_param_name},']
+
+    mass_error_label = 'Fractional mass error'
+    
+    if loglog: 
+        plt.loglog()
+        p = np.log10(p)
+        labels = log_param_labels
+    else: 
+        labels = param_labels
+    
+    if log_error:
+        mass_errors = np.log10(mass_errors)
+        filename = f'log_{filename}'
+        mass_error_label = 'Log (10) fractional mass error'
+
+    plt.figure(figsize=[15, 9])
+    plt.set_cmap('viridis')
+    plt.scatter(p, mass_errors, s=150, color='white')
+    plt.scatter(p, mass_errors, s=60, c=mass_errors)
+
+    if p_index == 0:
+        plt.axhline(run_params['M_maj'], linestyle='--', color='white', label='Mass of major planet')
+    if p_index == 1:
+        plt.axhline(run_params['a_maj'], linestyle='--', color='white', label='Semimajor axis of major planet')
+
+    ax = plt.gca()
+    ax.set_Facecolor('xkcd:light grey')
+
+    plt.xlabel(labels[p_index])
+    plt.ylabel('mass_error_label')
+    plt.title(f'{nameslist} vs Fractional mass error.')
+    plt.legend()
+    
+    saved_file = plot_path / filename
+
+    plt.savefig(f'{saved_file}.png', dpi=800)
+
+def sensitivity_plot(results, filename, run_params, log_error=True, plot_path=plot_path, loglog=False):
     '''Creates a sensitivity plot for a given set of results.'''
     from scipy.interpolate import LinearNDInterpolator
 
     title = 'Sensitivity plot for a three-body system with a major planet and a minor planet.'
-    p1_label = 'bingo'
-    p2_label = 'bango'
 
     varied_param_names = run_params['varied_param_names']
-    # TODO: major parameter integration?
-    # if one of the varied parameters is M or a, then plot the reference value of the major planet.
     
+    # select the varied parameters
+    p1_index = np.where(nameslist == varied_param_names[0])
+    p2_index = np.where(nameslist == varied_param_names[1])
+
     mass_errors = results['mass_errors']
     parameters = results[f'{varied_param_names[0]}, {varied_param_names[1]}']
-
     p1, p2 = parameters[:, 0], parameters[:, 1]
 
     if loglog:
         plt.loglog()
         p1 = np.log10(p1)
         p2 = np.log10(p2)
-    
+        labels = log_param_labels
+    else:
+        labels = param_labels
+
     # interpolate between the two parameters
     p1_space = np.linspace(np.min(p1), np.max(p2), 500)
     p2_space = np.linspace(np.min(p1), np.max(p2), 500)
-
     p1_grid, p2_grid = np.meshgrid(p1_space, p2_space)
-
     interp = LinearNDInterpolator((p1, p2), mass_errors)
     Mass_errors_i = interp(p1_grid, p2_grid)
 
@@ -357,14 +430,24 @@ def sensitivity_plot(results, filename, run_params, log_error = True, plot_path 
     plt.figure(figsize=[15, 9])
     plt.set_cmap('viridis')
     plt.pcolormesh(p1_grid, p2_grid, Mass_errors_i, shading='auto')
-    plt.scatter(p1, p2, s = 150, color = 'white')
-    plt.scatter(p1, p2, s = 60, c=mass_errors, label='Uninterpolated data')
-
+    plt.scatter(p1, p2, s=150, color='white')
+    plt.scatter(p1, p2, s=60, c=mass_errors, label='Uninterpolated data')
+    
+    # if the parameter we vary is the minor planet mass or semimajor axis, plot the major planet position as reference
+    if p1_index == 0: 
+        plt.axhline(run_params['M_maj'], linestyle='--', color='white', label='Parameters of major planet')
+    if p2_index == 0:
+        plt.axhline(run_params['M_maj'], linestyle='--', color='white', label='Parameters of major planet')
+    if p1_index == 1:
+        plt.axhline(run_params['a_maj'], linestyle='--', color='white', label='Parameters of major planet')
+    if p2_index == 1:
+        plt.axhline(run_params['a_maj'], linestyle='--', color='white', label='Parameters of major planet')
+        
     ax = plt.gca()
     ax.set_facecolor('xkcd:light grey')
     
-    plt.xlabel(p1_label)
-    plt.ylabel(p2_label)
+    plt.xlabel(labels[p1_index])
+    plt.ylabel(labels[p2_index])
     plt.title(title)
     plt.legend(loc='lower_right')
     plt.colorbar(label=cbarlabel)
@@ -373,13 +456,21 @@ def sensitivity_plot(results, filename, run_params, log_error = True, plot_path 
     
     plt.savefig(f'{saved_file}.png', dpi=800)
 
-# TODO: save the run_params to a txt file in the same folder as the h5 file.
-# TODO: hell, why not also save the plot there??!!?!?
+def save_run_params_to_file(run_params, output_file):
+    import json
+    with open(f'{output_file}.json', 'w') as f:
+        json.dump(run_params, f, indent=4)
+    print(f'Run parameters saved to {output_file}.json')
 
-def process_result(path, filename, log_error = True, filter_outliers=False, loglog = True):
+def process_result(path, filename, log_error=True, filter_outliers=False, loglog=True):
     '''Loads results from an h5 file, and then creates an image.'''
-    import h5py
+
     results, run_params = load_result(path, filename, filter_outliers=filter_outliers)
-    sensitivity_plot(results, f'{filename}', run_params, log_error, plot_path = plot_path, loglog=loglog)
+    save_run_params_to_file(run_params, path / filename)
+    if len(run_params['varied_param_names']) == 2:
+        sensitivity_plot(results, f'{filename}', run_params, log_error, plot_path=path, loglog=loglog)
+    else: 
+        sensitivity_plot_1param(results, f'{filename}', run_params, log_error, plot_path=path, loglog=loglog)
+    
     print(f'file {filename} processed')
 
