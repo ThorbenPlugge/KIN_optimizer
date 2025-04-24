@@ -18,7 +18,7 @@ from Validation.validation_funcs import process_result, merge_h5_files, load_res
 
 
 
-job_id = '3990501'
+job_id = '3992204'
 maj_param = [1e-3, 10]
 print(maj_param)
 results_path = arbeit_path / f'Validation/val_results/{job_id}/mp_results'
