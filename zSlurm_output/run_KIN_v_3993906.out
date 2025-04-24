@@ -1,0 +1,8 @@
+#### Starting test
+Traceback (most recent call last):
+  File "/home/s2818760/MasterProj/KIN_optimizer/Validation/validation.py", line 518, in <module>
+    test_2_parameters_on_many_systems(
+  File "/home/s2818760/MasterProj/KIN_optimizer/Validation/validation.py", line 413, in test_2_parameters_on_many_systems
+    raise Exception(f'Not varying any parameters. Aborting.')
+Exception: Not varying any parameters. Aborting.
+#### Finished Test. Have a nice day

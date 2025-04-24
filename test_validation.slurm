@@ -1,6 +1,6 @@
 #!/bin/bash -l
 
-#SBATCH --job-name=KIN_val_s
+#SBATCH --job-name=run_KIN_v
 #SBATCH --output=./zSlurm_output/%x_%j.out
 #SBATCH --mail-user="nieuwhof@strw.leidenuniv.nl"
 #SBATCH --mail-type="ALL"
@@ -13,8 +13,8 @@
 
 echo "#### Starting test"
 
-mkdir -p ~/MasterProj/KIN_optimizer/Validation/val_sys_results/$SLURM_JOB_ID
-mkdir -p ~/MasterProj/KIN_optimizer/Validation/val_sys_results/$SLURM_JOB_ID/mp_results
+mkdir -p ~/MasterProj/KIN_optimizer/Validation/val_results/$SLURM_JOB_ID
+mkdir -p ~/MasterProj/KIN_optimizer/Validation/val_results/$SLURM_JOB_ID/mp_results
 conda activate nbody
 
 python Validation/validation.py

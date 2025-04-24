@@ -301,26 +301,26 @@ def test_many_systems_mp(
 
     process_result(output_path, output_filename, [M_maj, a_maj], log_error=False, filter_outliers=False, loglog=loglog)
 
-test_many_systems_mp(
-    M_min_bounds=[1e-10, 1e-3],
-    a_min_bounds=[0.01, 100],
-    evolve_time=1200 | units.day,
-    tau_ev=3 | units.day,
-    tau_opt=3 | units.day,
-    num_points_considered_in_cost_function=80,
-    hypercube_state=41,
-    M_maj=1e-3, 
-    a_maj=10, 
-    phaseseed=0,
-    lowest_loss=False,
-    unknown_dimension=3,
-    learning_rate=1e-8,
-    init_guess_offset=1e-7,
-    epochs=150,
-    accuracy=1e-10,
-    n_samples=150,
-    loglog=True
-    )
+# test_many_systems_mp(
+#     M_min_bounds=[1e-10, 1e-3],
+#     a_min_bounds=[0.01, 100],
+#     evolve_time=1200 | units.day,
+#     tau_ev=3 | units.day,
+#     tau_opt=3 | units.day,
+#     num_points_considered_in_cost_function=80,
+#     hypercube_state=41,
+#     M_maj=1e-3, 
+#     a_maj=10, 
+#     phaseseed=0,
+#     lowest_loss=False,
+#     unknown_dimension=3,
+#     learning_rate=1e-8,
+#     init_guess_offset=1e-7,
+#     epochs=150,
+#     accuracy=1e-10,
+#     n_samples=150,
+#     loglog=True
+#     )
 
 def process_single_system_mp(
         M_min, a_min, evolve_time, tau, num_points_considered_in_cost_function,
@@ -404,12 +404,17 @@ def test_2_parameters_on_many_systems(
     # store the parameters in a dictionary and select the ones to vary
     for i in range(len(param_list)):
         param_dict[f'{param_name_list[i]}'] = param_list[i]
-        if len(param_dict[f'{param_name_list[i]}']) > 1:
+        if len([param_dict[f'{param_name_list[i]}']]) > 1:
             if param_name_list[i] in unvariable:
                 raise Exception('Not allowed to vary this parameter. Variable parameters are:\n M_min, a_min, evolve_time, tau, num_points_considered_in_cost_function, M_maj, a_maj, init_guess_offset')
             p_var_bounds.append(param_dict[f'{param_name_list[i]}'])
             p_var_names.append(param_name_list[i])
+    if len(p_var_bounds) == 0:
+        raise Exception(f'Not varying any parameters. Aborting.')
     
+        # TODO: Rerun the system many times with the same starting parameters!!!
+        # it should always be the same, but i guess you can test this!
+
     if len(p_var_bounds) > 2:
         raise Exception(f'Trying to vary {len(p_var_bounds)} parameters. Maximum is 2.')
 
@@ -446,7 +451,21 @@ def test_2_parameters_on_many_systems(
                 'varied_param_names', 'varied_params'
             ]))
         
+        # now run the tests!
+        n_cores = os.environ['SLURM_CPUS_PER_TASK']
+        print('n_cores available for slurm is', n_cores)
+        with Pool(processes=int(n_cores)) as pool:
+            pool.starmap(process_single_system_mp_old, args)
 
+        merge_h5_files(results_path, output_file, delete=True)
+
+        process_result(
+            output_path, output_filename,
+            log_error=True,
+            filter_outliers=False,
+            loglog=loglog
+            )
+        
     if len(p_var_bounds) == 2:
         # vary 2 parameters.
         output_filename = f'{n_samples}_systems_{p_var_names[0]}_{p_var_names[1]}_{job_id}.h5'
@@ -496,7 +515,24 @@ def test_2_parameters_on_many_systems(
             loglog=True
             )
     
-
+test_2_parameters_on_many_systems(
+    M_min=[1e-10, 1e-3],
+    a_min=[0.01, 200],
+    evolve_time=600 | units.day,
+    tau=1 | units.day,
+    num_points_considered_in_cost_function=8,
+    M_maj=1e-3,
+    a_maj=10,
+    epochs=20,
+    accuracy=1e-10,
+    n_samples=20,
+    init_guess_offset=1e-7,
+    learning_rate=1e-8,
+    unknown_dimension=3,
+    phaseseed=0,
+    hypercube_state=42,
+    loglog=True
+)
 
 
     
