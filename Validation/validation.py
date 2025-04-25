@@ -330,16 +330,16 @@ def process_single_system_mp(
     from Validation.system_generation import create_test_system
     from Trappist.t_plotting import plot_loss_func
     from Validation.validation_funcs import select_masses, calculate_mass_error, save_results
+    
     # First, generate a system according to the parameters
-
     test_sys = create_test_system(M_maj=M_maj, M_min=M_min, a_maj=a_maj, a_min=a_min, phaseseed=phaseseed)
 
     # Find the masses of the system
     masses, losses = find_masses(
         test_sys=test_sys,
-        evolve_time=evolve_time,
-        tau_ev=tau,
-        tau_opt=tau,
+        evolve_time=evolve_time | units.day,
+        tau_ev=tau | units.day,
+        tau_opt=tau | units.day,
         num_points_considered_in_cost_function=num_points_considered_in_cost_function,
         unknown_dimension=unknown_dimension,
         learning_rate=learning_rate,
@@ -363,7 +363,7 @@ def test_2_parameters_on_many_systems(
         M_min, a_min, evolve_time, tau, num_points_considered_in_cost_function,
         M_maj, a_maj, epochs, accuracy, n_samples, init_guess_offset,
         learning_rate, unknown_dimension, phaseseed, hypercube_state,
-        loglog
+        loglog, job_id = None,
         ):
     from Validation.validation_funcs import get_latin_sample, merge_h5_files, process_result
     from multiprocessing import Pool
@@ -372,9 +372,12 @@ def test_2_parameters_on_many_systems(
     # TODO: make it so you can have a slurm mode and a normal laptop mode.
 
     # replace by own job id if not using slurm
-    job_id = os.environ['SLURM_JOB_ID']
-    
+    if job_id == None:
+        job_id = os.environ['SLURM_JOB_ID']
+
     # set the right paths
+    os.mkdir(arbeit_path / f'Validation/val_results/{job_id}')
+    os.mkdir(arbeit_path / f'Validation/val_results/{job_id}/mp_results')
     results_path = arbeit_path / f'Validation/val_results/{job_id}/mp_results' # save the temporary h5 files per system here
     output_path = arbeit_path / f'Validation/val_results/{job_id}' # and combine them here.
 
@@ -387,7 +390,7 @@ def test_2_parameters_on_many_systems(
         'loglog'
         ]
     param_list = [
-        M_min, a_min, evolve_time.value_in(units.day), tau.value_in(units.day), num_points_considered_in_cost_function,
+        M_min, a_min, evolve_time, tau, num_points_considered_in_cost_function,
         M_maj, a_maj, epochs, accuracy, n_samples, init_guess_offset,
         learning_rate, unknown_dimension, phaseseed, hypercube_state,
         loglog
@@ -420,6 +423,7 @@ def test_2_parameters_on_many_systems(
 
     if len(p_var_bounds) == 1:
         # vary 1 parameter.
+        p_var_bounds = p_var_bounds[0]
         output_filename = f'{n_samples}_systems_{p_var_names[0]}_{job_id}.h5'
         output_file = output_path / output_filename
 
@@ -452,10 +456,14 @@ def test_2_parameters_on_many_systems(
             ]))
         
         # now run the tests!
-        n_cores = os.environ['SLURM_CPUS_PER_TASK']
-        print('n_cores available for slurm is', n_cores)
+        if job_id == os.environ['SLURM_JOB_ID']:
+            n_cores = os.environ['SLURM_CPUS_PER_TASK']
+            print('n_cores available for slurm is', n_cores)
+        else: 
+            n_cores = os.cpu_count()
+        
         with Pool(processes=int(n_cores)) as pool:
-            pool.starmap(process_single_system_mp_old, args)
+            pool.starmap(process_single_system_mp, args)
 
         merge_h5_files(results_path, output_file, delete=True)
 
@@ -504,7 +512,7 @@ def test_2_parameters_on_many_systems(
         n_cores = os.environ['SLURM_CPUS_PER_TASK']
         print('n_cores available for slurm is', n_cores)
         with Pool(processes=int(n_cores)) as pool:
-            pool.starmap(process_single_system_mp_old, args)
+            pool.starmap(process_single_system_mp, args)
 
         merge_h5_files(results_path, output_file, delete=True)
 
@@ -512,21 +520,21 @@ def test_2_parameters_on_many_systems(
             output_path, output_filename,
             log_error=True,
             filter_outliers=False,
-            loglog=True
+            loglog=loglog
             )
     
 test_2_parameters_on_many_systems(
-    M_min=[1e-10, 1e-3],
-    a_min=[0.01, 200],
-    evolve_time=600 | units.day,
-    tau=1 | units.day,
+    M_min=[1e-10, 1e-3], # in solar masses
+    a_min=[0.01, 20], # in AU
+    evolve_time=600, # in days
+    tau=1, # in days
     num_points_considered_in_cost_function=8,
-    M_maj=1e-3,
-    a_maj=10,
+    M_maj=1e-3, # in solar masses
+    a_maj=10, # in AU
     epochs=20,
     accuracy=1e-10,
     n_samples=20,
-    init_guess_offset=1e-7,
+    init_guess_offset=1e-7, # in solar masses
     learning_rate=1e-8,
     unknown_dimension=3,
     phaseseed=0,

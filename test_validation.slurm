@@ -5,16 +5,14 @@
 #SBATCH --mail-user="nieuwhof@strw.leidenuniv.nl"
 #SBATCH --mail-type="ALL"
 
-#SBATCH --partition="cpu-medium"
-#SBATCH --time=1-00:00:00
+#SBATCH --partition="cpu-short"
+#SBATCH --time=02:00:00
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=16
 #SBATCH --mem-per-cpu=8G
 
 echo "#### Starting test"
 
-mkdir -p ~/MasterProj/KIN_optimizer/Validation/val_results/$SLURM_JOB_ID
-mkdir -p ~/MasterProj/KIN_optimizer/Validation/val_results/$SLURM_JOB_ID/mp_results
 conda activate nbody
 
 python Validation/validation.py

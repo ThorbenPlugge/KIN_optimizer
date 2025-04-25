@@ -29,16 +29,17 @@ def create_test_planet(sys, M, a, name = 'planet', phase = 0):
     planet = Particle()
     planet.name = name
     planet.mass = M | units.Msun
-    planet.position = (a * np.cos(phase), a * np.sin(phase), np.random.uniform(-0.001, 0.001)) | units.AU
+    planet.position = (a * np.cos(phase), a * np.sin(phase), 0) | units.AU
 
     orb_vel = relative_orbital_velocity(sys.total_mass(), planet.position.length())
     # By phase, we mean how far along the orbit the planet is at the start of the simulation.
-    planet.velocity = (orb_vel * np.sin(phase), -orb_vel * np.cos(phase), np.random.uniform(-0.000001, 0.000001) | units.AU / units.day)
+    planet.velocity = (orb_vel * np.sin(phase), -orb_vel * np.cos(phase), 0 | units.AU / units.day)
     
     return planet
 
 def create_test_system(M_maj = 1e-3, M_min = 1e-5, a_maj = 10, a_min = 1, phaseseed = 0):
     '''Creates a test system with 2 planets: a major and a minor.'''
+    phaseseed = int(phaseseed)
     np.random.seed(phaseseed)
 
     sys = Particles()

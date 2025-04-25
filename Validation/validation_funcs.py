@@ -192,7 +192,7 @@ def save_results(
     filepath = path / filename
     with h5py.File(filepath, 'a') as f:
         exp_index = len(f.keys())
-        exp_group = f.create_froup(f'exp_{exp_index}')
+        exp_group = f.create_group(f'exp_{exp_index}')
 
         # store data in the new group
         exp_group.create_dataset('masses', data = masses)
@@ -343,8 +343,12 @@ nameslist = [
     'M_maj', 'a_maj', 'init_guess_offset'
     ]
 
+def get_orbital_period(M, a):
+    '''Takes in Mass in solar masses, and semimajor axis in AU'''
+
 def sensitivity_plot_1param(results, filename, run_params, log_error=True, plot_path=plot_path, loglog=False):
     '''Creates a 1D sensitivity plot for a given set of results.'''
+
     varied_param_name = run_params['varied_param_names']
 
     p_index = np.where(nameslist == varied_param_name)
@@ -391,7 +395,7 @@ def sensitivity_plot_1param(results, filename, run_params, log_error=True, plot_
 def sensitivity_plot(results, filename, run_params, log_error=True, plot_path=plot_path, loglog=False):
     '''Creates a sensitivity plot for a given set of results.'''
     from scipy.interpolate import LinearNDInterpolator
-
+    from system_generation import relative_orbital_velocity
     title = 'Sensitivity plot for a three-body system with a major planet and a minor planet.'
 
     varied_param_names = run_params['varied_param_names']
