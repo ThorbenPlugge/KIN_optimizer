@@ -434,7 +434,10 @@ def test_2_parameters_on_many_systems(
             f.attrs['varied_param_names'] = p_var_names
         
         # evenly sample the parameter space. 
-        param_sample = np.linspace(p_var_bounds[0], p_var_bounds[1], n_samples)
+        if loglog:
+            param_sample = 10**(np.linspace(np.log10(p_var_bounds[0]), np.log10(p_var_bounds[1]), n_samples))
+        else:
+            param_sample = np.linspace(p_var_bounds[0], p_var_bounds[1], n_samples)
         
         # prepare the arguments for the process_single_system_mp function
         args = []
