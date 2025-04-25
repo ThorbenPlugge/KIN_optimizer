@@ -397,7 +397,7 @@ def test_2_parameters_on_many_systems(
         ]
     
     # we don't allow the user to vary these, as they don't make sense to vary
-    unvariable = ['epochs', 'accuracy', 'n_samples', 'learning_rate', 'unknown_dimension', 'phaseseed', 'hypercube_state', 'loglog']
+    unvariable = ['epochs', 'accuracy', 'n_samples', 'unknown_dimension', 'phaseseed', 'hypercube_state', 'loglog']
 
     # initialize arrays to store which parameters to vary
     param_dict = {}
@@ -527,16 +527,16 @@ def test_2_parameters_on_many_systems(
             )
     
 test_2_parameters_on_many_systems(
-    M_min=[1e-10, 1e-3], # in solar masses
-    a_min=[0.01, 20], # in AU
-    evolve_time=600, # in days
-    tau=1, # in days
-    num_points_considered_in_cost_function=8,
+    M_min=1e-3, # in solar masses
+    a_min=[0.01, 200], # in AU
+    evolve_time=1200, # in days
+    tau=30, # in days
+    num_points_considered_in_cost_function=8, 
     M_maj=1e-3, # in solar masses
     a_maj=10, # in AU
-    epochs=20,
+    epochs=150,
     accuracy=1e-10,
-    n_samples=20,
+    n_samples=150,
     init_guess_offset=1e-7, # in solar masses
     learning_rate=1e-8,
     unknown_dimension=3,

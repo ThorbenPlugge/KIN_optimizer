@@ -345,9 +345,11 @@ nameslist = [
 
 def get_orbital_period(M, a):
     '''Takes in Mass in solar masses, and semimajor axis in AU'''
-    p = 2*np.pi*np.sqrt((a|units.AU)**3 / (constants.G*(M|units.Msun)))
-    p_in_days = np.array([item.value_in(units.day) for item in p])
-    return p_in_days
+    a = (a | units.AU).value_in(units.m)
+    M = (M | units.Msun).value_in(units.kg)
+    G = constants.G.value_in(units.m**3 * units.kg**-1 * units.s**-2)
+    p = (2*np.pi*np.sqrt(a**3 / (G*M)) | units.s).value_in(units.day)
+    return p
 
 def sensitivity_plot_1param(results, filename, run_params, log_error=True, plot_path=plot_path, loglog=False):
     '''Creates a 1D sensitivity plot for a given set of results.'''
@@ -356,17 +358,22 @@ def sensitivity_plot_1param(results, filename, run_params, log_error=True, plot_
     p_index = np.where(np.array(nameslist) == varied_param_name)[0].item()
 
     mass_errors = results['mass_errors']
+    true_masses = np.sum(results['true_masses'], axis=1)
+    true_masses2 = np.sum(results['true_masses'][:2], axis=1)[0]
+
+    M_maj, P_maj = run_params['M_maj'], get_orbital_period(true_masses2, run_params['a_maj'])
     p = results[f'{varied_param_name},']
 
     if p_index == 1:
-        total_sys_mass = np.sum(run_params['true_masses'])
-        p = get_orbital_period(total_sys_mass, p)
+        p = get_orbital_period(true_masses, p)
 
     mass_error_label = 'Fractional mass error'
     
     if loglog: 
         plt.loglog()
         p = np.log10(p)
+        M_maj = np.log10(M_maj)
+        P_maj = np.log10(P_maj)
         labels = log_param_labels
     else: 
         labels = param_labels
@@ -382,10 +389,10 @@ def sensitivity_plot_1param(results, filename, run_params, log_error=True, plot_
     plt.scatter(p, mass_errors, s=60, c=mass_errors)
 
     if p_index == 0:
-        plt.axvline(run_params['M_maj'], linestyle='--', color='white', label='Mass of major planet')
+        plt.axvline(M_maj, linestyle='--', color='white', label='Mass of major planet')
         plt.legend()
     if p_index == 1:
-        plt.axvline(get_orbital_period(total_sys_mass, run_params['a_maj']), linestyle='--', color='white', label='Orbital period of major planet')
+        plt.axvline(P_maj, linestyle='--', color='white', label='Orbital period of major planet')
         plt.legend()
 
     ax = plt.gca()
@@ -411,20 +418,27 @@ def sensitivity_plot(results, filename, run_params, log_error=True, plot_path=pl
     p2_index = np.where(np.array(nameslist) == varied_param_names[1])[0].item()
 
     mass_errors = results['mass_errors']
+    # Sum the total mass to calculate the orbital period.
+    # One with, and one without the outer planet.
+    true_masses = np.sum(results['true_masses'], axis=1)
+    true_masses2 = np.sum(results['true_masses'][:2], axis=1)[0]
+
     parameters = results[f'{varied_param_names[0]}, {varied_param_names[1]}']
     p1, p2 = parameters[:, 0], parameters[:, 1]
 
     if p1_index == 1:
-        total_sys_mass = np.sum(results['true_masses'])
-        p1 = get_orbital_period(total_sys_mass, p1)
+        p1 = get_orbital_period(true_masses, p1)
     if p2_index == 1:
-        total_sys_mass = np.sum(results['true_masses'])
-        p2 = get_orbital_period(total_sys_mass, p2)
+        p2 = get_orbital_period(true_masses, p2)
 
+    M_maj, P_maj = run_params['M_maj'], get_orbital_period(true_masses2, run_params['a_maj'])
+    
     if loglog:
         plt.loglog()
         p1 = np.log10(p1)
         p2 = np.log10(p2)
+        M_maj = np.log10(M_maj)
+        P_maj = np.log10(P_maj)
         labels = log_param_labels
     else:
         labels = param_labels
@@ -452,13 +466,13 @@ def sensitivity_plot(results, filename, run_params, log_error=True, plot_path=pl
     
     # If the parameter we vary is the minor planet mass or semimajor axis, plot the major planet position as reference.
     if p1_index == 0: 
-        plt.axvline(run_params['M_maj'], linestyle='--', color='white', label='Mass of major planet')
+        plt.axvline(M_maj, linestyle='--', color='white', label='Mass of major planet')
     if p2_index == 0:
-        plt.axhline(run_params['M_maj'], linestyle='--', color='white', label='Mass of major planet')
+        plt.axhline(M_maj, linestyle='--', color='white', label='Mass of major planet')
     if p1_index == 1:
-        plt.axvline(get_orbital_period(total_sys_mass, run_params['a_maj']), linestyle='--', color='white', label='Orbital period of major planet')
+        plt.axvline(P_maj, linestyle='--', color='white', label='Orbital period of major planet')
     if p2_index == 1:
-        plt.axhline(get_orbital_period(total_sys_mass, run_params['a_maj']), linestyle='--', color='white', label='Orbital period of major planet')
+        plt.axhline(P_maj, linestyle='--', color='white', label='Orbital period of major planet')
         
     ax = plt.gca()
     ax.set_facecolor('xkcd:light grey')
