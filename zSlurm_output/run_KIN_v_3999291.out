@@ -220,3 +220,256 @@ W0000 00:00:1745841020.065268 3461499 computation_placer.cc:177] computation pla
 W0000 00:00:1745841020.065272 3461499 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
 2025-04-28 13:50:20.089379: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
 To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+Evolve time is not a multiple of tau_ev. Rounding up to 1295.7664247267146 days.
+Running simulation...
+start the learn masses function
+saved results for system 0
+Evolve time is not a multiple of tau_ev. Rounding up to 7219.081653141003 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 4435.068148203858 days.
+Running simulation...
+Evolve time is not a multiple of tau_ev. Rounding up to 5781.140809196472 days.
+Running simulation...
+start the learn masses function
+saved results for system 68
+Evolve time is not a multiple of tau_ev. Rounding up to 1965.9717695633574 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 8070.1178295080645 days.
+Running simulation...
+start the learn masses function
+saved results for system 44
+Evolve time is not a multiple of tau_ev. Rounding up to 565.1086884597379 days.
+Running simulation...
+Evolve time is not a multiple of tau_ev. Rounding up to 3099.119986855947 days.
+Running simulation...
+Evolve time is not a multiple of tau_ev. Rounding up to 7390.642130935337 days.
+Running simulation...
+start the learn masses function
+saved results for system 72
+Evolve time is not a multiple of tau_ev. Rounding up to 4511.824530512198 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 4104.792525646781 days.
+Running simulation...
+start the learn masses function
+saved results for system 40
+Evolve time is not a multiple of tau_ev. Rounding up to 421.7600600595425 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 2114.3455199570208 days.
+Running simulation...
+start the learn masses function
+saved results for system 48
+Evolve time is not a multiple of tau_ev. Rounding up to 9193.142102525564 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 5011.810462887295 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 9461.785007103008 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 3944.1838212830276 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 7849.550606159455 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 11650.42927016037 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 1282.971165978948 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 3171.776066323366 days.
+Running simulation...
+Evolve time is not a multiple of tau_ev. Rounding up to 1423.278402573363 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 3297.689646654602 days.
+Running simulation...
+start the learn masses function
+saved results for system 108
+Evolve time is not a multiple of tau_ev. Rounding up to 8177.475720900079 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 1894.002326293059 days.
+Running simulation...
+start the learn masses function
+saved results for system 60
+Evolve time is not a multiple of tau_ev. Rounding up to 7443.080159268181 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 7101.922094807383 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 9122.23872858841 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 9603.311125023416 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 6722.502869315074 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 1645.0968298121347 days.
+Running simulation...
+start the learn masses function
+saved results for system 128
+Evolve time is not a multiple of tau_ev. Rounding up to 11297.3918308853 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 9930.223120475592 days.
+Running simulation...
+start the learn masses function
+saved results for system 20
+Evolve time is not a multiple of tau_ev. Rounding up to 4829.52484026289 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 3502.73847516215 days.
+Running simulation...
+start the learn masses function
+saved results for system 12
+Evolve time is not a multiple of tau_ev. Rounding up to 3025.745847860166 days.
+Running simulation...
+Evolve time is not a multiple of tau_ev. Rounding up to 8260.573107865928 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 721.6378842505446 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 2649.5540159223788 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 6252.812347391759 days.
+Running simulation...
+Evolve time is not a multiple of tau_ev. Rounding up to 10292.247137846178 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 1705.1055603495622 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 4304.370841857622 days.
+Running simulation...
+Evolve time is not a multiple of tau_ev. Rounding up to 11156.860060822717 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 977.4564754746004 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 326.57651968762536 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 969.4395871447965 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 10087.53185198372 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 1537.7729567992396 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 8795.895037639435 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 2796.792434419972 days.
+Running simulation...
+start the learn masses function
+saved results for system 188
+Evolve time is not a multiple of tau_ev. Rounding up to 1773.5869938968035 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 4471.300129010373 days.
+Running simulation...
+start the learn masses function
+saved results for system 28
+Evolve time is not a multiple of tau_ev. Rounding up to 3383.980420280589 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 6540.266055104466 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 4524.487948174566 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 11916.169549058372 days.
+Running simulation...
+start the learn masses function
+saved results for system 56
+Evolve time is not a multiple of tau_ev. Rounding up to 8547.822009901194 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 5881.517066029476 days.
+Running simulation...
+start the learn masses function
+saved results for system 8
+Evolve time is not a multiple of tau_ev. Rounding up to 5471.955296261079 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 11262.373681227667 days.
+Running simulation...
+start the learn masses function
+saved results for system 16
+Evolve time is not a multiple of tau_ev. Rounding up to 9286.768795664862 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 11348.478211080668 days.
+Running simulation...
+start the learn masses function
+saved results for system 36
+Evolve time is not a multiple of tau_ev. Rounding up to 3638.8687240903155 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 5297.52437639847 days.
+Running simulation...
+Evolve time is not a multiple of tau_ev. Rounding up to 9770.557686873566 days.
+Running simulation...
+start the learn masses function
+saved results for system 64
+Evolve time is not a multiple of tau_ev. Rounding up to 6966.429812801697 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 9349.843242977307 days.
+Running simulation...
+start the learn masses function
+saved results for system 32
+Evolve time is not a multiple of tau_ev. Rounding up to 9704.373544400161 days.
+Running simulation...
+start the learn masses function
+multiprocessing.pool.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/home/s2818760/.conda/envs/nbody/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/home/s2818760/.conda/envs/nbody/lib/python3.12/multiprocessing/pool.py", line 51, in starmapstar
+    return list(itertools.starmap(args[0], args[1]))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/s2818760/MasterProj/KIN_optimizer/Validation/validation.py", line 338, in process_single_system_mp
+    masses, losses = find_masses(
+                     ^^^^^^^^^^^^
+  File "/home/s2818760/MasterProj/KIN_optimizer/Validation/validation.py", line 31, in find_masses
+    evolved_sys, pos_states, vel_states, total_energy = evolve_sys_sakura(
+                                                        ^^^^^^^^^^^^^^^^^^
+  File "/home/s2818760/MasterProj/KIN_optimizer/Trappist/evolve_trappist.py", line 116, in evolve_sys_sakura
+    pos_states[time_idx, :] = sys.position.value_in(units.AU)
+    ~~~~~~~~~~^^^^^^^^^^^^^
+IndexError: index 56 is out of bounds for axis 0 with size 56
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/s2818760/MasterProj/KIN_optimizer/Validation/validation.py", line 546, in <module>
+    test_2_parameters_on_many_systems(**params)
+  File "/home/s2818760/MasterProj/KIN_optimizer/Validation/validation.py", line 523, in test_2_parameters_on_many_systems
+    pool.starmap(process_single_system_mp, args)
+  File "/home/s2818760/.conda/envs/nbody/lib/python3.12/multiprocessing/pool.py", line 375, in starmap
+    return self._map_async(func, iterable, starmapstar, chunksize).get()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/s2818760/.conda/envs/nbody/lib/python3.12/multiprocessing/pool.py", line 774, in get
+    raise self._value
+IndexError: index 56 is out of bounds for axis 0 with size 56
+#### Finished Test. Have a nice day

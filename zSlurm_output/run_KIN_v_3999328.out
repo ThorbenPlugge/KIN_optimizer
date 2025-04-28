@@ -208,3 +208,248 @@ To enable the following instructions: AVX2 AVX512F FMA, in other operations, reb
 2025-04-28 13:49:56.244469: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
 2025-04-28 13:49:56.379671: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
 2025-04-28 13:49:58.667143: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-04-28 14:01:40.740223: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-28 14:01:40.755260: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-28 14:01:40.798861: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1745841700.836699 3904948 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1745841700.848061 3904948 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1745841700.877514 3904948 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745841700.877560 3904948 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745841700.877566 3904948 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745841700.877570 3904948 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+2025-04-28 14:01:40.901827: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+/home/s2818760/MasterProj/KIN_optimizer/NormalCode/newton_storing_ks.py:29: RuntimeWarning: overflow encountered in scalar multiply
+  xnew = (h + (x * cc - (eta * g2 + zeta * g3))) / (r0 + cc)
+/home/s2818760/MasterProj/KIN_optimizer/NormalCode/newton_storing_ks.py:29: RuntimeWarning: invalid value encountered in scalar subtract
+  xnew = (h + (x * cc - (eta * g2 + zeta * g3))) / (r0 + cc)
+2025-04-28 14:25:11.012274: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at strided_slice_op.cc:117 : INVALID_ARGUMENT: slice index 4 of dimension 0 out of bounds.
+2025-04-28 14:25:11.013743: I tensorflow/core/framework/local_rendezvous.cc:407] Local rendezvous is aborting with status: INVALID_ARGUMENT: slice index 4 of dimension 0 out of bounds.
+	 [[{{function_node while_cond_12391_rewritten}}{{node while/strided_slice_1}}]]
+2025-04-28 14:32:24.289870: W tensorflow/core/framework/op_kernel.cc:1857] OP_REQUIRES failed at strided_slice_op.cc:117 : INVALID_ARGUMENT: slice index 4 of dimension 0 out of bounds.
+2025-04-28 14:32:24.293125: I tensorflow/core/framework/local_rendezvous.cc:407] Local rendezvous is aborting with status: INVALID_ARGUMENT: slice index 4 of dimension 0 out of bounds.
+	 [[{{function_node while_cond_12391_rewritten}}{{node while/strided_slice_1}}]]
+Running simulation...
+start the learn masses function
+saved results for system 15
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+saved results for system 0
+Running simulation...
+start the learn masses function
+saved results for system 1
+Running simulation...
+start the learn masses function
+saved results for system 2
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+saved results for system 20
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+saved results for system 10
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+saved results for system 25
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+saved results for system 35
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+saved results for system 30
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+deeper than 1
+Running simulation...
+start the learn masses function
+saved results for system 40
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+saved results for system 5
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+deeper than 1
+Running simulation...
+start the learn masses function
+saved results for system 45
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+saved results for system 55
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+saved results for system 65
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+saved results for system 70
+Running simulation...
+start the learn masses function
+multiprocessing.pool.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/home/s2818760/.conda/envs/nbody/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/home/s2818760/.conda/envs/nbody/lib/python3.12/multiprocessing/pool.py", line 51, in starmapstar
+    return list(itertools.starmap(args[0], args[1]))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/s2818760/MasterProj/KIN_optimizer/Validation/validation.py", line 338, in process_single_system_mp
+    masses, losses = find_masses(
+                     ^^^^^^^^^^^^
+  File "/home/s2818760/MasterProj/KIN_optimizer/Validation/validation.py", line 65, in find_masses
+    masses, losses = node.learn_masses(
+                     ^^^^^^^^^^^^^^^^^^
+  File "/home/s2818760/MasterProj/KIN_optimizer/Learning/Training_loops.py", line 49, in learn_masses
+    mass_values, loss_values = learn_masses_4real(tau, optimizer, availabe_info_of_bodies, None, plotGraph,
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/s2818760/MasterProj/KIN_optimizer/Learning/Training_loops.py", line 174, in learn_masses_4real
+    state_derivatives, mass_derivatives = b.backwards_map_fn(
+                                          ^^^^^^^^^^^^^^^^^^^
+  File "/home/s2818760/.conda/envs/nbody/lib/python3.12/site-packages/tensorflow/python/util/traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/scratchdata/s2818760/3999328/__autograph_generated_filee4aga_gn.py", line 12, in tf__backwards_map_fn
+    grads = ag__.converted_call(ag__.ld(tf).map_fn, (ag__.autograph_artifact(lambda x: ag__.converted_call(ag__.ld(calculate_gradients_for_psiotion), (ag__.ld(x), ag__.ld(m), ag__.ld(tau)), None, fscope)), ag__.ld(temp)), dict(fn_output_signature=(ag__.ld(tf).float64, ag__.ld(tf).float64), swap_memory=True), fscope)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratchdata/s2818760/3999328/__autograph_generated_filee4aga_gn.py", line 12, in <lambda>
+    grads = ag__.converted_call(ag__.ld(tf).map_fn, (ag__.autograph_artifact(lambda x: ag__.converted_call(ag__.ld(calculate_gradients_for_psiotion), (ag__.ld(x), ag__.ld(m), ag__.ld(tau)), None, fscope)), ag__.ld(temp)), dict(fn_output_signature=(ag__.ld(tf).float64, ag__.ld(tf).float64), swap_memory=True), fscope)
+                                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: in user code:
+
+    File "/home/s2818760/MasterProj/KIN_optimizer/Learning/Backwards.py", line 116, in backwards_map_fn  *
+        grads = tf.map_fn(lambda x: calculate_gradients_for_psiotion(
+
+    AssertionError: Called a function referencing variables which have been deleted. This likely means that function-local variables were created and not referenced elsewhere in the program. This is generally a mistake; consider storing variables in an object attribute on first call.
+
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/s2818760/MasterProj/KIN_optimizer/Validation/validation.py", line 546, in <module>
+    test_2_parameters_on_many_systems(**params)
+  File "/home/s2818760/MasterProj/KIN_optimizer/Validation/validation.py", line 474, in test_2_parameters_on_many_systems
+    pool.starmap(process_single_system_mp, args)
+  File "/home/s2818760/.conda/envs/nbody/lib/python3.12/multiprocessing/pool.py", line 375, in starmap
+    return self._map_async(func, iterable, starmapstar, chunksize).get()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/s2818760/.conda/envs/nbody/lib/python3.12/multiprocessing/pool.py", line 774, in get
+    raise self._value
+AssertionError: in user code:
+
+    File "/home/s2818760/MasterProj/KIN_optimizer/Learning/Backwards.py", line 116, in backwards_map_fn  *
+        grads = tf.map_fn(lambda x: calculate_gradients_for_psiotion(
+
+    AssertionError: Called a function referencing variables which have been deleted. This likely means that function-local variables were created and not referenced elsewhere in the program. This is generally a mistake; consider storing variables in an object attribute on first call.
+
+#### Finished Test. Have a nice day
