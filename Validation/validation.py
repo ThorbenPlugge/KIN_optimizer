@@ -439,6 +439,11 @@ def test_2_parameters_on_many_systems(
         else:
             param_sample = np.linspace(p_var_bounds[0], p_var_bounds[1], n_samples)
         
+        # if the parameter to be changed is the number of cost function points, it must be an integer. 
+        # fix that here
+        if p_var_names[0] == 'num_points_considered_in_cost_function':
+            param_sample = np.ceil(param_sample).astype(int)
+        
         # prepare the arguments for the process_single_system_mp function
         args = []
         for i, param_value in enumerate(param_sample):
@@ -526,24 +531,38 @@ def test_2_parameters_on_many_systems(
             loglog=loglog
             )
     
-test_2_parameters_on_many_systems(
-    M_min=1e-3, # in solar masses
-    a_min=[0.01, 200], # in AU
-    evolve_time=1200, # in days
-    tau=30, # in days
-    num_points_considered_in_cost_function=8, 
-    M_maj=1e-3, # in solar masses
-    a_maj=10, # in AU
-    epochs=150,
-    accuracy=1e-10,
-    n_samples=150,
-    init_guess_offset=1e-7, # in solar masses
-    learning_rate=1e-8,
-    unknown_dimension=3,
-    phaseseed=0,
-    hypercube_state=42,
-    loglog=True
-)
+import argparse
+import json
+
+# Parse command-line arguments
+parser = argparse.ArgumentParser()
+parser.add_argument("--param_file", type=str, required=True, help='Path to the parameter file (JSON)')
+args = parser.parse_args()
+
+# Load parameters from JSON file
+with open(args.param_file, 'r') as f:
+    params = json.load(f)
+
+test_2_parameters_on_many_systems(**params)
+
+# test_2_parameters_on_many_systems(
+#     M_min=1e-3, # in solar masses
+#     a_min=[0.01, 200], # in AU
+#     evolve_time=1200, # in days
+#     tau=30, # in days
+#     num_points_considered_in_cost_function=8, 
+#     M_maj=1e-3, # in solar masses
+#     a_maj=10, # in AU
+#     epochs=150,
+#     accuracy=1e-10,
+#     n_samples=150,
+#     init_guess_offset=1e-7, # in solar masses
+#     learning_rate=1e-8,
+#     unknown_dimension=3,
+#     phaseseed=0,
+#     hypercube_state=42,
+#     loglog=True
+# )
 
 
     

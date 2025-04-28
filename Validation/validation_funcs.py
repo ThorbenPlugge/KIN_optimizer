@@ -220,7 +220,7 @@ def get_latin_sample(n_samples, bounds1, bounds2, hypercube_state, log_space=Tru
         sample = qmc.scale(sample_unscaled, [log_bounds1[0], log_bounds2[0]], [log_bounds1[1], log_bounds2[1]])
         sample = 10**(sample)
     else:
-        sample = qmc.scale(sample_unscaled, [bounds1[0], bounds2[0]], [bounds2[1], bounds2[1]])
+        sample = qmc.scale(sample_unscaled, [bounds1[0], bounds2[0]], [bounds1[1], bounds2[1]])
     return sample
 
 def merge_h5_files(input_folder, output_file, delete=False):
@@ -351,13 +351,25 @@ def get_orbital_period(M, a):
     p = (2*np.pi*np.sqrt(a**3 / (G*M)) | units.s).value_in(units.day)
     return p
 
-def sensitivity_plot_1param(results, filename, run_params, log_error=True, plot_path=plot_path, loglog=False):
+def rescale_losses(losses):
+    rescaled_losses = None
+    return rescaled_losses
+
+def sensitivity_plot_1param(results, filename, run_params, log_error=True, plot_path=plot_path, loglog=False, loss_plot=False):
     '''Creates a 1D sensitivity plot for a given set of results.'''
 
+    # Find out which parameter was varied
     varied_param_name = run_params['varied_param_names'][0]
     p_index = np.where(np.array(nameslist) == varied_param_name)[0].item()
 
+    # Extract the parameters we need to visualize 
     mass_errors = results['mass_errors']
+    avg_losses_per_epoch = results['avg_loss_per_epoch']
+
+    final_losses = avg_losses_per_epoch[:, -1]
+    # TODO: Scale the losses to be in the same range as the errors.
+    # Overplot these and see if the mass error and the loss are actually the same!!!
+    
     true_masses = np.sum(results['true_masses'], axis=1)
     true_masses2 = np.sum(results['true_masses'][:2], axis=1)[0]
 
@@ -400,7 +412,7 @@ def sensitivity_plot_1param(results, filename, run_params, log_error=True, plot_
 
     plt.xlabel(labels[p_index])
     plt.ylabel(mass_error_label)
-    plt.title(f'{nameslist} vs Fractional mass error.')
+    plt.title(f'{nameslist[p_index]} vs Fractional mass error.')
     
     saved_file = plot_path / filename
 
@@ -413,6 +425,7 @@ def sensitivity_plot(results, filename, run_params, log_error=True, plot_path=pl
     title = 'Sensitivity plot for a three-body system with a major planet and a minor planet.'
 
     varied_param_names = run_params['varied_param_names']
+    evolve_time = run_params['evolve_time']
     # select the varied parameters
     p1_index = np.where(np.array(nameslist) == varied_param_names[0])[0].item()
     p2_index = np.where(np.array(nameslist) == varied_param_names[1])[0].item()
@@ -439,13 +452,14 @@ def sensitivity_plot(results, filename, run_params, log_error=True, plot_path=pl
         p2 = np.log10(p2)
         M_maj = np.log10(M_maj)
         P_maj = np.log10(P_maj)
+        evolve_time = np.log10(evolve_time)
         labels = log_param_labels
     else:
         labels = param_labels
 
     # interpolate between the two parameters
-    p1_space = np.linspace(np.min(p1), np.max(p2), 500)
-    p2_space = np.linspace(np.min(p1), np.max(p2), 500)
+    p1_space = np.linspace(np.min(p1), np.max(p1), 500)
+    p2_space = np.linspace(np.min(p2), np.max(p2), 500)
     p1_grid, p2_grid = np.meshgrid(p1_space, p2_space)
     interp = LinearNDInterpolator((p1, p2), mass_errors)
     Mass_errors_i = interp(p1_grid, p2_grid)
@@ -470,8 +484,10 @@ def sensitivity_plot(results, filename, run_params, log_error=True, plot_path=pl
     if p2_index == 0:
         plt.axhline(M_maj, linestyle='--', color='white', label='Mass of major planet')
     if p1_index == 1:
+        plt.axvline(evolve_time, linestyle='--', color='black', label='Evolve time')
         plt.axvline(P_maj, linestyle='--', color='white', label='Orbital period of major planet')
     if p2_index == 1:
+        plt.axhline(evolve_time, linestyle='--', color='black', label='Evolve time')
         plt.axhline(P_maj, linestyle='--', color='white', label='Orbital period of major planet')
         
     ax = plt.gca()
