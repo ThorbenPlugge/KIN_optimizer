@@ -186,13 +186,13 @@ def process_result_old(path, filename, maj_param, log_error = False, filter_outl
 
 def save_results(
             path, filename, masses, true_masses, mass_error, avg_loss_per_epoch, 
-            varied_param_names, varied_params
+            varied_param_names, varied_params, pv_unc = None
             ):
     import h5py
     filepath = path / filename
     with h5py.File(filepath, 'a') as f:
         exp_index = len(f.keys())
-        exp_group = f.create_froup(f'exp_{exp_index}')
+        exp_group = f.create_group(f'exp_{exp_index}')
 
         # store data in the new group
         exp_group.create_dataset('masses', data = masses)
@@ -203,9 +203,12 @@ def save_results(
         if len(varied_param_names) == 2:
             exp_group.create_dataset(f'{varied_param_names[0]}, {varied_param_names[1]}', 
                                  data=parameters)
-        else: 
+        elif len(varied_param_names) == 1:
             exp_group.create_dataset(f'{varied_param_names},',
                                  data=parameters)
+        if pv_unc is not None:
+            exp_group.create_dataset('pos_vel_uncertainty,',
+                                data=pv_unc)
 
         f.close()
 
@@ -215,12 +218,12 @@ def get_latin_sample(n_samples, bounds1, bounds2, hypercube_state, log_space=Tru
     sampler = qmc.LatinHypercube(d=2, strength=1, rng=hypercube_state)
     sample_unscaled = sampler.random(n=n_samples)
     if log_space:
-        log_bounds1 = np.log(np.array(bounds1))
-        log_bounds2 = np.log(np.array(bounds2))
-        sample = qmc.scale(sample_unscaled, log_bounds1, log_bounds2)
-        sample = np.exp(sample)
+        log_bounds1 = np.log10(np.array(bounds1))
+        log_bounds2 = np.log10(np.array(bounds2))
+        sample = qmc.scale(sample_unscaled, [log_bounds1[0], log_bounds2[0]], [log_bounds1[1], log_bounds2[1]])
+        sample = 10**(sample)
     else:
-        sample = qmc.scale(sample_unscaled, bounds1, bounds2)
+        sample = qmc.scale(sample_unscaled, [bounds1[0], bounds2[0]], [bounds1[1], bounds2[1]])
     return sample
 
 def merge_h5_files(input_folder, output_file, delete=False):
@@ -293,7 +296,7 @@ def load_result(path, filename, filter_outliers=False):
         for key, value in f.attrs.items():
             print('   {}: {}'.format(key, value))
         print('\n')
-        run_params = f.attrs 
+        run_params = {key: value for key, value in f.attrs.items()}
         
     # make sure all loss arrays are of equal length, by repeating the last loss value for the epochs 
     # where the accuracy limit was already reached. 
@@ -322,16 +325,16 @@ def load_result(path, filename, filter_outliers=False):
 
 # list of axis labels to use in the plot
 param_labels = [
-    'Minor planet Mass (Msun)', 'Minor planet semimajor axis (AU)', 
+    'Minor planet Mass (Msun)', 'Minor planet orbital period (days)', 
     'Evolve time (days)', 'Tau (days)', 'Cost function points',
-    'Major planet mass (Msun)', 'Major planet semimajor axis (AU)', 
+    'Major planet mass (Msun)', 'Major planet orbital period (days)', 
     'Initial guess offset (Msun)'
     ]
 # list of log axis labels
 log_param_labels = [
-    'Log minor planet Mass (log10(Msun))', 'Log minor planet semimajor axis (log10(AU))', 
-    'Log volve time (log10(days))', 'Log tau (log10(days))', 'log cost function points',
-    'Log major planet mass (log10(Msun))', 'Major planet semimajor axis (log10(AU))', 
+    'Log minor planet Mass (log10(Msun))', 'Log minor planet orbital period (log(days))', 
+    'Log evolve time (log10(days))', 'Log tau (log10(days))', 'log cost function points',
+    'Log major planet mass (log10(Msun))', 'Major planet orbital period (log(days))', 
     'Initial guess offset (log10(Msun))'
     ]
 # list of all the options varied_param_names can be.
@@ -343,20 +346,49 @@ nameslist = [
     'M_maj', 'a_maj', 'init_guess_offset'
     ]
 
-def sensitivity_plot_1param(results, filename, run_params, log_error=True, plot_path=plot_path, loglog=False):
+def get_orbital_period(M, a):
+    '''Takes in Mass in solar masses, and semimajor axis in AU'''
+    a = (a | units.AU).value_in(units.m)
+    M = (M | units.Msun).value_in(units.kg)
+    G = constants.G.value_in(units.m**3 * units.kg**-1 * units.s**-2)
+    p = (2*np.pi*np.sqrt(a**3 / (G*M)) | units.s).value_in(units.day)
+    return p
+
+def rescale_losses(losses):
+    rescaled_losses = None
+    return rescaled_losses
+
+def sensitivity_plot_1param(results, filename, run_params, log_error=True, plot_path=plot_path, loglog=False, loss_plot=False):
     '''Creates a 1D sensitivity plot for a given set of results.'''
-    varied_param_name = run_params['varied_param_names']
 
-    p_index = np.where(nameslist == varied_param_name)
+    # Find out which parameter was varied
+    varied_param_name = run_params['varied_param_names'][0]
+    p_index = np.where(np.array(nameslist) == varied_param_name)[0].item()
 
+    # Extract the parameters we need to visualize 
     mass_errors = results['mass_errors']
+    avg_losses_per_epoch = results['avg_loss_per_epoch']
+
+    final_losses = avg_losses_per_epoch[:, -1]
+    # TODO: Scale the losses to be in the same range as the errors.
+    # Overplot these and see if the mass error and the loss are actually the same!!!
+    
+    true_masses = np.sum(results['true_masses'], axis=1)
+    true_masses2 = np.sum(results['true_masses'][:2], axis=1)[0]
+
+    M_maj, P_maj = run_params['M_maj'], get_orbital_period(true_masses2, run_params['a_maj'])
     p = results[f'{varied_param_name},']
+
+    if p_index == 1:
+        p = get_orbital_period(true_masses, p)
 
     mass_error_label = 'Fractional mass error'
     
     if loglog: 
         plt.loglog()
         p = np.log10(p)
+        M_maj = np.log10(M_maj)
+        P_maj = np.log10(P_maj)
         labels = log_param_labels
     else: 
         labels = param_labels
@@ -372,17 +404,18 @@ def sensitivity_plot_1param(results, filename, run_params, log_error=True, plot_
     plt.scatter(p, mass_errors, s=60, c=mass_errors)
 
     if p_index == 0:
-        plt.axhline(run_params['M_maj'], linestyle='--', color='white', label='Mass of major planet')
+        plt.axvline(M_maj, linestyle='--', color='white', label='Mass of major planet')
+        plt.legend()
     if p_index == 1:
-        plt.axhline(run_params['a_maj'], linestyle='--', color='white', label='Semimajor axis of major planet')
+        plt.axvline(P_maj, linestyle='--', color='white', label='Orbital period of major planet')
+        plt.legend()
 
     ax = plt.gca()
-    ax.set_Facecolor('xkcd:light grey')
+    ax.set_facecolor('xkcd:light grey')
 
     plt.xlabel(labels[p_index])
-    plt.ylabel('mass_error_label')
-    plt.title(f'{nameslist} vs Fractional mass error.')
-    plt.legend()
+    plt.ylabel(mass_error_label)
+    plt.title(f'{nameslist[p_index]} vs Fractional mass error.')
     
     saved_file = plot_path / filename
 
@@ -391,37 +424,52 @@ def sensitivity_plot_1param(results, filename, run_params, log_error=True, plot_
 def sensitivity_plot(results, filename, run_params, log_error=True, plot_path=plot_path, loglog=False):
     '''Creates a sensitivity plot for a given set of results.'''
     from scipy.interpolate import LinearNDInterpolator
-
+    from system_generation import relative_orbital_velocity
     title = 'Sensitivity plot for a three-body system with a major planet and a minor planet.'
 
     varied_param_names = run_params['varied_param_names']
-    
+    evolve_time = run_params['evolve_time']
     # select the varied parameters
-    p1_index = np.where(nameslist == varied_param_names[0])
-    p2_index = np.where(nameslist == varied_param_names[1])
+    p1_index = np.where(np.array(nameslist) == varied_param_names[0])[0].item()
+    p2_index = np.where(np.array(nameslist) == varied_param_names[1])[0].item()
 
     mass_errors = results['mass_errors']
+    # Sum the total mass to calculate the orbital period.
+    # One with, and one without the outer planet.
+    true_masses = np.sum(results['true_masses'], axis=1)
+    true_masses2 = np.sum(results['true_masses'][:2], axis=1)[0]
+
     parameters = results[f'{varied_param_names[0]}, {varied_param_names[1]}']
     p1, p2 = parameters[:, 0], parameters[:, 1]
 
+    if p1_index == 1:
+        p1 = get_orbital_period(true_masses, p1)
+    if p2_index == 1:
+        p2 = get_orbital_period(true_masses, p2)
+
+    M_maj, P_maj = run_params['M_maj'], get_orbital_period(true_masses2, run_params['a_maj'])
+    
     if loglog:
         plt.loglog()
         p1 = np.log10(p1)
         p2 = np.log10(p2)
+        M_maj = np.log10(M_maj)
+        P_maj = np.log10(P_maj)
+        evolve_time = np.log10(evolve_time)
         labels = log_param_labels
     else:
         labels = param_labels
 
     # interpolate between the two parameters
-    p1_space = np.linspace(np.min(p1), np.max(p2), 500)
-    p2_space = np.linspace(np.min(p1), np.max(p2), 500)
+    p1_space = np.linspace(np.min(p1), np.max(p1), 500)
+    p2_space = np.linspace(np.min(p2), np.max(p2), 500)
     p1_grid, p2_grid = np.meshgrid(p1_space, p2_space)
     interp = LinearNDInterpolator((p1, p2), mass_errors)
     Mass_errors_i = interp(p1_grid, p2_grid)
 
     cbarlabel = 'Fractional mass error'
 
-    if log_error: # if we want this, change the error to the log of the error.
+    if log_error: # If we want this, change the error to the log of the error.
         Mass_errors_i = np.log10(Mass_errors_i)
         mass_errors = np.log10(mass_errors)
         cbarlabel = 'Log (10) fractional mass error'
@@ -433,15 +481,19 @@ def sensitivity_plot(results, filename, run_params, log_error=True, plot_path=pl
     plt.scatter(p1, p2, s=150, color='white')
     plt.scatter(p1, p2, s=60, c=mass_errors, label='Uninterpolated data')
     
-    # if the parameter we vary is the minor planet mass or semimajor axis, plot the major planet position as reference
+    # If the parameter we vary is the minor planet mass or semimajor axis, plot the major planet position as reference.
     if p1_index == 0: 
-        plt.axhline(run_params['M_maj'], linestyle='--', color='white', label='Parameters of major planet')
+        plt.axvline(M_maj, linestyle='--', color='white', label='Mass of major planet')
     if p2_index == 0:
-        plt.axhline(run_params['M_maj'], linestyle='--', color='white', label='Parameters of major planet')
+        plt.axhline(M_maj, linestyle='--', color='white', label='Mass of major planet')
     if p1_index == 1:
-        plt.axhline(run_params['a_maj'], linestyle='--', color='white', label='Parameters of major planet')
+        if p1_index != 2 and p2_index != 2: # if the evolve time is not constant, don't plot it
+            plt.axvline(evolve_time, linestyle='--', color='black', label='Evolve time')
+        plt.axvline(P_maj, linestyle='--', color='white', label='Orbital period of major planet')
     if p2_index == 1:
-        plt.axhline(run_params['a_maj'], linestyle='--', color='white', label='Parameters of major planet')
+        if p1_index != 2 and p2_index != 2: 
+            plt.axhline(evolve_time, linestyle='--', color='black', label='Evolve time')
+        plt.axhline(P_maj, linestyle='--', color='white', label='Orbital period of major planet')
         
     ax = plt.gca()
     ax.set_facecolor('xkcd:light grey')
@@ -449,7 +501,7 @@ def sensitivity_plot(results, filename, run_params, log_error=True, plot_path=pl
     plt.xlabel(labels[p1_index])
     plt.ylabel(labels[p2_index])
     plt.title(title)
-    plt.legend(loc='lower_right')
+    plt.legend(loc='lower right')
     plt.colorbar(label=cbarlabel)
 
     saved_file = plot_path / filename
@@ -458,8 +510,25 @@ def sensitivity_plot(results, filename, run_params, log_error=True, plot_path=pl
 
 def save_run_params_to_file(run_params, output_file):
     import json
+
+    # Convert numpy types to standard python types
+    def convert_to_serializable(obj):
+        if isinstance(obj, np.integer): 
+            return int(obj)
+        elif isinstance(obj, np.floating): 
+            return float(obj)
+        elif isinstance(obj, np.ndarray):
+            return obj.tolist()
+        elif isinstance(obj, np.bool_):
+            return bool(obj)
+        else:
+            return obj  # Return the object as-is if it's already serializable
+
+    run_params_serializable = {key: convert_to_serializable(value) for key, value in run_params.items()}
+
+    # Save the dictionary as a JSON file
     with open(f'{output_file}.json', 'w') as f:
-        json.dump(run_params, f, indent=4)
+        json.dump(run_params_serializable, f, indent=4)
     print(f'Run parameters saved to {output_file}.json')
 
 def process_result(path, filename, log_error=True, filter_outliers=False, loglog=True):

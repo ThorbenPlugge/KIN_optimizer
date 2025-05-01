@@ -1,0 +1,1442 @@
+#### Starting test
+n_cores available for slurm is 16
+2025-04-28 13:40:42.218851: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-28 13:40:42.218847: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-28 13:40:42.218860: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-28 13:40:42.218853: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-28 13:40:42.218854: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-28 13:40:42.218863: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-28 13:40:42.218869: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-28 13:40:42.218868: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-28 13:40:42.218866: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-28 13:40:42.218871: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-28 13:40:42.218874: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-28 13:40:42.218869: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-28 13:40:42.218874: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-28 13:40:42.218869: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-28 13:40:42.218878: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-28 13:40:42.218878: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-28 13:40:42.368751: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-28 13:40:42.368755: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-28 13:40:42.368755: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-28 13:40:42.368750: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-28 13:40:42.368750: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-28 13:40:42.368752: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-28 13:40:42.368782: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-28 13:40:42.368752: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-28 13:40:42.368762: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-28 13:40:42.368765: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-28 13:40:42.368767: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-28 13:40:42.368781: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-28 13:40:42.368784: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-28 13:40:42.368801: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-28 13:40:42.368801: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-28 13:40:42.368972: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-28 13:40:42.501801: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-04-28 13:40:42.501804: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-04-28 13:40:42.501798: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-04-28 13:40:42.501824: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-04-28 13:40:42.501807: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-04-28 13:40:42.501803: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-04-28 13:40:42.501798: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-04-28 13:40:42.501808: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-04-28 13:40:42.501807: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-04-28 13:40:42.501808: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-04-28 13:40:42.501798: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-04-28 13:40:42.501814: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-04-28 13:40:42.501827: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-04-28 13:40:42.501823: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-04-28 13:40:42.501860: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-04-28 13:40:42.501860: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1745840442.623707 3214556 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1745840442.623700 3214559 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1745840442.623692 3214562 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1745840442.623693 3214565 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1745840442.623710 3214560 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1745840442.623702 3214558 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1745840442.623698 3214564 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1745840442.623727 3214552 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1745840442.623710 3214554 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1745840442.623705 3214567 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1745840442.623696 3214553 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1745840442.623707 3214563 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1745840442.623728 3214566 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1745840442.623728 3214561 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1745840442.623730 3214557 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1745840442.623735 3214555 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1745840442.660135 3214552 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+E0000 00:00:1745840442.660146 3214566 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+E0000 00:00:1745840442.660135 3214560 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+E0000 00:00:1745840442.660144 3214553 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+E0000 00:00:1745840442.660135 3214563 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+E0000 00:00:1745840442.660144 3214559 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+E0000 00:00:1745840442.660135 3214561 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+E0000 00:00:1745840442.660141 3214565 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+E0000 00:00:1745840442.660143 3214555 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+E0000 00:00:1745840442.660144 3214554 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+E0000 00:00:1745840442.660141 3214562 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+E0000 00:00:1745840442.660149 3214558 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+E0000 00:00:1745840442.660138 3214557 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+E0000 00:00:1745840442.660143 3214567 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+E0000 00:00:1745840442.660147 3214564 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+E0000 00:00:1745840442.660147 3214556 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1745840442.942557 3214567 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942555 3214559 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942563 3214560 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942567 3214553 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942578 3214555 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942583 3214561 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942581 3214552 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942577 3214564 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942595 3214567 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942580 3214556 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942581 3214557 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942581 3214562 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942601 3214559 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942582 3214563 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942573 3214554 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942604 3214560 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942597 3214566 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942610 3214553 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942612 3214555 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942615 3214561 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942626 3214564 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942626 3214567 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942627 3214552 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942630 3214556 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942635 3214557 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942637 3214562 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942638 3214559 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942649 3214563 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942651 3214554 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942654 3214560 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942657 3214566 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942658 3214553 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942661 3214555 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942662 3214561 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942663 3214564 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942664 3214567 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942666 3214552 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942693 3214561 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942695 3214564 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942668 3214556 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942670 3214562 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942670 3214557 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942674 3214559 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942703 3214562 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942675 3214563 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942680 3214554 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942682 3214560 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942688 3214566 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942690 3214553 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942692 3214555 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942698 3214552 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942702 3214556 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942705 3214557 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942712 3214563 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942714 3214554 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942720 3214566 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942756 3214558 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942756 3214565 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942782 3214558 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942787 3214558 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942788 3214565 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942792 3214558 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942792 3214565 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745840442.942798 3214565 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+2025-04-28 13:40:42.972772: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-04-28 13:40:42.972815: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-04-28 13:40:42.972828: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-04-28 13:40:42.972845: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-04-28 13:40:42.972845: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-04-28 13:40:42.972858: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-04-28 13:40:42.972861: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-04-28 13:40:42.972914: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-04-28 13:40:42.973105: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-04-28 13:40:42.973167: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-04-28 13:40:42.973246: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-04-28 13:40:42.973531: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-04-28 13:40:42.973590: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-04-28 13:40:42.973774: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-04-28 13:40:42.973883: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-04-28 13:40:42.974692: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-04-28 13:40:54.837341: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-04-28 13:40:54.841600: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-04-28 13:40:54.875534: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-04-28 13:40:54.907770: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-04-28 13:40:54.909639: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-04-28 13:40:54.938658: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-04-28 13:40:54.982526: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-04-28 13:40:55.051392: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-04-28 13:40:55.089015: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-04-28 13:40:55.143239: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-04-28 13:40:55.158915: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-04-28 13:40:55.185891: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-04-28 13:40:55.191558: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-04-28 13:40:55.199499: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-04-28 13:40:55.232479: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-04-28 13:40:55.241480: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+Running simulation...
+start the learn masses function
+saved results for system 75
+Running simulation...
+start the learn masses function
+saved results for system 76
+Running simulation...
+start the learn masses function
+saved results for system 77
+Running simulation...
+start the learn masses function
+saved results for system 78
+Running simulation...
+start the learn masses function
+saved results for system 79
+Running simulation...
+start the learn masses function
+saved results for system 105
+Running simulation...
+start the learn masses function
+saved results for system 106
+Running simulation...
+start the learn masses function
+saved results for system 107
+Running simulation...
+start the learn masses function
+saved results for system 108
+Running simulation...
+start the learn masses function
+saved results for system 109
+Running simulation...
+start the learn masses function
+saved results for system 225
+Running simulation...
+start the learn masses function
+saved results for system 226
+Running simulation...
+start the learn masses function
+saved results for system 227
+Running simulation...
+start the learn masses function
+saved results for system 228
+Running simulation...
+start the learn masses function
+saved results for system 229
+Running simulation...
+start the learn masses function
+saved results for system 50
+Running simulation...
+start the learn masses function
+saved results for system 51
+Running simulation...
+start the learn masses function
+saved results for system 52
+Running simulation...
+start the learn masses function
+saved results for system 53
+Running simulation...
+start the learn masses function
+saved results for system 54
+Running simulation...
+start the learn masses function
+saved results for system 110
+Running simulation...
+start the learn masses function
+saved results for system 111
+Running simulation...
+start the learn masses function
+saved results for system 112
+Running simulation...
+start the learn masses function
+saved results for system 113
+Running simulation...
+start the learn masses function
+saved results for system 114
+Running simulation...
+start the learn masses function
+saved results for system 210
+Running simulation...
+start the learn masses function
+saved results for system 211
+Running simulation...
+start the learn masses function
+saved results for system 212
+Running simulation...
+start the learn masses function
+saved results for system 213
+Running simulation...
+start the learn masses function
+saved results for system 214
+Running simulation...
+start the learn masses function
+saved results for system 5
+Running simulation...
+start the learn masses function
+saved results for system 6
+Running simulation...
+start the learn masses function
+saved results for system 7
+Running simulation...
+start the learn masses function
+saved results for system 8
+Running simulation...
+start the learn masses function
+saved results for system 9
+Running simulation...
+start the learn masses function
+saved results for system 100
+Running simulation...
+start the learn masses function
+saved results for system 101
+Running simulation...
+start the learn masses function
+saved results for system 102
+Running simulation...
+start the learn masses function
+saved results for system 103
+Running simulation...
+start the learn masses function
+saved results for system 104
+Running simulation...
+start the learn masses function
+saved results for system 215
+Running simulation...
+start the learn masses function
+saved results for system 216
+Running simulation...
+start the learn masses function
+saved results for system 217
+Running simulation...
+start the learn masses function
+saved results for system 218
+Running simulation...
+start the learn masses function
+saved results for system 219
+Running simulation...
+start the learn masses function
+saved results for system 60
+Running simulation...
+start the learn masses function
+saved results for system 61
+Running simulation...
+start the learn masses function
+saved results for system 62
+Running simulation...
+start the learn masses function
+saved results for system 63
+Running simulation...
+start the learn masses function
+saved results for system 64
+Running simulation...
+start the learn masses function
+saved results for system 140
+Running simulation...
+start the learn masses function
+saved results for system 141
+Running simulation...
+start the learn masses function
+saved results for system 142
+Running simulation...
+start the learn masses function
+saved results for system 143
+Running simulation...
+start the learn masses function
+saved results for system 144
+Running simulation...
+start the learn masses function
+saved results for system 160
+Running simulation...
+start the learn masses function
+saved results for system 161
+Running simulation...
+start the learn masses function
+saved results for system 162
+Running simulation...
+start the learn masses function
+saved results for system 163
+Running simulation...
+start the learn masses function
+saved results for system 164
+Running simulation...
+start the learn masses function
+saved results for system 240
+Running simulation...
+start the learn masses function
+saved results for system 241
+Running simulation...
+start the learn masses function
+saved results for system 242
+Running simulation...
+start the learn masses function
+saved results for system 243
+Running simulation...
+start the learn masses function
+saved results for system 244
+Running simulation...
+start the learn masses function
+saved results for system 30
+Running simulation...
+start the learn masses function
+saved results for system 31
+Running simulation...
+start the learn masses function
+saved results for system 32
+Running simulation...
+start the learn masses function
+saved results for system 33
+Running simulation...
+start the learn masses function
+saved results for system 34
+Running simulation...
+start the learn masses function
+saved results for system 115
+Running simulation...
+start the learn masses function
+saved results for system 116
+Running simulation...
+start the learn masses function
+saved results for system 117
+Running simulation...
+start the learn masses function
+saved results for system 118
+Running simulation...
+start the learn masses function
+saved results for system 119
+Running simulation...
+start the learn masses function
+saved results for system 230
+Running simulation...
+start the learn masses function
+saved results for system 231
+Running simulation...
+start the learn masses function
+saved results for system 232
+Running simulation...
+start the learn masses function
+saved results for system 233
+Running simulation...
+start the learn masses function
+saved results for system 234
+Running simulation...
+start the learn masses function
+saved results for system 25
+Running simulation...
+start the learn masses function
+saved results for system 26
+Running simulation...
+start the learn masses function
+saved results for system 27
+Running simulation...
+start the learn masses function
+saved results for system 28
+Running simulation...
+start the learn masses function
+saved results for system 29
+Running simulation...
+start the learn masses function
+saved results for system 150
+Running simulation...
+start the learn masses function
+saved results for system 151
+Running simulation...
+start the learn masses function
+saved results for system 152
+Running simulation...
+start the learn masses function
+saved results for system 153
+Running simulation...
+start the learn masses function
+saved results for system 154
+Running simulation...
+start the learn masses function
+saved results for system 185
+Running simulation...
+start the learn masses function
+saved results for system 186
+Running simulation...
+start the learn masses function
+saved results for system 187
+Running simulation...
+start the learn masses function
+saved results for system 188
+Running simulation...
+start the learn masses function
+saved results for system 189
+Running simulation...
+start the learn masses function
+saved results for system 250
+Running simulation...
+start the learn masses function
+saved results for system 251
+Running simulation...
+start the learn masses function
+saved results for system 252
+Running simulation...
+start the learn masses function
+saved results for system 253
+Running simulation...
+start the learn masses function
+saved results for system 254
+Running simulation...
+start the learn masses function
+saved results for system 65
+Running simulation...
+start the learn masses function
+saved results for system 66
+Running simulation...
+start the learn masses function
+saved results for system 67
+Running simulation...
+start the learn masses function
+saved results for system 68
+Running simulation...
+start the learn masses function
+saved results for system 69
+Running simulation...
+start the learn masses function
+saved results for system 125
+Running simulation...
+start the learn masses function
+saved results for system 126
+Running simulation...
+start the learn masses function
+saved results for system 127
+Running simulation...
+start the learn masses function
+saved results for system 128
+Running simulation...
+start the learn masses function
+saved results for system 129
+Running simulation...
+start the learn masses function
+saved results for system 170
+Running simulation...
+start the learn masses function
+saved results for system 171
+Running simulation...
+start the learn masses function
+saved results for system 172
+Running simulation...
+start the learn masses function
+saved results for system 173
+Running simulation...
+start the learn masses function
+saved results for system 174
+Running simulation...
+start the learn masses function
+saved results for system 255
+Running simulation...
+start the learn masses function
+saved results for system 256
+Running simulation...
+start the learn masses function
+saved results for system 257
+Running simulation...
+start the learn masses function
+saved results for system 258
+Running simulation...
+start the learn masses function
+saved results for system 259
+Running simulation...
+start the learn masses function
+saved results for system 55
+Running simulation...
+start the learn masses function
+saved results for system 56
+Running simulation...
+start the learn masses function
+saved results for system 57
+Running simulation...
+start the learn masses function
+saved results for system 58
+Running simulation...
+start the learn masses function
+saved results for system 59
+Running simulation...
+start the learn masses function
+saved results for system 135
+Running simulation...
+start the learn masses function
+saved results for system 136
+Running simulation...
+start the learn masses function
+saved results for system 137
+Running simulation...
+start the learn masses function
+saved results for system 138
+Running simulation...
+start the learn masses function
+saved results for system 139
+Running simulation...
+start the learn masses function
+saved results for system 175
+Running simulation...
+start the learn masses function
+saved results for system 176
+Running simulation...
+start the learn masses function
+saved results for system 177
+Running simulation...
+start the learn masses function
+saved results for system 178
+Running simulation...
+start the learn masses function
+saved results for system 179
+Running simulation...
+start the learn masses function
+saved results for system 245
+Running simulation...
+start the learn masses function
+saved results for system 246
+Running simulation...
+start the learn masses function
+saved results for system 247
+Running simulation...
+start the learn masses function
+saved results for system 248
+Running simulation...
+start the learn masses function
+saved results for system 249
+Running simulation...
+start the learn masses function
+saved results for system 0
+Running simulation...
+start the learn masses function
+saved results for system 1
+Running simulation...
+start the learn masses function
+saved results for system 2
+Running simulation...
+start the learn masses function
+saved results for system 3
+Running simulation...
+start the learn masses function
+saved results for system 4
+Running simulation...
+start the learn masses function
+saved results for system 130
+Running simulation...
+start the learn masses function
+saved results for system 131
+Running simulation...
+start the learn masses function
+saved results for system 132
+Running simulation...
+start the learn masses function
+saved results for system 133
+Running simulation...
+start the learn masses function
+saved results for system 134
+Running simulation...
+start the learn masses function
+saved results for system 165
+Running simulation...
+start the learn masses function
+saved results for system 166
+Running simulation...
+start the learn masses function
+saved results for system 167
+Running simulation...
+start the learn masses function
+saved results for system 168
+Running simulation...
+start the learn masses function
+saved results for system 169
+Running simulation...
+start the learn masses function
+saved results for system 260
+Running simulation...
+start the learn masses function
+saved results for system 261
+Running simulation...
+start the learn masses function
+saved results for system 262
+Running simulation...
+start the learn masses function
+saved results for system 263
+Running simulation...
+start the learn masses function
+saved results for system 264
+Running simulation...
+start the learn masses function
+saved results for system 10
+Running simulation...
+start the learn masses function
+saved results for system 11
+Running simulation...
+start the learn masses function
+saved results for system 12
+Running simulation...
+start the learn masses function
+saved results for system 13
+Running simulation...
+start the learn masses function
+saved results for system 14
+Running simulation...
+start the learn masses function
+saved results for system 85
+Running simulation...
+start the learn masses function
+saved results for system 86
+Running simulation...
+start the learn masses function
+saved results for system 87
+Running simulation...
+start the learn masses function
+saved results for system 88
+Running simulation...
+start the learn masses function
+saved results for system 89
+Running simulation...
+start the learn masses function
+saved results for system 195
+Running simulation...
+start the learn masses function
+saved results for system 196
+Running simulation...
+start the learn masses function
+saved results for system 197
+Running simulation...
+start the learn masses function
+saved results for system 198
+Running simulation...
+start the learn masses function
+saved results for system 199
+Running simulation...
+start the learn masses function
+saved results for system 270
+Running simulation...
+start the learn masses function
+saved results for system 271
+Running simulation...
+start the learn masses function
+saved results for system 272
+Running simulation...
+start the learn masses function
+saved results for system 273
+Running simulation...
+start the learn masses function
+saved results for system 274
+Running simulation...
+start the learn masses function
+saved results for system 15
+Running simulation...
+start the learn masses function
+saved results for system 16
+Running simulation...
+start the learn masses function
+saved results for system 17
+Running simulation...
+start the learn masses function
+saved results for system 18
+Running simulation...
+start the learn masses function
+saved results for system 19
+Running simulation...
+start the learn masses function
+saved results for system 155
+Running simulation...
+start the learn masses function
+saved results for system 156
+Running simulation...
+start the learn masses function
+saved results for system 157
+Running simulation...
+start the learn masses function
+saved results for system 158
+Running simulation...
+start the learn masses function
+saved results for system 159
+Running simulation...
+start the learn masses function
+saved results for system 180
+Running simulation...
+start the learn masses function
+saved results for system 181
+Running simulation...
+start the learn masses function
+saved results for system 182
+Running simulation...
+start the learn masses function
+saved results for system 183
+Running simulation...
+start the learn masses function
+saved results for system 184
+Running simulation...
+start the learn masses function
+saved results for system 265
+Running simulation...
+start the learn masses function
+saved results for system 266
+Running simulation...
+start the learn masses function
+saved results for system 267
+Running simulation...
+start the learn masses function
+saved results for system 268
+Running simulation...
+start the learn masses function
+saved results for system 269
+Running simulation...
+start the learn masses function
+saved results for system 20
+Running simulation...
+start the learn masses function
+saved results for system 21
+Running simulation...
+start the learn masses function
+saved results for system 22
+Running simulation...
+start the learn masses function
+saved results for system 23
+Running simulation...
+start the learn masses function
+saved results for system 24
+Running simulation...
+start the learn masses function
+saved results for system 145
+Running simulation...
+start the learn masses function
+saved results for system 146
+Running simulation...
+start the learn masses function
+saved results for system 147
+Running simulation...
+start the learn masses function
+saved results for system 148
+Running simulation...
+start the learn masses function
+saved results for system 149
+Running simulation...
+start the learn masses function
+saved results for system 200
+Running simulation...
+start the learn masses function
+saved results for system 201
+Running simulation...
+start the learn masses function
+saved results for system 202
+Running simulation...
+start the learn masses function
+saved results for system 203
+Running simulation...
+start the learn masses function
+saved results for system 204
+Running simulation...
+start the learn masses function
+saved results for system 275
+Running simulation...
+start the learn masses function
+saved results for system 276
+Running simulation...
+start the learn masses function
+saved results for system 277
+Running simulation...
+start the learn masses function
+saved results for system 278
+Running simulation...
+start the learn masses function
+saved results for system 279
+Running simulation...
+start the learn masses function
+saved results for system 40
+Running simulation...
+start the learn masses function
+saved results for system 41
+Running simulation...
+start the learn masses function
+saved results for system 42
+Running simulation...
+start the learn masses function
+saved results for system 43
+Running simulation...
+start the learn masses function
+saved results for system 44
+Running simulation...
+start the learn masses function
+saved results for system 90
+Running simulation...
+start the learn masses function
+saved results for system 91
+Running simulation...
+start the learn masses function
+saved results for system 92
+Running simulation...
+start the learn masses function
+saved results for system 93
+Running simulation...
+start the learn masses function
+saved results for system 94
+Running simulation...
+start the learn masses function
+saved results for system 220
+Running simulation...
+start the learn masses function
+saved results for system 221
+Running simulation...
+start the learn masses function
+saved results for system 222
+Running simulation...
+start the learn masses function
+saved results for system 223
+Running simulation...
+start the learn masses function
+saved results for system 224
+Running simulation...
+start the learn masses function
+saved results for system 280
+Running simulation...
+start the learn masses function
+saved results for system 281
+Running simulation...
+start the learn masses function
+saved results for system 282
+Running simulation...
+start the learn masses function
+saved results for system 283
+Running simulation...
+start the learn masses function
+saved results for system 284
+Running simulation...
+start the learn masses function
+saved results for system 45
+Running simulation...
+start the learn masses function
+saved results for system 46
+Running simulation...
+start the learn masses function
+saved results for system 47
+Running simulation...
+start the learn masses function
+saved results for system 48
+Running simulation...
+start the learn masses function
+saved results for system 49
+Running simulation...
+start the learn masses function
+saved results for system 120
+Running simulation...
+start the learn masses function
+saved results for system 121
+Running simulation...
+start the learn masses function
+saved results for system 122
+Running simulation...
+start the learn masses function
+saved results for system 123
+Running simulation...
+start the learn masses function
+saved results for system 124
+Running simulation...
+start the learn masses function
+saved results for system 235
+Running simulation...
+start the learn masses function
+saved results for system 236
+Running simulation...
+start the learn masses function
+saved results for system 237
+Running simulation...
+start the learn masses function
+saved results for system 238
+Running simulation...
+start the learn masses function
+saved results for system 239
+Running simulation...
+start the learn masses function
+saved results for system 295
+Running simulation...
+start the learn masses function
+saved results for system 296
+Running simulation...
+start the learn masses function
+saved results for system 297
+Running simulation...
+start the learn masses function
+saved results for system 298
+Running simulation...
+start the learn masses function
+saved results for system 299
+Running simulation...
+start the learn masses function
+saved results for system 70
+Running simulation...
+start the learn masses function
+saved results for system 71
+Running simulation...
+start the learn masses function
+saved results for system 72
+Running simulation...
+start the learn masses function
+saved results for system 73
+Running simulation...
+start the learn masses function
+saved results for system 74
+Running simulation...
+start the learn masses function
+saved results for system 80
+Running simulation...
+start the learn masses function
+saved results for system 81
+Running simulation...
+start the learn masses function
+saved results for system 82
+Running simulation...
+start the learn masses function
+saved results for system 83
+Running simulation...
+start the learn masses function
+saved results for system 84
+Running simulation...
+start the learn masses function
+saved results for system 190
+Running simulation...
+start the learn masses function
+saved results for system 191
+Running simulation...
+start the learn masses function
+saved results for system 192
+Running simulation...
+start the learn masses function
+saved results for system 193
+Running simulation...
+start the learn masses function
+saved results for system 194
+Running simulation...
+start the learn masses function
+saved results for system 285
+Running simulation...
+start the learn masses function
+saved results for system 286
+Running simulation...
+start the learn masses function
+saved results for system 287
+Running simulation...
+start the learn masses function
+saved results for system 288
+Running simulation...
+start the learn masses function
+saved results for system 289
+Running simulation...
+start the learn masses function
+saved results for system 35
+Running simulation...
+start the learn masses function
+saved results for system 36
+Running simulation...
+start the learn masses function
+saved results for system 37
+Running simulation...
+start the learn masses function
+saved results for system 38
+Running simulation...
+start the learn masses function
+saved results for system 39
+Running simulation...
+start the learn masses function
+saved results for system 95
+Running simulation...
+start the learn masses function
+saved results for system 96
+Running simulation...
+start the learn masses function
+saved results for system 97
+Running simulation...
+start the learn masses function
+saved results for system 98
+Running simulation...
+start the learn masses function
+saved results for system 99
+Running simulation...
+start the learn masses function
+saved results for system 205
+Running simulation...
+start the learn masses function
+saved results for system 206
+Running simulation...
+start the learn masses function
+saved results for system 207
+Running simulation...
+start the learn masses function
+saved results for system 208
+Running simulation...
+start the learn masses function
+saved results for system 209
+Running simulation...
+start the learn masses function
+saved results for system 290
+Running simulation...
+start the learn masses function
+saved results for system 291
+Running simulation...
+start the learn masses function
+saved results for system 292
+Running simulation...
+start the learn masses function
+saved results for system 293
+Running simulation...
+start the learn masses function
+saved results for system 294
+All files merged into /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/300_systems_init_guess_offset_3999292.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/0_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/100_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/101_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/102_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/103_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/104_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/105_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/106_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/107_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/108_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/109_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/10_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/110_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/111_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/112_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/113_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/114_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/115_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/116_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/117_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/118_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/119_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/11_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/120_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/121_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/122_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/123_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/124_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/125_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/126_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/127_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/128_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/129_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/12_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/130_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/131_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/132_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/133_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/134_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/135_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/136_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/137_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/138_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/139_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/13_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/140_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/141_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/142_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/143_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/144_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/145_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/146_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/147_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/148_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/149_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/14_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/150_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/151_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/152_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/153_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/154_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/155_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/156_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/157_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/158_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/159_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/15_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/160_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/161_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/162_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/163_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/164_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/165_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/166_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/167_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/168_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/169_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/16_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/170_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/171_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/172_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/173_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/174_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/175_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/176_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/177_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/178_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/179_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/17_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/180_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/181_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/182_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/183_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/184_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/185_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/186_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/187_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/188_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/189_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/18_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/190_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/191_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/192_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/193_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/194_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/195_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/196_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/197_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/198_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/199_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/19_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/1_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/200_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/201_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/202_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/203_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/204_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/205_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/206_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/207_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/208_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/209_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/20_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/210_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/211_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/212_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/213_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/214_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/215_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/216_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/217_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/218_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/219_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/21_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/220_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/221_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/222_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/223_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/224_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/225_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/226_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/227_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/228_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/229_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/22_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/230_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/231_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/232_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/233_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/234_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/235_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/236_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/237_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/238_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/239_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/23_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/240_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/241_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/242_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/243_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/244_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/245_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/246_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/247_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/248_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/249_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/24_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/250_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/251_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/252_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/253_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/254_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/255_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/256_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/257_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/258_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/259_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/25_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/260_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/261_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/262_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/263_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/264_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/265_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/266_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/267_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/268_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/269_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/26_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/270_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/271_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/272_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/273_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/274_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/275_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/276_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/277_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/278_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/279_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/27_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/280_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/281_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/282_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/283_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/284_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/285_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/286_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/287_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/288_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/289_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/28_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/290_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/291_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/292_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/293_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/294_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/295_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/296_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/297_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/298_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/299_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/29_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/2_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/30_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/31_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/32_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/33_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/34_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/35_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/36_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/37_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/38_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/39_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/3_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/40_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/41_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/42_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/43_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/44_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/45_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/46_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/47_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/48_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/49_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/4_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/50_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/51_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/52_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/53_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/54_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/55_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/56_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/57_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/58_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/59_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/5_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/60_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/61_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/62_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/63_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/64_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/65_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/66_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/67_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/68_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/69_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/6_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/70_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/71_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/72_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/73_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/74_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/75_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/76_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/77_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/78_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/79_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/7_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/80_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/81_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/82_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/83_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/84_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/85_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/86_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/87_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/88_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/89_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/8_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/90_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/91_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/92_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/93_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/94_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/95_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/96_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/97_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/98_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/99_of_300_systems.h5
+Deleted file: /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/mp_results/9_of_300_systems.h5
+
+Run parameters:
+   M_maj: 0.001
+   M_min: 0.001
+   a_maj: 10
+   a_min: 8
+   accuracy: 1e-10
+   epochs: 150
+   evolve_time: 1200
+   hypercube_state: 42
+   init_guess_offset: [  1.00000000e-10   1.00000000e+00]
+   learning_rate: 1e-08
+   loglog: True
+   n_samples: 300
+   num_points_considered_in_cost_function: 8
+   phaseseed: 0
+   tau: 30
+   unknown_dimension: 3
+   varied_param_names: ['init_guess_offset']
+
+
+Run parameters saved to /home/s2818760/MasterProj/KIN_optimizer/Validation/val_results/3999292/300_systems_init_guess_offset_3999292.h5.json
+file 300_systems_init_guess_offset_3999292.h5 processed
+Traceback (most recent call last):
+  File "/home/s2818760/MasterProj/KIN_optimizer/Validation/validation.py", line 546, in <module>
+    test_2_parameters_on_many_systems(**params)
+  File "/home/s2818760/MasterProj/KIN_optimizer/Validation/validation.py", line 487, in test_2_parameters_on_many_systems
+    output_filename = f'{n_samples}_systems_{p_var_names[0]}_{p_var_names[1]}_{job_id}.h5'
+                                                              ~~~~~~~~~~~^^^
+IndexError: list index out of range
+#### Finished Test. Have a nice day
