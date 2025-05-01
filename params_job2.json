@@ -1,9 +1,9 @@
 {
-    "M_min": 1e-3,
-    "a_min": 8,
+    "M_min": [1e-10, 1e-3],
+    "a_min": [0.001, 200],
     "evolve_time": 1200,
     "tau": 30,
-    "num_points_considered_in_cost_function": [1, 8],
+    "num_points_considered_in_cost_function": 4,
     "M_maj": 1e-3,
     "a_maj": 10,
     "epochs": 150,

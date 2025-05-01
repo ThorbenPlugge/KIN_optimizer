@@ -1,9 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-from amuse.units import units, constants, nbody_system
-from amuse.lab import Particles, Particle
-from amuse.community.sakura.interface import Sakura
+from amuse.units import units, constants, nbody_system # type: ignore
+from amuse.lab import Particles, Particle # type: ignore
+from amuse.community.sakura.interface import Sakura # type: ignore
 
 import pickle as pkl
 from hashlib import sha256
@@ -121,7 +121,7 @@ def evolve_sys_sakura(sys, evolve_time, tau_ev, cache = True, print_progress = F
 
         gravity.stop()
         
-    return sys, pos_states, vel_states, total_energy
+    return sys, pos_states, vel_states, total_energy, evolve_time
 
 def test_evolution():
     from generate_trappist import create_trappist_system

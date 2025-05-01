@@ -186,7 +186,7 @@ def process_result_old(path, filename, maj_param, log_error = False, filter_outl
 
 def save_results(
             path, filename, masses, true_masses, mass_error, avg_loss_per_epoch, 
-            varied_param_names, varied_params
+            varied_param_names, varied_params, pv_unc = None
             ):
     import h5py
     filepath = path / filename
@@ -203,9 +203,12 @@ def save_results(
         if len(varied_param_names) == 2:
             exp_group.create_dataset(f'{varied_param_names[0]}, {varied_param_names[1]}', 
                                  data=parameters)
-        else: 
+        elif len(varied_param_names) == 1:
             exp_group.create_dataset(f'{varied_param_names},',
                                  data=parameters)
+        if pv_unc is not None:
+            exp_group.create_dataset('pos_vel_uncertainty,',
+                                data=pv_unc)
 
         f.close()
 
@@ -484,10 +487,12 @@ def sensitivity_plot(results, filename, run_params, log_error=True, plot_path=pl
     if p2_index == 0:
         plt.axhline(M_maj, linestyle='--', color='white', label='Mass of major planet')
     if p1_index == 1:
-        plt.axvline(evolve_time, linestyle='--', color='black', label='Evolve time')
+        if p1_index != 2 and p2_index != 2: # if the evolve time is not constant, don't plot it
+            plt.axvline(evolve_time, linestyle='--', color='black', label='Evolve time')
         plt.axvline(P_maj, linestyle='--', color='white', label='Orbital period of major planet')
     if p2_index == 1:
-        plt.axhline(evolve_time, linestyle='--', color='black', label='Evolve time')
+        if p1_index != 2 and p2_index != 2: 
+            plt.axhline(evolve_time, linestyle='--', color='black', label='Evolve time')
         plt.axhline(P_maj, linestyle='--', color='white', label='Orbital period of major planet')
         
     ax = plt.gca()

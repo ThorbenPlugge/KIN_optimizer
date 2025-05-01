@@ -40,16 +40,16 @@ def create_test_planet(sys, M, a, name = 'planet', phase = 0):
 def create_test_system(M_maj = 1e-3, M_min = 1e-5, a_maj = 10, a_min = 1, phaseseed = 0):
     '''Creates a test system with 2 planets: a major and a minor.'''
     phaseseed = int(phaseseed)
-    np.random.seed(phaseseed)
+    r1 = np.random.default_rng(phaseseed)
 
     sys = Particles()
     star = create_test_star()
     sys.add_particle(star)
     sys.phaseseed = phaseseed
 
-    pl_major = create_test_planet(sys, M_maj, a_maj, name = 'major', phase = np.random.uniform(0, 2 * np.pi))
+    pl_major = create_test_planet(sys, M_maj, a_maj, name = 'major', phase = r1.uniform(0, 2 * np.pi))
     sys.add_particle(pl_major)
-    pl_minor = create_test_planet(sys, M_min, a_min, name = 'minor', phase = np.random.uniform(0, 2 * np.pi))
+    pl_minor = create_test_planet(sys, M_min, a_min, name = 'minor', phase = r1.uniform(0, 2 * np.pi))
     sys.add_particle(pl_minor)
 
     sys.move_to_center()

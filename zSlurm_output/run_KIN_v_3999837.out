@@ -208,3 +208,299 @@ To enable the following instructions: AVX2 AVX512F FMA, in other operations, reb
 2025-04-28 21:02:09.260066: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
 2025-04-28 21:02:09.364128: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
 2025-04-28 21:02:09.481679: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-04-28 21:20:06.616602: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-28 21:20:06.673764: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-28 21:20:06.844492: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1745868007.258584 2983154 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1745868007.412958 2983154 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1745868007.587984 2983154 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745868007.588034 2983154 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745868007.588039 2983154 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1745868007.588043 2983154 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+2025-04-28 21:20:07.626250: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+Running simulation...
+start the learn masses function
+saved results for system 0
+Evolve time is not a multiple of tau_ev. Rounding up to 103.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 1
+Evolve time is not a multiple of tau_ev. Rounding up to 105.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 111.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 4
+Evolve time is not a multiple of tau_ev. Rounding up to 113.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 755.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 915.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 1109.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 1345.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 1630.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 2175.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 3874.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 6268.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 318.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 48
+Evolve time is not a multiple of tau_ev. Rounding up to 326.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 179.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 24
+Evolve time is not a multiple of tau_ev. Rounding up to 183.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 25
+Evolve time is not a multiple of tau_ev. Rounding up to 187.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 10141.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 216.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 32
+Evolve time is not a multiple of tau_ev. Rounding up to 222.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 1794.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 2395.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 4265.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 7598.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 238.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 36
+Evolve time is not a multiple of tau_ev. Rounding up to 244.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 3519.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 6901.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 197.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 28
+Evolve time is not a multiple of tau_ev. Rounding up to 201.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 2637.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 4696.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 8365.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 262.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 40
+Evolve time is not a multiple of tau_ev. Rounding up to 269.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 3196.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 5693.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 9210.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 134.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 12
+Evolve time is not a multiple of tau_ev. Rounding up to 137.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 467.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 514.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 566.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 623.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 686.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 831.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 1007.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 1221.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 1480.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 1976.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 2903.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 5171.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 11165.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 350.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 52
+Evolve time is not a multiple of tau_ev. Rounding up to 358.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 147.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 16
+Evolve time is not a multiple of tau_ev. Rounding up to 151.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 17
+Evolve time is not a multiple of tau_ev. Rounding up to 155.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 424.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 60
+Evolve time is not a multiple of tau_ev. Rounding up to 434.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 289.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 44
+Evolve time is not a multiple of tau_ev. Rounding up to 296.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 45
+Evolve time is not a multiple of tau_ev. Rounding up to 303.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 385.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 56
+Evolve time is not a multiple of tau_ev. Rounding up to 395.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 162.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 20
+Evolve time is not a multiple of tau_ev. Rounding up to 166.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 21
+Evolve time is not a multiple of tau_ev. Rounding up to 170.0 days.
+Running simulation...
+start the learn masses function
+multiprocessing.pool.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/home/s2818760/.conda/envs/nbody/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/home/s2818760/.conda/envs/nbody/lib/python3.12/multiprocessing/pool.py", line 51, in starmapstar
+    return list(itertools.starmap(args[0], args[1]))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/s2818760/MasterProj/KIN_optimizer/Validation/validation.py", line 338, in process_single_system_mp
+    masses, losses = find_masses(
+                     ^^^^^^^^^^^^
+  File "/home/s2818760/MasterProj/KIN_optimizer/Validation/validation.py", line 65, in find_masses
+    masses, losses = node.learn_masses(
+                     ^^^^^^^^^^^^^^^^^^
+  File "/home/s2818760/MasterProj/KIN_optimizer/Learning/Training_loops.py", line 49, in learn_masses
+    mass_values, loss_values = learn_masses_4real(tau, optimizer, availabe_info_of_bodies, None, plotGraph,
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/s2818760/MasterProj/KIN_optimizer/Learning/Training_loops.py", line 174, in learn_masses_4real
+    state_derivatives, mass_derivatives = b.backwards_map_fn(
+                                          ^^^^^^^^^^^^^^^^^^^
+  File "/home/s2818760/.conda/envs/nbody/lib/python3.12/site-packages/tensorflow/python/util/traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/scratchdata/s2818760/3999837/__autograph_generated_filezmdx5zq8.py", line 12, in tf__backwards_map_fn
+    grads = ag__.converted_call(ag__.ld(tf).map_fn, (ag__.autograph_artifact(lambda x: ag__.converted_call(ag__.ld(calculate_gradients_for_psiotion), (ag__.ld(x), ag__.ld(m), ag__.ld(tau)), None, fscope)), ag__.ld(temp)), dict(fn_output_signature=(ag__.ld(tf).float64, ag__.ld(tf).float64), swap_memory=True), fscope)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratchdata/s2818760/3999837/__autograph_generated_filezmdx5zq8.py", line 12, in <lambda>
+    grads = ag__.converted_call(ag__.ld(tf).map_fn, (ag__.autograph_artifact(lambda x: ag__.converted_call(ag__.ld(calculate_gradients_for_psiotion), (ag__.ld(x), ag__.ld(m), ag__.ld(tau)), None, fscope)), ag__.ld(temp)), dict(fn_output_signature=(ag__.ld(tf).float64, ag__.ld(tf).float64), swap_memory=True), fscope)
+                                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: in user code:
+
+    File "/home/s2818760/MasterProj/KIN_optimizer/Learning/Backwards.py", line 116, in backwards_map_fn  *
+        grads = tf.map_fn(lambda x: calculate_gradients_for_psiotion(
+
+    AssertionError: Called a function referencing variables which have been deleted. This likely means that function-local variables were created and not referenced elsewhere in the program. This is generally a mistake; consider storing variables in an object attribute on first call.
+
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/s2818760/MasterProj/KIN_optimizer/Validation/validation.py", line 546, in <module>
+    test_2_parameters_on_many_systems(**params)
+  File "/home/s2818760/MasterProj/KIN_optimizer/Validation/validation.py", line 474, in test_2_parameters_on_many_systems
+    pool.starmap(process_single_system_mp, args)
+  File "/home/s2818760/.conda/envs/nbody/lib/python3.12/multiprocessing/pool.py", line 375, in starmap
+    return self._map_async(func, iterable, starmapstar, chunksize).get()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/s2818760/.conda/envs/nbody/lib/python3.12/multiprocessing/pool.py", line 774, in get
+    raise self._value
+AssertionError: in user code:
+
+    File "/home/s2818760/MasterProj/KIN_optimizer/Learning/Backwards.py", line 116, in backwards_map_fn  *
+        grads = tf.map_fn(lambda x: calculate_gradients_for_psiotion(
+
+    AssertionError: Called a function referencing variables which have been deleted. This likely means that function-local variables were created and not referenced elsewhere in the program. This is generally a mistake; consider storing variables in an object attribute on first call.
+
+#### Finished Test. Have a nice day

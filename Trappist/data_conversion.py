@@ -24,8 +24,6 @@ def convert_states_to_celestial_bodies(pos_states, vel_states, num_points_consid
     import sys
     import os
 
-    # TODO: sort the celestial body array by the masses and apply that 
-    # sorting index to pos_states and vel_states.
     if sort_by_mass:
         sorting_idx = np.argsort(bodies_and_initial_guesses, axis = 1, kind='mergesort')[0, ::-1]
         bodies_and_initial_guesses = np.sort(bodies_and_initial_guesses, axis = 1, kind='mergesort')[:, ::-1]
@@ -37,10 +35,6 @@ def convert_states_to_celestial_bodies(pos_states, vel_states, num_points_consid
 
     import Learning.Body_info_class as clas
     import math
-    
-    # # Make sure everything is in the right units
-    # pos_states = pos_states.value_in(units.AU)
-    # vel_states = vel_states.value_in(units.AU / units.day)
 
     # Set the amount of points to use and make sure the optimizer
     # knows how many steps of size tau_opt to simulate to 
