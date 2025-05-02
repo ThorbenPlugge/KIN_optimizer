@@ -479,7 +479,7 @@ def test_2_parameters_on_many_systems(
         M_min, a_min, evolve_time, tau, num_points_considered_in_cost_function,
         M_maj, a_maj, epochs, accuracy, n_samples, init_guess_offset,
         learning_rate, unknown_dimension, phaseseed, hypercube_state,
-        loglog, job_id = None,
+        loglog, p_unc = None, v_unc = None, job_id = None,
         ):
     from Validation.validation_funcs import get_latin_sample, merge_h5_files, process_result
     from multiprocessing import Pool
@@ -492,8 +492,8 @@ def test_2_parameters_on_many_systems(
         job_id = os.environ['SLURM_JOB_ID']
 
     # set the right paths
-    os.mkdir(arbeit_path / f'Validation/val_results/{job_id}')
-    os.mkdir(arbeit_path / f'Validation/val_results/{job_id}/mp_results')
+    os.makedirs(arbeit_path / f'Validation/val_results/{job_id}', exist_ok=True)
+    os.makedirs(arbeit_path / f'Validation/val_results/{job_id}/mp_results', exist_ok=True)
     results_path = arbeit_path / f'Validation/val_results/{job_id}/mp_results' # save the temporary h5 files per system here
     output_path = arbeit_path / f'Validation/val_results/{job_id}' # and combine them here.
 
@@ -529,9 +529,6 @@ def test_2_parameters_on_many_systems(
             p_var_bounds.append(param_dict[f'{param_name_list[i]}'])
             p_var_names.append(param_name_list[i])
     if len(p_var_bounds) == 0:
-        raise Exception(f'Not varying any parameters. Aborting.')
-        p_unc = 0
-        v_unc = 0
         p_v_uncertainty = [p_unc, v_unc]
 
         output_filename = f'{n_samples}_systems_pv_unc_{job_id}.h5'
@@ -541,11 +538,56 @@ def test_2_parameters_on_many_systems(
         with h5py.File(output_file, 'w') as f:
             for i, attribute in enumerate(param_list):
                 f.attrs[f'{param_name_list[i]}'] = attribute
-            f.attrs['varied_param_names'] = p_var_names
+            f.attrs['varied_param_names'] = ['p_unc', 'v_unc']
             f.attrs['p_v_uncertainty'] = p_v_uncertainty
 
-        # Create a random sample of errors, seeded by the hypercube state.
+        # generate an array of uncertainties, from zero to the specified p_v_uncertainty.
+        # the array contains n_samples position and velocity uncertainty pairs.
+        if loglog:
+            unc_array = 10**(np.linspace([0, 0], np.log10(p_v_uncertainty), n_samples))
+        else:
+            unc_array = np.linspace([0, 0], p_v_uncertainty, n_samples)
         
+         # prepare the arguments for the process_single_system_mp function
+        args = []
+        for i, param_value in enumerate(unc_array):
+            # Use the existing param_dict to dynamically set the two parameters being varied
+            param_dict_copy = param_dict.copy()
+            param_dict_copy['results_path'] = results_path
+            param_dict_copy['i'] = i
+            param_dict_copy['varied_param_names'] = None
+            param_dict_copy['varied_params'] = None
+            param_dict_copy['pv_unc'] = unc_array[i]
+
+            # Append the arguments as a tuple for starmap
+            args.append(tuple(param_dict_copy[param] for param in [
+                'M_min', 'a_min', 'evolve_time', 'tau', 'num_points_considered_in_cost_function',
+                'M_maj', 'a_maj', 'epochs', 'accuracy', 'n_samples', 'init_guess_offset',
+                'learning_rate', 'unknown_dimension', 'phaseseed', 'results_path', 'i',
+                'varied_param_names', 'varied_params', 'pv_unc'
+            ]))
+        
+        # Now run the tests!
+        if job_id.isdigit():
+            n_cores = os.environ['SLURM_CPUS_PER_TASK']
+            print('n_cores available for slurm is', n_cores)
+        else: 
+            n_cores = os.cpu_count()
+        
+        with Pool(processes=int(n_cores)) as pool:
+            pool.starmap(process_single_system_mp_pv_unc, args)
+
+        merge_h5_files(results_path, output_file, delete=True)
+
+        process_result(
+            output_path, output_filename,
+            log_error=True,
+            filter_outliers=False,
+            loglog=loglog
+            )
+        
+
+
         # TODO: Rerun the same system, but now with a slight error on the positions and velocities.
 
         # TODO: what is a reasonable expected error on positions and velocities? do a calculation.
@@ -668,35 +710,39 @@ def test_2_parameters_on_many_systems(
 import argparse
 import json
 
-# Parse command-line arguments
-parser = argparse.ArgumentParser()
-parser.add_argument("--param_file", type=str, required=True, help='Path to the parameter file (JSON)')
-args = parser.parse_args()
+# # Parse command-line arguments
+# parser = argparse.ArgumentParser()
+# parser.add_argument("--param_file", type=str, required=True, help='Path to the parameter file (JSON)')
+# args = parser.parse_args()
 
-# Load parameters from JSON file
-with open(args.param_file, 'r') as f:
-    params = json.load(f)
+# # Load parameters from JSON file
+# with open(args.param_file, 'r') as f:
+#     params = json.load(f)
 
-test_2_parameters_on_many_systems(**params)
+# test_2_parameters_on_many_systems(**params)
 
-# test_2_parameters_on_many_systems(
-#     M_min=1e-3, # in solar masses
-#     a_min=[0.01, 200], # in AU
-#     evolve_time=1200, # in days
-#     tau=30, # in days
-#     num_points_considered_in_cost_function=8, 
-#     M_maj=1e-3, # in solar masses
-#     a_maj=10, # in AU
-#     epochs=150,
-#     accuracy=1e-10,
-#     n_samples=150,
-#     init_guess_offset=1e-7, # in solar masses
-#     learning_rate=1e-8,
-#     unknown_dimension=3,
-#     phaseseed=0,
-#     hypercube_state=42,
-#     loglog=True
-# )
+if __name__ == '__main__':
+    test_2_parameters_on_many_systems(
+        M_min=1e-3, # in solar masses
+        a_min=8, # in AU
+        evolve_time=1200, # in days
+        tau=30, # in days
+        num_points_considered_in_cost_function=4, 
+        M_maj=1e-3, # in solar masses
+        a_maj=10, # in AU
+        epochs=4,
+        accuracy=1e-10,
+        n_samples=16,
+        init_guess_offset=1e-4, # in solar masses
+        learning_rate=1e-8,
+        unknown_dimension=3,
+        phaseseed=0,
+        hypercube_state=42,
+        loglog=False,
+        p_unc=0.001, # in AU
+        v_unc=0.00001, # in AU/day
+        job_id='testbert'
+    )
 
 
     

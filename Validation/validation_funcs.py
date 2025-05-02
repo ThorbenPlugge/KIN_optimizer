@@ -199,16 +199,19 @@ def save_results(
         exp_group.create_dataset('true_masses', data = true_masses)
         exp_group.create_dataset('mass_error', data = mass_error)
         exp_group.create_dataset('avg_loss_per_epoch', data = avg_loss_per_epoch)
-        parameters = np.array(varied_params)
-        if len(varied_param_names) == 2:
-            exp_group.create_dataset(f'{varied_param_names[0]}, {varied_param_names[1]}', 
-                                 data=parameters)
-        elif len(varied_param_names) == 1:
-            exp_group.create_dataset(f'{varied_param_names},',
-                                 data=parameters)
+
         if pv_unc is not None:
             exp_group.create_dataset('pos_vel_uncertainty,',
                                 data=pv_unc)
+        else: 
+            parameters = np.array(varied_params)
+            if len(varied_param_names) == 2:
+                exp_group.create_dataset(f'{varied_param_names[0]}, {varied_param_names[1]}', 
+                                    data=parameters)
+            elif len(varied_param_names) == 1:
+                exp_group.create_dataset(f'{varied_param_names},',
+                                    data=parameters)
+        
 
         f.close()
 
@@ -285,7 +288,7 @@ def load_result(path, filename, filter_outliers=False):
             true_masses_list.append(np.array(exp_group['true_masses']))
             avg_loss_per_epoch_list.append(np.array(exp_group['avg_loss_per_epoch']))
 
-            # very stupid, but works. don't add commas to other dataset names!
+            # Comma identifies the changed parameter name
             for dataset_name in exp_group.keys():
                 if ',' in dataset_name:
                     param_names = dataset_name
@@ -328,14 +331,16 @@ param_labels = [
     'Minor planet Mass (Msun)', 'Minor planet orbital period (days)', 
     'Evolve time (days)', 'Tau (days)', 'Cost function points',
     'Major planet mass (Msun)', 'Major planet orbital period (days)', 
-    'Initial guess offset (Msun)'
+    'Initial guess offset (Msun)', 'Positional uncertainty (AU)',
+    'Velocity uncertainty (AU/day)'
     ]
 # list of log axis labels
 log_param_labels = [
     'Log minor planet Mass (log10(Msun))', 'Log minor planet orbital period (log(days))', 
     'Log evolve time (log10(days))', 'Log tau (log10(days))', 'log cost function points',
     'Log major planet mass (log10(Msun))', 'Major planet orbital period (log(days))', 
-    'Initial guess offset (log10(Msun))'
+    'Initial guess offset (log10(Msun)), Log positional uncertainty (log(AU))',
+    'Log velocity uncertainty (log(AU/day))'
     ]
 # list of all the options varied_param_names can be.
 # A bit cumbersome, but a way to match the names we get out of the file
@@ -343,7 +348,8 @@ log_param_labels = [
 nameslist = [
     'M_min', 'a_min', 'evolve_time', 'tau', 
     'num_points_considered_in_cost_function',
-    'M_maj', 'a_maj', 'init_guess_offset'
+    'M_maj', 'a_maj', 'init_guess_offset', 
+    'p_unc', 'v_unc'
     ]
 
 def get_orbital_period(M, a):
@@ -415,11 +421,60 @@ def sensitivity_plot_1param(results, filename, run_params, log_error=True, plot_
 
     plt.xlabel(labels[p_index])
     plt.ylabel(mass_error_label)
+    plt.grid()
     plt.title(f'{nameslist[p_index]} vs Fractional mass error.')
     
     saved_file = plot_path / filename
 
     plt.savefig(f'{saved_file}.png', dpi=800)
+
+def sensitivity_plot_uncertainty(results, filename, run_params, log_error=True, plot_path=plot_path, loglog=False):
+    # Extract the parameters we need to visualize 
+    mass_errors = results['mass_errors']
+    avg_losses_per_epoch = results['avg_loss_per_epoch']
+
+    p_v_unc = results['pos_vel_uncertainty,']
+    p_unc, v_unc = p_v_unc[:, 0], p_v_unc[:, 1]
+    p_unc_index, v_unc_index = 8, 9
+    mass_error_label = 'Fractional mass error'
+
+    if loglog:
+        plt.loglog()
+        p_unc = np.log10(p_unc)
+        v_unc = np.log10(v_unc)
+        labels = log_param_labels
+    else:
+        labels = param_labels
+
+    if log_error:
+        mass_errors = np.log10(mass_errors)
+        filename = f'log_{filename}'
+        mass_error_label = 'Log (10) fractional mass error'
+
+    plt.figure(figsize=[15, 9])
+    plt.set_cmap('viridis')
+    plt.scatter(p_unc, mass_errors, s=150, color='white')
+    plt.scatter(p_unc, mass_errors, s=60, c=mass_errors)
+
+    ax1 = plt.gca()
+    def p_to_v(x):
+        return x*v_unc[-1]/p_unc[-1]
+
+    def v_to_p(x):
+        return x*p_unc[-1]/v_unc[-1]
+    
+    ax2 = ax1.secondary_xaxis('top', functions=(p_to_v, v_to_p))
+    ax1.set_facecolor('xkcd:light grey')
+
+    ax1.set_xlabel(labels[p_unc_index])
+    ax2.set_xlabel(labels[v_unc_index])
+    plt.ylabel(mass_error_label)
+    plt.title('Uncertainty on positions and velocities vs Fractional mass error.')
+    plt.grid()
+    saved_file = plot_path / filename
+
+    plt.savefig(f'{saved_file}.png', dpi=800)
+
 
 def sensitivity_plot(results, filename, run_params, log_error=True, plot_path=plot_path, loglog=False):
     '''Creates a sensitivity plot for a given set of results.'''
@@ -537,9 +592,11 @@ def process_result(path, filename, log_error=True, filter_outliers=False, loglog
     results, run_params = load_result(path, filename, filter_outliers=filter_outliers)
     save_run_params_to_file(run_params, path / filename)
     if len(run_params['varied_param_names']) == 2:
-        sensitivity_plot(results, f'{filename}', run_params, log_error, plot_path=path, loglog=loglog)
-    else: 
+        if (run_params['varied_param_names'] == ['p_unc', 'v_unc']).all():
+            sensitivity_plot_uncertainty(results, f'{filename}', run_params, log_error, plot_path=path, loglog=loglog)
+        else:
+            sensitivity_plot(results, f'{filename}', run_params, log_error, plot_path=path, loglog=loglog)
+    elif len(run_params['varied_param_names']) == 1: 
         sensitivity_plot_1param(results, f'{filename}', run_params, log_error, plot_path=path, loglog=loglog)
-    
     print(f'file {filename} processed')
 
