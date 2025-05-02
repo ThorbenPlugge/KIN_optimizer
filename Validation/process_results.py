@@ -16,7 +16,7 @@ plot_path = arbeit_path / 'Plots'
 
 from Validation.validation_funcs import process_result, merge_h5_files, load_result
 
-job_id = 'testbert'
+job_id = '4004285'
 results_path = arbeit_path / f'Validation/val_results/{job_id}/mp_results'
 output_path = arbeit_path / f'Validation/val_results/{job_id}'
 
@@ -28,4 +28,4 @@ output_file = h5_files[0]
 # merge_h5_files(results_path, output_file, delete = True)
 
 # process_result(output_path, output_filename, maj_param, log_error=FalseH, filter_outliers=False, loglog=False)
-process_result(output_path, output_file.name, log_error=True, filter_outliers=False, loglog=False)
+process_result(output_path, output_file.name, log_error=True, filter_outliers=False, loglog=True)

@@ -485,8 +485,6 @@ def test_2_parameters_on_many_systems(
     from multiprocessing import Pool
     import h5py
 
-    # TODO: make it so you can have a slurm mode and a normal laptop mode.
-
     # replace by own job id if not using slurm
     if job_id == None:
         job_id = os.environ['SLURM_JOB_ID']

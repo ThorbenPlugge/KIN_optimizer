@@ -199,20 +199,17 @@ def save_results(
         exp_group.create_dataset('true_masses', data = true_masses)
         exp_group.create_dataset('mass_error', data = mass_error)
         exp_group.create_dataset('avg_loss_per_epoch', data = avg_loss_per_epoch)
-
+        parameters = np.array(varied_params)
+        if len(varied_param_names) == 2:
+            exp_group.create_dataset(f'{varied_param_names[0]}, {varied_param_names[1]}', 
+                                 data=parameters)
+        if len(varied_param_names) == 1:
+            exp_group.create_dataset(f'{varied_param_names},',
+                                 data=parameters)
         if pv_unc is not None:
             exp_group.create_dataset('pos_vel_uncertainty,',
                                 data=pv_unc)
-        else: 
-            parameters = np.array(varied_params)
-            if len(varied_param_names) == 2:
-                exp_group.create_dataset(f'{varied_param_names[0]}, {varied_param_names[1]}', 
-                                    data=parameters)
-            elif len(varied_param_names) == 1:
-                exp_group.create_dataset(f'{varied_param_names},',
-                                    data=parameters)
-        
-
+            
         f.close()
 
     
