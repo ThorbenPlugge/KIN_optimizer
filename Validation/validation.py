@@ -18,7 +18,7 @@ plot_path = arbeit_path / 'Plots'
 def find_masses(
         test_sys, evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function, 
         unknown_dimension=3, learning_rate=1e-5, init_guess_offset=1e-7, epochs=100, 
-        accuracy=1e-8, printing=True
+        accuracy=1e-8, optimizer_type='BT', printing=True
         ):
     '''Find the masses of a test system by evolving it for a certain time with a certain timestep, converting the states
     inbetween to a CelestialBodies object that the learn_masses function can use.'''
@@ -63,7 +63,7 @@ def find_masses(
     # learning_rate_arr[0] = 0
 
     optimizer = init_optimizer(
-        'BT', num_bodies + num_bodies * 3 * 2, lr=learning_rate_arr)
+        optimizer_type, num_bodies + num_bodies * 3 * 2, lr=learning_rate_arr)
     print('start the learn masses function')
     masses, losses = node.learn_masses(
         tau=tau_opt.value_in(units.day), optimizer=optimizer,
@@ -111,7 +111,6 @@ def find_masses_pv_unc(
 
     bodies_and_initial_guesses = convert_sys_to_initial_guess_list(evolved_sys, initial_guess.value_in(units.Msun))
     
-    # TODO: Now add a random uncertainty to the positions. 
     pos_variance = np.random.normal(0, pv_unc[0], size=pos_states.shape)
     vel_variance = np.random.normal(0, pv_unc[1], size=vel_states.shape)
 
@@ -539,22 +538,20 @@ def test_2_parameters_on_many_systems(
             f.attrs['varied_param_names'] = ['p_unc', 'v_unc']
             f.attrs['p_v_uncertainty'] = p_v_uncertainty
 
-        # generate an array of uncertainties, from zero to the specified p_v_uncertainty.
-        # the array contains n_samples position and velocity uncertainty pairs.
-        if loglog:
-            unc_array = 10**(np.linspace([0, 0], np.log10(p_v_uncertainty), n_samples))
-        else:
-            unc_array = np.linspace([0, 0], p_v_uncertainty, n_samples)
+        # Sample the errors in a latin hypercube sort of way
+        p_unc_bounds = [0, p_unc]
+        v_unc_bounds = [0, v_unc]
+        unc_array = get_latin_sample(n_samples, p_unc_bounds, v_unc_bounds, hypercube_state, loglog)
         
-         # prepare the arguments for the process_single_system_mp function
+        # prepare the arguments for the process_single_system_mp function
         args = []
         for i, param_value in enumerate(unc_array):
             # Use the existing param_dict to dynamically set the two parameters being varied
             param_dict_copy = param_dict.copy()
             param_dict_copy['results_path'] = results_path
             param_dict_copy['i'] = i
-            param_dict_copy['varied_param_names'] = None
-            param_dict_copy['varied_params'] = None
+            param_dict_copy['varied_param_names'] = []
+            param_dict_copy['varied_params'] = []
             param_dict_copy['pv_unc'] = unc_array[i]
 
             # Append the arguments as a tuple for starmap
@@ -575,22 +572,15 @@ def test_2_parameters_on_many_systems(
         with Pool(processes=int(n_cores)) as pool:
             pool.starmap(process_single_system_mp_pv_unc, args)
 
-        merge_h5_files(results_path, output_file, delete=True)
+        # Do this outside of this file.
+        # merge_h5_files(results_path, output_file, delete=True)
 
-        process_result(
-            output_path, output_filename,
-            log_error=True,
-            filter_outliers=False,
-            loglog=loglog
-            )
-        
-
-
-        # TODO: Rerun the same system, but now with a slight error on the positions and velocities.
-
-        # TODO: what is a reasonable expected error on positions and velocities? do a calculation.
-
-        # TODO: plot this nicely also. 
+        # process_result(
+        #     output_path, output_filename,
+        #     log_error=True,
+        #     filter_outliers=False,
+        #     loglog=loglog
+        #     )
 
     if len(p_var_bounds) > 2:
         raise Exception(f'Trying to vary {len(p_var_bounds)} parameters. Maximum is 2.')
@@ -647,14 +637,15 @@ def test_2_parameters_on_many_systems(
         with Pool(processes=int(n_cores)) as pool:
             pool.starmap(process_single_system_mp, args)
 
-        merge_h5_files(results_path, output_file, delete=True)
+        # Do this outside of this file.
+        # merge_h5_files(results_path, output_file, delete=True)
 
-        process_result(
-            output_path, output_filename,
-            log_error=True,
-            filter_outliers=False,
-            loglog=loglog
-            )
+        # process_result(
+        #     output_path, output_filename,
+        #     log_error=True,
+        #     filter_outliers=False,
+        #     loglog=loglog
+        #     )
         
     if len(p_var_bounds) == 2:
         # vary 2 parameters.
@@ -696,51 +687,52 @@ def test_2_parameters_on_many_systems(
         with Pool(processes=int(n_cores)) as pool:
             pool.starmap(process_single_system_mp, args)
 
-        merge_h5_files(results_path, output_file, delete=True)
+        # Do this outside of this file.
+        # merge_h5_files(results_path, output_file, delete=True)
 
-        process_result(
-            output_path, output_filename,
-            log_error=True,
-            filter_outliers=False,
-            loglog=loglog
-            )
+        # process_result(
+        #     output_path, output_filename,
+        #     log_error=True,
+        #     filter_outliers=False,
+        #     loglog=loglog
+        #     )
     
 import argparse
 import json
 
-# # Parse command-line arguments
-# parser = argparse.ArgumentParser()
-# parser.add_argument("--param_file", type=str, required=True, help='Path to the parameter file (JSON)')
-# args = parser.parse_args()
+# Parse command-line arguments
+parser = argparse.ArgumentParser()
+parser.add_argument("--param_file", type=str, required=True, help='Path to the parameter file (JSON)')
+args = parser.parse_args()
 
-# # Load parameters from JSON file
-# with open(args.param_file, 'r') as f:
-#     params = json.load(f)
+# Load parameters from JSON file
+with open(args.param_file, 'r') as f:
+    params = json.load(f)
 
-# test_2_parameters_on_many_systems(**params)
+test_2_parameters_on_many_systems(**params)
 
-if __name__ == '__main__':
-    test_2_parameters_on_many_systems(
-        M_min=1e-3, # in solar masses
-        a_min=8, # in AU
-        evolve_time=1200, # in days
-        tau=30, # in days
-        num_points_considered_in_cost_function=4, 
-        M_maj=1e-3, # in solar masses
-        a_maj=10, # in AU
-        epochs=4,
-        accuracy=1e-10,
-        n_samples=16,
-        init_guess_offset=1e-4, # in solar masses
-        learning_rate=1e-8,
-        unknown_dimension=3,
-        phaseseed=0,
-        hypercube_state=42,
-        loglog=False,
-        p_unc=0.001, # in AU
-        v_unc=0.00001, # in AU/day
-        job_id='testbert'
-    )
+# if __name__ == '__main__':
+#     test_2_parameters_on_many_systems(
+#         M_min=1e-3, # in solar masses
+#         a_min=8, # in AU
+#         evolve_time=1200, # in days
+#         tau=30, # in days
+#         num_points_considered_in_cost_function=4, 
+#         M_maj=1e-3, # in solar masses
+#         a_maj=10, # in AU
+#         epochs=4,
+#         accuracy=1e-10,
+#         n_samples=16,
+#         init_guess_offset=1e-4, # in solar masses
+#         learning_rate=1e-8,
+#         unknown_dimension=3,
+#         phaseseed=0,
+#         hypercube_state=42,
+#         loglog=False,
+#         p_unc=0.001, # in AU
+#         v_unc=0.00001, # in AU/day
+#         job_id='testbert'
+#     )
 
 
     

@@ -13,6 +13,8 @@
     "learning_rate": 1e-8,
     "unknown_dimension": 3,
     "phaseseed": 0,
-    "hypercube_state": 42,
-    "loglog": true
+    "hypercube_state": 41,
+    "loglog": true,
+    "p_unc": 0.001,
+    "v_unc": 0.00001
 }

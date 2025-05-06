@@ -200,15 +200,16 @@ def save_results(
         exp_group.create_dataset('mass_error', data = mass_error)
         exp_group.create_dataset('avg_loss_per_epoch', data = avg_loss_per_epoch)
         parameters = np.array(varied_params)
+        if pv_unc is not None:
+            exp_group.create_dataset('pos_vel_uncertainty,',
+                                data=pv_unc)
         if len(varied_param_names) == 2:
             exp_group.create_dataset(f'{varied_param_names[0]}, {varied_param_names[1]}', 
                                  data=parameters)
         if len(varied_param_names) == 1:
             exp_group.create_dataset(f'{varied_param_names},',
                                  data=parameters)
-        if pv_unc is not None:
-            exp_group.create_dataset('pos_vel_uncertainty,',
-                                data=pv_unc)
+        
             
         f.close()
 
@@ -336,7 +337,7 @@ log_param_labels = [
     'Log minor planet Mass (log10(Msun))', 'Log minor planet orbital period (log(days))', 
     'Log evolve time (log10(days))', 'Log tau (log10(days))', 'log cost function points',
     'Log major planet mass (log10(Msun))', 'Major planet orbital period (log(days))', 
-    'Initial guess offset (log10(Msun)), Log positional uncertainty (log(AU))',
+    'Initial guess offset (log10(Msun))', 'Log positional uncertainty (log(AU))',
     'Log velocity uncertainty (log(AU/day))'
     ]
 # list of all the options varied_param_names can be.
@@ -426,6 +427,7 @@ def sensitivity_plot_1param(results, filename, run_params, log_error=True, plot_
     plt.savefig(f'{saved_file}.png', dpi=800)
 
 def sensitivity_plot_uncertainty(results, filename, run_params, log_error=True, plot_path=plot_path, loglog=False):
+    from scipy.interpolate import LinearNDInterpolator
     # Extract the parameters we need to visualize 
     mass_errors = results['mass_errors']
     avg_losses_per_epoch = results['avg_loss_per_epoch']
@@ -447,26 +449,27 @@ def sensitivity_plot_uncertainty(results, filename, run_params, log_error=True, 
         mass_errors = np.log10(mass_errors)
         filename = f'log_{filename}'
         mass_error_label = 'Log (10) fractional mass error'
+    
+    # interpolate between the two parameters
+    p_unc_space = np.linspace(np.min(p_unc), np.max(p_unc), 500)
+    v_unc_space = np.linspace(np.min(v_unc), np.max(v_unc), 500)
+    p1_grid, p2_grid = np.meshgrid(p_unc_space, v_unc_space)
+    interp = LinearNDInterpolator((p_unc, v_unc), mass_errors)
+    Mass_errors_i = interp(p1_grid, p2_grid)
 
     plt.figure(figsize=[15, 9])
     plt.set_cmap('viridis')
-    plt.scatter(p_unc, mass_errors, s=150, color='white')
-    plt.scatter(p_unc, mass_errors, s=60, c=mass_errors)
+    plt.pcolormesh(p1_grid, p2_grid, Mass_errors_i, shading='auto')
+    plt.scatter(p_unc, v_unc, s=150, color='white')
+    plt.scatter(p_unc, v_unc, s=60, c=mass_errors, label='Uninterpolated data')
 
     ax1 = plt.gca()
-    def p_to_v(x):
-        return x*v_unc[-1]/p_unc[-1]
 
-    def v_to_p(x):
-        return x*p_unc[-1]/v_unc[-1]
-    
-    ax2 = ax1.secondary_xaxis('top', functions=(p_to_v, v_to_p))
     ax1.set_facecolor('xkcd:light grey')
 
     ax1.set_xlabel(labels[p_unc_index])
-    ax2.set_xlabel(labels[v_unc_index])
-    plt.ylabel(mass_error_label)
-    plt.title('Uncertainty on positions and velocities vs Fractional mass error.')
+    ax1.set_ylabel(labels[v_unc_index])
+    plt.title('Sensitivity to errors in position and velocity for a three body system.')
     plt.grid()
     saved_file = plot_path / filename
 
