@@ -14,6 +14,16 @@ arbeit_path = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(arbeit_path))
 plot_path = arbeit_path / 'Plots'
 
+# set matplotlib parameters
+plt.rc('xtick', labelsize=18)
+plt.rc('ytick', labelsize=18)
+
+font = {'family':'serif',
+        'weight':'normal',
+        'size'  : 22}
+
+plt.rc('font', **font)
+
 def select_masses(masses, losses, lowest_loss = True):
     # select the masses from the epoch with the lowest loss value
     losses = np.array(losses)
@@ -169,7 +179,7 @@ def sensitivity_plot_old(results, filename, maj_param, log_error=False, plot_pat
 
     plt.xlabel('Minor planet mass (M_sun)')
     plt.ylabel('Minor planet semimajor axis (AU)')
-    plt.title('Sensitivity plot for a three-body system with a major planet and a minor planet.')
+    # plt.title('Sensitivity plot for a three-body system with a major planet and a minor planet.')
     plt.legend(loc='lower right')
     plt.colorbar(label=cbarlabel)
 
@@ -408,11 +418,13 @@ def sensitivity_plot_1param(results, filename, run_params, log_error=True, plot_
     plt.scatter(p, mass_errors, s=60, c=mass_errors)
 
     if p_index == 0:
-        plt.axvline(M_maj, linestyle='--', color='white', label='Mass of major planet')
-        plt.legend()
+        plt.axvline(M_maj, linestyle='--', color='white', label='M_maj')
+        plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1.05),
+               ncol=3, fancybox=True, shadow=True)
     if p_index == 1:
-        plt.axvline(P_maj, linestyle='--', color='white', label='Orbital period of major planet')
-        plt.legend()
+        plt.axvline(P_maj, linestyle='--', color='white', label='P_maj')
+        plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1.05),
+               ncol=3, fancybox=True, shadow=True)
 
     ax = plt.gca()
     ax.set_facecolor('xkcd:light grey')
@@ -420,7 +432,7 @@ def sensitivity_plot_1param(results, filename, run_params, log_error=True, plot_
     plt.xlabel(labels[p_index])
     plt.ylabel(mass_error_label)
     plt.grid()
-    plt.title(f'{nameslist[p_index]} vs Fractional mass error.')
+    # plt.title(f'{nameslist[p_index]} vs Fractional mass error.')
     
     saved_file = plot_path / filename
 
@@ -469,7 +481,8 @@ def sensitivity_plot_uncertainty(results, filename, run_params, log_error=True, 
 
     ax1.set_xlabel(labels[p_unc_index])
     ax1.set_ylabel(labels[v_unc_index])
-    plt.title('Sensitivity to errors in position and velocity for a three body system.')
+    plt.colorbar(label=mass_error_label)
+    # plt.title('Sensitivity to errors in position and velocity for a three body system.')
     plt.grid()
     saved_file = plot_path / filename
 
@@ -480,7 +493,6 @@ def sensitivity_plot(results, filename, run_params, log_error=True, plot_path=pl
     '''Creates a sensitivity plot for a given set of results.'''
     from scipy.interpolate import LinearNDInterpolator
     from system_generation import relative_orbital_velocity
-    title = 'Sensitivity plot for a three-body system with a major planet and a minor planet.'
 
     varied_param_names = run_params['varied_param_names']
     evolve_time = run_params['evolve_time']
@@ -555,8 +567,8 @@ def sensitivity_plot(results, filename, run_params, log_error=True, plot_path=pl
     
     plt.xlabel(labels[p1_index])
     plt.ylabel(labels[p2_index])
-    plt.title(title)
-    plt.legend(loc='lower right')
+    plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1.05),
+               ncol=3, fancybox=True, shadow=True)
     plt.colorbar(label=cbarlabel)
 
     saved_file = plot_path / filename

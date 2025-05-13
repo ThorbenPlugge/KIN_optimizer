@@ -1,6 +1,6 @@
 {
-    "M_min": 1e-3,
-    "a_min": 10,
+    "M_min": 1e-6,
+    "a_min": 50,
     "evolve_time": 1200,
     "tau": 30,
     "num_points_considered_in_cost_function": 4,

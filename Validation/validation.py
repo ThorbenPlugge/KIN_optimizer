@@ -539,8 +539,8 @@ def test_2_parameters_on_many_systems(
             f.attrs['p_v_uncertainty'] = p_v_uncertainty
 
         # Sample the errors in a latin hypercube sort of way
-        p_unc_bounds = [0, p_unc]
-        v_unc_bounds = [0, v_unc]
+        p_unc_bounds = [1e-20, p_unc]
+        v_unc_bounds = [1e-20, v_unc]
         unc_array = get_latin_sample(n_samples, p_unc_bounds, v_unc_bounds, hypercube_state, loglog)
         
         # prepare the arguments for the process_single_system_mp function
