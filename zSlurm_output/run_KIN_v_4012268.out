@@ -1,0 +1,1532 @@
+#### Starting test
+n_cores available for slurm is 16
+2025-05-07 10:54:48.009899: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-07 10:54:48.010238: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-07 10:54:48.010268: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-07 10:54:48.010274: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-07 10:54:48.010283: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-07 10:54:48.010284: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-07 10:54:48.010288: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-07 10:54:48.010286: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-07 10:54:48.010286: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-07 10:54:48.010285: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-07 10:54:48.010294: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-07 10:54:48.010282: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-07 10:54:48.010302: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-07 10:54:48.010348: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-07 10:54:48.010349: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-07 10:54:48.010350: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-07 10:54:48.016320: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-07 10:54:48.016321: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-07 10:54:48.016321: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-07 10:54:48.016320: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-07 10:54:48.016325: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-07 10:54:48.016321: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-07 10:54:48.016325: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-07 10:54:48.016322: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-07 10:54:48.016324: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-07 10:54:48.016323: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-07 10:54:48.016324: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-07 10:54:48.016324: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-07 10:54:48.016326: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-07 10:54:48.016326: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-07 10:54:48.016327: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-07 10:54:48.016327: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-07 10:54:48.037686: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-05-07 10:54:48.037681: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-05-07 10:54:48.037681: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-05-07 10:54:48.037686: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-05-07 10:54:48.037682: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-05-07 10:54:48.037682: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-05-07 10:54:48.037681: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-05-07 10:54:48.037725: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-05-07 10:54:48.037681: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-05-07 10:54:48.037681: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-05-07 10:54:48.037681: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-05-07 10:54:48.037714: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-05-07 10:54:48.037715: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-05-07 10:54:48.037719: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-05-07 10:54:48.037719: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-05-07 10:54:48.037722: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1746608088.073894 2659228 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1746608088.073903 2659230 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1746608088.073904 2659233 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1746608088.073900 2659231 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1746608088.073894 2659238 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1746608088.073900 2659229 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1746608088.073902 2659242 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1746608088.073900 2659239 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1746608088.073905 2659241 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1746608088.073910 2659237 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1746608088.073911 2659235 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1746608088.073911 2659234 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1746608088.073914 2659232 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1746608088.073914 2659236 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1746608088.073915 2659227 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1746608088.073915 2659240 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1746608088.084525 2659229 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+E0000 00:00:1746608088.084523 2659240 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+E0000 00:00:1746608088.084523 2659227 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+E0000 00:00:1746608088.084525 2659242 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+E0000 00:00:1746608088.084523 2659228 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+E0000 00:00:1746608088.084523 2659238 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+E0000 00:00:1746608088.084533 2659231 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+E0000 00:00:1746608088.084528 2659239 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+E0000 00:00:1746608088.084531 2659241 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+E0000 00:00:1746608088.084531 2659237 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+E0000 00:00:1746608088.084534 2659234 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+E0000 00:00:1746608088.084540 2659233 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+E0000 00:00:1746608088.084540 2659230 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+E0000 00:00:1746608088.084537 2659232 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+E0000 00:00:1746608088.084537 2659236 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+E0000 00:00:1746608088.084541 2659235 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1746608088.127078 2659228 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127104 2659229 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127078 2659238 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127089 2659239 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127087 2659233 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127096 2659230 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127093 2659232 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127087 2659236 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127092 2659240 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127096 2659241 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127096 2659237 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127094 2659235 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127172 2659237 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127099 2659227 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127101 2659234 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127106 2659231 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127106 2659242 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127125 2659228 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127131 2659229 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127134 2659238 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127138 2659239 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127142 2659233 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127144 2659230 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127160 2659232 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127195 2659233 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127162 2659236 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127166 2659240 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127170 2659241 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127177 2659235 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127177 2659237 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127180 2659227 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127183 2659234 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127185 2659231 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127187 2659242 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127189 2659228 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127190 2659229 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127192 2659238 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127193 2659239 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127196 2659230 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127198 2659232 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127200 2659233 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127202 2659236 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127203 2659240 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127205 2659241 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127206 2659235 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127208 2659237 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127215 2659227 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127243 2659241 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127216 2659234 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127218 2659231 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127220 2659242 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127221 2659228 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127231 2659229 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127232 2659238 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127233 2659239 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127235 2659230 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127236 2659232 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127240 2659236 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127241 2659240 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127244 2659235 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127248 2659227 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127251 2659234 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127252 2659231 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746608088.127254 2659242 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+2025-05-07 10:54:48.134741: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-05-07 10:54:48.134741: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-05-07 10:54:48.134741: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-05-07 10:54:48.134741: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-05-07 10:54:48.134745: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-05-07 10:54:48.134742: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-05-07 10:54:48.134742: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-05-07 10:54:48.134744: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-05-07 10:54:48.134741: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-05-07 10:54:48.134744: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-05-07 10:54:48.134744: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-05-07 10:54:48.134742: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-05-07 10:54:48.134741: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-05-07 10:54:48.134743: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-05-07 10:54:48.134744: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-05-07 10:54:48.134937: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-05-07 10:54:59.761678: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-05-07 10:54:59.771179: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-05-07 10:54:59.780923: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-05-07 10:54:59.846084: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-05-07 10:54:59.849654: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-05-07 10:54:59.897216: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-05-07 10:54:59.942296: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-05-07 10:54:59.980253: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-05-07 10:54:59.996252: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-05-07 10:55:00.010450: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-05-07 10:55:00.050635: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-05-07 10:55:00.075971: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-05-07 10:55:00.147677: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-05-07 10:55:00.155014: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-05-07 10:55:00.183254: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-05-07 10:55:00.193900: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+Running simulation...
+start the learn masses function
+saved results for system 40
+Running simulation...
+start the learn masses function
+saved results for system 41
+Running simulation...
+start the learn masses function
+saved results for system 42
+Running simulation...
+start the learn masses function
+saved results for system 43
+Running simulation...
+start the learn masses function
+saved results for system 44
+Running simulation...
+start the learn masses function
+saved results for system 45
+Running simulation...
+start the learn masses function
+saved results for system 46
+Running simulation...
+start the learn masses function
+saved results for system 47
+Running simulation...
+start the learn masses function
+saved results for system 232
+Running simulation...
+start the learn masses function
+saved results for system 233
+Running simulation...
+start the learn masses function
+saved results for system 234
+Running simulation...
+start the learn masses function
+saved results for system 235
+Running simulation...
+start the learn masses function
+saved results for system 236
+Running simulation...
+start the learn masses function
+saved results for system 237
+Running simulation...
+start the learn masses function
+saved results for system 238
+Running simulation...
+start the learn masses function
+saved results for system 239
+Running simulation...
+start the learn masses function
+saved results for system 376
+Running simulation...
+start the learn masses function
+saved results for system 377
+Running simulation...
+start the learn masses function
+saved results for system 378
+Running simulation...
+start the learn masses function
+saved results for system 379
+Running simulation...
+start the learn masses function
+saved results for system 380
+Running simulation...
+start the learn masses function
+saved results for system 381
+Running simulation...
+start the learn masses function
+saved results for system 382
+Running simulation...
+start the learn masses function
+saved results for system 383
+Running simulation...
+start the learn masses function
+saved results for system 112
+Running simulation...
+start the learn masses function
+saved results for system 113
+Running simulation...
+start the learn masses function
+saved results for system 114
+Running simulation...
+start the learn masses function
+saved results for system 115
+Running simulation...
+start the learn masses function
+saved results for system 116
+Running simulation...
+start the learn masses function
+saved results for system 117
+Running simulation...
+start the learn masses function
+saved results for system 118
+Running simulation...
+start the learn masses function
+saved results for system 119
+Running simulation...
+start the learn masses function
+saved results for system 240
+Running simulation...
+start the learn masses function
+saved results for system 241
+Running simulation...
+start the learn masses function
+saved results for system 242
+Running simulation...
+start the learn masses function
+saved results for system 243
+Running simulation...
+start the learn masses function
+saved results for system 244
+Running simulation...
+start the learn masses function
+saved results for system 245
+Running simulation...
+start the learn masses function
+saved results for system 246
+Running simulation...
+start the learn masses function
+saved results for system 247
+Running simulation...
+start the learn masses function
+saved results for system 336
+Running simulation...
+start the learn masses function
+saved results for system 337
+Running simulation...
+start the learn masses function
+saved results for system 338
+Running simulation...
+start the learn masses function
+saved results for system 339
+Running simulation...
+start the learn masses function
+saved results for system 340
+Running simulation...
+start the learn masses function
+saved results for system 341
+Running simulation...
+start the learn masses function
+saved results for system 342
+Running simulation...
+start the learn masses function
+saved results for system 343
+Running simulation...
+start the learn masses function
+saved results for system 448
+Running simulation...
+start the learn masses function
+saved results for system 449
+Running simulation...
+start the learn masses function
+saved results for system 450
+Running simulation...
+start the learn masses function
+saved results for system 451
+Running simulation...
+start the learn masses function
+saved results for system 452
+Running simulation...
+start the learn masses function
+saved results for system 453
+Running simulation...
+start the learn masses function
+saved results for system 454
+Running simulation...
+start the learn masses function
+saved results for system 455
+Running simulation...
+start the learn masses function
+saved results for system 88
+Running simulation...
+start the learn masses function
+saved results for system 89
+Running simulation...
+start the learn masses function
+saved results for system 90
+Running simulation...
+start the learn masses function
+saved results for system 91
+Running simulation...
+start the learn masses function
+saved results for system 92
+Running simulation...
+start the learn masses function
+saved results for system 93
+Running simulation...
+start the learn masses function
+saved results for system 94
+Running simulation...
+start the learn masses function
+saved results for system 95
+Running simulation...
+start the learn masses function
+saved results for system 160
+Running simulation...
+start the learn masses function
+saved results for system 161
+Running simulation...
+start the learn masses function
+saved results for system 162
+Running simulation...
+start the learn masses function
+saved results for system 163
+Running simulation...
+start the learn masses function
+saved results for system 164
+Running simulation...
+start the learn masses function
+saved results for system 165
+Running simulation...
+start the learn masses function
+saved results for system 166
+Running simulation...
+start the learn masses function
+saved results for system 167
+Running simulation...
+start the learn masses function
+saved results for system 320
+Running simulation...
+start the learn masses function
+saved results for system 321
+Running simulation...
+start the learn masses function
+saved results for system 322
+Running simulation...
+start the learn masses function
+saved results for system 323
+Running simulation...
+start the learn masses function
+saved results for system 324
+Running simulation...
+start the learn masses function
+saved results for system 325
+Running simulation...
+start the learn masses function
+saved results for system 326
+Running simulation...
+start the learn masses function
+saved results for system 327
+Running simulation...
+start the learn masses function
+saved results for system 496
+Running simulation...
+start the learn masses function
+saved results for system 497
+Running simulation...
+start the learn masses function
+saved results for system 498
+Running simulation...
+start the learn masses function
+saved results for system 499
+Running simulation...
+start the learn masses function
+saved results for system 24
+Running simulation...
+start the learn masses function
+saved results for system 25
+Running simulation...
+start the learn masses function
+saved results for system 26
+Running simulation...
+start the learn masses function
+saved results for system 27
+Running simulation...
+start the learn masses function
+saved results for system 28
+Running simulation...
+start the learn masses function
+saved results for system 29
+Running simulation...
+start the learn masses function
+saved results for system 30
+Running simulation...
+start the learn masses function
+saved results for system 31
+Running simulation...
+start the learn masses function
+saved results for system 136
+Running simulation...
+start the learn masses function
+saved results for system 137
+Running simulation...
+start the learn masses function
+saved results for system 138
+Running simulation...
+start the learn masses function
+saved results for system 139
+Running simulation...
+start the learn masses function
+saved results for system 140
+Running simulation...
+start the learn masses function
+saved results for system 141
+Running simulation...
+start the learn masses function
+saved results for system 142
+Running simulation...
+start the learn masses function
+saved results for system 143
+Running simulation...
+start the learn masses function
+saved results for system 272
+Running simulation...
+start the learn masses function
+saved results for system 273
+Running simulation...
+start the learn masses function
+saved results for system 274
+Running simulation...
+start the learn masses function
+saved results for system 275
+Running simulation...
+start the learn masses function
+saved results for system 276
+Running simulation...
+start the learn masses function
+saved results for system 277
+Running simulation...
+start the learn masses function
+saved results for system 278
+Running simulation...
+start the learn masses function
+saved results for system 279
+Running simulation...
+start the learn masses function
+saved results for system 392
+Running simulation...
+start the learn masses function
+saved results for system 393
+Running simulation...
+start the learn masses function
+saved results for system 394
+Running simulation...
+start the learn masses function
+saved results for system 395
+Running simulation...
+start the learn masses function
+saved results for system 396
+Running simulation...
+start the learn masses function
+saved results for system 397
+Running simulation...
+start the learn masses function
+saved results for system 398
+Running simulation...
+start the learn masses function
+saved results for system 399
+Running simulation...
+start the learn masses function
+saved results for system 0
+Running simulation...
+start the learn masses function
+saved results for system 1
+Running simulation...
+start the learn masses function
+saved results for system 2
+Running simulation...
+start the learn masses function
+saved results for system 3
+Running simulation...
+start the learn masses function
+saved results for system 4
+Running simulation...
+start the learn masses function
+saved results for system 5
+Running simulation...
+start the learn masses function
+saved results for system 6
+Running simulation...
+start the learn masses function
+saved results for system 7
+Running simulation...
+start the learn masses function
+saved results for system 152
+Running simulation...
+start the learn masses function
+saved results for system 153
+Running simulation...
+start the learn masses function
+saved results for system 154
+Running simulation...
+start the learn masses function
+saved results for system 155
+Running simulation...
+start the learn masses function
+saved results for system 156
+Running simulation...
+start the learn masses function
+saved results for system 157
+Running simulation...
+start the learn masses function
+saved results for system 158
+Running simulation...
+start the learn masses function
+saved results for system 159
+Running simulation...
+start the learn masses function
+saved results for system 304
+Running simulation...
+start the learn masses function
+saved results for system 305
+Running simulation...
+start the learn masses function
+saved results for system 306
+Running simulation...
+start the learn masses function
+saved results for system 307
+Running simulation...
+start the learn masses function
+saved results for system 308
+Running simulation...
+start the learn masses function
+saved results for system 309
+Running simulation...
+start the learn masses function
+saved results for system 310
+Running simulation...
+start the learn masses function
+saved results for system 311
+Running simulation...
+start the learn masses function
+saved results for system 424
+Running simulation...
+start the learn masses function
+saved results for system 425
+Running simulation...
+start the learn masses function
+saved results for system 426
+Running simulation...
+start the learn masses function
+saved results for system 427
+Running simulation...
+start the learn masses function
+saved results for system 428
+Running simulation...
+start the learn masses function
+saved results for system 429
+Running simulation...
+start the learn masses function
+saved results for system 430
+Running simulation...
+start the learn masses function
+saved results for system 431
+Running simulation...
+start the learn masses function
+saved results for system 120
+Running simulation...
+start the learn masses function
+saved results for system 121
+Running simulation...
+start the learn masses function
+saved results for system 122
+Running simulation...
+start the learn masses function
+saved results for system 123
+Running simulation...
+start the learn masses function
+saved results for system 124
+Running simulation...
+start the learn masses function
+saved results for system 125
+Running simulation...
+start the learn masses function
+saved results for system 126
+Running simulation...
+start the learn masses function
+saved results for system 127
+Running simulation...
+start the learn masses function
+saved results for system 144
+Running simulation...
+start the learn masses function
+saved results for system 145
+Running simulation...
+start the learn masses function
+saved results for system 146
+Running simulation...
+start the learn masses function
+saved results for system 147
+Running simulation...
+start the learn masses function
+saved results for system 148
+Running simulation...
+start the learn masses function
+saved results for system 149
+Running simulation...
+start the learn masses function
+saved results for system 150
+Running simulation...
+start the learn masses function
+saved results for system 151
+Running simulation...
+start the learn masses function
+saved results for system 296
+Running simulation...
+start the learn masses function
+saved results for system 297
+Running simulation...
+start the learn masses function
+saved results for system 298
+Running simulation...
+start the learn masses function
+saved results for system 299
+Running simulation...
+start the learn masses function
+saved results for system 300
+Running simulation...
+start the learn masses function
+saved results for system 301
+Running simulation...
+start the learn masses function
+saved results for system 302
+Running simulation...
+start the learn masses function
+saved results for system 303
+Running simulation...
+start the learn masses function
+saved results for system 408
+Running simulation...
+start the learn masses function
+saved results for system 409
+Running simulation...
+start the learn masses function
+saved results for system 410
+Running simulation...
+start the learn masses function
+saved results for system 411
+Running simulation...
+start the learn masses function
+saved results for system 412
+Running simulation...
+start the learn masses function
+saved results for system 413
+Running simulation...
+start the learn masses function
+saved results for system 414
+Running simulation...
+start the learn masses function
+saved results for system 415
+Running simulation...
+start the learn masses function
+saved results for system 48
+Running simulation...
+start the learn masses function
+saved results for system 49
+Running simulation...
+start the learn masses function
+saved results for system 50
+Running simulation...
+start the learn masses function
+saved results for system 51
+Running simulation...
+start the learn masses function
+saved results for system 52
+Running simulation...
+start the learn masses function
+saved results for system 53
+Running simulation...
+start the learn masses function
+saved results for system 54
+Running simulation...
+start the learn masses function
+saved results for system 55
+Running simulation...
+start the learn masses function
+saved results for system 176
+Running simulation...
+start the learn masses function
+saved results for system 177
+Running simulation...
+start the learn masses function
+saved results for system 178
+Running simulation...
+start the learn masses function
+saved results for system 179
+Running simulation...
+start the learn masses function
+saved results for system 180
+Running simulation...
+start the learn masses function
+saved results for system 181
+Running simulation...
+start the learn masses function
+saved results for system 182
+Running simulation...
+start the learn masses function
+saved results for system 183
+Running simulation...
+start the learn masses function
+saved results for system 280
+Running simulation...
+start the learn masses function
+saved results for system 281
+Running simulation...
+start the learn masses function
+saved results for system 282
+Running simulation...
+start the learn masses function
+saved results for system 283
+Running simulation...
+start the learn masses function
+saved results for system 284
+Running simulation...
+start the learn masses function
+saved results for system 285
+Running simulation...
+start the learn masses function
+saved results for system 286
+Running simulation...
+start the learn masses function
+saved results for system 287
+Running simulation...
+start the learn masses function
+saved results for system 440
+Running simulation...
+start the learn masses function
+saved results for system 441
+Running simulation...
+start the learn masses function
+saved results for system 442
+Running simulation...
+start the learn masses function
+saved results for system 443
+Running simulation...
+start the learn masses function
+saved results for system 444
+Running simulation...
+start the learn masses function
+saved results for system 445
+Running simulation...
+start the learn masses function
+saved results for system 446
+Running simulation...
+start the learn masses function
+saved results for system 447
+Running simulation...
+start the learn masses function
+saved results for system 96
+Running simulation...
+start the learn masses function
+saved results for system 97
+Running simulation...
+start the learn masses function
+saved results for system 98
+Running simulation...
+start the learn masses function
+saved results for system 99
+Running simulation...
+start the learn masses function
+saved results for system 100
+Running simulation...
+start the learn masses function
+saved results for system 101
+Running simulation...
+start the learn masses function
+saved results for system 102
+Running simulation...
+start the learn masses function
+saved results for system 103
+Running simulation...
+start the learn masses function
+saved results for system 184
+Running simulation...
+start the learn masses function
+saved results for system 185
+Running simulation...
+start the learn masses function
+saved results for system 186
+Running simulation...
+start the learn masses function
+saved results for system 187
+Running simulation...
+start the learn masses function
+saved results for system 188
+Running simulation...
+start the learn masses function
+saved results for system 189
+Running simulation...
+start the learn masses function
+saved results for system 190
+Running simulation...
+start the learn masses function
+saved results for system 191
+Running simulation...
+start the learn masses function
+saved results for system 312
+Running simulation...
+start the learn masses function
+saved results for system 313
+Running simulation...
+start the learn masses function
+saved results for system 314
+Running simulation...
+start the learn masses function
+saved results for system 315
+Running simulation...
+start the learn masses function
+saved results for system 316
+Running simulation...
+start the learn masses function
+saved results for system 317
+Running simulation...
+start the learn masses function
+saved results for system 318
+Running simulation...
+start the learn masses function
+saved results for system 319
+Running simulation...
+start the learn masses function
+saved results for system 400
+Running simulation...
+start the learn masses function
+saved results for system 401
+Running simulation...
+start the learn masses function
+saved results for system 402
+Running simulation...
+start the learn masses function
+saved results for system 403
+Running simulation...
+start the learn masses function
+saved results for system 404
+Running simulation...
+start the learn masses function
+saved results for system 405
+Running simulation...
+start the learn masses function
+saved results for system 406
+Running simulation...
+start the learn masses function
+saved results for system 407
+Running simulation...
+start the learn masses function
+saved results for system 72
+Running simulation...
+start the learn masses function
+saved results for system 73
+Running simulation...
+start the learn masses function
+saved results for system 74
+Running simulation...
+start the learn masses function
+saved results for system 75
+Running simulation...
+start the learn masses function
+saved results for system 76
+Running simulation...
+start the learn masses function
+saved results for system 77
+Running simulation...
+start the learn masses function
+saved results for system 78
+Running simulation...
+start the learn masses function
+saved results for system 79
+Running simulation...
+start the learn masses function
+saved results for system 168
+Running simulation...
+start the learn masses function
+saved results for system 169
+Running simulation...
+start the learn masses function
+saved results for system 170
+Running simulation...
+start the learn masses function
+saved results for system 171
+Running simulation...
+start the learn masses function
+saved results for system 172
+Running simulation...
+start the learn masses function
+saved results for system 173
+Running simulation...
+start the learn masses function
+saved results for system 174
+Running simulation...
+start the learn masses function
+saved results for system 175
+Running simulation...
+start the learn masses function
+saved results for system 256
+Running simulation...
+start the learn masses function
+saved results for system 257
+Running simulation...
+start the learn masses function
+saved results for system 258
+Running simulation...
+start the learn masses function
+saved results for system 259
+Running simulation...
+start the learn masses function
+saved results for system 260
+Running simulation...
+start the learn masses function
+saved results for system 261
+Running simulation...
+start the learn masses function
+saved results for system 262
+Running simulation...
+start the learn masses function
+saved results for system 263
+Running simulation...
+start the learn masses function
+saved results for system 432
+Running simulation...
+start the learn masses function
+saved results for system 433
+Running simulation...
+start the learn masses function
+saved results for system 434
+Running simulation...
+start the learn masses function
+saved results for system 435
+Running simulation...
+start the learn masses function
+saved results for system 436
+Running simulation...
+start the learn masses function
+saved results for system 437
+Running simulation...
+start the learn masses function
+saved results for system 438
+Running simulation...
+start the learn masses function
+saved results for system 439
+Running simulation...
+start the learn masses function
+saved results for system 64
+Running simulation...
+start the learn masses function
+saved results for system 65
+Running simulation...
+start the learn masses function
+saved results for system 66
+Running simulation...
+start the learn masses function
+saved results for system 67
+Running simulation...
+start the learn masses function
+saved results for system 68
+Running simulation...
+start the learn masses function
+saved results for system 69
+Running simulation...
+start the learn masses function
+saved results for system 70
+Running simulation...
+start the learn masses function
+saved results for system 71
+Running simulation...
+start the learn masses function
+saved results for system 192
+Running simulation...
+start the learn masses function
+saved results for system 193
+Running simulation...
+start the learn masses function
+saved results for system 194
+Running simulation...
+start the learn masses function
+saved results for system 195
+Running simulation...
+start the learn masses function
+saved results for system 196
+Running simulation...
+start the learn masses function
+saved results for system 197
+Running simulation...
+start the learn masses function
+saved results for system 198
+Running simulation...
+start the learn masses function
+saved results for system 199
+Running simulation...
+start the learn masses function
+saved results for system 344
+Running simulation...
+start the learn masses function
+saved results for system 345
+Running simulation...
+start the learn masses function
+saved results for system 346
+Running simulation...
+start the learn masses function
+saved results for system 347
+Running simulation...
+start the learn masses function
+saved results for system 348
+Running simulation...
+start the learn masses function
+saved results for system 349
+Running simulation...
+start the learn masses function
+saved results for system 350
+Running simulation...
+start the learn masses function
+saved results for system 351
+Running simulation...
+start the learn masses function
+saved results for system 464
+Running simulation...
+start the learn masses function
+saved results for system 465
+Running simulation...
+start the learn masses function
+saved results for system 466
+Running simulation...
+start the learn masses function
+saved results for system 467
+Running simulation...
+start the learn masses function
+saved results for system 468
+Running simulation...
+start the learn masses function
+saved results for system 469
+Running simulation...
+start the learn masses function
+saved results for system 470
+Running simulation...
+start the learn masses function
+saved results for system 471
+Running simulation...
+start the learn masses function
+saved results for system 32
+Running simulation...
+start the learn masses function
+saved results for system 33
+Running simulation...
+start the learn masses function
+saved results for system 34
+Running simulation...
+start the learn masses function
+saved results for system 35
+Running simulation...
+start the learn masses function
+saved results for system 36
+Running simulation...
+start the learn masses function
+saved results for system 37
+Running simulation...
+start the learn masses function
+saved results for system 38
+Running simulation...
+start the learn masses function
+saved results for system 39
+Running simulation...
+start the learn masses function
+saved results for system 208
+Running simulation...
+start the learn masses function
+saved results for system 209
+Running simulation...
+start the learn masses function
+saved results for system 210
+Running simulation...
+start the learn masses function
+saved results for system 211
+Running simulation...
+start the learn masses function
+saved results for system 212
+Running simulation...
+start the learn masses function
+saved results for system 213
+Running simulation...
+start the learn masses function
+saved results for system 214
+Running simulation...
+start the learn masses function
+saved results for system 215
+Running simulation...
+start the learn masses function
+saved results for system 288
+Running simulation...
+start the learn masses function
+saved results for system 289
+Running simulation...
+start the learn masses function
+saved results for system 290
+Running simulation...
+start the learn masses function
+saved results for system 291
+Running simulation...
+start the learn masses function
+saved results for system 292
+Running simulation...
+start the learn masses function
+saved results for system 293
+Running simulation...
+start the learn masses function
+saved results for system 294
+Running simulation...
+start the learn masses function
+saved results for system 295
+Running simulation...
+start the learn masses function
+saved results for system 416
+Running simulation...
+start the learn masses function
+saved results for system 417
+Running simulation...
+start the learn masses function
+saved results for system 418
+Running simulation...
+start the learn masses function
+saved results for system 419
+Running simulation...
+start the learn masses function
+saved results for system 420
+Running simulation...
+start the learn masses function
+saved results for system 421
+Running simulation...
+start the learn masses function
+saved results for system 422
+Running simulation...
+start the learn masses function
+saved results for system 423
+Running simulation...
+start the learn masses function
+saved results for system 56
+Running simulation...
+start the learn masses function
+saved results for system 57
+Running simulation...
+start the learn masses function
+saved results for system 58
+Running simulation...
+start the learn masses function
+saved results for system 59
+Running simulation...
+start the learn masses function
+saved results for system 60
+Running simulation...
+start the learn masses function
+saved results for system 61
+Running simulation...
+start the learn masses function
+saved results for system 62
+Running simulation...
+start the learn masses function
+saved results for system 63
+Running simulation...
+start the learn masses function
+saved results for system 248
+Running simulation...
+start the learn masses function
+saved results for system 249
+Running simulation...
+start the learn masses function
+saved results for system 250
+Running simulation...
+start the learn masses function
+saved results for system 251
+Running simulation...
+start the learn masses function
+saved results for system 252
+Running simulation...
+start the learn masses function
+saved results for system 253
+Running simulation...
+start the learn masses function
+saved results for system 254
+Running simulation...
+start the learn masses function
+saved results for system 255
+Running simulation...
+start the learn masses function
+saved results for system 360
+Running simulation...
+start the learn masses function
+saved results for system 361
+Running simulation...
+start the learn masses function
+saved results for system 362
+Running simulation...
+start the learn masses function
+saved results for system 363
+Running simulation...
+start the learn masses function
+saved results for system 364
+Running simulation...
+start the learn masses function
+saved results for system 365
+Running simulation...
+start the learn masses function
+saved results for system 366
+Running simulation...
+start the learn masses function
+saved results for system 367
+Running simulation...
+start the learn masses function
+saved results for system 456
+Running simulation...
+start the learn masses function
+saved results for system 457
+Running simulation...
+start the learn masses function
+saved results for system 458
+Running simulation...
+start the learn masses function
+saved results for system 459
+Running simulation...
+start the learn masses function
+saved results for system 460
+Running simulation...
+start the learn masses function
+saved results for system 461
+Running simulation...
+start the learn masses function
+saved results for system 462
+Running simulation...
+start the learn masses function
+saved results for system 463
+Running simulation...
+start the learn masses function
+saved results for system 8
+Running simulation...
+start the learn masses function
+saved results for system 9
+Running simulation...
+start the learn masses function
+saved results for system 10
+Running simulation...
+start the learn masses function
+saved results for system 11
+Running simulation...
+start the learn masses function
+saved results for system 12
+Running simulation...
+start the learn masses function
+saved results for system 13
+Running simulation...
+start the learn masses function
+saved results for system 14
+Running simulation...
+start the learn masses function
+saved results for system 15
+Running simulation...
+start the learn masses function
+saved results for system 128
+Running simulation...
+start the learn masses function
+saved results for system 129
+Running simulation...
+start the learn masses function
+saved results for system 130
+Running simulation...
+start the learn masses function
+saved results for system 131
+Running simulation...
+start the learn masses function
+saved results for system 132
+Running simulation...
+start the learn masses function
+saved results for system 133
+Running simulation...
+start the learn masses function
+saved results for system 134
+Running simulation...
+start the learn masses function
+saved results for system 135
+Running simulation...
+start the learn masses function
+saved results for system 264
+Running simulation...
+start the learn masses function
+saved results for system 265
+Running simulation...
+start the learn masses function
+saved results for system 266
+Running simulation...
+start the learn masses function
+saved results for system 267
+Running simulation...
+start the learn masses function
+saved results for system 268
+Running simulation...
+start the learn masses function
+saved results for system 269
+Running simulation...
+start the learn masses function
+saved results for system 270
+Running simulation...
+start the learn masses function
+saved results for system 271
+Running simulation...
+start the learn masses function
+saved results for system 384
+Running simulation...
+start the learn masses function
+saved results for system 385
+Running simulation...
+start the learn masses function
+saved results for system 386
+Running simulation...
+start the learn masses function
+saved results for system 387
+Running simulation...
+start the learn masses function
+saved results for system 388
+Running simulation...
+start the learn masses function
+saved results for system 389
+Running simulation...
+start the learn masses function
+saved results for system 390
+Running simulation...
+start the learn masses function
+saved results for system 391
+Running simulation...
+start the learn masses function
+saved results for system 80
+Running simulation...
+start the learn masses function
+saved results for system 81
+Running simulation...
+start the learn masses function
+saved results for system 82
+Running simulation...
+start the learn masses function
+saved results for system 83
+Running simulation...
+start the learn masses function
+saved results for system 84
+Running simulation...
+start the learn masses function
+saved results for system 85
+Running simulation...
+start the learn masses function
+saved results for system 86
+Running simulation...
+start the learn masses function
+saved results for system 87
+Running simulation...
+start the learn masses function
+saved results for system 224
+Running simulation...
+start the learn masses function
+saved results for system 225
+Running simulation...
+start the learn masses function
+saved results for system 226
+Running simulation...
+start the learn masses function
+saved results for system 227
+Running simulation...
+start the learn masses function
+saved results for system 228
+Running simulation...
+start the learn masses function
+saved results for system 229
+Running simulation...
+start the learn masses function
+saved results for system 230
+Running simulation...
+start the learn masses function
+saved results for system 231
+Running simulation...
+start the learn masses function
+saved results for system 328
+Running simulation...
+start the learn masses function
+saved results for system 329
+Running simulation...
+start the learn masses function
+saved results for system 330
+Running simulation...
+start the learn masses function
+saved results for system 331
+Running simulation...
+start the learn masses function
+saved results for system 332
+Running simulation...
+start the learn masses function
+saved results for system 333
+Running simulation...
+start the learn masses function
+saved results for system 334
+Running simulation...
+start the learn masses function
+saved results for system 335
+Running simulation...
+start the learn masses function
+saved results for system 480
+Running simulation...
+start the learn masses function
+saved results for system 481
+Running simulation...
+start the learn masses function
+saved results for system 482
+Running simulation...
+start the learn masses function
+saved results for system 483
+Running simulation...
+start the learn masses function
+saved results for system 484
+Running simulation...
+start the learn masses function
+saved results for system 485
+Running simulation...
+start the learn masses function
+saved results for system 486
+Running simulation...
+start the learn masses function
+saved results for system 487
+
+
+In this session you have used the AMUSE modules below. 
+Please cite any relevant articles:
+
+
+	"AMUSE (unknown version)"
+		DOI:10.5281/zenodo.1435860
+		ADS:2018araa.book.....P (Portegies Zwart, S. & McMillan, S.L.W., 2018)
+		ADS:2013CoPhC.183..456P ** (Portegies Zwart, S. et al., 2013)
+		ADS:2013A&A...557A..84P ** (Pelupessy, F. I. et al., 2013)
+		ADS:2009NewA...14..369P (Portegies Zwart, S. et al., 2009)
+
+#### Finished Test. Have a nice day

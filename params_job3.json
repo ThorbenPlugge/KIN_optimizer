@@ -1,18 +1,20 @@
 {
-    "M_min": 1e-3,
-    "a_min": [1e-3, 20],
-    "evolve_time": [120, 7200],
+    "M_min": 1e-6,
+    "a_min": 50,
+    "evolve_time": 1200,
     "tau": 30,
     "num_points_considered_in_cost_function": 4,
     "M_maj": 1e-3,
     "a_maj": 10,
     "epochs": 150,
     "accuracy": 1e-10,
-    "n_samples": 300,
+    "n_samples": 500,
     "init_guess_offset": 1e-5,
     "learning_rate": 1e-8,
     "unknown_dimension": 3,
     "phaseseed": 0,
     "hypercube_state": 42,
-    "loglog": true
+    "loglog": true,
+    "p_unc": 0.01,
+    "v_unc": 0.00001
 }

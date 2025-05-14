@@ -1,0 +1,613 @@
+#### Starting test
+n_cores available for slurm is 16
+2025-05-01 10:18:06.394189: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-01 10:18:06.394207: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-01 10:18:06.394196: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-01 10:18:06.394196: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-01 10:18:06.394198: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-01 10:18:06.394207: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-01 10:18:06.394214: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-01 10:18:06.394214: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-01 10:18:06.394217: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-01 10:18:06.394207: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-01 10:18:06.394215: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-01 10:18:06.394208: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-01 10:18:06.394212: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-01 10:18:06.394208: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-01 10:18:06.394216: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-01 10:18:06.394223: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-01 10:18:06.695601: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-01 10:18:06.695601: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-01 10:18:06.695597: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-01 10:18:06.695611: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-01 10:18:06.695606: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-01 10:18:06.695605: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-01 10:18:06.695608: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-01 10:18:06.695611: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-01 10:18:06.695612: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-01 10:18:06.695618: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-01 10:18:06.695620: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-01 10:18:06.695618: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-01 10:18:06.695618: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-01 10:18:06.695618: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-01 10:18:06.695617: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-01 10:18:06.695618: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-01 10:18:06.902338: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-05-01 10:18:06.902341: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-05-01 10:18:06.902347: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-05-01 10:18:06.902351: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-05-01 10:18:06.902347: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-05-01 10:18:06.902351: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-05-01 10:18:06.902356: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-05-01 10:18:06.902350: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-05-01 10:18:06.902358: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-05-01 10:18:06.902367: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-05-01 10:18:06.902362: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-05-01 10:18:06.902364: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-05-01 10:18:06.902401: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-05-01 10:18:06.902401: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-05-01 10:18:06.902399: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-05-01 10:18:06.902400: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1746087487.043831 1500807 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1746087487.043845 1500805 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1746087487.043838 1500815 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1746087487.043833 1500813 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1746087487.043859 1500817 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1746087487.043854 1500803 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1746087487.043853 1500816 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1746087487.043857 1500814 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1746087487.043856 1500802 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1746087487.043858 1500808 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1746087487.043857 1500810 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1746087487.043848 1500806 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1746087487.043841 1500812 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1746087487.043855 1500811 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1746087487.043866 1500809 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1746087487.043965 1500804 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1746087487.110527 1500815 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+E0000 00:00:1746087487.110536 1500803 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+E0000 00:00:1746087487.110527 1500805 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+E0000 00:00:1746087487.110529 1500812 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+E0000 00:00:1746087487.110539 1500817 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+E0000 00:00:1746087487.110544 1500802 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+E0000 00:00:1746087487.110549 1500808 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+E0000 00:00:1746087487.110550 1500810 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+E0000 00:00:1746087487.110549 1500809 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+E0000 00:00:1746087487.110549 1500806 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+E0000 00:00:1746087487.110553 1500807 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+E0000 00:00:1746087487.110554 1500814 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+E0000 00:00:1746087487.110556 1500804 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+E0000 00:00:1746087487.110556 1500811 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+E0000 00:00:1746087487.110676 1500813 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+E0000 00:00:1746087487.112055 1500816 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1746087487.517619 1500804 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517615 1500810 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517632 1500813 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517632 1500815 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517679 1500813 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517658 1500814 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517639 1500805 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517638 1500816 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517664 1500804 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517643 1500809 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517668 1500810 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517652 1500803 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517721 1500810 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517659 1500808 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517648 1500811 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517659 1500802 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517659 1500812 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517683 1500813 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517666 1500806 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517684 1500815 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517669 1500807 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517671 1500817 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517691 1500814 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517700 1500805 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517716 1500816 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517716 1500804 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517721 1500809 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517726 1500803 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517728 1500810 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517732 1500808 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517737 1500811 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517740 1500802 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517743 1500812 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517746 1500813 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517752 1500806 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517752 1500815 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517757 1500807 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517759 1500817 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517761 1500814 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517765 1500805 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517767 1500816 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517771 1500804 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517812 1500816 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517774 1500809 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517776 1500803 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517779 1500808 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517787 1500811 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517789 1500802 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517826 1500808 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517791 1500812 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517797 1500806 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517800 1500815 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517834 1500812 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517803 1500807 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517805 1500817 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517807 1500814 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517810 1500805 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517822 1500809 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517823 1500803 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517827 1500811 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517829 1500802 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517836 1500806 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517848 1500807 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746087487.517850 1500817 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+2025-05-01 10:18:07.558602: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-05-01 10:18:07.558602: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-05-01 10:18:07.558685: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-05-01 10:18:07.558747: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-05-01 10:18:07.558746: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-05-01 10:18:07.558757: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-05-01 10:18:07.558751: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-05-01 10:18:07.558777: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-05-01 10:18:07.558801: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-05-01 10:18:07.558810: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-05-01 10:18:07.558871: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-05-01 10:18:07.559345: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-05-01 10:18:07.559512: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-05-01 10:18:07.559681: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-05-01 10:18:07.559825: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-05-01 10:18:07.559868: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-05-01 10:18:29.830702: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-05-01 10:18:29.853331: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-05-01 10:18:30.054046: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-05-01 10:18:30.059017: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-05-01 10:18:30.083116: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-05-01 10:18:30.365460: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-05-01 10:18:30.389766: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-05-01 10:18:30.391106: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-05-01 10:18:30.429757: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-05-01 10:18:30.556703: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-05-01 10:18:30.558349: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-05-01 10:18:30.563977: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-05-01 10:18:30.565136: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-05-01 10:18:30.664200: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-05-01 10:18:30.836745: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-05-01 10:18:30.856654: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-05-01 10:52:07.280015: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-01 10:52:07.334850: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-05-01 10:52:07.497135: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1746089527.953325 1500820 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1746089528.064282 1500820 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1746089528.236766 1500820 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746089528.236826 1500820 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746089528.236832 1500820 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1746089528.236836 1500820 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+2025-05-01 10:52:08.259374: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+Evolve time is not a multiple of tau_ev. Rounding up to 274.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 84
+Evolve time is not a multiple of tau_ev. Rounding up to 278.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 85
+Evolve time is not a multiple of tau_ev. Rounding up to 281.0 days.
+Running simulation...
+start the learn masses function
+Running simulation...
+start the learn masses function
+saved results for system 0
+Evolve time is not a multiple of tau_ev. Rounding up to 102.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 1
+Evolve time is not a multiple of tau_ev. Rounding up to 103.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 2
+Evolve time is not a multiple of tau_ev. Rounding up to 104.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 3
+Evolve time is not a multiple of tau_ev. Rounding up to 105.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 119.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 14
+Evolve time is not a multiple of tau_ev. Rounding up to 120.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 15
+Evolve time is not a multiple of tau_ev. Rounding up to 122.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 1243.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 1599.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 1891.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 2237.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 2878.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 3131.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 4028.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 4764.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 5635.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 6666.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 7885.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 9328.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 12001.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 181.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 49
+Evolve time is not a multiple of tau_ev. Rounding up to 183.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 50
+Evolve time is not a multiple of tau_ev. Rounding up to 185.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 166.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 42
+Evolve time is not a multiple of tau_ev. Rounding up to 168.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 43
+Evolve time is not a multiple of tau_ev. Rounding up to 170.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 232.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 70
+Evolve time is not a multiple of tau_ev. Rounding up to 235.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 384.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 417.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 494.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 584.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 691.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 817.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 966.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 1143.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 1470.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 2057.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 2647.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 3703.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 5181.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 7250.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 11034.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 325.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 98
+Evolve time is not a multiple of tau_ev. Rounding up to 329.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 454.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 537.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 635.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 751.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 888.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 1051.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 1352.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 1739.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 2433.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 3405.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 4380.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 6129.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 8576.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 213.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 63
+Evolve time is not a multiple of tau_ev. Rounding up to 216.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 64
+Evolve time is not a multiple of tau_ev. Rounding up to 219.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 196.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 56
+Evolve time is not a multiple of tau_ev. Rounding up to 199.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 57
+Evolve time is not a multiple of tau_ev. Rounding up to 201.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 109.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 7
+Evolve time is not a multiple of tau_ev. Rounding up to 111.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 8
+Evolve time is not a multiple of tau_ev. Rounding up to 112.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 9
+Evolve time is not a multiple of tau_ev. Rounding up to 113.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 252.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 77
+Evolve time is not a multiple of tau_ev. Rounding up to 255.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 78
+Evolve time is not a multiple of tau_ev. Rounding up to 259.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 140.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 28
+Evolve time is not a multiple of tau_ev. Rounding up to 142.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 29
+Evolve time is not a multiple of tau_ev. Rounding up to 144.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 30
+Evolve time is not a multiple of tau_ev. Rounding up to 146.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 10145.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 298.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 91
+Evolve time is not a multiple of tau_ev. Rounding up to 302.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 92
+Evolve time is not a multiple of tau_ev. Rounding up to 306.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 353.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 105
+Evolve time is not a multiple of tau_ev. Rounding up to 357.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 106
+Evolve time is not a multiple of tau_ev. Rounding up to 362.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 129.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 21
+Evolve time is not a multiple of tau_ev. Rounding up to 131.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 22
+Evolve time is not a multiple of tau_ev. Rounding up to 132.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 23
+Evolve time is not a multiple of tau_ev. Rounding up to 134.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 24
+Evolve time is not a multiple of tau_ev. Rounding up to 135.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 25
+Evolve time is not a multiple of tau_ev. Rounding up to 137.0 days.
+Running simulation...
+start the learn masses function
+Evolve time is not a multiple of tau_ev. Rounding up to 153.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 35
+Evolve time is not a multiple of tau_ev. Rounding up to 155.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 36
+Evolve time is not a multiple of tau_ev. Rounding up to 156.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 37
+Evolve time is not a multiple of tau_ev. Rounding up to 158.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 38
+Evolve time is not a multiple of tau_ev. Rounding up to 160.0 days.
+Running simulation...
+start the learn masses function
+saved results for system 39
+Evolve time is not a multiple of tau_ev. Rounding up to 162.0 days.
+Running simulation...
+start the learn masses function
+multiprocessing.pool.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/home/s2818760/.conda/envs/nbody/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/home/s2818760/.conda/envs/nbody/lib/python3.12/multiprocessing/pool.py", line 51, in starmapstar
+    return list(itertools.starmap(args[0], args[1]))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/s2818760/MasterProj/KIN_optimizer/Validation/validation.py", line 454, in process_single_system_mp
+    masses, losses = find_masses(
+                     ^^^^^^^^^^^^
+  File "/home/s2818760/MasterProj/KIN_optimizer/Validation/validation.py", line 68, in find_masses
+    masses, losses = node.learn_masses(
+                     ^^^^^^^^^^^^^^^^^^
+  File "/home/s2818760/MasterProj/KIN_optimizer/Learning/Training_loops.py", line 49, in learn_masses
+    mass_values, loss_values = learn_masses_4real(tau, optimizer, availabe_info_of_bodies, None, plotGraph,
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/s2818760/MasterProj/KIN_optimizer/Learning/Training_loops.py", line 174, in learn_masses_4real
+    state_derivatives, mass_derivatives = b.backwards_map_fn(
+                                          ^^^^^^^^^^^^^^^^^^^
+  File "/home/s2818760/.conda/envs/nbody/lib/python3.12/site-packages/tensorflow/python/util/traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/scratchdata/s2818760/4004285/__autograph_generated_file614pmlyd.py", line 12, in tf__backwards_map_fn
+    grads = ag__.converted_call(ag__.ld(tf).map_fn, (ag__.autograph_artifact(lambda x: ag__.converted_call(ag__.ld(calculate_gradients_for_psiotion), (ag__.ld(x), ag__.ld(m), ag__.ld(tau)), None, fscope)), ag__.ld(temp)), dict(fn_output_signature=(ag__.ld(tf).float64, ag__.ld(tf).float64), swap_memory=True), fscope)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratchdata/s2818760/4004285/__autograph_generated_file614pmlyd.py", line 12, in <lambda>
+    grads = ag__.converted_call(ag__.ld(tf).map_fn, (ag__.autograph_artifact(lambda x: ag__.converted_call(ag__.ld(calculate_gradients_for_psiotion), (ag__.ld(x), ag__.ld(m), ag__.ld(tau)), None, fscope)), ag__.ld(temp)), dict(fn_output_signature=(ag__.ld(tf).float64, ag__.ld(tf).float64), swap_memory=True), fscope)
+                                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: in user code:
+
+    File "/home/s2818760/MasterProj/KIN_optimizer/Learning/Backwards.py", line 116, in backwards_map_fn  *
+        grads = tf.map_fn(lambda x: calculate_gradients_for_psiotion(
+
+    AssertionError: Called a function referencing variables which have been deleted. This likely means that function-local variables were created and not referenced elsewhere in the program. This is generally a mistake; consider storing variables in an object attribute on first call.
+
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/s2818760/MasterProj/KIN_optimizer/Validation/validation.py", line 680, in <module>
+    test_2_parameters_on_many_systems(**params)
+  File "/home/s2818760/MasterProj/KIN_optimizer/Validation/validation.py", line 608, in test_2_parameters_on_many_systems
+    pool.starmap(process_single_system_mp, args)
+  File "/home/s2818760/.conda/envs/nbody/lib/python3.12/multiprocessing/pool.py", line 375, in starmap
+    return self._map_async(func, iterable, starmapstar, chunksize).get()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/s2818760/.conda/envs/nbody/lib/python3.12/multiprocessing/pool.py", line 774, in get
+    raise self._value
+AssertionError: in user code:
+
+    File "/home/s2818760/MasterProj/KIN_optimizer/Learning/Backwards.py", line 116, in backwards_map_fn  *
+        grads = tf.map_fn(lambda x: calculate_gradients_for_psiotion(
+
+    AssertionError: Called a function referencing variables which have been deleted. This likely means that function-local variables were created and not referenced elsewhere in the program. This is generally a mistake; consider storing variables in an object attribute on first call.
+
+#### Finished Test. Have a nice day

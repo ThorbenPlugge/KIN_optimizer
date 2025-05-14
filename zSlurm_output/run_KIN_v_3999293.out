@@ -1,9 +1,0 @@
-#### Starting test
-Traceback (most recent call last):
-  File "/home/s2818760/MasterProj/KIN_optimizer/Validation/validation.py", line 546, in <module>
-    test_2_parameters_on_many_systems(**params)
-  File "/home/s2818760/MasterProj/KIN_optimizer/Validation/validation.py", line 445, in test_2_parameters_on_many_systems
-    param_sample is np.ceil(params).astype(int)
-                    ^^^^^^^^^^^^^^^
-TypeError: must be real number, not dict
-#### Finished Test. Have a nice day
