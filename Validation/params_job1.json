@@ -3,7 +3,7 @@
     "a_min": [0.001, 200],
     "evolve_time": 60,
     "tau": 0.1,
-    "num_points_considered_in_cost_function": 4,
+    "num_points_considered_in_cost_function": 8,
     "M_maj": 1e-3,
     "a_maj": 10,
     "epochs": 150,
