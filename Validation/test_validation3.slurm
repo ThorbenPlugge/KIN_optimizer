@@ -6,16 +6,18 @@
 #SBATCH --mail-type="ALL"
 
 #SBATCH --partition="cpu-medium"
-#SBATCH --time=1-00:00:00
+#SBATCH --time=10:00:00
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=16
-#SBATCH --mem-per-cpu=16G
+#SBATCH --mem-per-cpu=8G
 
 echo "#### Starting test"
 
+cd ..
+
 conda activate nbody
 
-python Validation/validation.py --param_file params_job1.json
-python Validation/process_results.py --param_file params_job1.json --job_id $SLURM_JOB_ID  
+python Validation/validation.py --param_file Validation/params_job3.json
+python Validation/process_results.py --param_file Validation/params_job1.json --job_id $SLURM_JOB_ID  
 
 echo "#### Finished Test. Have a nice day"
