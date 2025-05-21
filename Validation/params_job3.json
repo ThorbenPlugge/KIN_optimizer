@@ -13,7 +13,7 @@
     "learning_rate": 1e-8,
     "unknown_dimension": 3,
     "phaseseed": 0,
-    "optimizer_type": "Adam",
+    "optimizer_type": "ADAM",
     "hypercube_state": 42,
     "loglog": true,
     "p_unc": 0.01,
