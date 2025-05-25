@@ -269,11 +269,11 @@ def sensitivity_plot_1param(results, filename, run_params, log_error=True, plot_
 
     if p_index == 0:
         plt.axvline(M_maj, linestyle='--', color='white', label='M_maj')
-        plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1.05),
+        plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1.1),
                ncol=3, fancybox=True, shadow=True)
     if p_index == 1:
         plt.axvline(P_maj, linestyle='--', color='white', label='P_maj')
-        plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1.05),
+        plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1.1),
                ncol=3, fancybox=True, shadow=True)
 
     ax = plt.gca()
@@ -417,7 +417,7 @@ def sensitivity_plot(results, filename, run_params, log_error=True, plot_path=pl
     
     plt.xlabel(labels[p1_index])
     plt.ylabel(labels[p2_index])
-    plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1.05),
+    plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1.1),
                ncol=3, fancybox=True, shadow=True)
     plt.colorbar(label=cbarlabel)
 

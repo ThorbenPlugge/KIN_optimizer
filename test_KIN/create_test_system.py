@@ -82,7 +82,7 @@ def generate_your_system():
 #     return create_test_system(M_maj, M_min, a_maj, a_min, phaseseed)
 
 # def generate_your_system(): # MANY BODIES VERSION
-#     # where you have lots of bodies bla bla bla. 
+#     # TODO: where you have lots of bodies bla bla bla. 
 #     return sys
 
 # def generate_your_system(): # TRAPPIST VERSION
@@ -91,7 +91,11 @@ def generate_your_system():
 #     return create_trappist_system(phaseseed)
 
 # def generate_your_system(): # S STAR VERSION
-
+#     from S_Stars.generate_s_stars import create_s_star_system
+#     filepath = arbeit_path / 'Data/SStars2009ApJ692_1075GTab7.h5'
+#     s_star_mass = 20 # Mass of all s stars, in solar masses
+#     ref_time = 0 | units.year # reference time for calculation of mean anomaly
+#     return create_s_star_system(filepath, s_star_mass, ref_time)
 
 
 

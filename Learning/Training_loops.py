@@ -141,6 +141,7 @@ def learn_masses_4real(tau, optimizer, availabe_info_of_bodies, plot_queue, plot
             # If the difference between the last value for m and the current one
             # Falls below the threshold of accuracy, the loop is broken.
             if (tf.less_equal(tf.reduce_sum(tf.abs(m_i_minus_1 - m)), accuracy)):
+                print(f'loop broken due to accuracy at epoch {stop_epoch+1}')
                 break
 
             # updating the storage for the last value of m
@@ -191,8 +192,6 @@ def learn_masses_4real(tau, optimizer, availabe_info_of_bodies, plot_queue, plot
             gradient = tf.reshape(
                 tf.concat([dL_dm, dL_dz], axis=0), shape=[-1])
 
-            # set the gradient to zero for the first body (the sun)
-            # or: specify directly in the optimizer what the initial learning rate is
             optimizer.apply_gradients([(gradient, param)])
 
             # param is updated. now m, r, v have to be extracted
