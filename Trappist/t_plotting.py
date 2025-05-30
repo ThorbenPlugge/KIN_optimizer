@@ -13,15 +13,25 @@ plots_path = root_dir / 'Plots'
 # - generate a movie based on all the states
 # - plot the energy difference throughout time
 
+# set matplotlib parameters
+plt.rc('xtick', labelsize=18)
+plt.rc('ytick', labelsize=18)
+
+font = {'family':'serif',
+        'weight':'normal',
+        'size'  : 22}
+
+plt.rc('font', **font)
+
 def plot_system(sys, pos_states = [0], vel_states = [0], title = 'TRAPPIST-1 System', dimension = 2, save = False, filename = 'system.pdf'):
     '''Plots a system of particles. You can enter the position states
     of the system to plot the past positions of the planets.'''
-    fig = plt.figure()
+    fig = plt.figure(figsize=(8, 8))
     
     if dimension == 2:
         ax = fig.add_subplot(111)
         for i in range(len(sys)):
-            plt.scatter(sys[i].x.value_in(units.AU), sys[i].y.value_in(units.AU), s = 10)
+            plt.scatter(sys[i].x.value_in(units.AU), sys[i].y.value_in(units.AU), s = 100)
             if len(pos_states) > 1:
                     plt.plot(pos_states[:,i,0],
                             pos_states[:,i,1],
@@ -34,7 +44,7 @@ def plot_system(sys, pos_states = [0], vel_states = [0], title = 'TRAPPIST-1 Sys
     if dimension == 3:
         ax = fig.add_subplot(111, projection = '3d')
         for i in range(len(sys)):
-            plt.scatter(sys[i].x.value_in(units.AU), sys[i].y.value_in(units.AU), s = 10)
+            plt.scatter(sys[i].x.value_in(units.AU), sys[i].y.value_in(units.AU), s = 100)
             if len(pos_states) > 1:
                     plt.plot(pos_states[:, i, 0],
                          pos_states[:, i, 1],
@@ -44,7 +54,6 @@ def plot_system(sys, pos_states = [0], vel_states = [0], title = 'TRAPPIST-1 Sys
             ax.set_ylabel('AU')
             ax.set_zlabel('AU')
 
-    ax.set_title(title)
     plt.grid()
     if save:
         plt.savefig(filename, dpi=800)
@@ -135,3 +144,11 @@ def plot_loss_func(loss_per_epoch, path = plots_path, name = 'loss_per_epoch.pdf
     ax.grid()
     file_path = path / name 
     plt.savefig(file_path, dpi = 600)
+
+def test_plotting():
+    from generate_trappist import create_trappist_system
+
+    test_sys = create_trappist_system(phaseseed=42)
+    plot_system(test_sys, save=True, filename='Trappist_sys.png')
+
+# test_plotting()

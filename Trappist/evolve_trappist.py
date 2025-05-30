@@ -129,11 +129,11 @@ def test_evolution():
     
     test_sys = create_trappist_system()
 
-    evolve_time = 0.1 | units.yr
+    evolve_time = 15 | units.day
     tau_ev = 0.15 | units.day
 
     # plot_system(test_sys, [0], [0])
-    evolved_sys, pos_states, vel_states, total_energy = evolve_sys_sakura(sys = test_sys,
+    evolved_sys, pos_states, vel_states, total_energy, evolve_time = evolve_sys_sakura(sys = test_sys,
                                                                           evolve_time = evolve_time,
                                                                           tau_ev = tau_ev,
                                                                           print_progress = False)
@@ -142,7 +142,7 @@ def test_evolution():
     create_sys_movie(evolved_sys, pos_states, vel_states, 'test_movie.mp4', three_d = True)
     
 
-# test_evolution()
+test_evolution()
     
 
 

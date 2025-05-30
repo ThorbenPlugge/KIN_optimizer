@@ -64,7 +64,7 @@ def test_generation():
     print(test_sys)
     plot_system(test_sys, title='test_system')
 
-# test_generation()
+test_generation()
 
 
 
