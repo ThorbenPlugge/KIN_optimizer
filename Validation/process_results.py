@@ -25,8 +25,12 @@ parser.add_argument("--param_file", type=str, required=True, help='Path to the p
 parser.add_argument("--job_id", type=str, required=True, help='Job ID of job to analyze')
 args = parser.parse_args()
 
-loglog = args[0]['loglog']
-job_id = args[1]
+# Load loglog from the param file
+with open(args.param_file, "r") as f:
+    params = json.load(f)
+loglog = params.get("loglog")  # Default to True if not present
+
+job_id = args.job_id
 results_path = arbeit_path / f'Validation/val_results/{job_id}/mp_results'
 output_path = arbeit_path / f'Validation/val_results/{job_id}'
 

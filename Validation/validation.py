@@ -59,7 +59,10 @@ def find_masses(
     
     # Initialize the optimizer with n + n*3*2 variables, for masses, 
     # velocities and positions for each body
-    learning_rate_arr = np.ones(shape=num_bodies+num_bodies*3*2) * learning_rate
+    if optimizer_type == 'BT':
+        learning_rate_arr = np.ones(shape=num_bodies+num_bodies*3*2) * learning_rate
+    else:
+        learning_rate_arr = learning_rate
     # learning_rate_arr[0] = 0
 
     optimizer = init_optimizer(
@@ -128,9 +131,10 @@ def find_masses_pv_unc(
         sort_by_mass=False
         )
     
-    # Initialize the optimizer with n + n*3*2 variables, for masses, 
-    # velocities and positions for each body
-    learning_rate_arr = np.ones(shape=num_bodies+num_bodies*3*2) * learning_rate
+    if optimizer_type == 'BT':
+        learning_rate_arr = np.ones(shape=num_bodies+num_bodies*3*2) * learning_rate
+    else:
+        learning_rate_arr = learning_rate
     # learning_rate_arr[0] = 0
 
     optimizer = init_optimizer(

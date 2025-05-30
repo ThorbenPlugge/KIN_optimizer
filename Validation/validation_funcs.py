@@ -44,6 +44,35 @@ def select_masses(masses, losses, lowest_loss = True):
     
 def calculate_mass_error(new_masses, sys):
     return np.sum(abs(new_masses - sys.mass.value_in(units.Msun))/sys.mass.value_in(units.Msun))/len(sys)
+
+def save_results(
+            path, filename, masses, true_masses, mass_error, avg_loss_per_epoch, 
+            varied_param_names, varied_params, pv_unc = None
+            ):
+    import h5py
+    filepath = path / filename
+    with h5py.File(filepath, 'a') as f:
+        exp_index = len(f.keys())
+        exp_group = f.create_group(f'exp_{exp_index}')
+
+        # store data in the new group
+        exp_group.create_dataset('masses', data = masses)
+        exp_group.create_dataset('true_masses', data = true_masses)
+        exp_group.create_dataset('mass_error', data = mass_error)
+        exp_group.create_dataset('avg_loss_per_epoch', data = avg_loss_per_epoch)
+        parameters = np.array(varied_params)
+        if pv_unc is not None:
+            exp_group.create_dataset('pos_vel_uncertainty,',
+                                data=pv_unc)
+        if len(varied_param_names) == 2:
+            exp_group.create_dataset(f'{varied_param_names[0]}, {varied_param_names[1]}', 
+                                 data=parameters)
+        if len(varied_param_names) == 1:
+            exp_group.create_dataset(f'{varied_param_names},',
+                                 data=parameters)
+        
+            
+        f.close()
     
 def get_latin_sample(n_samples, bounds1, bounds2, hypercube_state, log_space=True):
     from scipy.stats import qmc   
@@ -240,11 +269,11 @@ def sensitivity_plot_1param(results, filename, run_params, log_error=True, plot_
 
     if p_index == 0:
         plt.axvline(M_maj, linestyle='--', color='white', label='M_maj')
-        plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1.05),
+        plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1.1),
                ncol=3, fancybox=True, shadow=True)
     if p_index == 1:
         plt.axvline(P_maj, linestyle='--', color='white', label='P_maj')
-        plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1.05),
+        plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1.1),
                ncol=3, fancybox=True, shadow=True)
 
     ax = plt.gca()
@@ -388,7 +417,7 @@ def sensitivity_plot(results, filename, run_params, log_error=True, plot_path=pl
     
     plt.xlabel(labels[p1_index])
     plt.ylabel(labels[p2_index])
-    plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1.05),
+    plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1.1),
                ncol=3, fancybox=True, shadow=True)
     plt.colorbar(label=cbarlabel)
 
