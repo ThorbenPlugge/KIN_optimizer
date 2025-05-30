@@ -178,7 +178,7 @@ def load_result(path, filename, filter_outliers=False):
     mass_errors = np.array(mass_error_list)
     avg_loss_per_epoch = np.array(avg_loss_per_epoch_list)
     parameters = np.array(parameters_list)
-
+    
     return {
         'masses': masses,
         'true_masses': true_masses,
@@ -453,7 +453,6 @@ def save_run_params_to_file(run_params, output_file):
 
 def process_result(path, filename, log_error=True, filter_outliers=False, loglog=True):
     '''Loads results from an h5 file, and then creates an image.'''
-
     results, run_params = load_result(path, filename, filter_outliers=filter_outliers)
     save_run_params_to_file(run_params, path / filename)
     if len(run_params['varied_param_names']) == 2:

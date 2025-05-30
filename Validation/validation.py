@@ -190,7 +190,7 @@ def process_single_system_mp_pv_unc(
     mass_error = calculate_mass_error(masses, test_sys)
 
     save_results(
-        results_path, f'{i}_of_{n_samples}_systems.h5', masses, 
+        results_path, f'{i}_of_{n_samples:03d}_systems.h5', masses, 
         true_masses, mass_error, avg_loss_per_epoch, 
         varied_param_names, varied_params, pv_unc
         )
@@ -230,8 +230,7 @@ def process_single_system_mp(
 
     # Calculate the mass error
     mass_error = calculate_mass_error(masses, test_sys)
-    print('varied_param_names', varied_param_names)
-    print('varied param names[0]', varied_param_names[0])
+
     save_results(results_path, f'{i}_of_{n_samples}_systems.h5', masses, true_masses, mass_error, avg_loss_per_epoch, 
                  varied_param_names, varied_params)
     print(f'saved results for system {i}')
@@ -387,7 +386,7 @@ def test_many_systems(
             print('n_cores available for slurm is', n_cores)
         else: 
             n_cores = os.cpu_count()
-        
+        print('starting pools')
         with Pool(processes=int(n_cores)) as pool:
             pool.starmap(process_single_system_mp, args)
         
