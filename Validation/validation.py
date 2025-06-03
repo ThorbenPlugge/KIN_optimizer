@@ -18,7 +18,7 @@ plot_path = arbeit_path / 'Plots'
 def find_masses(
         test_sys, evolve_time, tau_ev, tau_opt, num_points_considered_in_cost_function, 
         unknown_dimension=3, learning_rate=1e-5, init_guess_offset=1e-7, epochs=100, 
-        accuracy=1e-8, optimizer_type='Adam', printing=True
+        accuracy=1e-8, optimizer_type='ADAM', printing=True
         ):
     '''Find the masses of a test system by evolving it for a certain time with a certain timestep, converting the states
     inbetween to a CelestialBodies object that the learn_masses function can use.'''
@@ -230,7 +230,8 @@ def process_single_system_mp(
 
     # Calculate the mass error
     mass_error = calculate_mass_error(masses, test_sys)
-
+    print('varied_param_names', varied_param_names)
+    print('varied param names[0]', varied_param_names[0])
     save_results(results_path, f'{i}_of_{n_samples}_systems.h5', masses, true_masses, mass_error, avg_loss_per_epoch, 
                  varied_param_names, varied_params)
     print(f'saved results for system {i}')
@@ -334,10 +335,10 @@ def test_many_systems(
         with Pool(processes=int(n_cores)) as pool:
             pool.starmap(process_single_system_mp_pv_unc, args)
 
-    if len(p_var_bounds) > 2:
+    elif len(p_var_bounds) > 2:
         raise Exception(f'Trying to vary {len(p_var_bounds)} parameters. Maximum is 2.')
 
-    if len(p_var_bounds) == 1:
+    elif len(p_var_bounds) == 1:
         # vary 1 parameter.
         p_var_bounds = p_var_bounds[0]
         output_filename = f'{n_samples}_systems_{p_var_names[0]}_{job_id}.h5'
@@ -369,9 +370,9 @@ def test_many_systems(
             param_dict_copy['results_path'] = results_path
             param_dict_copy['i'] = i
             param_dict_copy['optimizer_type'] = optimizer_type
-            param_dict_copy['varied_param_names'] = p_var_names[0]
+            param_dict_copy['varied_param_names'] = p_var_names
             param_dict_copy['varied_params'] = param_value
-
+            
             # append the arguments as a tuple for starmap
             args.append(tuple(param_dict_copy[param] for param in [
                 'M_min', 'a_min', 'evolve_time', 'tau', 'num_points_considered_in_cost_function',
@@ -381,7 +382,7 @@ def test_many_systems(
             ]))
         
         # now run the tests!
-        if job_id == os.environ['SLURM_JOB_ID']:
+        if job_id.isdigit():
             n_cores = os.environ['SLURM_CPUS_PER_TASK']
             print('n_cores available for slurm is', n_cores)
         else: 
@@ -390,7 +391,7 @@ def test_many_systems(
         with Pool(processes=int(n_cores)) as pool:
             pool.starmap(process_single_system_mp, args)
         
-    if len(p_var_bounds) == 2:
+    elif len(p_var_bounds) == 2:
         # vary 2 parameters.
         output_filename = f'{n_samples}_systems_{p_var_names[0]}_{p_var_names[1]}_{job_id}.h5'
         output_file = output_path / output_filename
@@ -434,39 +435,40 @@ def test_many_systems(
 import argparse
 import json
 
-# Parse command-line arguments
-parser = argparse.ArgumentParser()
-parser.add_argument("--param_file", type=str, required=True, help='Path to the parameter file (JSON)')
-args = parser.parse_args()
+# # Parse command-line arguments
+# parser = argparse.ArgumentParser()
+# parser.add_argument("--param_file", type=str, required=True, help='Path to the parameter file (JSON)')
+# args = parser.parse_args()
 
-# Load parameters from JSON file
-with open(args.param_file, 'r') as f:
-    params = json.load(f)
+# # Load parameters from JSON file
+# with open(args.param_file, 'r') as f:
+#     params = json.load(f)
 
-test_many_systems(**params)
+# test_many_systems(**params)
 
-# if __name__ == '__main__':
-#     test_many_systems(
-#         M_min=1e-3, # in solar masses
-#         a_min=8, # in AU
-#         evolve_time=1200, # in days
-#         tau=30, # in days
-#         num_points_considered_in_cost_function=4, 
-#         M_maj=1e-3, # in solar masses
-#         a_maj=10, # in AU
-#         epochs=4,
-#         accuracy=1e-10,
-#         n_samples=16,
-#         init_guess_offset=1e-4, # in solar masses
-#         learning_rate=1e-8,
-#         unknown_dimension=3,
-#         phaseseed=0,
-#         hypercube_state=42,
-#         loglog=False,
-#         p_unc=0.001, # in AU
-#         v_unc=0.00001, # in AU/day
-#         job_id='testbert'
-#     )
+if __name__ == '__main__':
+    test_many_systems(
+        M_min=1e-5, # in solar masses
+        a_min=20, # in AU
+        evolve_time=1200, # in days
+        tau=2, # in days
+        num_points_considered_in_cost_function=4, 
+        M_maj=1e-3, # in solar masses
+        a_maj=10, # in AU
+        epochs=1,
+        accuracy=1e-10,
+        n_samples=8,
+        init_guess_offset=[1e-10, 1e-2], # in solar masses
+        learning_rate=1e-2,
+        unknown_dimension=3,
+        phaseseed=0,
+        optimizer_type='ADAM',
+        hypercube_state=42,
+        loglog=True,
+        p_unc=0.001, # in AU
+        v_unc=0.00001, # in AU/day
+        job_id='testbert'
+    )
 
 
     

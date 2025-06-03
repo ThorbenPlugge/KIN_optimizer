@@ -213,17 +213,17 @@ def test(evolve_time, tau_ev, tau_opt,num_points_considered_in_cost_function = 1
         print(pos_cost_sanity2, vel_cost_sanity2)
         print('initial guesses were:', initial_guess)
 
-test(evolve_time = 1.5 | units.day,
-     tau_ev = 0.01 | units.day,
-     tau_opt = 0.01 | units.day,
-     num_points_considered_in_cost_function = 4,
-     unknown_dimension = 3,
-     learning_rate = 1e-8,
-     init_guess_offset = 1e-6,
-     epochs = 100,
-     accuracy = 1e-9,
-     generate_movie = False,
-     test_new_masses = True,
-     phaseseed = 0)
+# test(evolve_time = 1.5 | units.day,
+#      tau_ev = 0.01 | units.day,
+#      tau_opt = 0.01 | units.day,
+#      num_points_considered_in_cost_function = 4,
+#      unknown_dimension = 3,
+#      learning_rate = 1e-8,
+#      init_guess_offset = 1e-6,
+#      epochs = 100,
+#      accuracy = 1e-9,
+#      generate_movie = False,
+#      test_new_masses = True,
+#      phaseseed = 0)
 
     

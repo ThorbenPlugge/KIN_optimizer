@@ -65,12 +65,15 @@ def save_results(
             exp_group.create_dataset('pos_vel_uncertainty,',
                                 data=pv_unc)
         if len(varied_param_names) == 2:
+            print('len varied param names = 2')
             exp_group.create_dataset(f'{varied_param_names[0]}, {varied_param_names[1]}', 
                                  data=parameters)
         if len(varied_param_names) == 1:
-            exp_group.create_dataset(f'{varied_param_names},',
+            print('len varied param names is 1')
+            exp_group.create_dataset(f'{varied_param_names[0]},',
                                  data=parameters)
-        
+        else:
+            print('did not save anything')
             
         f.close()
     

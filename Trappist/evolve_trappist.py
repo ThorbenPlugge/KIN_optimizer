@@ -142,7 +142,7 @@ def test_evolution():
     create_sys_movie(evolved_sys, pos_states, vel_states, 'test_movie.mp4', three_d = True)
     
 
-test_evolution()
+# test_evolution()
     
 
 
