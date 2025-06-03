@@ -8,7 +8,7 @@
     "a_maj": 10,
     "epochs": 250,
     "accuracy": 1e-10,
-    "n_samples": 100,
+    "n_samples": 8,
     "init_guess_offset": [1e-20, 1e-2],
     "learning_rate": 1e-1,
     "unknown_dimension": 3,
