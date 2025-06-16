@@ -434,40 +434,40 @@ def test_many_systems(
 import argparse
 import json
 
-# # Parse command-line arguments
-# parser = argparse.ArgumentParser()
-# parser.add_argument("--param_file", type=str, required=True, help='Path to the parameter file (JSON)')
-# args = parser.parse_args()
+# Parse command-line arguments
+parser = argparse.ArgumentParser()
+parser.add_argument("--param_file", type=str, required=True, help='Path to the parameter file (JSON)')
+args = parser.parse_args()
 
-# # Load parameters from JSON file
-# with open(args.param_file, 'r') as f:
-#     params = json.load(f)
+# Load parameters from JSON file
+with open(args.param_file, 'r') as f:
+    params = json.load(f)
 
-# test_many_systems(**params)
+test_many_systems(**params)
 
-if __name__ == '__main__':
-    test_many_systems(
-        M_min=1e-5, # in solar masses
-        a_min=20, # in AU
-        evolve_time=1200, # in days
-        tau=2, # in days
-        num_points_considered_in_cost_function=4, 
-        M_maj=1e-3, # in solar masses
-        a_maj=10, # in AU
-        epochs=1,
-        accuracy=1e-10,
-        n_samples=8,
-        init_guess_offset=[1e-10, 1e-2], # in solar masses
-        learning_rate=1e-2,
-        unknown_dimension=3,
-        phaseseed=0,
-        optimizer_type='ADAM',
-        hypercube_state=42,
-        loglog=True,
-        p_unc=0.001, # in AU
-        v_unc=0.00001, # in AU/day
-        job_id='testbert'
-    )
+# if __name__ == '__main__':
+#     test_many_systems(
+#         M_min=1e-5, # in solar masses
+#         a_min=20, # in AU
+#         evolve_time=1200, # in days
+#         tau=2, # in days
+#         num_points_considered_in_cost_function=4, 
+#         M_maj=1e-3, # in solar masses
+#         a_maj=10, # in AU
+#         epochs=1,
+#         accuracy=1e-10,
+#         n_samples=8,
+#         init_guess_offset=[1e-10, 1e-2], # in solar masses
+#         learning_rate=1e-2,
+#         unknown_dimension=3,
+#         phaseseed=0,
+#         optimizer_type='ADAM',
+#         hypercube_state=42,
+#         loglog=True,
+#         p_unc=0.001, # in AU
+#         v_unc=0.00001, # in AU/day
+#         job_id='testbert'
+#     )
 
 
     
