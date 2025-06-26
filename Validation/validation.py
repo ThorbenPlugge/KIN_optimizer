@@ -187,7 +187,7 @@ def process_single_system_mp_pv_unc(
     true_masses = test_sys.mass.value_in(units.Msun)
 
     # Calculate the mass error
-    mass_error = calculate_mass_error(masses, test_sys)
+    mass_error = calculate_mass_error(masses, test_sys, relative=True, sumup=False) # now gives error per planet
 
     save_results(
         results_path, f'{i}_of_{n_samples:03d}_systems.h5', masses, 
@@ -229,9 +229,9 @@ def process_single_system_mp(
     true_masses = test_sys.mass.value_in(units.Msun)
 
     # Calculate the mass error
-    mass_error = calculate_mass_error(masses, test_sys)
+    mass_error = calculate_mass_error(masses, test_sys, relative=True, sumup=False) # now gives errors for each body
 
-    save_results(results_path, f'{i}_of_{n_samples}_systems.h5', masses, true_masses, mass_error, avg_loss_per_epoch, 
+    save_results(results_path, f'{i}_of_{n_samples:03d}_systems.h5', masses, true_masses, mass_error, avg_loss_per_epoch, 
                  varied_param_names, varied_params)
     print(f'saved results for system {i}')
 

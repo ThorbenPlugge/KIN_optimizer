@@ -42,8 +42,15 @@ def select_masses(masses, losses, lowest_loss = True):
         masses = masses[-1]
         return masses, best_idx, avg_loss_per_epoch
     
-def calculate_mass_error(new_masses, sys):
-    return np.sum(abs(new_masses - sys.mass.value_in(units.Msun))/sys.mass.value_in(units.Msun))/len(sys)
+def calculate_mass_error(new_masses, sys, relative = True, sumup = True):
+    if relative and sumup:
+        return np.sum(abs(new_masses - sys.mass.value_in(units.Msun))/sys.mass.value_in(units.Msun))/len(sys)
+    elif relative and sumup==False:
+        return abs(new_masses - sys.mass.value_in(units.Msun))/sys.mass.value_in(units.Msun)
+    elif relative == False and sumup == True:
+        return abs(new_masses - sys.mass.value_in(units.Msun))
+    elif sumup:
+        return np.sum(abs(new_masses - sys.mass.value_in(units.Msun)))/len(sys)
 
 def save_results(
             path, filename, masses, true_masses, mass_error, avg_loss_per_epoch, 
@@ -64,11 +71,11 @@ def save_results(
         if pv_unc is not None:
             exp_group.create_dataset('pos_vel_uncertainty,',
                                 data=pv_unc)
-        if len(varied_param_names) == 2:
+        elif len(varied_param_names) == 2:
             print('len varied param names = 2')
             exp_group.create_dataset(f'{varied_param_names[0]}, {varied_param_names[1]}', 
                                  data=parameters)
-        if len(varied_param_names) == 1:
+        elif len(varied_param_names) == 1:
             print('len varied param names is 1')
             exp_group.create_dataset(f'{varied_param_names[0]},',
                                  data=parameters)
@@ -101,11 +108,11 @@ def merge_h5_files(input_folder, output_file, delete=False):
     with h5py.File(output_file, 'a') as output_h5:
         for file_index, h5_file in enumerate(h5_files):
             with h5py.File(h5_file, 'r') as input_h5:
-                # copy each group from the input file to the output
                 for group_name in input_h5.keys():
                     group_path = f'exp_{file_index}'
                     input_h5.copy(group_name, output_h5, name = group_path)
-    
+                    break # make sure only the first one is used.
+
     print(f'All files merged into {output_file}')
 
     if delete:
@@ -252,7 +259,6 @@ def sensitivity_plot_1param(results, filename, run_params, log_error=True, plot_
     mass_error_label = 'Fractional mass error'
     
     if loglog: 
-        plt.loglog()
         p = np.log10(p)
         M_maj = np.log10(M_maj)
         P_maj = np.log10(P_maj)
@@ -265,31 +271,29 @@ def sensitivity_plot_1param(results, filename, run_params, log_error=True, plot_
         filename = f'log_{filename}'
         mass_error_label = 'Log (10) fractional mass error'
 
-    plt.figure(figsize=[15, 9])
+    fig, axes = plt.subplots(1, 3, figsize=(20, 6), sharey=True)
     plt.set_cmap('viridis')
-    plt.scatter(p, mass_errors, s=150, color='white')
-    plt.scatter(p, mass_errors, s=60, c=mass_errors)
 
-    if p_index == 0:
-        plt.axvline(M_maj, linestyle='--', color='white', label='M_maj')
-        plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1.1),
-               ncol=3, fancybox=True, shadow=True)
-    if p_index == 1:
-        plt.axvline(P_maj, linestyle='--', color='white', label='P_maj')
-        plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1.1),
-               ncol=3, fancybox=True, shadow=True)
+    for i, ax in enumerate(axes):
+        ax.scatter(p, mass_errors[:, i], s=150, color='white')
+        sc = ax.scatter(p, mass_errors[:, i], s=60, c=mass_errors[:, i])
 
-    ax = plt.gca()
-    ax.set_facecolor('xkcd:light grey')
+        if p_index == 0:
+            ax.axvline(M_maj, linestyle='--', color='white', label='M_maj')
+        if p_index == 1:
+            ax.axvline(P_maj, linestyle='--', color='white', label='P_maj')
 
-    plt.xlabel(labels[p_index])
-    plt.ylabel(mass_error_label)
-    plt.grid()
-    # plt.title(f'{nameslist[p_index]} vs Fractional mass error.')
-    
+        ax.set_facecolor('xkcd:light grey')
+        ax.set_xlabel(labels[p_index])
+        ax.grid()
+        ax.set_title(f'Relative mass error for body {i}')
+
+    axes[0].set_ylabel(mass_error_label)
+
     saved_file = plot_path / filename
-
-    plt.savefig(f'{saved_file}.png', dpi=800)
+    fig.tight_layout()
+    fig.savefig(f'{saved_file}.png', dpi=800)
+    plt.close(fig)
 
 def sensitivity_plot_uncertainty(results, filename, run_params, log_error=True, plot_path=plot_path, loglog=False):
     from scipy.interpolate import LinearNDInterpolator
@@ -303,7 +307,6 @@ def sensitivity_plot_uncertainty(results, filename, run_params, log_error=True, 
     mass_error_label = 'Fractional mass error'
 
     if loglog:
-        plt.loglog()
         p_unc = np.log10(p_unc)
         v_unc = np.log10(v_unc)
         labels = log_param_labels
@@ -322,24 +325,29 @@ def sensitivity_plot_uncertainty(results, filename, run_params, log_error=True, 
     interp = LinearNDInterpolator((p_unc, v_unc), mass_errors)
     Mass_errors_i = interp(p1_grid, p2_grid)
 
-    plt.figure(figsize=[15, 9])
+    fig, axes = plt.subplots(1, 3, figsize=(20, 6), sharex=True, sharey=True)
     plt.set_cmap('viridis')
-    plt.pcolormesh(p1_grid, p2_grid, Mass_errors_i, shading='auto')
-    plt.scatter(p_unc, v_unc, s=150, color='white')
-    plt.scatter(p_unc, v_unc, s=60, c=mass_errors, label='Uninterpolated data')
 
-    ax1 = plt.gca()
+    for i, ax in enumerate(axes):
+        interp = LinearNDInterpolator((p_unc, v_unc), mass_errors[:, i])
+        mass_errors_i = interp(p1_grid, p2_grid)
 
-    ax1.set_facecolor('xkcd:light grey')
+        pcm = ax.pcolormesh(p1_grid, p2_grid, mass_errors_i, shading='auto')
+        ax.scatter(p_unc, v_unc, s=150, color='white')
+        sc = ax.scatter(p_unc, v_unc, s=60, c=mass_errors[:, i])
 
-    ax1.set_xlabel(labels[p_unc_index])
-    ax1.set_ylabel(labels[v_unc_index])
-    plt.colorbar(label=mass_error_label)
-    # plt.title('Sensitivity to errors in position and velocity for a three body system.')
-    plt.grid()
+        ax.set_facecolor('xkcd:light grey')
+        ax.set_xlabel(labels[p_unc_index])
+        ax.grid()
+        ax.set_title(f'Relative mass error for body {i}')
+
+    axes[0].set_ylabel(labels[v_unc_index])
+    fig.colorbar(pcm, ax=axes, label=mass_error_label, shrink=0.7)
+
     saved_file = plot_path / filename
-
-    plt.savefig(f'{saved_file}.png', dpi=800)
+    fig.tight_layout()
+    fig.savefig(f'{saved_file}.png', dpi=800)
+    plt.close(fig)
 
 
 def sensitivity_plot(results, filename, run_params, log_error=True, plot_path=plot_path, loglog=False):
@@ -370,7 +378,6 @@ def sensitivity_plot(results, filename, run_params, log_error=True, plot_path=pl
     M_maj, P_maj = run_params['M_maj'], get_orbital_period(true_masses2, run_params['a_maj'])
     
     if loglog:
-        plt.loglog()
         p1 = np.log10(p1)
         p2 = np.log10(p2)
         M_maj = np.log10(M_maj)
@@ -395,38 +402,42 @@ def sensitivity_plot(results, filename, run_params, log_error=True, plot_path=pl
         cbarlabel = 'Log (10) fractional mass error'
         filename = f'log_{filename}'
 
-    plt.figure(figsize=[15, 9])
+    fig, axes = plt.subplots(1, 3, figsize=(20, 6), sharex=True, sharey=True)
     plt.set_cmap('viridis')
-    plt.pcolormesh(p1_grid, p2_grid, Mass_errors_i, shading='auto')
-    plt.scatter(p1, p2, s=150, color='white')
-    plt.scatter(p1, p2, s=60, c=mass_errors, label='Uninterpolated data')
-    
-    # If the parameter we vary is the minor planet mass or semimajor axis, plot the major planet position as reference.
-    if p1_index == 0: 
-        plt.axvline(M_maj, linestyle='--', color='white', label='Mass of major planet')
-    if p2_index == 0:
-        plt.axhline(M_maj, linestyle='--', color='white', label='Mass of major planet')
-    if p1_index == 1:
-        if p1_index != 2 and p2_index != 2: # if the evolve time is not constant, don't plot it
-            plt.axvline(evolve_time, linestyle='--', color='black', label='Evolve time')
-        plt.axvline(P_maj, linestyle='--', color='white', label='Orbital period of major planet')
-    if p2_index == 1:
-        if p1_index != 2 and p2_index != 2: 
-            plt.axhline(evolve_time, linestyle='--', color='black', label='Evolve time')
-        plt.axhline(P_maj, linestyle='--', color='white', label='Orbital period of major planet')
-        
-    ax = plt.gca()
-    ax.set_facecolor('xkcd:light grey')
-    
-    plt.xlabel(labels[p1_index])
-    plt.ylabel(labels[p2_index])
-    plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1.1),
-               ncol=3, fancybox=True, shadow=True)
-    plt.colorbar(label=cbarlabel)
+
+    for i, ax in enumerate(axes):
+        interp = LinearNDInterpolator((p1, p2), mass_errors[:, i])
+        mass_errors_i = interp(p1_grid, p2_grid)
+
+        pcm = ax.pcolormesh(p1_grid, p2_grid, mass_errors_i, shading='auto')
+        ax.scatter(p1, p2, s=150, color='white')
+        sc = ax.scatter(p1, p2, s=60, c=mass_errors[:, i])
+
+        if p1_index == 0 and p2_index != 5:
+            ax.axvline(M_maj, linestyle='--', color='white', label='M_maj')
+        if p2_index == 0 and p1_index != 5:
+            ax.axhline(M_maj, linestyle='--', color='white', label='M_maj')
+        if p1_index == 1:
+            if p1_index != 2 and p2_index != 2:
+                ax.axvline(evolve_time, linestyle='--', color='black', label='Evolve time')
+            ax.axvline(P_maj, linestyle='--', color='white', label='P_maj')
+        if p2_index == 1:
+            if p1_index != 2 and p2_index != 2:
+                ax.axhline(evolve_time, linestyle='--', color='black', label='Evolve time')
+            ax.axhline(P_maj, linestyle='--', color='white', label='P_maj')
+
+        ax.set_facecolor('xkcd:light grey')
+        ax.set_xlabel(labels[p1_index])
+        ax.grid()
+        ax.set_title(f'Relative mass error for body {i}')
+
+    axes[0].set_ylabel(labels[p2_index])
+    fig.colorbar(pcm, ax=axes, label=cbarlabel, shrink=0.7)
 
     saved_file = plot_path / filename
-    
-    plt.savefig(f'{saved_file}.png', dpi=800)
+    fig.tight_layout()
+    fig.savefig(f'{saved_file}.png', dpi=800)
+    plt.close(fig)
 
 def save_run_params_to_file(run_params, output_file):
     import json
