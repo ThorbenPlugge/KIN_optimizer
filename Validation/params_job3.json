@@ -1,5 +1,5 @@
 {
-    "M_min": 1e-6,
+    "M_min": 1e-4,
     "a_min": 50,
     "evolve_time": [60, 30000],
     "tau": 1,
@@ -7,15 +7,15 @@
     "M_maj": 1e-3,
     "a_maj": 10,
     "epochs": 350,
-    "accuracy": 1e-10,
-    "n_samples": 250,
+    "accuracy": 1e-15,
+    "n_samples": 10,
     "init_guess_offset": 1e-4,
-    "learning_rate": 1e-1,
+    "learning_rate": 1.0,
     "unknown_dimension": 3,
     "phaseseed": 0,
     "optimizer_type": "ADAM",
     "hypercube_state": 42,
     "loglog": true,
-    "p_unc": 0.01,
+    "p_unc": 0.001,
     "v_unc": 0.00001
 }

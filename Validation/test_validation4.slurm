@@ -6,10 +6,13 @@
 #SBATCH --mail-type="ALL"
 
 #SBATCH --partition="cpu-long"
-#SBATCH --time=3-00:00:00
+#SBATCH --time=4-00:00:00
+#SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=16
 #SBATCH --mem-per-cpu=8G
+
+#SBATCH --constraint=ib
 
 echo "#### Starting test"
 

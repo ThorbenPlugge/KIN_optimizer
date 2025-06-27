@@ -404,6 +404,17 @@ def test_many_systems(
         # sample the two parameters efficiently using latin hypercube sampling
         param_sample = get_latin_sample(n_samples, p_var_bounds[0], p_var_bounds[1], hypercube_state, loglog)
 
+        # if the parameter to be changed is the number of cost function points, it must be an integer. 
+        # fix that here
+        print(p_var_names)
+        if p_var_names[0] == 'num_points_considered_in_cost_function':
+            param_sample[:, 0] = np.ceil(param_sample[:, 0]).astype(int)
+        if p_var_names[1] == 'num_points_considered_in_cost_function':
+            print('yea')
+            param_sample[:, 1] = np.ceil(param_sample[:, 0]).astype(int)
+        
+        print(param_sample.shape)
+        print(param_sample)
         # prepare the arguments for the process_single_system_mp function
         args = []
         for i, param_values in enumerate(param_sample):

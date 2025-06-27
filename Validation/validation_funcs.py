@@ -20,7 +20,7 @@ plt.rc('ytick', labelsize=18)
 
 font = {'family':'serif',
         'weight':'normal',
-        'size'  : 22}
+        'size'  : 20}
 
 plt.rc('font', **font)
 
@@ -204,11 +204,11 @@ param_labels = [
     ]
 # list of log axis labels
 log_param_labels = [
-    'Log minor planet Mass (log10(Msun))', 'Log minor planet orbital period (log(days))', 
-    'Log evolve time (log10(days))', 'Log tau (log10(days))', 'log cost function points',
-    'Log major planet mass (log10(Msun))', 'Major planet orbital period (log(days))', 
-    'Initial guess offset (log10(Msun))', 'Log positional uncertainty (log(AU))',
-    'Log velocity uncertainty (log(AU/day))'
+    'Minor planet mass (log10(Msun))', 'Minor planet orbital period (log(days))', 
+    'Evolve time (log10(days))', 'Tau (log10(days))', 'Cost function points (log)',
+    'Major planet mass (log10(Msun))', 'Major planet orbital period (log(days))', 
+    'Initial guess offset (log10(Msun))', 'Positional uncertainty (log(AU))',
+    'Velocity uncertainty (log(AU/day))'
     ]
 # list of all the options varied_param_names can be.
 # A bit cumbersome, but a way to match the names we get out of the file
@@ -271,7 +271,7 @@ def sensitivity_plot_1param(results, filename, run_params, log_error=True, plot_
         filename = f'log_{filename}'
         mass_error_label = 'Log (10) fractional mass error'
 
-    fig, axes = plt.subplots(1, 3, figsize=(20, 6), sharey=True)
+    fig, axes = plt.subplots(1, 3, figsize=(20, 6.5), sharey=True, layout='compressed')
     plt.set_cmap('viridis')
 
     for i, ax in enumerate(axes):
@@ -325,7 +325,7 @@ def sensitivity_plot_uncertainty(results, filename, run_params, log_error=True, 
     interp = LinearNDInterpolator((p_unc, v_unc), mass_errors)
     Mass_errors_i = interp(p1_grid, p2_grid)
 
-    fig, axes = plt.subplots(1, 3, figsize=(20, 6), sharex=True, sharey=True)
+    fig, axes = plt.subplots(1, 3, figsize=(20, 6.5), sharex=True, sharey=True, layout='compressed')
     plt.set_cmap('viridis')
 
     for i, ax in enumerate(axes):
@@ -342,7 +342,7 @@ def sensitivity_plot_uncertainty(results, filename, run_params, log_error=True, 
         ax.set_title(f'Relative mass error for body {i}')
 
     axes[0].set_ylabel(labels[v_unc_index])
-    fig.colorbar(pcm, ax=axes, label=mass_error_label, shrink=0.7)
+    fig.colorbar(pcm, ax=axes, label=mass_error_label, shrink=1, use_gridspec=True)
 
     saved_file = plot_path / filename
     fig.tight_layout()
@@ -402,7 +402,7 @@ def sensitivity_plot(results, filename, run_params, log_error=True, plot_path=pl
         cbarlabel = 'Log (10) fractional mass error'
         filename = f'log_{filename}'
 
-    fig, axes = plt.subplots(1, 3, figsize=(20, 6), sharex=True, sharey=True)
+    fig, axes = plt.subplots(1, 3, figsize=(20, 6.5), sharex=True, sharey=True, layout='compressed')
     plt.set_cmap('viridis')
 
     for i, ax in enumerate(axes):
@@ -417,11 +417,11 @@ def sensitivity_plot(results, filename, run_params, log_error=True, plot_path=pl
             ax.axvline(M_maj, linestyle='--', color='white', label='M_maj')
         if p2_index == 0 and p1_index != 5:
             ax.axhline(M_maj, linestyle='--', color='white', label='M_maj')
-        if p1_index == 1:
+        if p1_index == 1 and p2_index != 6:
             if p1_index != 2 and p2_index != 2:
                 ax.axvline(evolve_time, linestyle='--', color='black', label='Evolve time')
             ax.axvline(P_maj, linestyle='--', color='white', label='P_maj')
-        if p2_index == 1:
+        if p2_index == 1 and p1_index != 6:
             if p1_index != 2 and p2_index != 2:
                 ax.axhline(evolve_time, linestyle='--', color='black', label='Evolve time')
             ax.axhline(P_maj, linestyle='--', color='white', label='P_maj')
@@ -432,10 +432,10 @@ def sensitivity_plot(results, filename, run_params, log_error=True, plot_path=pl
         ax.set_title(f'Relative mass error for body {i}')
 
     axes[0].set_ylabel(labels[p2_index])
-    fig.colorbar(pcm, ax=axes, label=cbarlabel, shrink=0.7)
+    fig.colorbar(pcm, ax=axes, label=cbarlabel, shrink=1, use_gridspec=True)
 
     saved_file = plot_path / filename
-    fig.tight_layout()
+    # fig.tight_layout()
     fig.savefig(f'{saved_file}.png', dpi=800)
     plt.close(fig)
 

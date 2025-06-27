@@ -5,11 +5,14 @@
 #SBATCH --mail-user="nieuwhof@strw.leidenuniv.nl"
 #SBATCH --mail-type="ALL"
 
-#SBATCH --partition="cpu-long"
-#SBATCH --time=1-12:00:00
+#SBATCH --partition="cpu-medium"
+#SBATCH --time=08:00:00
+#SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=16
 #SBATCH --mem-per-cpu=8G
+
+#SBATCH --constraint=ib
 
 echo "#### Starting test"
 
