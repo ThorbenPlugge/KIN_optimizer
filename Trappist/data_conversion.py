@@ -10,13 +10,37 @@ def convert_sys_to_initial_guess_list(sys, initial_guesses):
     bodies_and_initial_guesses = [true_masses, initial_guesses]
     return np.array(bodies_and_initial_guesses)
 
-def select_points(pos, vel, num_points):
-    '''Selects num_points equally spaced points from the pos and vel arrays.
-    The outer points are always the first and last points'''
-    indexes = np.linspace(0, len(pos)-1, num_points, dtype='int', endpoint=True)
-    new_pos = pos[indexes]
-    new_vel = vel[indexes]    
-    return new_pos, new_vel
+def select_points(pos, vel, num_points_requested):
+    '''
+    Selects num_points equally spaced points from pos and vel.
+    If the requested number does not fit the number of timesteps, it is adjusted.
+    '''
+    N = pos.shape[0]  # total number of timesteps
+    if num_points_requested < 2:
+        raise ValueError("num_points_requested must be at least 2 (start and end)")
+    max_intervals = N - 1  # number of intervals between points
+
+    # how many steps in between points?
+    stride = max_intervals // (num_points_requested - 1)
+
+    if stride == 0:
+        stride = 1
+        adjusted_num_points = max_intervals + 1
+        print(f"Requested {num_points_requested} points is too high for {N} timesteps. "
+              f"Using maximum possible number of points: {adjusted_num_points}")
+    else:
+        adjusted_num_points = (max_intervals // stride) + 1
+
+        if adjusted_num_points != num_points_requested:
+            print(f"⚠️ Adjusted number of points from {num_points_requested} to {adjusted_num_points} "
+                  f"to fit evenly into {N} timesteps (stride={stride})")
+
+    selected_indices = np.arange(0, stride * (adjusted_num_points - 1) + 1, stride)
+
+    new_pos = pos[selected_indices]
+    new_vel = vel[selected_indices]
+
+    return new_pos, new_vel, selected_indices
 
 def convert_states_to_celestial_bodies(pos_states, vel_states, num_points_considered_in_cost_function, evolve_time, tau_opt, bodies_and_initial_guesses, unknown_dimension, sort_by_mass = False):
     '''Converts arrays of position and velocity states, as well as other things,
@@ -38,11 +62,15 @@ def convert_states_to_celestial_bodies(pos_states, vel_states, num_points_consid
 
     # Set the amount of points to use and make sure the optimizer
     # knows how many steps of size tau_opt to simulate to 
-    new_step_size = evolve_time / num_points_considered_in_cost_function
-    num_points = num_points_considered_in_cost_function + 1
-    num_of_steps_in_do_step = np.ceil(new_step_size.value_in(units.day) / tau_opt)
+    # new_step_size = evolve_time / num_points_considered_in_cost_function
+    # num_points = num_points_considered_in_cost_function + 1
+    # num_of_steps_in_do_step = np.ceil(new_step_size.value_in(units.day) / tau_opt)
 
-    pos_states, vel_states = select_points(pos_states, vel_states, num_points)
+    pos_states, vel_states, selected_indices = select_points(pos_states, vel_states, num_points_considered_in_cost_function+1)
+
+    timestep_days = tau_opt
+    times_in_days = selected_indices * timestep_days
+    num_points = len(selected_indices)
 
     # Adjust pos and vel based on the unknown dimension.
     # The unknown value is ignored later (in the calculate_loss_derivatives function),
@@ -60,7 +88,7 @@ def convert_states_to_celestial_bodies(pos_states, vel_states, num_points_consid
         for i in range(num_points):
             # Compute time in units of tau:
             # i-th data point corresponds to i * time_step_in_days from start_date.
-            time_in_tau = i * num_of_steps_in_do_step
+            time_in_tau = times_in_days[i] / timestep_days
 
             if not math.isclose(time_in_tau, round(time_in_tau), rel_tol=1e-10, abs_tol=1e-10):
                 print(
@@ -88,7 +116,7 @@ def convert_states_to_celestial_bodies(pos_states, vel_states, num_points_consid
             mass = body_mass,
             states = states
             ))
-    
+
     return celestial_bodies
 
 def test_conversion():

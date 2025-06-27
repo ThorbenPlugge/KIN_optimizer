@@ -107,7 +107,7 @@ def evolve_sys_sakura(sys, evolve_time, tau_ev, cache = True, print_progress = F
         vel_states = np.zeros((int(evolve_time / tau_ev) + 1, len(sys), 3))
         total_energy = np.zeros(int(evolve_time / tau_ev) + 1)
 
-        times = np.arange(0, evolve_time + tau_ev, tau_ev)
+        times = np.arange(0, evolve_time + 1*tau_ev, tau_ev)
 
         for time_idx, time in enumerate(times):
             gravity.evolve_model(time | units.day)

@@ -17,6 +17,6 @@ cd ..
 
 conda activate nbody
 
-python test_KIN/test_KIN.py
+python test_KIN/test_KIN.py --param_file test_KIN/test_params.json --job_id $SLURM_JOB_ID
 
 echo "#### Finished Test. Have a nice day"

@@ -18,9 +18,14 @@ def kepler_step(kc, dt, directionVector, velocityVector, newton_solutions):
 
     abs_beta = tf.abs(beta)
 
-    def cond(i, bla, blabla):
-        return tf.logical_and(i < tf.shape(newton_solutions)[0], tf.reduce_any(tf.not_equal(newton_solutions[i], 0)))
-
+    # def cond(i, bla, blabla):
+    #     return tf.logical_and(i < 4, tf.reduce_any(tf.not_equal(newton_solutions[i], 0)))
+    
+    def cond(i, dv, vv):
+        has_more = tf.less(i, 4)
+        def check_sol():  return tf.reduce_any(tf.not_equal(newton_solutions[i], 0))
+        return tf.cond(has_more, check_sol, lambda: tf.constant(False))
+    
     def body(i, directionVector, velocityVector):
 
         r0 = tf.norm(directionVector)

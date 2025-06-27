@@ -1,11 +1,13 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-from amuse.units import units, constants, nbody_system
-from amuse.lab import Particles, Particle
+from amuse.units import units, constants, nbody_system # type: ignore
+from amuse.lab import Particles, Particle # type: ignore
 
 def load_trappist_params():
     '''Finds the parameters of the TRAPPIST-1 system from the NASA Exoplanet Archive'''
+    # This function gives an EOF error the first time you run it.
+    # When the data is downloaded, the error disappears.
     from PyAstronomy import pyasl
     nexa = pyasl.ExoplanetsOrg()
 

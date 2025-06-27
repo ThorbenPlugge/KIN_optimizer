@@ -38,14 +38,15 @@ def create_test_planet(sys, M, a, name = 'planet', phase = 0):
     return planet
 
 def create_test_system(M_maj = 1e-3, M_min = 1e-5, a_maj = 10, a_min = 1, phaseseed = 0):
-    '''Creates a test system with 2 planets: a major and a minor.'''
+    '''Creates a test system with 2 planets: a major and a minor. The central body has a 
+    mass of 1 solar mass'''
     phaseseed = int(phaseseed)
     r1 = np.random.default_rng(phaseseed)
 
     sys = Particles()
-    star = create_test_star()
+    star = create_test_star(M = 1) # change if you like 
     sys.add_particle(star)
-    sys.phaseseed = phaseseed
+    sys.phaseseed = phaseseed # add phaseseed to the system to identify it
 
     pl_major = create_test_planet(sys, M_maj, a_maj, name = 'major', phase = r1.uniform(0, 2 * np.pi))
     sys.add_particle(pl_major)
@@ -66,36 +67,63 @@ def test_generation():
 
 def generate_your_system():
     '''Edit this function to generate a system according to your needs. A few examples are provided below.
-    This function should return an AMUSE Particles object.'''
+    This function should return an AMUSE Particles object and the system type (as a string),
+    which will be used when saving the results.'''
 
     ### YOUR GENERATION CODE HERE ###
     sys = Particles()
+    sys_type = 'user_type'
+    return sys, sys_type
 
-    return sys
-
-# def generate_your_system(): # SIMPLE 3 BODY VERSION
-#     M_maj = 1e-3
-#     M_min = 1e-5
-#     a_maj = 10
-#     a_min = 20
-#     phaseseed = 42
-#     return create_test_system(M_maj, M_min, a_maj, a_min, phaseseed)
+def generate_your_system(): # SIMPLE 3 BODY VERSION
+    M_maj = 1e-3
+    M_min = 1e-5
+    a_maj = 10
+    a_min = 20
+    phaseseed = 42
+    sys_type = '3_bodies'
+    return create_test_system(M_maj, M_min, a_maj, a_min, phaseseed), sys_type
 
 # def generate_your_system(): # MANY BODIES VERSION
 #     # TODO: where you have lots of bodies bla bla bla. 
-#     return sys
+#     sys_type = 'many_bodies'
+#     return sys, sys_type
 
 # def generate_your_system(): # TRAPPIST VERSION
 #     from Trappist.generate_trappist import create_trappist_system
 #     phaseseed = 42
-#     return create_trappist_system(phaseseed)
+#     sys_type = 'Trappist'
+#     return create_trappist_system(phaseseed), sys_type
 
 # def generate_your_system(): # S STAR VERSION
 #     from S_Stars.generate_s_stars import create_s_star_system
 #     filepath = arbeit_path / 'Data/SStars2009ApJ692_1075GTab7.h5'
-#     s_star_mass = 20 # Mass of all s stars, in solar masses
-#     ref_time = 0 | units.year # reference time for calculation of mean anomaly
-#     return create_s_star_system(filepath, s_star_mass, ref_time)
+#     s_star_mass = 20 # dummy mass of all s stars, in solar masses
+#     ref_time = 0 | units.yr # reference time for calculation of mean anomaly
+#     sys_type = 's_stars'
+#     return create_s_star_system(filepath, s_star_mass, ref_time), sys_type
+
+# def generate_your_system(): # SOLAR SYSTEM VERSION
+#     from amuse.ext.solarsystem import new_solar_system #type: ignore
+#     solarsys = new_solar_system()
+#     sys_type = 'solarsystem'
+#     return solarsys, sys_type
+
+def plot_evolution_example():
+    from Trappist.evolve_trappist import evolve_sys_sakura
+    from Trappist.t_plotting import plot_system
+    test_sys = generate_your_system()
+    sys, pos_states, vel_states, total_energy, evolve_time = evolve_sys_sakura(
+                        sys = test_sys, 
+                        evolve_time = 10 | units.day,
+                        tau_ev = 0.1 | units.day,
+                        cache = False
+    )
+    plot_system(sys, pos_states, vel_states, save = True, filename = 'evolved_system.png')
+
+# plot_evolution_example()
+
+    
 
 
 

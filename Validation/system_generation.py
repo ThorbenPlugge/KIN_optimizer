@@ -38,14 +38,15 @@ def create_test_planet(sys, M, a, name = 'planet', phase = 0):
     return planet
 
 def create_test_system(M_maj = 1e-3, M_min = 1e-5, a_maj = 10, a_min = 1, phaseseed = 0):
-    '''Creates a test system with 2 planets: a major and a minor.'''
+    '''Creates a test system with 2 planets: a major and a minor. The central body has a mass of
+    1 solar mass.'''
     phaseseed = int(phaseseed)
     r1 = np.random.default_rng(phaseseed)
 
     sys = Particles()
-    star = create_test_star()
+    star = create_test_star(M = 1) # change if you like
     sys.add_particle(star)
-    sys.phaseseed = phaseseed
+    sys.phaseseed = phaseseed # add the phaseseed to the system to identify it
 
     pl_major = create_test_planet(sys, M_maj, a_maj, name = 'major', phase = r1.uniform(0, 2 * np.pi))
     sys.add_particle(pl_major)
@@ -63,6 +64,7 @@ def test_generation():
                                   a_min = 1)
     print(test_sys)
     plot_system(test_sys, title='test_system')
+
 
 # test_generation()
 

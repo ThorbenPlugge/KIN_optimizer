@@ -26,21 +26,21 @@ plt.rc('font', **font)
 def plot_system(sys, pos_states = [0], vel_states = [0], title = 'TRAPPIST-1 System', dimension = 2, save = False, filename = 'system.pdf'):
     '''Plots a system of particles. You can enter the position states
     of the system to plot the past positions of the planets.'''
-    fig = plt.figure(figsize=(8, 8))
-    
+    fig = plt.figure(figsize=(8, 8), constrained_layout=True)
+
     if dimension == 2:
         ax = fig.add_subplot(111)
         for i in range(len(sys)):
-            plt.scatter(sys[i].x.value_in(units.AU), sys[i].y.value_in(units.AU), s = 100)
+            plt.scatter(sys[i].y.value_in(units.AU), sys[i].z.value_in(units.AU), s = 100)
             if len(pos_states) > 1:
-                    plt.plot(pos_states[:,i,0],
-                            pos_states[:,i,1],
+                    plt.plot(pos_states[:,i,1],
+                            pos_states[:,i,2],
                             alpha = 0.3, color = 'black')
             if len(vel_states) > 1:
-                plt.quiver(pos_states[-1][i][0], pos_states[-1][i][1],
-                           vel_states[-1][i][0], vel_states[-1][i][1])
-            ax.set_xlabel('AU')
-            ax.set_ylabel('AU')
+                plt.quiver(pos_states[-1][i][1], pos_states[-1][i][2],
+                           vel_states[-1][i][1], vel_states[-1][i][2])
+            ax.set_xlabel('Y (AU)')
+            ax.set_ylabel('Z (AU)')
     if dimension == 3:
         ax = fig.add_subplot(111, projection = '3d')
         for i in range(len(sys)):
