@@ -1,4 +1,5 @@
 import numpy as np 
+import matplotlib.pyplot as plt
 from amuse.units import units # type: ignore
 from pathlib import Path
 import sys
@@ -13,8 +14,8 @@ sys.path.insert(0, str(arbeit_path))
 
 def save_single_test_results(
         path, filename,
-        masses, true_masses, mass_error, avg_loss_per_epoch,
-        params
+        finalmasses, true_masses, mass_error, avg_loss_per_epoch,
+        params, mass_array
     ):
     import h5py
     filepath = path / filename
@@ -23,10 +24,11 @@ def save_single_test_results(
         exp_group = f.create_group(f'exp_{exp_index}')
 
         # Store array data
-        exp_group.create_dataset('masses', data=masses)
+        exp_group.create_dataset('finalmasses', data=finalmasses)
         exp_group.create_dataset('true_masses', data=true_masses)
         exp_group.create_dataset('mass_error', data=mass_error)
         exp_group.create_dataset('avg_loss_per_epoch', data=avg_loss_per_epoch)
+        exp_group.create_dataset('mass_per_epoch', data=mass_array)
 
         # Store params dictionary as attributes or datasets
         param_group = exp_group.create_group('params')
@@ -37,9 +39,27 @@ def save_single_test_results(
                 param_group.create_dataset(key, data=value, dtype=h5py.string_dtype(encoding='utf-8'))
             else:
                 param_group.create_dataset(key, data=value)
-
+    
     print(f'Saved results in {filepath} under group exp_{exp_index}')
 
+    fig, axs = plt.subplots(2, 1, figsize=(10, 15), layout='compressed', sharex=True)
+
+    axs[0].set_facecolor('xkcd:light grey')
+    axs[1].set_facecolor('xkcd:light grey')
+    axs[0].plot(avg_loss_per_epoch)
+    axs[0].set_yscale('log')
+    axs[0].set_ylabel('Loss (log)')
+    axs[0].set_title('Average log loss per epoch')
+    for i in range(mass_array.shape[1]):
+        axs[1].plot(mass_array[:, i], label=f'Body {i+1}')
+        axs[1].axhline(true_masses[i], linestyle='--', color='black', alpha=0.5)
+    axs[1].set_yscale('log')
+    axs[1].set_ylabel('Mass (log(M_sun))')
+    axs[1].set_xlabel('Epochs')
+    axs[1].set_title('Mass evolution per epoch')
+    axs[1].legend()
+
+    fig.savefig(f'{filepath}_{exp_index}.png', dpi = 800)
 
 def test_KIN():
     '''Test the Keplerian Integration Network, with parameters set by the test_params.json file.
@@ -114,28 +134,31 @@ def test_KIN():
         epochs=params['epochs'],
         unknown_dimension=params['unknown_dimension'],
         plotGraph=False,
-        plot_in_2D=False,
+        plot_in_2D=True,
         zoombox='not yet', # can be: trappist, TODO add options
         negative_mass_penalty=1,
         accuracy=params['accuracy'],
         printing=True
     )
 
-    masses, best_idx, avg_loss_per_epoch = select_masses(masses, losses, lowest_loss=False)
-    true_masses = sys.mass.value_in(units.Msun)
-
-    mass_error = calculate_mass_error(masses, sys, relative=True, sumup=False)
+    finalmasses, best_idx, avg_loss_per_epoch = select_masses(masses, losses, lowest_loss=False)
+    true_masses = sys.mass.value_in(units.Msun) 
+    masses = np.array(masses)
+    mass_error = calculate_mass_error(finalmasses, sys, relative=True, sumup=False)
+    
     print('---------RESULTS---------')
-    print('KIN found these masses:\n', masses)
+    print('KIN found these masses:\n', finalmasses)
     print('True masses were:\n', true_masses)
     print('Relative errors per body:\n', mass_error)
 
     save_single_test_results(
         path=output_path, filename=f'{sys_type}_{job_id}.h5',
-        masses=masses, true_masses=true_masses,
+        finalmasses=finalmasses, true_masses=true_masses,
         mass_error=mass_error, avg_loss_per_epoch=avg_loss_per_epoch,
-        params=params
+        params=params, mass_array=masses
     )
+
+
 
 test_KIN()  
 
