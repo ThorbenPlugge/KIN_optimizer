@@ -1,6 +1,6 @@
 {
-    "evolve_time": 300,
-    "tau": 1,
+    "evolve_time": 150,
+    "tau": 5,
     "num_points_considered_in_cost_function": 8,
     "epochs": 1200,
     "accuracy": 1e-10,
