@@ -145,7 +145,7 @@ def test_KIN():
         plotGraph=False,
         plot_in_2D=True,
         zoombox='not yet', # can be: trappist, TODO add options
-        negative_mass_penalty=1,
+        negative_mass_penalty=0,
         accuracy=params['accuracy'],
         printing=True
     )
